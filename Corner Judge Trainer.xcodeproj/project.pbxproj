@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
+		A5AA9D501D4BCE0200B51652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */; };
+		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
+		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
+		A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */; };
+		A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */; };
+		A5AA9D6E1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5AA9D5F1D4BCE0300B51652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5AA9D421D4BCE0200B51652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5AA9D491D4BCE0200B51652;
+			remoteInfo = "Corner Judge Trainer";
+		};
+		A5AA9D6A1D4BCE0300B51652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5AA9D421D4BCE0200B51652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5AA9D491D4BCE0200B51652;
+			remoteInfo = "Corner Judge Trainer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corner Judge Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5AA9D541D4BCE0200B51652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5AA9D571D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5AA9D591D4BCE0200B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corner Judge TrainerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerTests.swift; sourceTree = "<group>"; };
+		A5AA9D641D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corner Judge TrainerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerUITests.swift; sourceTree = "<group>"; };
+		A5AA9D6F1D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5AA9D471D4BCE0200B51652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D5B1D4BCE0300B51652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D661D4BCE0300B51652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5AA9D411D4BCE0200B51652 = {
+			isa = PBXGroup;
+			children = (
+				A5AA9D4C1D4BCE0200B51652 /* Corner Judge Trainer */,
+				A5AA9D611D4BCE0300B51652 /* Corner Judge TrainerTests */,
+				A5AA9D6C1D4BCE0300B51652 /* Corner Judge TrainerUITests */,
+				A5AA9D4B1D4BCE0200B51652 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5AA9D4B1D4BCE0200B51652 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */,
+				A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */,
+				A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5AA9D4C1D4BCE0200B51652 /* Corner Judge Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */,
+				A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */,
+				A5AA9D511D4BCE0200B51652 /* Main.storyboard */,
+				A5AA9D541D4BCE0200B51652 /* Assets.xcassets */,
+				A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */,
+				A5AA9D591D4BCE0200B51652 /* Info.plist */,
+			);
+			path = "Corner Judge Trainer";
+			sourceTree = "<group>";
+		};
+		A5AA9D611D4BCE0300B51652 /* Corner Judge TrainerTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */,
+				A5AA9D641D4BCE0300B51652 /* Info.plist */,
+			);
+			path = "Corner Judge TrainerTests";
+			sourceTree = "<group>";
+		};
+		A5AA9D6C1D4BCE0300B51652 /* Corner Judge TrainerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */,
+				A5AA9D6F1D4BCE0300B51652 /* Info.plist */,
+			);
+			path = "Corner Judge TrainerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge Trainer" */;
+			buildPhases = (
+				A5AA9D461D4BCE0200B51652 /* Sources */,
+				A5AA9D471D4BCE0200B51652 /* Frameworks */,
+				A5AA9D481D4BCE0200B51652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Corner Judge Trainer";
+			productName = "Corner Judge Trainer";
+			productReference = A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5AA9D5D1D4BCE0300B51652 /* Corner Judge TrainerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerTests" */;
+			buildPhases = (
+				A5AA9D5A1D4BCE0300B51652 /* Sources */,
+				A5AA9D5B1D4BCE0300B51652 /* Frameworks */,
+				A5AA9D5C1D4BCE0300B51652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5AA9D601D4BCE0300B51652 /* PBXTargetDependency */,
+			);
+			name = "Corner Judge TrainerTests";
+			productName = "Corner Judge TrainerTests";
+			productReference = A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A5AA9D681D4BCE0300B51652 /* Corner Judge TrainerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerUITests" */;
+			buildPhases = (
+				A5AA9D651D4BCE0300B51652 /* Sources */,
+				A5AA9D661D4BCE0300B51652 /* Frameworks */,
+				A5AA9D671D4BCE0300B51652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5AA9D6B1D4BCE0300B51652 /* PBXTargetDependency */,
+			);
+			name = "Corner Judge TrainerUITests";
+			productName = "Corner Judge TrainerUITests";
+			productReference = A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5AA9D421D4BCE0200B51652 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Maya Saxena";
+				TargetAttributes = {
+					A5AA9D491D4BCE0200B51652 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					A5AA9D5D1D4BCE0300B51652 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A5AA9D491D4BCE0200B51652;
+					};
+					A5AA9D681D4BCE0300B51652 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A5AA9D491D4BCE0200B51652;
+					};
+				};
+			};
+			buildConfigurationList = A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "Corner Judge Trainer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5AA9D411D4BCE0200B51652;
+			productRefGroup = A5AA9D4B1D4BCE0200B51652 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */,
+				A5AA9D5D1D4BCE0300B51652 /* Corner Judge TrainerTests */,
+				A5AA9D681D4BCE0300B51652 /* Corner Judge TrainerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5AA9D481D4BCE0200B51652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */,
+				A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */,
+				A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D5C1D4BCE0300B51652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D671D4BCE0300B51652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5AA9D461D4BCE0200B51652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AA9D501D4BCE0200B51652 /* ViewController.swift in Sources */,
+				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D5A1D4BCE0300B51652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA9D651D4BCE0300B51652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AA9D6E1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5AA9D601D4BCE0300B51652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */;
+			targetProxy = A5AA9D5F1D4BCE0300B51652 /* PBXContainerItemProxy */;
+		};
+		A5AA9D6B1D4BCE0300B51652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */;
+			targetProxy = A5AA9D6A1D4BCE0300B51652 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5AA9D511D4BCE0200B51652 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5AA9D521D4BCE0200B51652 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5AA9D571D4BCE0200B51652 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5AA9D701D4BCE0300B51652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5AA9D711D4BCE0300B51652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5AA9D731D4BCE0300B51652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A5AA9D741D4BCE0300B51652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A5AA9D761D4BCE0300B51652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner Judge Trainer.app/Corner Judge Trainer";
+			};
+			name = Debug;
+		};
+		A5AA9D771D4BCE0300B51652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner Judge Trainer.app/Corner Judge Trainer";
+			};
+			name = Release;
+		};
+		A5AA9D791D4BCE0300B51652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Corner Judge TrainerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Corner Judge Trainer";
+			};
+			name = Debug;
+		};
+		A5AA9D7A1D4BCE0300B51652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Corner Judge TrainerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Corner Judge Trainer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "Corner Judge Trainer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5AA9D701D4BCE0300B51652 /* Debug */,
+				A5AA9D711D4BCE0300B51652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge Trainer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5AA9D731D4BCE0300B51652 /* Debug */,
+				A5AA9D741D4BCE0300B51652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5AA9D761D4BCE0300B51652 /* Debug */,
+				A5AA9D771D4BCE0300B51652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5AA9D791D4BCE0300B51652 /* Debug */,
+				A5AA9D7A1D4BCE0300B51652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5AA9D421D4BCE0200B51652 /* Project object */;
+}
