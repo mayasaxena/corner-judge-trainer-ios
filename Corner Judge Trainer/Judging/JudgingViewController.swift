@@ -21,6 +21,7 @@ class JudgingViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     let viewModel: MatchViewModel = MatchViewModel()
+    let matchModel = MatchModel(withMatchID: "aaa", andDate: NSDate.init(timeIntervalSinceNow: 0))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class JudgingViewController: UIViewController {
     
     func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
         if tapGestureRecognizer.view == redHeadshotScoringAreaView {
-            viewModel.redHeadshot()
+            matchModel.playerScored(PlayerColor.Red, scoringEvent: ScoringEvent.HeadKick)
         } else if tapGestureRecognizer.view == blueHeadshotScoringAreaView {
             viewModel.blueHeadshot()
         }
