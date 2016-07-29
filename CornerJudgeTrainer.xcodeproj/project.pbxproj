@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92C6C48F128CF8352DF59130 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */; };
+		A534B7C01D4BDF1900DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */; };
 		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
 		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
 		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		33A4682668849D348E2EC202 /* Pods-CornerJudgeTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewModel.swift; path = Judging/ViewModels/MatchViewModel.swift; sourceTree = "<group>"; };
 		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */,
+				A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */,
 			);
 			name = Judging;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A534B7C01D4BDF1900DBCCBE /* MatchViewModel.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
 				A5E5493E1D4BCFCF002368D2 /* JudgingViewController.swift in Sources */,
 				A5E5493C1D4BCFA8002368D2 /* NewMatchViewController.swift in Sources */,
