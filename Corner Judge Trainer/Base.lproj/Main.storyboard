@@ -4,13 +4,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--New Match View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewMatchViewController" customModule="Corner_Judge_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewMatchViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,7 +40,7 @@
         <!--Judging View Controller-->
         <scene sceneID="fxL-5W-GuU">
             <objects>
-                <viewController id="Lfg-by-b7c" customClass="JudgingViewController" customModule="Corner_Judge_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lfg-by-b7c" customClass="JudgingViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4MD-fI-5LT"/>
                         <viewControllerLayoutGuide type="bottom" id="o5w-cp-Z0d"/>
@@ -53,34 +52,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-V7-YZ2">
                                 <rect key="frame" x="0.0" y="0.0" width="368" height="414"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-S9-L8W">
-                                        <rect key="frame" x="114" y="116" width="214" height="182"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="0" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-S9-L8W">
+                                        <rect key="frame" x="221" y="116" width="107" height="183"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRK-EN-ChG">
+                                        <rect key="frame" x="0.0" y="268" width="368" height="146"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="X86-S9-L8W" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" multiplier="1.2" id="BMn-ll-1Mm"/>
+                                    <constraint firstAttribute="bottom" secondItem="eRK-EN-ChG" secondAttribute="bottom" id="GLg-02-4fV"/>
+                                    <constraint firstItem="eRK-EN-ChG" firstAttribute="top" secondItem="X86-S9-L8W" secondAttribute="baseline" id="IOC-4L-kG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="eRK-EN-ChG" secondAttribute="trailing" id="YFT-hK-Ri7"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerY" secondItem="YGN-V7-YZ2" secondAttribute="centerY" id="YkZ-GF-laD"/>
+                                    <constraint firstAttribute="trailing" secondItem="X86-S9-L8W" secondAttribute="trailing" constant="40" id="hhD-df-uOo"/>
+                                    <constraint firstItem="eRK-EN-ChG" firstAttribute="leading" secondItem="YGN-V7-YZ2" secondAttribute="leading" id="jsi-mk-ba6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-RH-4Vy">
                                 <rect key="frame" x="368" y="0.0" width="368" height="414"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
-                                        <rect key="frame" x="40" y="116" width="214" height="182"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
+                                        <rect key="frame" x="40" y="116" width="107" height="182"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-my-2K7">
+                                        <rect key="frame" x="0.0" y="267" width="368" height="147"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
-                                    <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" multiplier="0.8" id="akL-Ak-mSb"/>
+                                    <constraint firstItem="y6r-my-2K7" firstAttribute="top" secondItem="Vxq-NB-Hih" secondAttribute="baseline" id="PSy-UN-05x"/>
+                                    <constraint firstItem="Vxq-NB-Hih" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" constant="40" id="ZyS-T6-XGT"/>
+                                    <constraint firstItem="y6r-my-2K7" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" id="aym-Py-Jt1"/>
+                                    <constraint firstAttribute="bottom" secondItem="y6r-my-2K7" secondAttribute="bottom" id="mkM-9g-oJk"/>
+                                    <constraint firstAttribute="trailing" secondItem="y6r-my-2K7" secondAttribute="trailing" id="zQu-le-D01"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -99,10 +114,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="blueHeadshotScoringAreaView" destination="y6r-my-2K7" id="ktQ-Mk-b5L"/>
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
-                        <outlet property="blueView" destination="41l-RH-4Vy" id="pTB-In-ird"/>
+                        <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
-                        <outlet property="redView" destination="YGN-V7-YZ2" id="Z72-pd-qUY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import Intrepid
+import RxSwift
+import RxCocoa
 
 class JudgingViewController: UIViewController {
 
-    @IBOutlet weak var redView: UIView!
+    @IBOutlet weak var redHeadshotScoringAreaView: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
-    private var redScore = 0;
     
-    @IBOutlet weak var blueView: UIView!
+    @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
     @IBOutlet weak var blueScoreLabel: UILabel!
-    private var blueScore = 0;
+    
+    let disposeBag = DisposeBag()
+    let viewModel: MatchViewModel = MatchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        redView.addGestureRecognizer(tapGestureRecognizer)
-        blueView.addGestureRecognizer(tapGestureRecognizer)
+        let redTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        redHeadshotScoringAreaView.addGestureRecognizer(redTapGestureRecognizer)
+        
+        viewModel.redScore.asObservable().subscribeNext { (score) in
+            self.redScoreLabel.text = String(score)
+        } >>> disposeBag
+        
+        let blueTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        blueHeadshotScoringAreaView.addGestureRecognizer(blueTapGestureRecognizer)
+        
+        viewModel.blueScore.asObservable().subscribeNext { (score) in
+            self.blueScoreLabel.text = String(score)
+        } >>> disposeBag
         
     }
     
     func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
-        if tapGestureRecognizer.view == redView {
-            
+        if tapGestureRecognizer.view == redHeadshotScoringAreaView {
+            viewModel.redHeadshot()
+        } else if tapGestureRecognizer.view == blueHeadshotScoringAreaView {
+            viewModel.blueHeadshot()
         }
     }
     

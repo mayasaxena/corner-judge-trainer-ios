@@ -8,15 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		92C6C48F128CF8352DF59130 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */; };
-		A534B7C01D4BDF1900DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */; };
+		A534B7C21D4BDF6500DBCCBE /* JudgingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C11D4BDF6500DBCCBE /* JudgingViewController.swift */; };
+		A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */; };
+		A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */; };
+		A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */; };
+		A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */; };
 		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
 		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
 		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
 		A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */; };
 		A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */; };
 		A5AA9D6E1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */; };
-		A5E5493C1D4BCFA8002368D2 /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */; };
-		A5E5493E1D4BCFCF002368D2 /* JudgingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,11 @@
 /* Begin PBXFileReference section */
 		33A4682668849D348E2EC202 /* Pods-CornerJudgeTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewModel.swift; path = Judging/ViewModels/MatchViewModel.swift; sourceTree = "<group>"; };
+		A534B7C11D4BDF6500DBCCBE /* JudgingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudgingViewController.swift; path = Judging/JudgingViewController.swift; sourceTree = "<group>"; };
+		A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
+		A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "New Match/NewMatchViewController.swift"; sourceTree = "<group>"; };
+		A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extensions.swift"; path = "Extensions/NSDate+Extensions.swift"; sourceTree = "<group>"; };
+		A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchModel.swift; path = Models/MatchModel.swift; sourceTree = "<group>"; };
 		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,8 +58,6 @@
 		A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornerJudgeTrainer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerUITests.swift; sourceTree = "<group>"; };
 		A5AA9D6F1D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "../New Math/NewMatchViewController.swift"; sourceTree = "<group>"; };
-		A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JudgingViewController.swift; sourceTree = "<group>"; };
 		E7FAEE6B120811F83EB02C6B /* Pods-CornerJudgeTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A534B7C31D4BDF7500DBCCBE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */,
+			);
+			name = ViewModels;
+			path = Judging/ViewModels;
+			sourceTree = "<group>";
+		};
+		A534B7CA1D4BE35F00DBCCBE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		A534B7CD1D4BE44600DBCCBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A5AA9D411D4BCE0200B51652 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +161,8 @@
 				A5AA9D541D4BCE0200B51652 /* Assets.xcassets */,
 				A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */,
 				A5AA9D591D4BCE0200B51652 /* Info.plist */,
+				A534B7CA1D4BE35F00DBCCBE /* Extensions */,
+				A534B7CD1D4BE44600DBCCBE /* Models */,
 			);
 			path = "Corner Judge Trainer";
 			sourceTree = "<group>";
@@ -157,7 +188,7 @@
 		A5E549391D4BCF35002368D2 /* New Match */ = {
 			isa = PBXGroup;
 			children = (
-				A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */,
+				A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */,
 			);
 			name = "New Match";
 			sourceTree = "<group>";
@@ -165,8 +196,8 @@
 		A5E5493A1D4BCF3F002368D2 /* Judging */ = {
 			isa = PBXGroup;
 			children = (
-				A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */,
-				A534B7BF1D4BDF1900DBCCBE /* MatchViewModel.swift */,
+				A534B7C31D4BDF7500DBCCBE /* ViewModels */,
+				A534B7C11D4BDF6500DBCCBE /* JudgingViewController.swift */,
 			);
 			name = Judging;
 			sourceTree = "<group>";
@@ -353,10 +384,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A534B7C01D4BDF1900DBCCBE /* MatchViewModel.swift in Sources */,
+				A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */,
+				A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */,
+				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
-				A5E5493E1D4BCFCF002368D2 /* JudgingViewController.swift in Sources */,
-				A5E5493C1D4BCFA8002368D2 /* NewMatchViewController.swift in Sources */,
+				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
+				A534B7C21D4BDF6500DBCCBE /* JudgingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
