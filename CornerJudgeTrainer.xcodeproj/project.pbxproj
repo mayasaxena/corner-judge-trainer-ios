@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
-		A5AA9D501D4BCE0200B51652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */; };
 		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
 		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
 		A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */; };
 		A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */; };
 		A5AA9D6E1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */; };
+		A5E5493C1D4BCFA8002368D2 /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */; };
+		A5E5493E1D4BCFCF002368D2 /* JudgingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */; };
+		A5E549401D4BDBBB002368D2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A5E5493F1D4BDBBB002368D2 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,19 +36,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corner Judge Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5AA9D541D4BCE0200B51652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5AA9D571D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5AA9D591D4BCE0200B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corner Judge TrainerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D5E1D4BCE0300B51652 /* CornerJudgeTrainer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornerJudgeTrainer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerTests.swift; sourceTree = "<group>"; };
 		A5AA9D641D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corner Judge TrainerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornerJudgeTrainer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerUITests.swift; sourceTree = "<group>"; };
 		A5AA9D6F1D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "../New Math/NewMatchViewController.swift"; sourceTree = "<group>"; };
+		A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JudgingViewController.swift; sourceTree = "<group>"; };
+		A5E5493F1D4BDBBB002368D2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,15 +85,16 @@
 				A5AA9D611D4BCE0300B51652 /* Corner Judge TrainerTests */,
 				A5AA9D6C1D4BCE0300B51652 /* Corner Judge TrainerUITests */,
 				A5AA9D4B1D4BCE0200B51652 /* Products */,
+				A5E5493F1D4BDBBB002368D2 /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
 		A5AA9D4B1D4BCE0200B51652 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */,
-				A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */,
-				A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */,
+				A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */,
+				A5AA9D5E1D4BCE0300B51652 /* CornerJudgeTrainer.xctest */,
+				A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,8 +102,9 @@
 		A5AA9D4C1D4BCE0200B51652 /* Corner Judge Trainer */ = {
 			isa = PBXGroup;
 			children = (
+				A5E549391D4BCF35002368D2 /* New Match */,
 				A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */,
-				A5AA9D4F1D4BCE0200B51652 /* ViewController.swift */,
+				A5E5493A1D4BCF3F002368D2 /* Judging */,
 				A5AA9D511D4BCE0200B51652 /* Main.storyboard */,
 				A5AA9D541D4BCE0200B51652 /* Assets.xcassets */,
 				A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */,
@@ -125,12 +131,28 @@
 			path = "Corner Judge TrainerUITests";
 			sourceTree = "<group>";
 		};
+		A5E549391D4BCF35002368D2 /* New Match */ = {
+			isa = PBXGroup;
+			children = (
+				A5E5493B1D4BCFA8002368D2 /* NewMatchViewController.swift */,
+			);
+			name = "New Match";
+			sourceTree = "<group>";
+		};
+		A5E5493A1D4BCF3F002368D2 /* Judging */ = {
+			isa = PBXGroup;
+			children = (
+				A5E5493D1D4BCFCF002368D2 /* JudgingViewController.swift */,
+			);
+			name = Judging;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */ = {
+		A5AA9D491D4BCE0200B51652 /* CornerJudgeTrainer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge Trainer" */;
+			buildConfigurationList = A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainer" */;
 			buildPhases = (
 				A5AA9D461D4BCE0200B51652 /* Sources */,
 				A5AA9D471D4BCE0200B51652 /* Frameworks */,
@@ -140,14 +162,14 @@
 			);
 			dependencies = (
 			);
-			name = "Corner Judge Trainer";
+			name = CornerJudgeTrainer;
 			productName = "Corner Judge Trainer";
-			productReference = A5AA9D4A1D4BCE0200B51652 /* Corner Judge Trainer.app */;
+			productReference = A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A5AA9D5D1D4BCE0300B51652 /* Corner Judge TrainerTests */ = {
+		A5AA9D5D1D4BCE0300B51652 /* CornerJudgeTrainerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerTests" */;
+			buildConfigurationList = A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainerTests" */;
 			buildPhases = (
 				A5AA9D5A1D4BCE0300B51652 /* Sources */,
 				A5AA9D5B1D4BCE0300B51652 /* Frameworks */,
@@ -158,14 +180,14 @@
 			dependencies = (
 				A5AA9D601D4BCE0300B51652 /* PBXTargetDependency */,
 			);
-			name = "Corner Judge TrainerTests";
+			name = CornerJudgeTrainerTests;
 			productName = "Corner Judge TrainerTests";
-			productReference = A5AA9D5E1D4BCE0300B51652 /* Corner Judge TrainerTests.xctest */;
+			productReference = A5AA9D5E1D4BCE0300B51652 /* CornerJudgeTrainer.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A5AA9D681D4BCE0300B51652 /* Corner Judge TrainerUITests */ = {
+		A5AA9D681D4BCE0300B51652 /* CornerJudgeTrainerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerUITests" */;
+			buildConfigurationList = A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainerUITests" */;
 			buildPhases = (
 				A5AA9D651D4BCE0300B51652 /* Sources */,
 				A5AA9D661D4BCE0300B51652 /* Frameworks */,
@@ -176,9 +198,9 @@
 			dependencies = (
 				A5AA9D6B1D4BCE0300B51652 /* PBXTargetDependency */,
 			);
-			name = "Corner Judge TrainerUITests";
+			name = CornerJudgeTrainerUITests;
 			productName = "Corner Judge TrainerUITests";
-			productReference = A5AA9D691D4BCE0300B51652 /* Corner Judge TrainerUITests.xctest */;
+			productReference = A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -204,7 +226,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "Corner Judge Trainer" */;
+			buildConfigurationList = A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "CornerJudgeTrainer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -217,9 +239,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */,
-				A5AA9D5D1D4BCE0300B51652 /* Corner Judge TrainerTests */,
-				A5AA9D681D4BCE0300B51652 /* Corner Judge TrainerUITests */,
+				A5AA9D491D4BCE0200B51652 /* CornerJudgeTrainer */,
+				A5AA9D5D1D4BCE0300B51652 /* CornerJudgeTrainerTests */,
+				A5AA9D681D4BCE0300B51652 /* CornerJudgeTrainerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +253,7 @@
 			files = (
 				A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */,
 				A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */,
+				A5E549401D4BDBBB002368D2 /* Podfile in Resources */,
 				A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5AA9D501D4BCE0200B51652 /* ViewController.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
+				A5E5493E1D4BCFCF002368D2 /* JudgingViewController.swift in Sources */,
+				A5E5493C1D4BCFA8002368D2 /* NewMatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,12 +306,12 @@
 /* Begin PBXTargetDependency section */
 		A5AA9D601D4BCE0300B51652 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */;
+			target = A5AA9D491D4BCE0200B51652 /* CornerJudgeTrainer */;
 			targetProxy = A5AA9D5F1D4BCE0300B51652 /* PBXContainerItemProxy */;
 		};
 		A5AA9D6B1D4BCE0300B51652 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A5AA9D491D4BCE0200B51652 /* Corner Judge Trainer */;
+			target = A5AA9D491D4BCE0200B51652 /* CornerJudgeTrainer */;
 			targetProxy = A5AA9D6A1D4BCE0300B51652 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,9 +426,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CornerJudgeTrainer;
 			};
 			name = Debug;
 		};
@@ -413,9 +438,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CornerJudgeTrainer;
 			};
 			name = Release;
 		};
@@ -426,8 +452,8 @@
 				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner Judge Trainer.app/Corner Judge Trainer";
+				PRODUCT_NAME = CornerJudgeTrainer;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CornerJudgeTrainer.app/CornerJudgeTrainer";
 			};
 			name = Debug;
 		};
@@ -438,8 +464,8 @@
 				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner Judge Trainer.app/Corner Judge Trainer";
+				PRODUCT_NAME = CornerJudgeTrainer;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CornerJudgeTrainer.app/CornerJudgeTrainer";
 			};
 			name = Release;
 		};
@@ -449,7 +475,7 @@
 				INFOPLIST_FILE = "Corner Judge TrainerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CornerJudgeTrainer;
 				TEST_TARGET_NAME = "Corner Judge Trainer";
 			};
 			name = Debug;
@@ -460,7 +486,7 @@
 				INFOPLIST_FILE = "Corner Judge TrainerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CornerJudgeTrainer;
 				TEST_TARGET_NAME = "Corner Judge Trainer";
 			};
 			name = Release;
@@ -468,7 +494,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "Corner Judge Trainer" */ = {
+		A5AA9D451D4BCE0200B51652 /* Build configuration list for PBXProject "CornerJudgeTrainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5AA9D701D4BCE0300B51652 /* Debug */,
@@ -477,29 +503,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge Trainer" */ = {
+		A5AA9D721D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5AA9D731D4BCE0300B51652 /* Debug */,
 				A5AA9D741D4BCE0300B51652 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerTests" */ = {
+		A5AA9D751D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5AA9D761D4BCE0300B51652 /* Debug */,
 				A5AA9D771D4BCE0300B51652 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "Corner Judge TrainerUITests" */ = {
+		A5AA9D781D4BCE0300B51652 /* Build configuration list for PBXNativeTarget "CornerJudgeTrainerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5AA9D791D4BCE0300B51652 /* Debug */,
 				A5AA9D7A1D4BCE0300B51652 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

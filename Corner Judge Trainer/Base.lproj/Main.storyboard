@@ -3,12 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Match View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Corner_Judge_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewMatchViewController" customModule="Corner_Judge_Trainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,96 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje">
+                                <rect key="frame" x="238" y="285" width="125" height="30"/>
+                                <state key="normal" title="Judge New Match"/>
+                                <connections>
+                                    <segue destination="Lfg-by-b7c" kind="show" id="NRQ-PM-gzU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h7N-Nv-dje" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mdY-II-dyW"/>
+                            <constraint firstItem="h7N-Nv-dje" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="taW-aL-eLk"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="614" y="611"/>
+        </scene>
+        <!--Judging View Controller-->
+        <scene sceneID="fxL-5W-GuU">
+            <objects>
+                <viewController id="Lfg-by-b7c" customClass="JudgingViewController" customModule="Corner_Judge_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4MD-fI-5LT"/>
+                        <viewControllerLayoutGuide type="bottom" id="o5w-cp-Z0d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OLq-6z-fmI">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-V7-YZ2">
+                                <rect key="frame" x="0.0" y="0.0" width="368" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-S9-L8W">
+                                        <rect key="frame" x="114" y="116" width="214" height="182"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="X86-S9-L8W" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" multiplier="1.2" id="BMn-ll-1Mm"/>
+                                    <constraint firstItem="X86-S9-L8W" firstAttribute="centerY" secondItem="YGN-V7-YZ2" secondAttribute="centerY" id="YkZ-GF-laD"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-RH-4Vy">
+                                <rect key="frame" x="368" y="0.0" width="368" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
+                                        <rect key="frame" x="40" y="116" width="214" height="182"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
+                                    <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" multiplier="0.8" id="akL-Ak-mSb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="41l-RH-4Vy" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="FR8-GU-ptf"/>
+                            <constraint firstItem="41l-RH-4Vy" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="N5L-Ab-TY0"/>
+                            <constraint firstItem="YGN-V7-YZ2" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="b5p-Ah-scn"/>
+                            <constraint firstItem="YGN-V7-YZ2" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="cab-cN-7pr"/>
+                            <constraint firstItem="41l-RH-4Vy" firstAttribute="bottom" secondItem="OLq-6z-fmI" secondAttribute="bottom" id="jd5-tB-P5T"/>
+                            <constraint firstAttribute="trailing" secondItem="41l-RH-4Vy" secondAttribute="trailing" id="oWZ-kz-6Zz"/>
+                            <constraint firstItem="YGN-V7-YZ2" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="xdD-C0-9bQ"/>
+                            <constraint firstItem="o5w-cp-Z0d" firstAttribute="top" secondItem="YGN-V7-YZ2" secondAttribute="bottom" id="yxW-iP-Pzr"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
+                        <outlet property="blueView" destination="41l-RH-4Vy" id="pTB-In-ird"/>
+                        <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
+                        <outlet property="redView" destination="YGN-V7-YZ2" id="Z72-pd-qUY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1536" y="611"/>
         </scene>
     </scenes>
 </document>
