@@ -1,0 +1,1 @@
+# tkd-corner-judge-trainer-ios
