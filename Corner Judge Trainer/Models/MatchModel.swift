@@ -15,6 +15,7 @@ public enum PlayerColor {
 
 public class MatchModel {
     struct Constants {
+        static let DefaultMatchID = "123"
         static let HeadshotPointValue = 3
         static let BodyshotPointValue = 1
     }
@@ -25,43 +26,14 @@ public class MatchModel {
     var redScore: Double = 0
     var blueScore: Double = 0
     
-    init(withMatchID matchID: String, andDate date: NSDate) {
-        self.matchID = matchID
-        self.date = date
+    convenience init() {
+        self.init(matchID: Constants.DefaultMatchID, date: NSDate())
     }
     
-    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
-        
-        var playerScore: Double
-        var otherPlayerScore: Double
-        if playerColor == .Blue {
-            playerScore = blueScore
-            otherPlayerScore = redScore
-        } else {
-            playerScore = redScore
-            otherPlayerScore = blueScore
-        }
-        
-        switch scoringEvent {
-            
-        case .HeadKick:
-            playerScore += 3
-            
-        case .SpinningHeadKick:
-            playerScore += 4
-            
-        case .BodyKick:
-            playerScore += 1
-            
-        case .SpinningBodyKick:
-            playerScore += 3
-            
-        case .KyongGo:
-            otherPlayerScore += 0.5
-            
-        case .GamJeom:
-            otherPlayerScore += 1
-            
-        }
+    init(matchID id: String, date: NSDate) {
+        self.matchID = id
+        self.date = date
+        self.redScore = 0
+        self.blueScore = 0
     }
 }

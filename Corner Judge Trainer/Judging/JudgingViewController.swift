@@ -21,7 +21,6 @@ class JudgingViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     let viewModel: MatchViewModel = MatchViewModel()
-    let matchModel = MatchModel(withMatchID: "aaa", andDate: NSDate.init(timeIntervalSinceNow: 0))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,24 +28,22 @@ class JudgingViewController: UIViewController {
         let redTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         redHeadshotScoringAreaView.addGestureRecognizer(redTapGestureRecognizer)
         
-        viewModel.redScore.asObservable().subscribeNext { (score) in
-            self.redScoreLabel.text = String(score)
+        viewModel.redScoreText.asObservable().subscribeNext { scoreText in
+            self.redScoreLabel.text = scoreText
         } >>> disposeBag
         
         let blueTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         blueHeadshotScoringAreaView.addGestureRecognizer(blueTapGestureRecognizer)
         
-        viewModel.blueScore.asObservable().subscribeNext { (score) in
-            self.blueScoreLabel.text = String(score)
+        viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
+            self.blueScoreLabel.text = scoreText
         } >>> disposeBag
         
     }
     
     func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
         if tapGestureRecognizer.view == redHeadshotScoringAreaView {
-            matchModel.playerScored(PlayerColor.Red, scoringEvent: ScoringEvent.HeadKick)
         } else if tapGestureRecognizer.view == blueHeadshotScoringAreaView {
-            viewModel.blueHeadshot()
         }
     }
     

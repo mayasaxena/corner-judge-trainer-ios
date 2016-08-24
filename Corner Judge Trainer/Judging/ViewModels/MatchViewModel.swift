@@ -10,20 +10,58 @@ import Foundation
 import RxSwift
 
 public class MatchViewModel {
-    private(set) var redScore = Variable("0")
-    private(set) var blueScore = Variable("0")
     
-    public func redHeadshot() {
-        addHeadshotTo(redScore)
+    let redScoreText: Observable<String>
+    let blueScoreText: Observable<String>
+    
+    private let matchModel: Observable<MatchModel>
+    
+    init() {
+        let model = MatchModel()
+        matchModel = Observable.just(model)
+        
+        redScoreText = matchModel.map { model in
+            return "\(Int(model.redScore))"
+        }
+        
+        blueScoreText = matchModel.map { model in
+            return "\(Int(model.blueScore))"
+        }
     }
     
-    public func blueHeadshot() {
-        addHeadshotTo(blueScore)
+    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+        
+//        var playerScore: Double
+//        var otherPlayerScore: Double
+//        if playerColor == .Blue {
+//            playerScore = blueScore
+//            otherPlayerScore = redScore
+//        } else {
+//            playerScore = redScore
+//            otherPlayerScore = blueScore
+//        }
+        
+//        switch scoringEvent {
+//            
+//        case .HeadKick:
+//            playerScore += 3
+//            
+//        case .SpinningHeadKick:
+//            playerScore += 4
+//            
+//        case .BodyKick:
+//            playerScore += 1
+//            
+//        case .SpinningBodyKick:
+//            playerScore += 3
+//            
+//        case .KyongGo:
+//            otherPlayerScore += 0.5
+//            
+//        case .GamJeom:
+//            otherPlayerScore += 1
+//            
+//        }
     }
-    
-    private func addHeadshotTo(playerScore: Variable<Int>) {
-        playerScore.value += 3
-    }
-    
 
 }
