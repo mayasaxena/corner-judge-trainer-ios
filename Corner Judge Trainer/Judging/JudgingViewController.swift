@@ -12,15 +12,17 @@ import RxSwift
 import RxCocoa
 
 class JudgingViewController: UIViewController {
-
+    
     
     @IBOutlet weak var redScoringArea: UIView!
-    @IBOutlet weak var redHeadshotScoringAreaView: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
+    @IBOutlet weak var redHeadshotScoringAreaView: UIView!
+    @IBOutlet weak var redTechnicalButton: UIButton!
     
     @IBOutlet weak var blueScoringArea: UIView!
-    @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
     @IBOutlet weak var blueScoreLabel: UILabel!
+    @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
+    @IBOutlet weak var blueTechnicalButton: UIButton!
     
     let disposeBag = DisposeBag()
     let viewModel: MatchViewModel = MatchViewModel()
@@ -34,43 +36,70 @@ class JudgingViewController: UIViewController {
     private func setupRedScoring() {
         viewModel.redScoreText.asObservable().subscribeNext { scoreText in
             self.redScoreLabel.text = scoreText
-        } >>> disposeBag
+            } >>> disposeBag
         
-        let redTapGestureRecognizer = UITapGestureRecognizer()
-        redHeadshotScoringAreaView.addGestureRecognizer(redTapGestureRecognizer)
+        setupTapGestureRecognizer(redHeadshotScoringAreaView, playerColor: .Red)
+        setupSwipeGestureRecognizer(redScoringArea, playerColor: .Red)
+        setupDoubleTapGestureRecognizer(redScoringArea, playerColor: .Red)
+        setupLongPressGestureRecognizer(redScoringArea, playerColor: .Red)
         
-        redTapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(.Red, scoringEvent: .HeadKick)
-        } >>> disposeBag
-        
-        let redSwipeGestureRecognizer = UISwipeGestureRecognizer()
-        redSwipeGestureRecognizer.direction = .Down
-        redScoringArea.addGestureRecognizer(redSwipeGestureRecognizer)
-        
-        redSwipeGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(.Red, scoringEvent: .BodyKick)
+        redTechnicalButton.rx_tap.subscribeNext { _ in
+            self.viewModel.playerScored(.Red, scoringEvent: .Technical)
         } >>> disposeBag
     }
     
     private func setupBlueScoring() {
         viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
             self.blueScoreLabel.text = scoreText
+            } >>> disposeBag
+        
+        setupTapGestureRecognizer(blueHeadshotScoringAreaView, playerColor: .Blue)
+        setupSwipeGestureRecognizer(blueScoringArea, playerColor: .Blue)
+        setupDoubleTapGestureRecognizer(blueScoringArea, playerColor: .Blue)
+        setupLongPressGestureRecognizer(blueScoringArea, playerColor: .Blue)
+        
+        blueTechnicalButton.rx_tap.subscribeNext { _ in
+            self.viewModel.playerScored(.Blue, scoringEvent: .Technical)
         } >>> disposeBag
+    }
+    
+    private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        targetView.addGestureRecognizer(tapGestureRecognizer)
         
-        let blueTapGestureRecognizer = UITapGestureRecognizer()
-        blueHeadshotScoringAreaView.addGestureRecognizer(blueTapGestureRecognizer)
-        
-        blueTapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(.Blue, scoringEvent: .HeadKick)
+        tapGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(playerColor, scoringEvent: .Head)
         } >>> disposeBag
+    }
+    
+    private func setupSwipeGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+        let swipeGestureRecognizer = UISwipeGestureRecognizer()
+        swipeGestureRecognizer.direction = .Down
+        targetView.addGestureRecognizer(swipeGestureRecognizer)
         
-        let blueSwipeGestureRecognizer = UISwipeGestureRecognizer()
-        blueSwipeGestureRecognizer.direction = .Down
-        blueScoringArea.addGestureRecognizer(blueSwipeGestureRecognizer)
-        
-        blueSwipeGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(.Blue, scoringEvent: .BodyKick)
+        swipeGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(playerColor, scoringEvent: .Body)
         } >>> disposeBag
+    }
+    
+    private func setupDoubleTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+        let doubleTapGestureRecognizer = UITapGestureRecognizer()
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        targetView.addGestureRecognizer(doubleTapGestureRecognizer)
         
+        doubleTapGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(playerColor, scoringEvent: .KyongGo)
+        } >>> disposeBag
+    }
+    
+    private func setupLongPressGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+        let longPressGestureRecognizer = UILongPressGestureRecognizer()
+        targetView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        longPressGestureRecognizer.rx_event
+            .filter { gesture in gesture.state == .Ended }
+            .subscribeNext { _ in
+                self.viewModel.playerScored(playerColor, scoringEvent: .GamJeom)
+            } >>> disposeBag
     }
 }

@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--New Match View Controller-->
@@ -62,6 +63,14 @@
                                         <rect key="frame" x="0.0" y="268" width="368" height="146"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-jl-ID8">
+                                        <rect key="frame" x="303" y="349" width="60" height="60"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Tph-jl-ID8" secondAttribute="height" multiplier="1:1" id="IoG-ql-8PR"/>
+                                            <constraint firstAttribute="height" constant="60" id="ioG-GP-1y8"/>
+                                        </constraints>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
@@ -72,13 +81,14 @@
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerY" secondItem="YGN-V7-YZ2" secondAttribute="centerY" id="YkZ-GF-laD"/>
                                     <constraint firstAttribute="trailing" secondItem="X86-S9-L8W" secondAttribute="trailing" constant="40" id="hhD-df-uOo"/>
                                     <constraint firstItem="eRK-EN-ChG" firstAttribute="leading" secondItem="YGN-V7-YZ2" secondAttribute="leading" id="jsi-mk-ba6"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tph-jl-ID8" secondAttribute="bottom" constant="5" id="mBh-fa-kDf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-RH-4Vy">
                                 <rect key="frame" x="368" y="0.0" width="368" height="414"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
-                                        <rect key="frame" x="40" y="116" width="107" height="182"/>
+                                        <rect key="frame" x="40" y="116" width="107" height="183"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -87,6 +97,14 @@
                                         <rect key="frame" x="0.0" y="267" width="368" height="147"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-NF-7wk">
+                                        <rect key="frame" x="5" y="349" width="60" height="60"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xl6-NF-7wk" secondAttribute="height" multiplier="1:1" id="FMl-YK-f4z"/>
+                                            <constraint firstAttribute="height" constant="60" id="udA-aM-OnV"/>
+                                        </constraints>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -95,18 +113,21 @@
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" constant="40" id="ZyS-T6-XGT"/>
                                     <constraint firstItem="y6r-my-2K7" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" id="aym-Py-Jt1"/>
                                     <constraint firstAttribute="bottom" secondItem="y6r-my-2K7" secondAttribute="bottom" id="mkM-9g-oJk"/>
+                                    <constraint firstAttribute="bottom" secondItem="xl6-NF-7wk" secondAttribute="bottom" constant="5" id="zAZ-Jg-jtX"/>
                                     <constraint firstAttribute="trailing" secondItem="y6r-my-2K7" secondAttribute="trailing" id="zQu-le-D01"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tph-jl-ID8" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" constant="-5" id="COJ-79-9rP"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="FR8-GU-ptf"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="N5L-Ab-TY0"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="b5p-Ah-scn"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="cab-cN-7pr"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="bottom" secondItem="OLq-6z-fmI" secondAttribute="bottom" id="jd5-tB-P5T"/>
                             <constraint firstAttribute="trailing" secondItem="41l-RH-4Vy" secondAttribute="trailing" id="oWZ-kz-6Zz"/>
+                            <constraint firstAttribute="centerX" secondItem="xl6-NF-7wk" secondAttribute="leading" constant="-5" id="pjh-Kb-ukQ"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="xdD-C0-9bQ"/>
                             <constraint firstItem="o5w-cp-Z0d" firstAttribute="top" secondItem="YGN-V7-YZ2" secondAttribute="bottom" id="yxW-iP-Pzr"/>
                         </constraints>
@@ -117,9 +138,11 @@
                         <outlet property="blueHeadshotScoringAreaView" destination="y6r-my-2K7" id="ktQ-Mk-b5L"/>
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
                         <outlet property="blueScoringArea" destination="41l-RH-4Vy" id="Hgk-fr-R09"/>
+                        <outlet property="blueTechnicalButton" destination="xl6-NF-7wk" id="MFa-w3-0ej"/>
                         <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
                         <outlet property="redScoringArea" destination="YGN-V7-YZ2" id="uwY-HA-KrE"/>
+                        <outlet property="redTechnicalButton" destination="Tph-jl-ID8" id="NcW-lL-hyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,10 +9,9 @@
 import Foundation
 
 public enum ScoringEvent {
-    case HeadKick
-    case SpinningHeadKick
-    case BodyKick
-    case SpinningBodyKick
+    case Head
+    case Body
+    case Technical
     case KyongGo
     case GamJeom
 }

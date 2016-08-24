@@ -44,18 +44,16 @@ public class MatchViewModel {
         
         switch scoringEvent {
             
-        case .HeadKick:
+        case .Head:
             playerScore += 3
             
-        case .SpinningHeadKick:
-            playerScore += 4
-            
-        case .BodyKick:
+        case .Body:
             playerScore += 1
             
-        case .SpinningBodyKick:
-            playerScore += 3
+        case .Technical:
+            playerScore += 1
             
+        // TODO: Fix so # of kyonggos increase instead
         case .KyongGo:
             otherPlayerScore += 0.5
             
