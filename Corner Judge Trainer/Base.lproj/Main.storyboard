@@ -116,8 +116,10 @@
                     <connections>
                         <outlet property="blueHeadshotScoringAreaView" destination="y6r-my-2K7" id="ktQ-Mk-b5L"/>
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
+                        <outlet property="blueScoringArea" destination="41l-RH-4Vy" id="Hgk-fr-R09"/>
                         <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
+                        <outlet property="redScoringArea" destination="YGN-V7-YZ2" id="uwY-HA-KrE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>

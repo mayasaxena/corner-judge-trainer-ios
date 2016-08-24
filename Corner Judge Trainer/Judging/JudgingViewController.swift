@@ -13,9 +13,12 @@ import RxCocoa
 
 class JudgingViewController: UIViewController {
 
+    
+    @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redHeadshotScoringAreaView: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
     
+    @IBOutlet weak var blueScoringArea: UIView!
     @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
     @IBOutlet weak var blueScoreLabel: UILabel!
     
@@ -24,12 +27,34 @@ class JudgingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRedScoring()
+        setupBlueScoring()
+    }
+    
+    private func setupRedScoring() {
+        viewModel.redScoreText.asObservable().subscribeNext { scoreText in
+            self.redScoreLabel.text = scoreText
+        } >>> disposeBag
         
         let redTapGestureRecognizer = UITapGestureRecognizer()
         redHeadshotScoringAreaView.addGestureRecognizer(redTapGestureRecognizer)
-
+        
         redTapGestureRecognizer.rx_event.subscribeNext { _ in
             self.viewModel.playerScored(.Red, scoringEvent: .HeadKick)
+        } >>> disposeBag
+        
+        let redSwipeGestureRecognizer = UISwipeGestureRecognizer()
+        redSwipeGestureRecognizer.direction = .Down
+        redScoringArea.addGestureRecognizer(redSwipeGestureRecognizer)
+        
+        redSwipeGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(.Red, scoringEvent: .BodyKick)
+        } >>> disposeBag
+    }
+    
+    private func setupBlueScoring() {
+        viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
+            self.blueScoreLabel.text = scoreText
         } >>> disposeBag
         
         let blueTapGestureRecognizer = UITapGestureRecognizer()
@@ -39,12 +64,12 @@ class JudgingViewController: UIViewController {
             self.viewModel.playerScored(.Blue, scoringEvent: .HeadKick)
         } >>> disposeBag
         
-        viewModel.redScoreText.asObservable().subscribeNext { scoreText in
-            self.redScoreLabel.text = scoreText
-        } >>> disposeBag
+        let blueSwipeGestureRecognizer = UISwipeGestureRecognizer()
+        blueSwipeGestureRecognizer.direction = .Down
+        blueScoringArea.addGestureRecognizer(blueSwipeGestureRecognizer)
         
-        viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
-            self.blueScoreLabel.text = scoreText
+        blueSwipeGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(.Blue, scoringEvent: .BodyKick)
         } >>> disposeBag
         
     }
