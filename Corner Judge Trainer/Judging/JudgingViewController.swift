@@ -25,26 +25,27 @@ class JudgingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let redTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let redTapGestureRecognizer = UITapGestureRecognizer()
         redHeadshotScoringAreaView.addGestureRecognizer(redTapGestureRecognizer)
+
+        redTapGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(.Red, scoringEvent: .HeadKick)
+        } >>> disposeBag
+        
+        let blueTapGestureRecognizer = UITapGestureRecognizer()
+        blueHeadshotScoringAreaView.addGestureRecognizer(blueTapGestureRecognizer)
+        
+        blueTapGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.playerScored(.Blue, scoringEvent: .HeadKick)
+        } >>> disposeBag
         
         viewModel.redScoreText.asObservable().subscribeNext { scoreText in
             self.redScoreLabel.text = scoreText
         } >>> disposeBag
-        
-        let blueTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        blueHeadshotScoringAreaView.addGestureRecognizer(blueTapGestureRecognizer)
         
         viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
             self.blueScoreLabel.text = scoreText
         } >>> disposeBag
         
     }
-    
-    func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
-        if tapGestureRecognizer.view == redHeadshotScoringAreaView {
-        } else if tapGestureRecognizer.view == blueHeadshotScoringAreaView {
-        }
-    }
-    
 }
