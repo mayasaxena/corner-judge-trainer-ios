@@ -16,6 +16,9 @@ public class MatchViewModel {
     let redScoreText: Variable<String>
     let blueScoreText: Variable<String>
     
+//    let redPlayerName: String
+//    let bluePlayerName: String
+    
     private let matchModel: MatchModel
     
     private let disposeBag = DisposeBag()
@@ -35,7 +38,6 @@ public class MatchViewModel {
         blueScoreText.asObservable().subscribeNext { scoreText in
             self.matchModel.blueScore = Double(scoreText) ?? 0
         } >>> disposeBag
-
     }
     
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {

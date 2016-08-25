@@ -23,7 +23,7 @@
                                 <rect key="frame" x="238" y="285" width="125" height="30"/>
                                 <state key="normal" title="Judge New Match"/>
                                 <connections>
-                                    <segue destination="Lfg-by-b7c" kind="show" id="NRQ-PM-gzU"/>
+                                    <action selector="newMatchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SHW-GN-J0B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,10 +33,14 @@
                             <constraint firstItem="h7N-Nv-dje" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="taW-aL-eLk"/>
                         </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <segue destination="Lfg-by-b7c" kind="show" identifier="showJudging" id="Tts-av-UOh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="611"/>
+            <point key="canvasLocation" x="648" y="611"/>
         </scene>
         <!--Judging View Controller-->
         <scene sceneID="fxL-5W-GuU">
@@ -71,6 +75,12 @@
                                             <constraint firstAttribute="height" constant="60" id="ioG-GP-1y8"/>
                                         </constraints>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-WB-bsH">
+                                        <rect key="frame" x="163" y="368" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
@@ -78,9 +88,11 @@
                                     <constraint firstAttribute="bottom" secondItem="eRK-EN-ChG" secondAttribute="bottom" id="GLg-02-4fV"/>
                                     <constraint firstItem="eRK-EN-ChG" firstAttribute="top" secondItem="X86-S9-L8W" secondAttribute="baseline" id="IOC-4L-kG7"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YGN-V7-YZ2" secondAttribute="leading" constant="5" id="RZP-OE-UZ1"/>
+                                    <constraint firstItem="ZxV-WB-bsH" firstAttribute="centerY" secondItem="Tph-jl-ID8" secondAttribute="centerY" id="X9i-hR-gsi"/>
                                     <constraint firstAttribute="trailing" secondItem="eRK-EN-ChG" secondAttribute="trailing" id="YFT-hK-Ri7"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerY" secondItem="YGN-V7-YZ2" secondAttribute="centerY" id="YkZ-GF-laD"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X86-S9-L8W" secondAttribute="trailing" constant="5" id="fYa-AJ-lBV"/>
+                                    <constraint firstItem="ZxV-WB-bsH" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" id="gjt-te-srD"/>
                                     <constraint firstItem="eRK-EN-ChG" firstAttribute="leading" secondItem="YGN-V7-YZ2" secondAttribute="leading" id="jsi-mk-ba6"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" id="k5m-Nt-ezt"/>
                                     <constraint firstAttribute="bottom" secondItem="Tph-jl-ID8" secondAttribute="bottom" constant="5" id="mBh-fa-kDf"/>
@@ -107,6 +119,12 @@
                                             <constraint firstAttribute="height" constant="60" id="udA-aM-OnV"/>
                                         </constraints>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-ZG-aYe">
+                                        <rect key="frame" x="163" y="368.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -114,6 +132,8 @@
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
                                     <constraint firstItem="y6r-my-2K7" firstAttribute="top" secondItem="Vxq-NB-Hih" secondAttribute="baseline" id="PSy-UN-05x"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" id="Qie-Va-YFm"/>
+                                    <constraint firstItem="P4u-ZG-aYe" firstAttribute="centerY" secondItem="xl6-NF-7wk" secondAttribute="centerY" id="S2T-rZ-Thy"/>
+                                    <constraint firstItem="P4u-ZG-aYe" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" id="VJo-jg-BZI"/>
                                     <constraint firstItem="y6r-my-2K7" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" id="aym-Py-Jt1"/>
                                     <constraint firstAttribute="bottom" secondItem="y6r-my-2K7" secondAttribute="bottom" id="mkM-9g-oJk"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="41l-RH-4Vy" secondAttribute="leading" constant="5" id="o13-jR-wXo"/>
@@ -146,10 +166,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="blueHeadshotScoringAreaView" destination="y6r-my-2K7" id="ktQ-Mk-b5L"/>
+                        <outlet property="bluePlayerNameLabel" destination="P4u-ZG-aYe" id="3Ay-Fc-8k4"/>
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
                         <outlet property="blueScoringArea" destination="41l-RH-4Vy" id="Hgk-fr-R09"/>
                         <outlet property="blueTechnicalButton" destination="xl6-NF-7wk" id="MFa-w3-0ej"/>
                         <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
+                        <outlet property="redPlayerNameLabel" destination="ZxV-WB-bsH" id="sGt-ld-Tkv"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
                         <outlet property="redScoringArea" destination="YGN-V7-YZ2" id="uwY-HA-KrE"/>
                         <outlet property="redTechnicalButton" destination="Tph-jl-ID8" id="NcW-lL-hyb"/>

@@ -13,24 +13,32 @@ import RxCocoa
 
 class JudgingViewController: UIViewController {
     
-    
     @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
     @IBOutlet weak var redHeadshotScoringAreaView: UIView!
     @IBOutlet weak var redTechnicalButton: UIButton!
+    @IBOutlet weak var redPlayerNameLabel: UILabel!
     
     @IBOutlet weak var blueScoringArea: UIView!
     @IBOutlet weak var blueScoreLabel: UILabel!
     @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
     @IBOutlet weak var blueTechnicalButton: UIButton!
+    @IBOutlet weak var bluePlayerNameLabel: UILabel!
     
     let disposeBag = DisposeBag()
     let viewModel: MatchViewModel = MatchViewModel()
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRedScoring()
         setupBlueScoring()
+        
+        redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
+        blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
     }
     
     private func setupRedScoring() {

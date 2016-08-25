@@ -13,13 +13,14 @@
 		A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */; };
 		A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */; };
 		A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */; };
+		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
+		A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* ScoringEvent.swift */; };
 		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
 		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
 		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
 		A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */; };
 		A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */; };
 		A5AA9D6E1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */; };
-		A5E3E4E31D4BF61E00BFBE30 /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3E4E21D4BF61E00BFBE30 /* ScoringEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "New Match/NewMatchViewController.swift"; sourceTree = "<group>"; };
 		A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extensions.swift"; path = "Extensions/NSDate+Extensions.swift"; sourceTree = "<group>"; };
 		A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchModel.swift; path = Models/MatchModel.swift; sourceTree = "<group>"; };
+		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
+		A5A789EF1D6E79390088D983 /* ScoringEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/ScoringEvent.swift; sourceTree = "<group>"; };
 		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornerJudgeTrainer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerUITests.swift; sourceTree = "<group>"; };
 		A5AA9D6F1D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5E3E4E21D4BF61E00BFBE30 /* ScoringEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringEvent.swift; sourceTree = "<group>"; };
 		E7FAEE6B120811F83EB02C6B /* Pods-CornerJudgeTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */,
-				A5E3E4E21D4BF61E00BFBE30 /* ScoringEvent.swift */,
+				A5A789EF1D6E79390088D983 /* ScoringEvent.swift */,
+				A5A789ED1D6E791F0088D983 /* Player.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -390,10 +393,11 @@
 				A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */,
 				A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */,
 				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
+				A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
+				A5A789EE1D6E791F0088D983 /* Player.swift in Sources */,
 				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
 				A534B7C21D4BDF6500DBCCBE /* JudgingViewController.swift in Sources */,
-				A5E3E4E31D4BF61E00BFBE30 /* ScoringEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
