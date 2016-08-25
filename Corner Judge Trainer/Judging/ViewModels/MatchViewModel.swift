@@ -24,8 +24,8 @@ public class MatchViewModel {
         matchModel = MatchModel()
         
         // Set current value to model's value
-        redScoreText = Variable(matchModel.redScore.flooredString())
-        blueScoreText = Variable(matchModel.blueScore.flooredString())
+        redScoreText = Variable(matchModel.redScore.restrictedString())
+        blueScoreText = Variable(matchModel.blueScore.restrictedString())
         
         // Update model when score text changes
         redScoreText.asObservable().subscribeNext { scoreText in
@@ -59,25 +59,25 @@ public class MatchViewModel {
             
         case .GamJeom:
             otherPlayerScore += 1
-            
         }
         
         let blueScore = Double(blueScoreText.value) ?? 0
         let redScore = Double(redScoreText.value) ?? 0
         
         if playerColor == .Blue {
-            blueScoreText.value = (blueScore + playerScore).flooredString()
-            redScoreText.value = (redScore + otherPlayerScore).flooredString()
+            blueScoreText.value = (blueScore + playerScore).restrictedString()
+            redScoreText.value = (redScore + otherPlayerScore).restrictedString()
         } else {
-            redScoreText.value = (redScore + playerScore).flooredString()
-            blueScoreText.value = (blueScore + otherPlayerScore).flooredString()
+            redScoreText.value = (redScore + playerScore).restrictedString()
+            blueScoreText.value = (blueScore + otherPlayerScore).restrictedString()
         }
     }
 
 }
 
 extension Double {
-    func flooredString() -> String {
-        return String(Int(floor(self)))
+    func restrictedString() -> String {
+        let maxScore = 99.0
+        return String(Int(floor(min(self, maxScore))))
     }
 }
