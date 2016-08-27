@@ -45,6 +45,11 @@ public class MatchModel {
         self.blueScore = 0
     }
     
+    public func addPlayerNames(redPlayerName: String?, bluePlayerName: String?) {
+        redPlayer.name = redPlayerName ?? redPlayer.name
+        bluePlayer.name = bluePlayerName ?? bluePlayer.name
+    }
+    
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         var playerScore = 0.0
         var otherPlayerScore = 0.0

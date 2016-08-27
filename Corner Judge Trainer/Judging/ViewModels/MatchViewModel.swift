@@ -29,8 +29,8 @@ public class MatchViewModel {
         // Set current value to model's value
         redScoreText = Variable(matchModel.redScore.formattedString())
         blueScoreText = Variable(matchModel.blueScore.formattedString())
-        redPlayerName = Variable(matchModel.redPlayer.name)
-        bluePlayerName = Variable(matchModel.bluePlayer.name)
+        redPlayerName = Variable(matchModel.redPlayer.displayName)
+        bluePlayerName = Variable(matchModel.bluePlayer.displayName)
     }
     
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
@@ -41,14 +41,10 @@ public class MatchViewModel {
         blueScoreText.value = matchModel.blueScore.formattedString()
     }
     
-    public func addPlayerNames(redPlayerName: String?, bluePlayerName: String?) {
-        if let redPlayerName = redPlayerName {
-            self.redPlayerName.value = redPlayerName
-        }
-        
-        if let bluePlayerName = bluePlayerName {
-            self.bluePlayerName.value = bluePlayerName
-        }
+    public func addPlayerNames(red: String?, bluePlayerName blue: String?) {
+        matchModel.addPlayerNames(red, bluePlayerName: blue)
+        redPlayerName.value = red ?? matchModel.redPlayer.displayName
+        bluePlayerName.value = blue ?? matchModel.bluePlayer.displayName
     }
 }
 

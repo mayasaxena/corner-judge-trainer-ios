@@ -44,4 +44,8 @@ extension Player {
     static var defaultName: String {
         return Constants.DefaultName
     }
+    
+    var displayName: String {
+        return name.containsString(Player.defaultName) ? "" : name
+    }
 }
