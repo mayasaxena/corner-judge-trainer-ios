@@ -5,7 +5,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="DroidSans.ttf">
+            <string>DroidSans</string>
+            <string>DroidSans</string>
+            <string>DroidSans</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--New Match View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -19,15 +27,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje">
-                                <rect key="frame" x="238" y="285" width="125" height="30"/>
-                                <state key="normal" title="Judge New Match"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                <rect key="frame" x="200" y="275" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="B8V-88-S3y"/>
+                                    <constraint firstAttribute="height" constant="50" id="hn9-qV-6D3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
+                                <state key="normal" title="JUDGE NEW MATCH">
+                                    <color key="titleColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="newMatchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SHW-GN-J0B"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h7N-Nv-dje" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mdY-II-dyW"/>
                             <constraint firstItem="h7N-Nv-dje" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="taW-aL-eLk"/>
@@ -35,12 +55,14 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="judgeNewMatchButton" destination="h7N-Nv-dje" id="3Cp-MF-3oK"/>
                         <segue destination="Lfg-by-b7c" kind="show" identifier="showJudging" id="Tts-av-UOh"/>
+                        <segue destination="RyK-Oi-oMN" kind="show" identifier="showAddPlayers" id="aUe-kQ-yq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="611"/>
+            <point key="canvasLocation" x="656" y="635"/>
         </scene>
         <!--Judging View Controller-->
         <scene sceneID="fxL-5W-GuU">
@@ -69,7 +91,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-jl-ID8">
                                         <rect key="frame" x="303" y="349" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tph-jl-ID8" secondAttribute="height" multiplier="1:1" id="IoG-ql-8PR"/>
                                             <constraint firstAttribute="height" constant="60" id="ioG-GP-1y8"/>
@@ -82,7 +104,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.729411780834198" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="eRK-EN-ChG" secondAttribute="bottom" id="GLg-02-4fV"/>
@@ -113,7 +135,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-NF-7wk">
                                         <rect key="frame" x="5" y="349" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xl6-NF-7wk" secondAttribute="height" multiplier="1:1" id="FMl-YK-f4z"/>
                                             <constraint firstAttribute="height" constant="60" id="udA-aM-OnV"/>
@@ -126,7 +148,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.21176470816135406" green="0.42352941632270813" blue="0.67450982332229614" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vxq-NB-Hih" secondAttribute="trailing" constant="5" id="3fT-EM-7sq"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
@@ -179,7 +201,132 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1536" y="611"/>
+            <point key="canvasLocation" x="2364" y="603"/>
+        </scene>
+        <!--Add Players View Controller-->
+        <scene sceneID="BcD-s3-r4i">
+            <objects>
+                <viewController id="RyK-Oi-oMN" customClass="AddPlayersViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="672-NI-Zuc"/>
+                        <viewControllerLayoutGuide type="bottom" id="TXB-Oo-Zqn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6wf-H0-6jc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconRed" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-Md-zVS">
+                                <rect key="frame" x="255" y="144" width="91" height="131"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dBz-Md-zVS" secondAttribute="height" multiplier="91:131" id="7XO-WF-T9s"/>
+                                    <constraint firstAttribute="height" constant="131" id="T4B-qo-75x"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Red player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-PS-5EJ">
+                                <rect key="frame" x="219" y="195" width="162" height="30"/>
+                                <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="VS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daw-vJ-FxM">
+                                <rect key="frame" x="291" y="290" width="19" height="20"/>
+                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Fql-Gx-ut0">
+                                <rect key="frame" x="255" y="325" width="91" height="131"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="131" id="18f-Uw-hIt"/>
+                                    <constraint firstAttribute="width" secondItem="Fql-Gx-ut0" secondAttribute="height" multiplier="91:131" id="gA6-kq-ybx"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Blue player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-qZ-H5I">
+                                <rect key="frame" x="218" y="375" width="164" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsI-Gk-shb" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                <rect key="frame" x="200" y="520" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0Ya-UB-Eoe"/>
+                                    <constraint firstAttribute="width" constant="200" id="jJb-eh-kfD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
+                                <state key="normal" title="GO!">
+                                    <color key="titleColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dBz-Md-zVS" firstAttribute="centerX" secondItem="b3b-PS-5EJ" secondAttribute="centerX" id="4mY-x8-FcR"/>
+                            <constraint firstItem="Fql-Gx-ut0" firstAttribute="width" secondItem="Fql-Gx-ut0" secondAttribute="height" multiplier="91:131" id="7su-tO-fpn"/>
+                            <constraint firstItem="b3b-PS-5EJ" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" id="Bdq-fm-JXP"/>
+                            <constraint firstItem="b3b-PS-5EJ" firstAttribute="centerY" secondItem="6wf-H0-6jc" secondAttribute="centerY" id="DSd-ka-ZTm"/>
+                            <constraint firstItem="Fql-Gx-ut0" firstAttribute="centerX" secondItem="UVY-qZ-H5I" secondAttribute="centerX" id="GXS-eY-7e8"/>
+                            <constraint firstItem="daw-vJ-FxM" firstAttribute="centerY" secondItem="6wf-H0-6jc" secondAttribute="centerY" id="NEV-Rh-xjr"/>
+                            <constraint firstItem="UVY-qZ-H5I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="daw-vJ-FxM" secondAttribute="trailing" constant="20" id="PRf-zc-3yN"/>
+                            <constraint firstItem="UVY-qZ-H5I" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" multiplier="1.3" priority="750" id="PqF-eX-cbN"/>
+                            <constraint firstItem="Fql-Gx-ut0" firstAttribute="centerY" secondItem="UVY-qZ-H5I" secondAttribute="centerY" id="Rg0-5u-6Gn"/>
+                            <constraint firstItem="dBz-Md-zVS" firstAttribute="centerY" secondItem="b3b-PS-5EJ" secondAttribute="centerY" id="hda-1s-Te1"/>
+                            <constraint firstItem="b3b-PS-5EJ" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" multiplier="0.7" priority="750" id="hgv-FF-IGu"/>
+                            <constraint firstItem="daw-vJ-FxM" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" id="lsS-JL-KTO"/>
+                            <constraint firstItem="daw-vJ-FxM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b3b-PS-5EJ" secondAttribute="trailing" constant="20" id="oVR-Dk-oHj"/>
+                            <constraint firstItem="TXB-Oo-Zqn" firstAttribute="top" secondItem="rsI-Gk-shb" secondAttribute="bottom" constant="30" id="qhw-Tg-u1H"/>
+                            <constraint firstItem="rsI-Gk-shb" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" id="rN9-U6-12s"/>
+                            <constraint firstItem="UVY-qZ-H5I" firstAttribute="centerY" secondItem="6wf-H0-6jc" secondAttribute="centerY" id="swH-RT-kvW"/>
+                            <constraint firstItem="b3b-PS-5EJ" firstAttribute="centerY" secondItem="6wf-H0-6jc" secondAttribute="centerY" multiplier="0.7" id="uW1-j1-J6j"/>
+                            <constraint firstItem="UVY-qZ-H5I" firstAttribute="centerY" secondItem="6wf-H0-6jc" secondAttribute="centerY" multiplier="1.3" id="ucc-aw-4Hy"/>
+                            <constraint firstItem="UVY-qZ-H5I" firstAttribute="centerX" secondItem="6wf-H0-6jc" secondAttribute="centerX" id="wxE-Ca-v7r"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DSd-ka-ZTm"/>
+                                <exclude reference="hgv-FF-IGu"/>
+                                <exclude reference="oVR-Dk-oHj"/>
+                                <exclude reference="PRf-zc-3yN"/>
+                                <exclude reference="PqF-eX-cbN"/>
+                                <exclude reference="swH-RT-kvW"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Bdq-fm-JXP"/>
+                                <include reference="DSd-ka-ZTm"/>
+                                <include reference="hgv-FF-IGu"/>
+                                <exclude reference="uW1-j1-J6j"/>
+                                <include reference="oVR-Dk-oHj"/>
+                                <include reference="PRf-zc-3yN"/>
+                                <include reference="PqF-eX-cbN"/>
+                                <include reference="swH-RT-kvW"/>
+                                <exclude reference="ucc-aw-4Hy"/>
+                                <exclude reference="wxE-Ca-v7r"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bluePlayerTextField" destination="UVY-qZ-H5I" id="uah-hQ-XHg"/>
+                        <outlet property="redPlayerTextField" destination="b3b-PS-5EJ" id="lvl-VT-woc"/>
+                        <outlet property="startNewMatchButton" destination="rsI-Gk-shb" id="HBI-ak-9lD"/>
+                        <segue destination="Lfg-by-b7c" kind="show" identifier="showJudgingWithPlayers" id="iOT-XN-CO3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICM-0J-Txt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507" y="167"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hoguIconBlue" width="189" height="273"/>
+        <image name="hoguIconRed" width="189" height="273"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iOT-XN-CO3"/>
+    </inferredMetricsTieBreakers>
 </document>

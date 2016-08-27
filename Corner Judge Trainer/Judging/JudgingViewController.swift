@@ -36,6 +36,7 @@ class JudgingViewController: UIViewController {
         super.viewDidLoad()
         setupRedScoring()
         setupBlueScoring()
+        setupPlayerNameLabels()
         
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
@@ -109,5 +110,10 @@ class JudgingViewController: UIViewController {
             .subscribeNext { _ in
                 self.viewModel.playerScored(playerColor, scoringEvent: .GamJeom)
             } >>> disposeBag
+    }
+    
+    private func setupPlayerNameLabels() {
+        viewModel.redPlayerName.asObservable().bindTo(redPlayerNameLabel.rx_text) >>> disposeBag
+        viewModel.bluePlayerName.asObservable().bindTo(bluePlayerNameLabel.rx_text) >>> disposeBag
     }
 }

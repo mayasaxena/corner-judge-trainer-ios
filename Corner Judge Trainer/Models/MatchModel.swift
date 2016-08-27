@@ -11,8 +11,6 @@ import Foundation
 public class MatchModel {
     struct Constants {
         static let MatchIDLength = 6
-        static let HeadshotPointValue = 3
-        static let BodyshotPointValue = 1
     }
 
     let redPlayer: Player

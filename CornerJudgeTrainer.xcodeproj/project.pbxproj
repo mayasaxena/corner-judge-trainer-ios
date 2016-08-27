@@ -15,6 +15,11 @@
 		A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */; };
 		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
 		A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* ScoringEvent.swift */; };
+		A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */; };
+		A5A789FD1D70CDAD0088D983 /* DroidSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5A789FB1D70CDAD0088D983 /* DroidSans-Bold.ttf */; };
+		A5A789FE1D70CDAD0088D983 /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5A789FC1D70CDAD0088D983 /* DroidSans.ttf */; };
+		A5A78A031D70D13E0088D983 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */; };
+		A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78A041D70E1030088D983 /* RoundedButton.swift */; };
 		A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */; };
 		A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D511D4BCE0200B51652 /* Main.storyboard */; };
 		A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA9D541D4BCE0200B51652 /* Assets.xcassets */; };
@@ -50,6 +55,11 @@
 		A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchModel.swift; path = Models/MatchModel.swift; sourceTree = "<group>"; };
 		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
 		A5A789EF1D6E79390088D983 /* ScoringEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/ScoringEvent.swift; sourceTree = "<group>"; };
+		A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPlayersViewController.swift; path = "New Match/AddPlayersViewController.swift"; sourceTree = "<group>"; };
+		A5A789FB1D70CDAD0088D983 /* DroidSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DroidSans-Bold.ttf"; path = "Resources/Fonts/DroidSans-Bold.ttf"; sourceTree = "<group>"; };
+		A5A789FC1D70CDAD0088D983 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DroidSans.ttf; path = Resources/Fonts/DroidSans.ttf; sourceTree = "<group>"; };
+		A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Theme.swift"; path = "Extensions/UIColor+Theme.swift"; sourceTree = "<group>"; };
+		A5A78A041D70E1030088D983 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = Views/RoundedButton.swift; sourceTree = "<group>"; };
 		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 		A534B7CA1D4BE35F00DBCCBE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */,
 				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
 			);
 			name = Extensions;
@@ -133,6 +144,31 @@
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		A5A789F51D70CD640088D983 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5A789F61D70CD6F0088D983 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A5A789F61D70CD6F0088D983 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A5A789FB1D70CDAD0088D983 /* DroidSans-Bold.ttf */,
+				A5A789FC1D70CDAD0088D983 /* DroidSans.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		A5A78A061D70E1070088D983 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5A78A041D70E1030088D983 /* RoundedButton.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		A5AA9D411D4BCE0200B51652 = {
@@ -160,6 +196,7 @@
 		A5AA9D4C1D4BCE0200B51652 /* Corner Judge Trainer */ = {
 			isa = PBXGroup;
 			children = (
+				A5A789F51D70CD640088D983 /* Resources */,
 				A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */,
 				A5E549391D4BCF35002368D2 /* New Match */,
 				A5E5493A1D4BCF3F002368D2 /* Judging */,
@@ -169,6 +206,7 @@
 				A5AA9D591D4BCE0200B51652 /* Info.plist */,
 				A534B7CA1D4BE35F00DBCCBE /* Extensions */,
 				A534B7CD1D4BE44600DBCCBE /* Models */,
+				A5A78A061D70E1070088D983 /* Views */,
 			);
 			path = "Corner Judge Trainer";
 			sourceTree = "<group>";
@@ -195,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */,
+				A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */,
 			);
 			name = "New Match";
 			sourceTree = "<group>";
@@ -317,7 +356,9 @@
 			files = (
 				A5AA9D581D4BCE0200B51652 /* LaunchScreen.storyboard in Resources */,
 				A5AA9D551D4BCE0200B51652 /* Assets.xcassets in Resources */,
+				A5A789FE1D70CDAD0088D983 /* DroidSans.ttf in Resources */,
 				A5AA9D531D4BCE0200B51652 /* Main.storyboard in Resources */,
+				A5A789FD1D70CDAD0088D983 /* DroidSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +436,9 @@
 				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
 				A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
+				A5A78A031D70D13E0088D983 /* UIColor+Theme.swift in Sources */,
+				A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */,
+				A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */,
 				A5A789EE1D6E791F0088D983 /* Player.swift in Sources */,
 				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
 				A534B7C21D4BDF6500DBCCBE /* JudgingViewController.swift in Sources */,
