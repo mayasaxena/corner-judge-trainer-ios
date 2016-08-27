@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="656" y="635"/>
         </scene>
-        <!--Judging View Controller-->
+        <!--Match View Controller-->
         <scene sceneID="fxL-5W-GuU">
             <objects>
-                <viewController id="Lfg-by-b7c" customClass="JudgingViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lfg-by-b7c" customClass="MatchViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4MD-fI-5LT"/>
                         <viewControllerLayoutGuide type="bottom" id="o5w-cp-Z0d"/>

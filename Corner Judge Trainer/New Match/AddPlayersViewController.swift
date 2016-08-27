@@ -29,7 +29,7 @@ class AddPlayersViewController: UIViewController {
         super.viewDidLoad()
         
         startNewMatchButton.rx_tap.subscribeNext { _ in
-            self.transitionToJudgingViewController()
+            self.transitionToMatchViewController()
         } >>> disposeBag
         
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -41,12 +41,12 @@ class AddPlayersViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.JudgingSegueIdentifier {
-            guard let judgingViewController = segue.destinationViewController as? JudgingViewController else { return }
-            judgingViewController.viewModel.addPlayerNames(redPlayerTextField.text, bluePlayerName: bluePlayerTextField.text)
+            guard let MatchViewController = segue.destinationViewController as? MatchViewController else { return }
+            MatchViewController.viewModel.addPlayerNames(redPlayerTextField.text, bluePlayerName: bluePlayerTextField.text)
         }
     }
     
-    func transitionToJudgingViewController() {
+    func transitionToMatchViewController() {
         UIDevice.currentDevice().performSelector(Selector("setOrientation:"),
                                                  withObject: UIInterfaceOrientation.LandscapeLeft.rawValue)
         After(1.5) {

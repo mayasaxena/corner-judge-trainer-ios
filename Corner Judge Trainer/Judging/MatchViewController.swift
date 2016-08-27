@@ -1,5 +1,5 @@
 //
-//  JudgingViewController.swift
+//  MatchViewController.swift
 //  Corner Judge Trainer
 //
 //  Created by Maya Saxena on 7/29/16.
@@ -11,7 +11,7 @@ import Intrepid
 import RxSwift
 import RxCocoa
 
-class JudgingViewController: UIViewController {
+class MatchViewController: UIViewController {
     
     @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
@@ -43,13 +43,12 @@ class JudgingViewController: UIViewController {
     }
     
     private func setupRedScoring() {
-        viewModel.redScoreText.asObservable().subscribeNext { scoreText in
-            self.redScoreLabel.text = scoreText
-            } >>> disposeBag
+        redScoreLabel.rx_text <- viewModel.redScoreText >>> disposeBag
         
-        setupTapGestureRecognizer(redHeadshotScoringAreaView, playerColor: .Red)
+        let redTapGestureRecognizer = setupTapGestureRecognizer(redHeadshotScoringAreaView, playerColor: .Red)
+        setupDoubleTapGestureRecognizer(redScoringArea, playerColor: .Red, otherGestureRecognizer: redTapGestureRecognizer)
+        
         setupSwipeGestureRecognizer(redScoringArea, playerColor: .Red)
-        setupDoubleTapGestureRecognizer(redScoringArea, playerColor: .Red)
         setupLongPressGestureRecognizer(redScoringArea, playerColor: .Red)
         
         redTechnicalButton.rx_tap.subscribeNext { _ in
@@ -58,13 +57,12 @@ class JudgingViewController: UIViewController {
     }
     
     private func setupBlueScoring() {
-        viewModel.blueScoreText.asObservable().subscribeNext { scoreText in
-            self.blueScoreLabel.text = scoreText
-            } >>> disposeBag
+        blueScoreLabel.rx_text <- viewModel.blueScoreText >>> disposeBag
         
-        setupTapGestureRecognizer(blueHeadshotScoringAreaView, playerColor: .Blue)
+        let blueTapGestureRecognizer = setupTapGestureRecognizer(blueHeadshotScoringAreaView, playerColor: .Blue)
+        setupDoubleTapGestureRecognizer(blueScoringArea, playerColor: .Blue, otherGestureRecognizer: blueTapGestureRecognizer)
+        
         setupSwipeGestureRecognizer(blueScoringArea, playerColor: .Blue)
-        setupDoubleTapGestureRecognizer(blueScoringArea, playerColor: .Blue)
         setupLongPressGestureRecognizer(blueScoringArea, playerColor: .Blue)
         
         blueTechnicalButton.rx_tap.subscribeNext { _ in
@@ -72,13 +70,15 @@ class JudgingViewController: UIViewController {
         } >>> disposeBag
     }
     
-    private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+    private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) -> UITapGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer()
         targetView.addGestureRecognizer(tapGestureRecognizer)
         
         tapGestureRecognizer.rx_event.subscribeNext { _ in
             self.viewModel.playerScored(playerColor, scoringEvent: .Head)
         } >>> disposeBag
+        
+        return tapGestureRecognizer
     }
     
     private func setupSwipeGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
@@ -91,9 +91,10 @@ class JudgingViewController: UIViewController {
         } >>> disposeBag
     }
     
-    private func setupDoubleTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
+    private func setupDoubleTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor, otherGestureRecognizer: UIGestureRecognizer) {
         let doubleTapGestureRecognizer = UITapGestureRecognizer()
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        doubleTapGestureRecognizer.requireGestureRecognizerToFail(otherGestureRecognizer)
         targetView.addGestureRecognizer(doubleTapGestureRecognizer)
         
         doubleTapGestureRecognizer.rx_event.subscribeNext { _ in
@@ -113,7 +114,7 @@ class JudgingViewController: UIViewController {
     }
     
     private func setupPlayerNameLabels() {
-        viewModel.redPlayerName.asObservable().bindTo(redPlayerNameLabel.rx_text) >>> disposeBag
-        viewModel.bluePlayerName.asObservable().bindTo(bluePlayerNameLabel.rx_text) >>> disposeBag
+        redPlayerNameLabel.rx_text <- viewModel.redPlayerName >>> disposeBag
+        bluePlayerNameLabel.rx_text <- viewModel.bluePlayerName >>> disposeBag
     }
 }

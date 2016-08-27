@@ -30,12 +30,8 @@ public class Player {
     var name: String
     var color: PlayerColor
     
-    convenience init() {
-        self.init(color: .Red, name: Constants.DefaultName)
-    }
-    
     convenience init(color: PlayerColor) {
-        self.init(color: color, name: Constants.DefaultName + color.displayName)
+        self.init(color: color, name: Constants.DefaultName + " " + color.displayName)
     }
     
     init(color: PlayerColor, name: String) {

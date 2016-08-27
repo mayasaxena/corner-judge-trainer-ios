@@ -11,6 +11,7 @@ import Foundation
 public class MatchModel {
     struct Constants {
         static let MatchIDLength = 6
+        static let MaxScore = 99.0
     }
 
     let redPlayer: Player
@@ -19,8 +20,16 @@ public class MatchModel {
     var matchID: String
     var date: NSDate
     
-    var redScore: Double = 0
-    var blueScore: Double = 0
+    var redScore: Double {
+        didSet {
+            redScore = min(Constants.MaxScore, redScore)
+        }
+    }
+    var blueScore: Double {
+        didSet {
+            blueScore = min(Constants.MaxScore, blueScore)
+        }
+    }
     
     convenience init() {
         self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue))
@@ -34,6 +43,38 @@ public class MatchModel {
         self.date = NSDate()
         self.redScore = 0
         self.blueScore = 0
+    }
+    
+    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+        var playerScore = 0.0
+        var otherPlayerScore = 0.0
+        
+        switch scoringEvent {
+            
+        case .Head:
+            playerScore = 3
+            
+        case .Body:
+            playerScore = 1
+            
+        case .Technical:
+            playerScore = 1
+            
+        // TODO: Fix so # of kyonggos increase instead
+        case .KyongGo:
+            otherPlayerScore = 0.5
+            
+        case .GamJeom:
+            otherPlayerScore = 1
+        }
+        
+        if playerColor == .Blue {
+            blueScore += playerScore
+            redScore += otherPlayerScore
+        } else {
+            redScore += playerScore
+            blueScore += otherPlayerScore
+        }
     }
 }
 
