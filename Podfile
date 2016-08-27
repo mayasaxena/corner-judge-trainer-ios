@@ -9,4 +9,5 @@ target 'CornerJudgeTrainer' do
     pod 'Intrepid/Rx', '~> 0.3.0'
     pod 'RxSwift', '~> 2.0'
     pod 'RxCocoa', '~> 2.0'
+    pod 'IQKeyboardManager', :git => 'git@github.com:IntrepidPursuits/IQKeyboardManager.git'
 end
