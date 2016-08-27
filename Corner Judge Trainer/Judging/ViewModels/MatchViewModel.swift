@@ -12,6 +12,8 @@ import Intrepid
 
 
 public class MatchViewModel {
+    private let matchModel: MatchModel
+    private let disposeBag = DisposeBag()
     
     let redScoreText: Variable<String>
     let blueScoreText: Variable<String>
@@ -19,9 +21,7 @@ public class MatchViewModel {
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
     
-    private let matchModel: MatchModel
-    
-    private let disposeBag = DisposeBag()
+    var radioButtonsSelected: [Variable<Bool>] = []
     
     init() {
         matchModel = MatchModel()
@@ -40,6 +40,23 @@ public class MatchViewModel {
         bluePlayerName.asObservable().subscribeNext {
             self.matchModel.bluePlayer.name = $0
         } >>> disposeBag
+        
+        for _ in 0 ..< MatchType.caseCount {
+            radioButtonsSelected.append(Variable(false))
+        }
+        
+        setRadioButtonSelected(atIndex: matchModel.matchType.rawValue)
+    }
+    
+    public func setRadioButtonSelected(atIndex index: Int) {
+        for (i, radioButtonSelected) in radioButtonsSelected.enumerate() {
+            if i == index {
+                radioButtonSelected.value = true
+                matchModel.matchType = MatchType(rawValue: index) ?? .None
+            } else {
+                radioButtonSelected.value = false
+            }
+        }
     }
     
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {

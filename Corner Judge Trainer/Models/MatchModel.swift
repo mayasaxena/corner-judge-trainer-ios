@@ -8,12 +8,27 @@
 
 import Foundation
 
-public enum MatchType {
+public enum MatchType: Int {
     case A_Team
     case B_Team
     case C_Team
     case Custom
     case None
+    
+    var displayName: String {
+        switch self {
+        case .A_Team:
+            return "A Team".uppercaseString
+        case .B_Team:
+            return "B Team".uppercaseString
+        case .C_Team:
+            return "C Team".uppercaseString
+        case .Custom:
+            return "Custom".uppercaseString
+        case .None:
+            return "None".uppercaseString
+        }
+    }
     
     var roundDuration: NSTimeInterval {
         switch self {
@@ -26,6 +41,15 @@ public enum MatchType {
         default:
             return NSTimeInterval()
         }
+    }
+    
+    static let caseCount = MatchType.countCases()
+    
+    private static func countCases() -> Int {
+        // starting at zero, verify whether the enum can be instantiated from the Int and increment until it cannot
+        var count = 0
+        while let _ = MatchType(rawValue: count) { count += 1 }
+        return count
     }
 }
 

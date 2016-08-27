@@ -199,17 +199,17 @@
 		A5AA9D4C1D4BCE0200B51652 /* Corner Judge Trainer */ = {
 			isa = PBXGroup;
 			children = (
-				A5A789F51D70CD640088D983 /* Resources */,
 				A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */,
+				A534B7CA1D4BE35F00DBCCBE /* Extensions */,
+				A534B7CD1D4BE44600DBCCBE /* Models */,
+				A5A78A061D70E1070088D983 /* Views */,
+				A5A789F51D70CD640088D983 /* Resources */,
 				A5E549391D4BCF35002368D2 /* New Match */,
 				A5E5493A1D4BCF3F002368D2 /* Judging */,
 				A5AA9D511D4BCE0200B51652 /* Main.storyboard */,
 				A5AA9D541D4BCE0200B51652 /* Assets.xcassets */,
 				A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */,
 				A5AA9D591D4BCE0200B51652 /* Info.plist */,
-				A534B7CA1D4BE35F00DBCCBE /* Extensions */,
-				A534B7CD1D4BE44600DBCCBE /* Models */,
-				A5A78A061D70E1070088D983 /* Views */,
 			);
 			path = "Corner Judge Trainer";
 			sourceTree = "<group>";

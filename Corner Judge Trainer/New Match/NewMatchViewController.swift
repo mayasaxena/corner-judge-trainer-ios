@@ -11,13 +11,13 @@ import RxSwift
 import Intrepid
 
 class NewMatchViewController: UIViewController {
+    
     struct Constants {
         static let JudgingSegueIdentifier = "showJudging"
         static let AddPlayersSegueIdentifier = "showAddPlayers"
     }
     
     @IBOutlet var radioButtons: [RadioButton]!
-    
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
     
     let viewModel = MatchViewModel()
@@ -26,22 +26,21 @@ class NewMatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        radioButtons.forEach { button in
-            button.rx_tap.subscribeNext {
-                self.deselectAllButtons()
-                button.selected = true
+        var i = 0
+        for radioButton in radioButtons {
+            radioButton.rx_selected <- viewModel.radioButtonsSelected[i] >>> disposeBag
+            
+            radioButton.rx_tap.subscribeNext { button in
+                guard let index = self.radioButtons.indexOf(radioButton) else { return }
+                self.viewModel.setRadioButtonSelected(atIndex: index)
             } >>> disposeBag
+            
+            i += 1
         }
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
-    }
-    
-    func deselectAllButtons() {
-        radioButtons.forEach {
-            $0.selected = false
-        }
     }
     
     @IBAction func newMatchTapped(sender: AnyObject) {
