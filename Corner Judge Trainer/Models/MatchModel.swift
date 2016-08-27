@@ -8,10 +8,32 @@
 
 import Foundation
 
+public enum MatchType {
+    case A_Team
+    case B_Team
+    case C_Team
+    case Custom
+    case None
+    
+    var roundDuration: NSTimeInterval {
+        switch self {
+        case .A_Team:
+            return NSTimeInterval(2 * 60.0)
+        case .B_Team:
+            return NSTimeInterval(1.5 * 60.0)
+        case .C_Team:
+            return NSTimeInterval(1 * 60.0)
+        default:
+            return NSTimeInterval()
+        }
+    }
+}
+
 public class MatchModel {
     struct Constants {
         static let MatchIDLength = 6
         static let MaxScore = 99.0
+        static let RestTime = 30.0
     }
 
     let redPlayer: Player
@@ -19,6 +41,8 @@ public class MatchModel {
 
     var matchID: String
     var date: NSDate
+    
+    var matchType: MatchType
     
     var redScore: Double {
         didSet {
@@ -32,10 +56,14 @@ public class MatchModel {
     }
     
     convenience init() {
-        self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue))
+        self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue), type: .None)
+    }
+    
+    convenience init(type: MatchType) {
+        self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue), type: type)
     }
 
-    init(redPlayer: Player, bluePlayer: Player) {
+    init(redPlayer: Player, bluePlayer: Player, type: MatchType) {
         self.redPlayer = redPlayer
         self.bluePlayer = bluePlayer
         
@@ -43,6 +71,8 @@ public class MatchModel {
         self.date = NSDate()
         self.redScore = 0
         self.blueScore = 0
+        
+        matchType = type
     }
     
     public func addPlayerNames(redPlayerName: String?, bluePlayerName: String?) {

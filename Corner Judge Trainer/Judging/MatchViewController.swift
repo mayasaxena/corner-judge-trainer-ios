@@ -26,7 +26,7 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
     
     let disposeBag = DisposeBag()
-    let viewModel: MatchViewModel = MatchViewModel()
+    var viewModel: MatchViewModel!
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
@@ -34,6 +34,11 @@ class MatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if viewModel == nil {
+            viewModel = MatchViewModel()
+        }
+        
         setupRedScoring()
         setupBlueScoring()
         setupPlayerNameLabels()

@@ -15,18 +15,27 @@ class AddPlayersViewController: UIViewController {
     struct Constants {
         static let JudgingSegueIdentifier = "showJudgingWithPlayers"
     }
-
+    
     @IBOutlet weak var redPlayerTextField: UITextField!
     @IBOutlet weak var bluePlayerTextField: UITextField!
     
     @IBOutlet weak var startNewMatchButton: UIButton!
     
+    let disposeBag = DisposeBag()
+    
     private var shouldBeLandscape = false
     
-    let disposeBag = DisposeBag()
+    var viewModel: MatchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if viewModel == nil {
+            viewModel = MatchViewModel()
+        }
+        
+        redPlayerTextField.rx_text <-> viewModel.redPlayerName >>> disposeBag
+        bluePlayerTextField.rx_text <-> viewModel.bluePlayerName >>> disposeBag
         
         startNewMatchButton.rx_tap.subscribeNext { _ in
             self.transitionToMatchViewController()
@@ -41,8 +50,7 @@ class AddPlayersViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.JudgingSegueIdentifier {
-            guard let MatchViewController = segue.destinationViewController as? MatchViewController else { return }
-            MatchViewController.viewModel.addPlayerNames(redPlayerTextField.text, bluePlayerName: bluePlayerTextField.text)
+            (segue.destinationViewController as? MatchViewController)?.viewModel = viewModel
         }
     }
     
