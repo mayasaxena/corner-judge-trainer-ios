@@ -92,6 +92,10 @@ public final class MatchViewController: UIViewController {
         tapGestureRecognizer.rx_event.subscribeNext { _ in
             self.viewModel.startTimer()
         } >>> disposeBag
+        
+        viewModel.isRestTimer.asObservable().subscribeNext { isRestRound in
+            self.timerLabel.textColor = isRestRound ? UIColor.yellowColor() : UIColor.flatWhiteColor()
+        } >>> disposeBag
     }
     
     private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) -> UITapGestureRecognizer {

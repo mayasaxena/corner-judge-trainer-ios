@@ -22,13 +22,16 @@ public final class MatchViewModel {
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
     
-    let timerLabelText = Variable("0:00")
     let matchInfoViewHidden = Variable(false)
-    let roundLabelText = Variable("R1")
     
-    private var timer = NSTimer()
+    let timerLabelText = Variable("0:00")
+    let isRestTimer = Variable(false)
     private var timeRemaining = NSTimeInterval()
     private var endTime = NSDate()
+    private var timer = NSTimer()
+    
+    let roundLabelText = Variable("R1")
+    private var round = 1
     
     init() {
         redScoreText = Variable(model.redScore.formattedString)
@@ -39,6 +42,8 @@ public final class MatchViewModel {
         
         setupNameUpdates()
         resetTimer(model.matchType.roundDuration)
+        
+        matchInfoViewHidden.value = model.matchType == .None
     }
     
     private func setupNameUpdates() {
@@ -63,7 +68,26 @@ public final class MatchViewModel {
         } else {
             timer.invalidate()
             timerLabelText.value = "0:00"
+            endRound(isRestTimer.value)
         }
+    }
+    
+    private func endRound(isRestRound: Bool) {
+        var roundTime: NSTimeInterval
+        if isRestRound {
+            isRestTimer.value = false
+            roundTime = model.matchType.roundDuration
+        } else {
+            round += 1
+            if round <= model.matchType.roundCount {
+                isRestTimer.value = true
+                roundTime = model.restTimeInterval
+            } else {
+                return
+            }
+        }
+        resetTimer(roundTime)
+        startTimer()
     }
     
     public func startTimer() {

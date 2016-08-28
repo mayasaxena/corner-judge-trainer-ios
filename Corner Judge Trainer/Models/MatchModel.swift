@@ -39,7 +39,18 @@ public enum MatchType: Int {
         case .C_Team:
             return NSTimeInterval(1 * 60.0)
         default:
-            return NSTimeInterval()
+            return NSTimeInterval(10.0)
+        }
+    }
+    
+    var roundCount: Int {
+        switch self {
+        case .A_Team, .B_Team, .C_Team:
+            return 2
+        case .None:
+            return 0
+        default:
+            return 3
         }
     }
     
@@ -58,6 +69,10 @@ public class MatchModel {
         static let MatchIDLength = 6
         static let MaxScore = 99.0
         static let RestTime = 30.0
+    }
+    
+    var restTimeInterval: NSTimeInterval {
+        return NSTimeInterval(Constants.RestTime)
     }
 
     let redPlayer: Player
