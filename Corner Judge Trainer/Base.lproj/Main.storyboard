@@ -10,6 +10,8 @@
     <customFonts key="customFonts">
         <mutableArray key="DroidSans-Bold.ttf">
             <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
         </mutableArray>
         <mutableArray key="DroidSans.ttf">
             <string>DroidSans</string>
@@ -243,7 +245,7 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-ZG-aYe">
-                                        <rect key="frame" x="163" y="368.5" width="42" height="21"/>
+                                        <rect key="frame" x="163" y="368" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -264,12 +266,39 @@
                                     <constraint firstAttribute="trailing" secondItem="y6r-my-2K7" secondAttribute="trailing" id="zQu-le-D01"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
+                                <rect key="frame" x="293" y="-40" width="150" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-i2-glL">
+                                        <rect key="frame" x="26" y="46.5" width="97" height="58.5"/>
+                                        <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
+                                        <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq2-A4-bw8">
+                                        <rect key="frame" x="57" y="10" width="35.5" height="35"/>
+                                        <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="30"/>
+                                        <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lcY-i2-glL" secondAttribute="bottom" constant="5" id="Ghs-Hv-cGI"/>
+                                    <constraint firstAttribute="width" constant="150" id="XWx-IA-wPh"/>
+                                    <constraint firstItem="hq2-A4-bw8" firstAttribute="centerX" secondItem="Whs-d3-MXs" secondAttribute="centerX" id="fpv-Ci-s7v"/>
+                                    <constraint firstItem="lcY-i2-glL" firstAttribute="centerX" secondItem="Whs-d3-MXs" secondAttribute="centerX" id="gWc-52-F8b"/>
+                                    <constraint firstAttribute="height" constant="110" id="gWf-P4-Kz8"/>
+                                    <constraint firstItem="hq2-A4-bw8" firstAttribute="top" secondItem="Whs-d3-MXs" secondAttribute="top" constant="10" id="vPN-xi-sUq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Whs-d3-MXs" firstAttribute="centerX" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="6ax-oe-z9A"/>
                             <constraint firstItem="Tph-jl-ID8" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" constant="-5" id="COJ-79-9rP"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="FR8-GU-ptf"/>
-                            <constraint firstItem="X86-S9-L8W" firstAttribute="centerX" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="K4R-sL-RPR"/>
+                            <constraint firstItem="Whs-d3-MXs" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" constant="-40" id="KGc-gO-duG"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="N5L-Ab-TY0"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="b5p-Ah-scn"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="cab-cN-7pr"/>
@@ -279,11 +308,6 @@
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="xdD-C0-9bQ"/>
                             <constraint firstItem="o5w-cp-Z0d" firstAttribute="top" secondItem="YGN-V7-YZ2" secondAttribute="bottom" id="yxW-iP-Pzr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="K4R-sL-RPR"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -293,11 +317,15 @@
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
                         <outlet property="blueScoringArea" destination="41l-RH-4Vy" id="Hgk-fr-R09"/>
                         <outlet property="blueTechnicalButton" destination="xl6-NF-7wk" id="MFa-w3-0ej"/>
+                        <outlet property="matchInfoView" destination="Whs-d3-MXs" id="frQ-8o-LfH"/>
+                        <outlet property="matchInfoViewTopConstraint" destination="KGc-gO-duG" id="vzH-hx-yY8"/>
                         <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
                         <outlet property="redPlayerNameLabel" destination="ZxV-WB-bsH" id="sGt-ld-Tkv"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
                         <outlet property="redScoringArea" destination="YGN-V7-YZ2" id="uwY-HA-KrE"/>
                         <outlet property="redTechnicalButton" destination="Tph-jl-ID8" id="NcW-lL-hyb"/>
+                        <outlet property="roundLabel" destination="hq2-A4-bw8" id="3fH-TT-RgT"/>
+                        <outlet property="timerLabel" destination="lcY-i2-glL" id="9fR-98-o9n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAX-th-hJp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -25,6 +25,11 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var blueTechnicalButton: UIButton!
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
     
+    @IBOutlet weak var matchInfoView: UIView!
+    @IBOutlet weak var matchInfoViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var roundLabel: UILabel!
+    
     let disposeBag = DisposeBag()
     var viewModel: MatchViewModel!
     

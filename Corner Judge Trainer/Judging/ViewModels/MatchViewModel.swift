@@ -15,37 +15,43 @@ public class MatchViewModel {
     private let matchModel: MatchModel
     private let disposeBag = DisposeBag()
     
+    // Create match
+    var radioButtonsSelected: [Variable<Bool>] = []
+    
+    // Display match
     let redScoreText: Variable<String>
     let blueScoreText: Variable<String>
     
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
     
-    var radioButtonsSelected: [Variable<Bool>] = []
+    let timerLabelText = Variable("0:00")
     
     init() {
         matchModel = MatchModel()
         
-        // Set current value to model's value
         redScoreText = Variable(matchModel.redScore.formattedString())
         blueScoreText = Variable(matchModel.blueScore.formattedString())
         
         redPlayerName = Variable(matchModel.redPlayer.displayName)
         bluePlayerName = Variable(matchModel.bluePlayer.displayName)
         
-        redPlayerName.asObservable().subscribeNext {
-            self.matchModel.redPlayer.name = $0
-        } >>> disposeBag
-        
-        bluePlayerName.asObservable().subscribeNext {
-            self.matchModel.bluePlayer.name = $0
-        } >>> disposeBag
-        
         for _ in 0 ..< MatchType.caseCount {
             radioButtonsSelected.append(Variable(false))
         }
         
         setRadioButtonSelected(atIndex: matchModel.matchType.rawValue)
+    }
+    
+    private func setupNameUpdates() {
+        
+        redPlayerName.asObservable().subscribeNext {
+            self.matchModel.redPlayer.name = $0
+            } >>> disposeBag
+        
+        bluePlayerName.asObservable().subscribeNext {
+            self.matchModel.bluePlayer.name = $0
+            } >>> disposeBag
     }
     
     public func setRadioButtonSelected(atIndex index: Int) {
