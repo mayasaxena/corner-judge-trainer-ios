@@ -10,21 +10,21 @@ import UIKit
 import RxSwift
 import Intrepid
 
-class NewMatchViewController: UIViewController {
+public final class NewMatchViewController: UIViewController {
     
     struct Constants {
-        static let JudgingSegueIdentifier = "showJudging"
+        static let MatchSegueIdentifier = "showMatch"
         static let AddPlayersSegueIdentifier = "showAddPlayers"
     }
     
     @IBOutlet var radioButtons: [RadioButton]!
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
     
-    let viewModel = MatchViewModel()
+    let viewModel = NewMatchViewModel()
     
     let disposeBag = DisposeBag()
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         var i = 0
         for radioButton in radioButtons {
@@ -39,7 +39,7 @@ class NewMatchViewController: UIViewController {
         }
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
     
@@ -52,20 +52,10 @@ class NewMatchViewController: UIViewController {
         alertController.addAction(addAction)
         
         let cancelAction = UIAlertAction(title: "No, add later", style: .Cancel) { _ in
-            self.performSegueWithIdentifier(Constants.JudgingSegueIdentifier, sender: self)
+            self.performSegueWithIdentifier(Constants.MatchSegueIdentifier, sender: self)
         }
         alertController.addAction(cancelAction)
         
         presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.JudgingSegueIdentifier {
-            guard let matchViewController = segue.destinationViewController as? MatchViewController else { return }
-            matchViewController.viewModel = viewModel
-        } else if segue.identifier == Constants.AddPlayersSegueIdentifier {
-            guard let addPlayersViewController = segue.destinationViewController as? AddPlayersViewController else { return }
-            addPlayersViewController.viewModel = viewModel
-        }
     }
 }

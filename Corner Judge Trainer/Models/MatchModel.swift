@@ -79,6 +79,8 @@ public class MatchModel {
         }
     }
     
+    static let sharedModel = MatchModel()
+    
     convenience init() {
         self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue), type: .None)
     }

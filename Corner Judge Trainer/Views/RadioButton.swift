@@ -8,6 +8,6 @@
 
 import UIKit
 
-@IBDesignable class RadioButton: UIButton {
+@IBDesignable final class RadioButton: UIButton {
     
 }

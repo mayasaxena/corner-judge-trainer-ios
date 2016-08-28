@@ -11,7 +11,7 @@ import Intrepid
 import RxSwift
 import RxCocoa
 
-class MatchViewController: UIViewController {
+public final class MatchViewController: UIViewController {
     
     @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
@@ -33,11 +33,11 @@ class MatchViewController: UIViewController {
     let disposeBag = DisposeBag()
     var viewModel: MatchViewModel!
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         if viewModel == nil {

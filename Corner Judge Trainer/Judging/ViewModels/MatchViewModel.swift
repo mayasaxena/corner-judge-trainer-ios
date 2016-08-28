@@ -11,12 +11,9 @@ import RxSwift
 import Intrepid
 
 
-public class MatchViewModel {
-    private let matchModel: MatchModel
+public final class MatchViewModel {
+    private let model = MatchModel.sharedModel
     private let disposeBag = DisposeBag()
-    
-    // Create match
-    var radioButtonsSelected: [Variable<Bool>] = []
     
     // Display match
     let redScoreText: Variable<String>
@@ -26,51 +23,36 @@ public class MatchViewModel {
     let bluePlayerName: Variable<String>
     
     let timerLabelText = Variable("0:00")
+    let matchInfoViewHidden = Variable(false)
+    let roundLabelText = Variable("R1")
     
     init() {
-        matchModel = MatchModel()
+        redScoreText = Variable(model.redScore.formattedString())
+        blueScoreText = Variable(model.blueScore.formattedString())
         
-        redScoreText = Variable(matchModel.redScore.formattedString())
-        blueScoreText = Variable(matchModel.blueScore.formattedString())
+        redPlayerName = Variable(model.redPlayer.displayName)
+        bluePlayerName = Variable(model.bluePlayer.displayName)
         
-        redPlayerName = Variable(matchModel.redPlayer.displayName)
-        bluePlayerName = Variable(matchModel.bluePlayer.displayName)
-        
-        for _ in 0 ..< MatchType.caseCount {
-            radioButtonsSelected.append(Variable(false))
-        }
-        
-        setRadioButtonSelected(atIndex: matchModel.matchType.rawValue)
+        setupNameUpdates()
     }
     
     private func setupNameUpdates() {
-        
         redPlayerName.asObservable().subscribeNext {
-            self.matchModel.redPlayer.name = $0
-            } >>> disposeBag
+            self.model.redPlayer.name = $0
+        } >>> disposeBag
         
         bluePlayerName.asObservable().subscribeNext {
-            self.matchModel.bluePlayer.name = $0
-            } >>> disposeBag
-    }
-    
-    public func setRadioButtonSelected(atIndex index: Int) {
-        for (i, radioButtonSelected) in radioButtonsSelected.enumerate() {
-            if i == index {
-                radioButtonSelected.value = true
-                matchModel.matchType = MatchType(rawValue: index) ?? .None
-            } else {
-                radioButtonSelected.value = false
-            }
-        }
+            self.model.bluePlayer.name = $0
+        } >>> disposeBag
     }
     
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         // Update model
-        matchModel.playerScored(playerColor, scoringEvent: scoringEvent)
+        model.playerScored(playerColor, scoringEvent: scoringEvent)
         // Update view model with model's new values
-        redScoreText.value = matchModel.redScore.formattedString()
-        blueScoreText.value = matchModel.blueScore.formattedString()
+        redScoreText.value = model.redScore.formattedString()
+        blueScoreText.value = model.blueScore.formattedString()
+        print(model.redPlayer.displayName)
     }
 }
 

@@ -159,7 +159,7 @@
                         <outletCollection property="radioButtons" destination="9CI-by-4uf" collectionClass="NSMutableArray" id="Sag-dM-Flh"/>
                         <outletCollection property="radioButtons" destination="2pX-RK-T6s" collectionClass="NSMutableArray" id="q0S-i4-cQ1"/>
                         <outletCollection property="radioButtons" destination="bgl-8g-dlI" collectionClass="NSMutableArray" id="PUG-xI-pjd"/>
-                        <segue destination="Lfg-by-b7c" kind="show" identifier="showJudging" id="Tts-av-UOh"/>
+                        <segue destination="Lfg-by-b7c" kind="show" identifier="showMatch" id="Tts-av-UOh"/>
                         <segue destination="RyK-Oi-oMN" kind="show" identifier="showAddPlayers" id="aUe-kQ-yq1"/>
                     </connections>
                 </viewController>
@@ -443,7 +443,7 @@
                         <outlet property="bluePlayerTextField" destination="UVY-qZ-H5I" id="uah-hQ-XHg"/>
                         <outlet property="redPlayerTextField" destination="b3b-PS-5EJ" id="lvl-VT-woc"/>
                         <outlet property="startNewMatchButton" destination="rsI-Gk-shb" id="HBI-ak-9lD"/>
-                        <segue destination="Lfg-by-b7c" kind="show" identifier="showJudgingWithPlayers" id="iOT-XN-CO3"/>
+                        <segue destination="Lfg-by-b7c" kind="show" identifier="showMatchFromAddPlayers" id="iOT-XN-CO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICM-0J-Txt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -458,6 +458,6 @@
         <image name="radioButtonSelected" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iOT-XN-CO3"/>
+        <segue reference="Tts-av-UOh"/>
     </inferredMetricsTieBreakers>
 </document>

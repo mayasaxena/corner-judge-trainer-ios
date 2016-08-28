@@ -10,10 +10,10 @@ import UIKit
 import Intrepid
 import RxSwift
 
-class AddPlayersViewController: UIViewController {
+public final class AddPlayersViewController: UIViewController {
     
     struct Constants {
-        static let JudgingSegueIdentifier = "showJudgingWithPlayers"
+        static let MatchSegueIdentifier = "showMatchFromAddPlayers"
     }
     
     @IBOutlet weak var redPlayerTextField: UITextField!
@@ -27,7 +27,7 @@ class AddPlayersViewController: UIViewController {
     
     var viewModel: MatchViewModel!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         if viewModel == nil {
@@ -48,8 +48,8 @@ class AddPlayersViewController: UIViewController {
         } >>> disposeBag
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.JudgingSegueIdentifier {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.MatchSegueIdentifier {
             (segue.destinationViewController as? MatchViewController)?.viewModel = viewModel
         }
     }
@@ -58,7 +58,7 @@ class AddPlayersViewController: UIViewController {
         UIDevice.currentDevice().performSelector(Selector("setOrientation:"),
                                                  withObject: UIInterfaceOrientation.LandscapeLeft.rawValue)
         After(1.5) {
-            self.performSegueWithIdentifier(Constants.JudgingSegueIdentifier, sender: self)
+            self.performSegueWithIdentifier(Constants.MatchSegueIdentifier, sender: self)
         }
         
     }
