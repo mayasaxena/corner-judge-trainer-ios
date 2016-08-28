@@ -61,6 +61,11 @@ public final class MatchViewModel {
         timerLabelText.value = timeRemaining.formattedTimeString
     }
     
+    private func startTimer() {
+        endTime = NSDate().dateByAddingTimeInterval(timeRemaining)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
     dynamic func updateTime() {
         if timeRemaining > 0 {
             timeRemaining = endTime.timeIntervalSinceNow
@@ -83,6 +88,7 @@ public final class MatchViewModel {
                 isRestTimer.value = true
                 roundTime = model.restTimeInterval
             } else {
+                endMatch()
                 return
             }
         }
@@ -90,9 +96,14 @@ public final class MatchViewModel {
         startTimer()
     }
     
-    public func startTimer() {
-        endTime = NSDate().dateByAddingTimeInterval(timeRemaining)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    private func endMatch() {
+        // TODO: Display alert/modal with match stats and option to start new
+    }
+    
+    public func handleMatchInfoViewTapped() {
+        if !timer.valid {
+            startTimer()
+        }
     }
     
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {

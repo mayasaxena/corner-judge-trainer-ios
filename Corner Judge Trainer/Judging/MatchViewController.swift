@@ -13,6 +13,11 @@ import RxCocoa
 
 public final class MatchViewController: UIViewController {
     
+    struct Constants {
+        static let MatchInfoViewHiddenTopConstraint: CGFloat = -40.0
+        static let DefaultMatchInfoViewAnimationDuration = 0.5
+    }
+    
     @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
     @IBOutlet weak var redHeadshotScoringAreaView: UIView!
@@ -53,6 +58,11 @@ public final class MatchViewController: UIViewController {
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
     }
     
+    public override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        showRound()
+    }
+    
     private func setupRedScoring() {
         redScoreLabel.rx_text <- viewModel.redScoreText >>> disposeBag
         
@@ -90,12 +100,57 @@ public final class MatchViewController: UIViewController {
         matchInfoView.addGestureRecognizer(tapGestureRecognizer)
         
         tapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.startTimer()
+            self.viewModel.handleMatchInfoViewTapped()
+            self.toggleRoundHidden()
         } >>> disposeBag
+        
+        var matchHasBegun = false
         
         viewModel.isRestTimer.asObservable().subscribeNext { isRestRound in
             self.timerLabel.textColor = isRestRound ? UIColor.yellowColor() : UIColor.flatWhiteColor()
+            if !isRestRound {
+                self.showRound(shouldAutohide: matchHasBegun)
+            }
         } >>> disposeBag
+        
+        matchHasBegun = true
+    }
+    
+    private func toggleRoundHidden() {
+        if matchInfoViewTopConstraint.constant == Constants.MatchInfoViewHiddenTopConstraint {
+            showRound(shouldAutohide: true)
+        } else {
+            hideRound()
+        }
+    }
+    
+    private func showRound(shouldAutohide autohide: Bool = false) {
+        matchInfoViewTopConstraint.constant = 0
+        UIView.animateWithDuration(
+            Constants.DefaultMatchInfoViewAnimationDuration,
+            animations: {
+                self.view.layoutIfNeeded()
+            },
+            completion: { completed in
+                if autohide {
+                    self.hideRound(delay: 2.0)
+                }
+            }
+        )
+    }
+    
+    private func hideRound(delay delay: Double = 0.0) {
+        matchInfoViewTopConstraint.constant = Constants.MatchInfoViewHiddenTopConstraint
+        UIView.animateWithDuration(
+            Constants.DefaultMatchInfoViewAnimationDuration,
+            delay: delay,
+            options: UIViewAnimationOptions.CurveLinear,
+            animations: {
+                self.view.layoutIfNeeded()
+
+            },
+            completion: nil
+        )
     }
     
     private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) -> UITapGestureRecognizer {

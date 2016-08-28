@@ -267,7 +267,7 @@
                                 </constraints>
                             </view>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
-                                <rect key="frame" x="293" y="-40" width="150" height="110"/>
+                                <rect key="frame" x="293" y="0.0" width="150" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-i2-glL">
                                         <rect key="frame" x="26" y="46.5" width="97" height="58.5"/>
@@ -298,7 +298,7 @@
                             <constraint firstItem="Whs-d3-MXs" firstAttribute="centerX" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="6ax-oe-z9A"/>
                             <constraint firstItem="Tph-jl-ID8" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" constant="-5" id="COJ-79-9rP"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="FR8-GU-ptf"/>
-                            <constraint firstItem="Whs-d3-MXs" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" constant="-40" id="KGc-gO-duG"/>
+                            <constraint firstItem="Whs-d3-MXs" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="KGc-gO-duG"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="N5L-Ab-TY0"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="b5p-Ah-scn"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="cab-cN-7pr"/>
