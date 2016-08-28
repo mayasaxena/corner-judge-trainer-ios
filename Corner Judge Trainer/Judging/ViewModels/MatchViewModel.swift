@@ -26,14 +26,19 @@ public final class MatchViewModel {
     let matchInfoViewHidden = Variable(false)
     let roundLabelText = Variable("R1")
     
+    private var timer = NSTimer()
+    private var timeRemaining = NSTimeInterval()
+    private var endTime = NSDate()
+    
     init() {
-        redScoreText = Variable(model.redScore.formattedString())
-        blueScoreText = Variable(model.blueScore.formattedString())
+        redScoreText = Variable(model.redScore.formattedString)
+        blueScoreText = Variable(model.blueScore.formattedString)
         
         redPlayerName = Variable(model.redPlayer.displayName)
         bluePlayerName = Variable(model.bluePlayer.displayName)
         
         setupNameUpdates()
+        resetTimer(model.matchType.roundDuration)
     }
     
     private func setupNameUpdates() {
@@ -46,18 +51,44 @@ public final class MatchViewModel {
         } >>> disposeBag
     }
     
+    private func resetTimer(time: NSTimeInterval) {
+        timeRemaining = time
+        timerLabelText.value = timeRemaining.formattedTimeString
+    }
+    
+    dynamic func updateTime() {
+        if timeRemaining > 0 {
+            timeRemaining = endTime.timeIntervalSinceNow
+            timerLabelText.value = timeRemaining.formattedTimeString
+        } else {
+            timer.invalidate()
+            timerLabelText.value = "0:00"
+        }
+    }
+    
+    public func startTimer() {
+        endTime = NSDate().dateByAddingTimeInterval(timeRemaining)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         // Update model
         model.playerScored(playerColor, scoringEvent: scoringEvent)
         // Update view model with model's new values
-        redScoreText.value = model.redScore.formattedString()
-        blueScoreText.value = model.blueScore.formattedString()
+        redScoreText.value = model.redScore.formattedString
+        blueScoreText.value = model.blueScore.formattedString
         print(model.redPlayer.displayName)
     }
 }
 
 extension Double {
-    func formattedString() -> String {
+    var formattedString: String {
         return String(Int(self))
+    }
+}
+
+extension NSTimeInterval {
+    var formattedTimeString: String {
+        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self % 60)))
     }
 }

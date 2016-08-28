@@ -47,6 +47,7 @@ public final class MatchViewController: UIViewController {
         setupRedScoring()
         setupBlueScoring()
         setupPlayerNameLabels()
+        setupMatchInfoView()
         
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
@@ -77,6 +78,19 @@ public final class MatchViewController: UIViewController {
         
         blueTechnicalButton.rx_tap.subscribeNext { _ in
             self.viewModel.playerScored(.Blue, scoringEvent: .Technical)
+        } >>> disposeBag
+    }
+    
+    private func setupMatchInfoView() {
+        timerLabel.rx_text <- viewModel.timerLabelText >>> disposeBag
+        roundLabel.rx_text <- viewModel.roundLabelText >>> disposeBag
+        matchInfoView.rx_hidden <- viewModel.matchInfoViewHidden >>> disposeBag
+        
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        matchInfoView.addGestureRecognizer(tapGestureRecognizer)
+        
+        tapGestureRecognizer.rx_event.subscribeNext { _ in
+            self.viewModel.startTimer()
         } >>> disposeBag
     }
     
