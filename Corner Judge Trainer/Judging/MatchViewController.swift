@@ -20,15 +20,21 @@ public final class MatchViewController: UIViewController {
     
     @IBOutlet weak var redScoringArea: UIView!
     @IBOutlet weak var redScoreLabel: UILabel!
-    @IBOutlet weak var redHeadshotScoringAreaView: UIView!
     @IBOutlet weak var redTechnicalButton: UIButton!
     @IBOutlet weak var redPlayerNameLabel: UILabel!
     
     @IBOutlet weak var blueScoringArea: UIView!
     @IBOutlet weak var blueScoreLabel: UILabel!
-    @IBOutlet weak var blueHeadshotScoringAreaView: UIView!
     @IBOutlet weak var blueTechnicalButton: UIButton!
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
+    
+    @IBOutlet weak var disablingView: UIView!
+    
+    @IBOutlet weak var penaltiesView: UIView!
+    @IBOutlet weak var redKyongGoButton: RoundedButton!
+    @IBOutlet weak var redGamJeomButton: RoundedButton!
+    @IBOutlet weak var blueKyongGoButton: RoundedButton!
+    @IBOutlet weak var blueGamJeomButton: RoundedButton!
     
     @IBOutlet weak var matchInfoView: UIView!
     @IBOutlet weak var matchInfoViewTopConstraint: NSLayoutConstraint!
@@ -53,42 +59,36 @@ public final class MatchViewController: UIViewController {
         setupBlueScoring()
         setupPlayerNameLabels()
         setupMatchInfoView()
+        setupPenaltyButtons()
         
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
     }
     
-    public override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        showRound()
-    }
-    
     private func setupRedScoring() {
         redScoreLabel.rx_text <- viewModel.redScoreText >>> disposeBag
         
-        let redTapGestureRecognizer = setupTapGestureRecognizer(redHeadshotScoringAreaView, playerColor: .Red)
-        setupDoubleTapGestureRecognizer(redScoringArea, playerColor: .Red, otherGestureRecognizer: redTapGestureRecognizer)
-        
+        setupTapGestureRecognizer(redScoringArea, playerColor: .Red)
         setupSwipeGestureRecognizer(redScoringArea, playerColor: .Red)
-        setupLongPressGestureRecognizer(redScoringArea, playerColor: .Red)
         
         redTechnicalButton.rx_tap.subscribeNext { _ in
             self.viewModel.playerScored(.Red, scoringEvent: .Technical)
         } >>> disposeBag
+        
+        redScoringArea.userInteractionEnabled = false
     }
     
     private func setupBlueScoring() {
         blueScoreLabel.rx_text <- viewModel.blueScoreText >>> disposeBag
         
-        let blueTapGestureRecognizer = setupTapGestureRecognizer(blueHeadshotScoringAreaView, playerColor: .Blue)
-        setupDoubleTapGestureRecognizer(blueScoringArea, playerColor: .Blue, otherGestureRecognizer: blueTapGestureRecognizer)
-        
+        setupTapGestureRecognizer(blueScoringArea, playerColor: .Blue)
         setupSwipeGestureRecognizer(blueScoringArea, playerColor: .Blue)
-        setupLongPressGestureRecognizer(blueScoringArea, playerColor: .Blue)
         
         blueTechnicalButton.rx_tap.subscribeNext { _ in
             self.viewModel.playerScored(.Blue, scoringEvent: .Technical)
         } >>> disposeBag
+        
+        blueScoringArea.userInteractionEnabled = false
     }
     
     private func setupMatchInfoView() {
@@ -108,8 +108,14 @@ public final class MatchViewController: UIViewController {
         
         viewModel.isRestTimer.asObservable().subscribeNext { isRestRound in
             self.timerLabel.textColor = isRestRound ? UIColor.yellowColor() : UIColor.flatWhiteColor()
-            if !isRestRound {
-                self.showRound(shouldAutohide: matchHasBegun)
+            if isRestRound {
+                self.setScoringDisabled(shouldHidePenaltyButtons: true)
+            } else {
+                if matchHasBegun {
+                    self.setScoringEnabled()
+                } else {
+                    self.showRound(shouldAutohide: false)
+                }
             }
         } >>> disposeBag
         
@@ -117,11 +123,28 @@ public final class MatchViewController: UIViewController {
     }
     
     private func toggleRoundHidden() {
-        if matchInfoViewTopConstraint.constant == Constants.MatchInfoViewHiddenTopConstraint {
-            showRound(shouldAutohide: true)
-        } else {
-            hideRound()
+        if viewModel.isRestTimer.value == false {
+            if matchInfoViewTopConstraint.constant == Constants.MatchInfoViewHiddenTopConstraint {
+                setScoringDisabled()
+            } else {
+                setScoringEnabled()
+            }
         }
+    }
+    
+    private func setScoringDisabled(shouldHidePenaltyButtons penaltyButtonsHidden: Bool = false) {
+        showRound()
+        disablingView.hidden = false
+        redScoringArea.userInteractionEnabled = false
+        blueScoringArea.userInteractionEnabled = false
+        penaltiesView.hidden = penaltyButtonsHidden
+    }
+    
+    private func setScoringEnabled() {
+        hideRound()
+        disablingView.hidden = true
+        redScoringArea.userInteractionEnabled = true
+        blueScoringArea.userInteractionEnabled = true
     }
     
     private func showRound(shouldAutohide autohide: Bool = false) {
@@ -155,6 +178,7 @@ public final class MatchViewController: UIViewController {
     
     private func setupTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor) -> UITapGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.numberOfTapsRequired = 1
         targetView.addGestureRecognizer(tapGestureRecognizer)
         
         tapGestureRecognizer.rx_event.subscribeNext { _ in
@@ -174,26 +198,37 @@ public final class MatchViewController: UIViewController {
         } >>> disposeBag
     }
     
-    private func setupDoubleTapGestureRecognizer(targetView: UIView, playerColor: PlayerColor, otherGestureRecognizer: UIGestureRecognizer) {
-        let doubleTapGestureRecognizer = UITapGestureRecognizer()
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        doubleTapGestureRecognizer.requireGestureRecognizerToFail(otherGestureRecognizer)
-        targetView.addGestureRecognizer(doubleTapGestureRecognizer)
+    private func setupPenaltyButtons() {
         
-        doubleTapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(playerColor, scoringEvent: .KyongGo)
+        redKyongGoButton.rx_tap.subscribeNext { _ in
+            self.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .KyongGo)
+        } >>> disposeBag
+        
+        redGamJeomButton.rx_tap.subscribeNext { _ in
+            self.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .GamJeom)
+        } >>> disposeBag
+        
+        blueKyongGoButton.rx_tap.subscribeNext { _ in
+            self.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .KyongGo)
+        } >>> disposeBag
+        
+        blueGamJeomButton.rx_tap.subscribeNext { _ in
+            self.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .GamJeom)
         } >>> disposeBag
     }
     
-    private func setupLongPressGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer()
-        targetView.addGestureRecognizer(longPressGestureRecognizer)
+    private func displayConfirmationAlert(color: PlayerColor, scoringEvent: ScoringEvent) {
+        let alertController = UIAlertController(title: "Add \(scoringEvent.displayName) to \(color.displayName)?", message: "", preferredStyle: .Alert)
         
-        longPressGestureRecognizer.rx_event
-            .filter { gesture in gesture.state == .Ended }
-            .subscribeNext { _ in
-                self.viewModel.playerScored(playerColor, scoringEvent: .GamJeom)
-            } >>> disposeBag
+        let addAction = UIAlertAction(title: "Yes", style: .Destructive) { _ in
+            self.viewModel.playerScored(color, scoringEvent: scoringEvent)
+        }
+        alertController.addAction(addAction)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     private func setupPlayerNameLabels() {

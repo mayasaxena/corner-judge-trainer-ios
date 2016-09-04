@@ -255,8 +255,8 @@
 		A5E5493A1D4BCF3F002368D2 /* Judging */ = {
 			isa = PBXGroup;
 			children = (
-				A534B7C31D4BDF7500DBCCBE /* ViewModels */,
 				A534B7C11D4BDF6500DBCCBE /* MatchViewController.swift */,
+				A534B7C31D4BDF7500DBCCBE /* ViewModels */,
 			);
 			name = Judging;
 			sourceTree = "<group>";

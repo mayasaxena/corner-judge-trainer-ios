@@ -12,6 +12,11 @@
             <string>DroidSans-Bold</string>
             <string>DroidSans-Bold</string>
             <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
+            <string>DroidSans-Bold</string>
         </mutableArray>
         <mutableArray key="DroidSans.ttf">
             <string>DroidSans</string>
@@ -188,10 +193,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRK-EN-ChG">
-                                        <rect key="frame" x="0.0" y="268" width="368" height="146"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-jl-ID8">
                                         <rect key="frame" x="303" y="349" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -210,15 +211,11 @@
                                 <color key="backgroundColor" red="0.729411780834198" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="eRK-EN-ChG" secondAttribute="bottom" id="GLg-02-4fV"/>
-                                    <constraint firstItem="eRK-EN-ChG" firstAttribute="top" secondItem="X86-S9-L8W" secondAttribute="baseline" id="IOC-4L-kG7"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YGN-V7-YZ2" secondAttribute="leading" constant="5" id="RZP-OE-UZ1"/>
                                     <constraint firstItem="ZxV-WB-bsH" firstAttribute="centerY" secondItem="Tph-jl-ID8" secondAttribute="centerY" id="X9i-hR-gsi"/>
-                                    <constraint firstAttribute="trailing" secondItem="eRK-EN-ChG" secondAttribute="trailing" id="YFT-hK-Ri7"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerY" secondItem="YGN-V7-YZ2" secondAttribute="centerY" id="YkZ-GF-laD"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X86-S9-L8W" secondAttribute="trailing" constant="5" id="fYa-AJ-lBV"/>
                                     <constraint firstItem="ZxV-WB-bsH" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" id="gjt-te-srD"/>
-                                    <constraint firstItem="eRK-EN-ChG" firstAttribute="leading" secondItem="YGN-V7-YZ2" secondAttribute="leading" id="jsi-mk-ba6"/>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="centerX" secondItem="YGN-V7-YZ2" secondAttribute="centerX" id="k5m-Nt-ezt"/>
                                     <constraint firstAttribute="bottom" secondItem="Tph-jl-ID8" secondAttribute="bottom" constant="5" id="mBh-fa-kDf"/>
                                 </constraints>
@@ -232,10 +229,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-my-2K7">
-                                        <rect key="frame" x="0.0" y="267" width="368" height="147"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-NF-7wk">
                                         <rect key="frame" x="5" y="349" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -255,22 +248,125 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vxq-NB-Hih" secondAttribute="trailing" constant="5" id="3fT-EM-7sq"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
-                                    <constraint firstItem="y6r-my-2K7" firstAttribute="top" secondItem="Vxq-NB-Hih" secondAttribute="baseline" id="PSy-UN-05x"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" id="Qie-Va-YFm"/>
                                     <constraint firstItem="P4u-ZG-aYe" firstAttribute="centerY" secondItem="xl6-NF-7wk" secondAttribute="centerY" id="S2T-rZ-Thy"/>
                                     <constraint firstItem="P4u-ZG-aYe" firstAttribute="centerX" secondItem="41l-RH-4Vy" secondAttribute="centerX" id="VJo-jg-BZI"/>
-                                    <constraint firstItem="y6r-my-2K7" firstAttribute="leading" secondItem="41l-RH-4Vy" secondAttribute="leading" id="aym-Py-Jt1"/>
-                                    <constraint firstAttribute="bottom" secondItem="y6r-my-2K7" secondAttribute="bottom" id="mkM-9g-oJk"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="41l-RH-4Vy" secondAttribute="leading" constant="5" id="o13-jR-wXo"/>
                                     <constraint firstAttribute="bottom" secondItem="xl6-NF-7wk" secondAttribute="bottom" constant="5" id="zAZ-Jg-jtX"/>
-                                    <constraint firstAttribute="trailing" secondItem="y6r-my-2K7" secondAttribute="trailing" id="zQu-le-D01"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCO-hR-2eE">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <subviews>
+                                    <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-iE-g9R">
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the timer to start and pause the match" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzO-Hs-cqU">
+                                        <rect key="frame" x="303" y="179" width="130" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="RdF-gR-mxJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkv-Qd-3OT">
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9i-It-Jht" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                                <rect key="frame" x="108" y="78.5" width="150" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="6uL-uA-XGm"/>
+                                                    <constraint firstAttribute="height" constant="50" id="hTR-K3-HKb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                                <state key="normal" title="KYONG-GO">
+                                                    <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-Ly-lBc" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                                <rect key="frame" x="108" y="296" width="150" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="B0A-zm-Or1"/>
+                                                    <constraint firstAttribute="height" constant="50" id="IXe-Ln-hFx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                                <state key="normal" title="GAM-JEOM"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C75-Xj-Zh9" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                                <rect key="frame" x="476" y="78.5" width="150" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="AVq-7X-Ja5"/>
+                                                    <constraint firstAttribute="height" constant="50" id="G31-Xe-QpV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                                <state key="normal" title="KYONG-GO"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-rp-79h" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
+                                                <rect key="frame" x="476.5" y="296" width="150" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Tgs-Py-zWl"/>
+                                                    <constraint firstAttribute="width" constant="150" id="bVP-o0-UD4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                                <state key="normal" title="GAM-JEOM"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="C75-Xj-Zh9" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="0.5" id="0Zr-1A-vTJ"/>
+                                            <constraint firstItem="uZs-Ly-lBc" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="1.55" id="FoM-VB-N2x"/>
+                                            <constraint firstItem="jmt-rp-79h" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="1.55" id="c35-We-a02"/>
+                                            <constraint firstItem="p9i-It-Jht" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="0.5" id="wUY-p5-k6F"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UVG-iE-g9R" secondAttribute="trailing" id="57u-k4-exl"/>
+                                    <constraint firstItem="dkv-Qd-3OT" firstAttribute="top" secondItem="XCO-hR-2eE" secondAttribute="top" id="5jn-KJ-SrT"/>
+                                    <constraint firstItem="FzO-Hs-cqU" firstAttribute="centerX" secondItem="XCO-hR-2eE" secondAttribute="centerX" id="AJm-zQ-7Yg"/>
+                                    <constraint firstAttribute="bottom" secondItem="dkv-Qd-3OT" secondAttribute="bottom" id="BRX-If-tga"/>
+                                    <constraint firstAttribute="trailing" secondItem="dkv-Qd-3OT" secondAttribute="trailing" id="MJO-BO-PFu"/>
+                                    <constraint firstItem="dkv-Qd-3OT" firstAttribute="leading" secondItem="XCO-hR-2eE" secondAttribute="leading" id="QzR-9M-We5"/>
+                                    <constraint firstAttribute="bottom" secondItem="UVG-iE-g9R" secondAttribute="bottom" id="eW2-z6-D7V"/>
+                                    <constraint firstItem="UVG-iE-g9R" firstAttribute="leading" secondItem="XCO-hR-2eE" secondAttribute="leading" id="sbY-A0-Szs"/>
+                                    <constraint firstItem="UVG-iE-g9R" firstAttribute="top" secondItem="XCO-hR-2eE" secondAttribute="top" id="zMp-41-ba5"/>
+                                    <constraint firstItem="FzO-Hs-cqU" firstAttribute="centerY" secondItem="XCO-hR-2eE" secondAttribute="centerY" id="zWX-bB-GtG"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
                                 <rect key="frame" x="293" y="0.0" width="150" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-i2-glL">
-                                        <rect key="frame" x="26" y="46.5" width="97" height="58.5"/>
+                                        <rect key="frame" x="26" y="46" width="97" height="58.5"/>
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
                                         <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -296,15 +392,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Whs-d3-MXs" firstAttribute="centerX" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="6ax-oe-z9A"/>
+                            <constraint firstAttribute="bottom" secondItem="XCO-hR-2eE" secondAttribute="bottom" id="Bt6-kH-bHS"/>
                             <constraint firstItem="Tph-jl-ID8" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" constant="-5" id="COJ-79-9rP"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="FR8-GU-ptf"/>
+                            <constraint firstItem="p9i-It-Jht" firstAttribute="centerX" secondItem="X86-S9-L8W" secondAttribute="centerX" id="JII-Pd-IiT"/>
                             <constraint firstItem="Whs-d3-MXs" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="KGc-gO-duG"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="N5L-Ab-TY0"/>
+                            <constraint firstItem="uZs-Ly-lBc" firstAttribute="centerX" secondItem="X86-S9-L8W" secondAttribute="centerX" id="aHr-6J-QLG"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="trailing" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="b5p-Ah-scn"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="cab-cN-7pr"/>
+                            <constraint firstItem="C75-Xj-Zh9" firstAttribute="centerX" secondItem="Vxq-NB-Hih" secondAttribute="centerX" id="dq4-I7-zVQ"/>
+                            <constraint firstAttribute="trailing" secondItem="XCO-hR-2eE" secondAttribute="trailing" id="gFU-bb-tab"/>
+                            <constraint firstItem="jmt-rp-79h" firstAttribute="centerX" secondItem="Vxq-NB-Hih" secondAttribute="centerX" id="iYy-1X-vnn"/>
                             <constraint firstItem="41l-RH-4Vy" firstAttribute="bottom" secondItem="OLq-6z-fmI" secondAttribute="bottom" id="jd5-tB-P5T"/>
                             <constraint firstAttribute="trailing" secondItem="41l-RH-4Vy" secondAttribute="trailing" id="oWZ-kz-6Zz"/>
+                            <constraint firstItem="XCO-hR-2eE" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="p2A-JY-RFp"/>
                             <constraint firstAttribute="centerX" secondItem="xl6-NF-7wk" secondAttribute="leading" constant="-5" id="pjh-Kb-ukQ"/>
+                            <constraint firstItem="XCO-hR-2eE" firstAttribute="leading" secondItem="OLq-6z-fmI" secondAttribute="leading" id="rYH-3H-k6P"/>
                             <constraint firstItem="YGN-V7-YZ2" firstAttribute="top" secondItem="OLq-6z-fmI" secondAttribute="top" id="xdD-C0-9bQ"/>
                             <constraint firstItem="o5w-cp-Z0d" firstAttribute="top" secondItem="YGN-V7-YZ2" secondAttribute="bottom" id="yxW-iP-Pzr"/>
                         </constraints>
@@ -312,14 +416,18 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="blueHeadshotScoringAreaView" destination="y6r-my-2K7" id="ktQ-Mk-b5L"/>
+                        <outlet property="blueGamJeomButton" destination="jmt-rp-79h" id="g2b-rx-tj9"/>
+                        <outlet property="blueKyongGoButton" destination="C75-Xj-Zh9" id="lAq-hT-5Kd"/>
                         <outlet property="bluePlayerNameLabel" destination="P4u-ZG-aYe" id="3Ay-Fc-8k4"/>
                         <outlet property="blueScoreLabel" destination="Vxq-NB-Hih" id="0Kp-uz-Dtt"/>
                         <outlet property="blueScoringArea" destination="41l-RH-4Vy" id="Hgk-fr-R09"/>
                         <outlet property="blueTechnicalButton" destination="xl6-NF-7wk" id="MFa-w3-0ej"/>
+                        <outlet property="disablingView" destination="XCO-hR-2eE" id="USa-t6-l5Q"/>
                         <outlet property="matchInfoView" destination="Whs-d3-MXs" id="frQ-8o-LfH"/>
                         <outlet property="matchInfoViewTopConstraint" destination="KGc-gO-duG" id="vzH-hx-yY8"/>
-                        <outlet property="redHeadshotScoringAreaView" destination="eRK-EN-ChG" id="YbD-x0-4rb"/>
+                        <outlet property="penaltiesView" destination="dkv-Qd-3OT" id="t6z-CK-rpu"/>
+                        <outlet property="redGamJeomButton" destination="uZs-Ly-lBc" id="8VO-Fq-snc"/>
+                        <outlet property="redKyongGoButton" destination="p9i-It-Jht" id="xmi-kq-hFo"/>
                         <outlet property="redPlayerNameLabel" destination="ZxV-WB-bsH" id="sGt-ld-Tkv"/>
                         <outlet property="redScoreLabel" destination="X86-S9-L8W" id="VWn-ez-3eT"/>
                         <outlet property="redScoringArea" destination="YGN-V7-YZ2" id="uwY-HA-KrE"/>

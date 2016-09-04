@@ -26,6 +26,7 @@ public final class MatchViewModel {
     
     let timerLabelText = Variable("0:00")
     let isRestTimer = Variable(false)
+    
     private var timeRemaining = NSTimeInterval()
     private var endTime = NSDate()
     private var timer = NSTimer()
@@ -101,18 +102,24 @@ public final class MatchViewModel {
     }
     
     public func handleMatchInfoViewTapped() {
-        if !timer.valid {
+        if timer.valid {
+            pauseTimer()
+        } else {
             startTimer()
         }
     }
     
+    public func pauseTimer() {
+        if timer.valid {
+            timer.invalidate()
+        }
+    }
+    
     public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
-        // Update model
         model.playerScored(playerColor, scoringEvent: scoringEvent)
         // Update view model with model's new values
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString
-        print(model.redPlayer.displayName)
     }
 }
 

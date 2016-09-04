@@ -14,4 +14,19 @@ public enum ScoringEvent {
     case Technical
     case KyongGo
     case GamJeom
+    
+    var displayName: String {
+        switch self {
+        case .Head:
+            return "Head"
+        case .Body:
+            return "Body"
+        case .Technical:
+            return "Technical"
+        case .KyongGo:
+            return "Kyong-Go"
+        case .GamJeom:
+            return "Gam-Jeom"
+        }
+    }
 }
