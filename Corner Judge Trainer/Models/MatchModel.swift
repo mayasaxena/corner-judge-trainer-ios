@@ -54,6 +54,15 @@ public enum MatchType: Int {
         }
     }
     
+    var pointGapThresholdRound: Int {
+        switch self {
+        case .A_Team, .B_Team, .C_Team, .None:
+            return 0
+        default:
+            return 0
+        }
+    }
+    
     static let caseCount = MatchType.countCases()
     
     private static func countCases() -> Int {
@@ -69,6 +78,7 @@ public class MatchModel {
         static let MatchIDLength = 6
         static let MaxScore = 99.0
         static let RestTime = 30.0
+        static let PointGapValue = 12.0
     }
     
     var restTimeInterval: NSTimeInterval {
@@ -77,11 +87,22 @@ public class MatchModel {
 
     let redPlayer: Player
     let bluePlayer: Player
+    
+    var winningPlayer: Player?
 
     var matchID: String
     var date: NSDate
     
     var matchType: MatchType
+    
+    var round: Int = 1 {
+        didSet {
+            round = min(round, matchType.roundCount)
+            if round == matchType.roundCount {
+                winningPlayer = redScore > blueScore ? redPlayer : bluePlayer
+            }
+        }
+    }
     
     var redScore: Double {
         didSet {
@@ -150,6 +171,18 @@ public class MatchModel {
         } else {
             redScore += playerScore
             blueScore += otherPlayerScore
+        }
+        
+        checkPointGap()
+    }
+    
+    private func checkPointGap() {
+        if round > matchType.pointGapThresholdRound {
+            if redScore - blueScore >= Constants.PointGapValue {
+                winningPlayer = redPlayer
+            } else if blueScore - redScore >= Constants.PointGapValue {
+                winningPlayer = bluePlayer
+            }
         }
     }
 }

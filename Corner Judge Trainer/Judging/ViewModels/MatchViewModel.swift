@@ -38,13 +38,6 @@ public final class MatchViewModel {
     let roundLabelHidden = Variable(false)
     let roundLabelText = Variable("R1")
     
-    private var round: Int = 1 {
-        didSet {
-            round = min(round, model.matchType.roundCount)
-            roundLabelText.value = "R\(round)"
-        }
-    }
-    
     init() {
         redScoreText = Variable(model.redScore.formattedString)
         blueScoreText = Variable(model.blueScore.formattedString)
@@ -53,6 +46,7 @@ public final class MatchViewModel {
         bluePlayerName = Variable(model.bluePlayer.displayName)
         
         setupNameUpdates()
+        
         resetTimer(model.matchType.roundDuration)
         
         matchInfoViewHidden.value = model.matchType == .None
@@ -96,7 +90,7 @@ public final class MatchViewModel {
             roundTime = model.matchType.roundDuration
             setupNormalRound()
         } else { // set to rest round
-            if round == model.matchType.roundCount {
+            if model.round == model.matchType.roundCount {
                 endMatch()
                 return
             } else {
@@ -113,8 +107,8 @@ public final class MatchViewModel {
         isRestRound = false
         disablingViewVisible.value = false
         roundLabelHidden.value = true
-        round += 1
-
+        model.round += 1
+        roundLabelText.value = "R\(model.round)"
     }
     
     private func setupRestRound() {
@@ -126,6 +120,8 @@ public final class MatchViewModel {
     }
 
     private func endMatch() {
+        print(model.winningPlayer?.name)
+        pauseTimer()
         disablingViewVisible.value = true
         // TODO: Display alert/modal with match stats and option to start new
     }
@@ -158,6 +154,9 @@ public final class MatchViewModel {
         // Update view model with model's new values
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString
+        if model.winningPlayer != nil {
+            endMatch()
+        }
     }
 }
 
