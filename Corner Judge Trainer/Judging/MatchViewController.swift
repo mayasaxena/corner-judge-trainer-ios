@@ -71,8 +71,8 @@ public final class MatchViewController: UIViewController {
         setupTapGestureRecognizer(redScoringArea, playerColor: .Red)
         setupSwipeGestureRecognizer(redScoringArea, playerColor: .Red)
         
-        redTechnicalButton.rx_tap.subscribeNext { _ in
-            self.viewModel.playerScored(.Red, scoringEvent: .Technical)
+        redTechnicalButton.rx_tap.subscribeNext { [weak self] in
+            self?.viewModel.playerScored(.Red, scoringEvent: .Technical)
         } >>> disposeBag
         
         redScoringArea.userInteractionEnabled = false
@@ -84,90 +84,71 @@ public final class MatchViewController: UIViewController {
         setupTapGestureRecognizer(blueScoringArea, playerColor: .Blue)
         setupSwipeGestureRecognizer(blueScoringArea, playerColor: .Blue)
         
-        blueTechnicalButton.rx_tap.subscribeNext { _ in
-            self.viewModel.playerScored(.Blue, scoringEvent: .Technical)
+        blueTechnicalButton.rx_tap.subscribeNext { [weak self] in
+            self?.viewModel.playerScored(.Blue, scoringEvent: .Technical)
         } >>> disposeBag
         
         blueScoringArea.userInteractionEnabled = false
     }
     
     private func setupMatchInfoView() {
-        timerLabel.rx_text <- viewModel.timerLabelText >>> disposeBag
-        roundLabel.rx_text <- viewModel.roundLabelText >>> disposeBag
-        matchInfoView.rx_hidden <- viewModel.matchInfoViewHidden >>> disposeBag
-        
         let tapGestureRecognizer = UITapGestureRecognizer()
         matchInfoView.addGestureRecognizer(tapGestureRecognizer)
         
-        tapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.handleMatchInfoViewTapped()
-            self.toggleRoundHidden()
+        tapGestureRecognizer.rx_event.subscribeNext { [weak self] _ in
+            self?.viewModel.handleMatchInfoViewTapped()
+        } >>> disposeBag
+
+        viewModel.timerLabelTextColor.asObservable().subscribeNext { [weak self] in
+            self?.timerLabel.textColor = $0
         } >>> disposeBag
         
-        var matchHasBegun = false
-        
-        viewModel.isRestTimer.asObservable().subscribeNext { isRestRound in
-            self.timerLabel.textColor = isRestRound ? UIColor.yellowColor() : UIColor.flatWhiteColor()
-            if isRestRound {
-                self.setScoringDisabled(shouldHidePenaltyButtons: true)
-            } else {
-                if matchHasBegun {
-                    self.setScoringEnabled()
-                } else {
-                    self.showRound(shouldAutohide: false)
-                }
-            }
+        viewModel.roundLabelHidden.asObservable().subscribeNext { [weak self] hidden in
+            self?.setRoundHidden(hidden)
         } >>> disposeBag
         
-        matchHasBegun = true
+        viewModel.penaltyButtonsVisible.asObservable().subscribeNext { [weak self] buttonsVisible in
+            self?.penaltiesView.hidden = !buttonsVisible
+        } >>> disposeBag
+        
+        viewModel.disablingViewVisible.asObservable().subscribeNext { [weak self] disablingViewVisible in
+            self?.disablingView.hidden = !disablingViewVisible
+            self?.redScoringArea.userInteractionEnabled = !disablingViewVisible
+            self?.blueScoringArea.userInteractionEnabled = !disablingViewVisible
+        } >>> disposeBag
+        
+        viewModel.roundLabelHidden.asObservable().subscribeNext { [weak self] roundLabelHidden in
+            self?.setRoundHidden(roundLabelHidden)
+        } >>> disposeBag
+        
+        timerLabel.rx_text <- viewModel.timerLabelText >>> disposeBag
+        roundLabel.rx_text <- viewModel.roundLabelText >>> disposeBag
+        matchInfoView.rx_hidden <- viewModel.matchInfoViewHidden >>> disposeBag
     }
     
-    private func toggleRoundHidden() {
-        if viewModel.isRestTimer.value == false {
-            if matchInfoViewTopConstraint.constant == Constants.MatchInfoViewHiddenTopConstraint {
-                setScoringDisabled()
-            } else {
-                setScoringEnabled()
-            }
+    private func setRoundHidden(hidden: Bool) {
+        if hidden {
+            hideRound()
+        } else {
+            showRound()
         }
     }
     
-    private func setScoringDisabled(shouldHidePenaltyButtons penaltyButtonsHidden: Bool = false) {
-        showRound()
-        disablingView.hidden = false
-        redScoringArea.userInteractionEnabled = false
-        blueScoringArea.userInteractionEnabled = false
-        penaltiesView.hidden = penaltyButtonsHidden
-    }
-    
-    private func setScoringEnabled() {
-        hideRound()
-        disablingView.hidden = true
-        redScoringArea.userInteractionEnabled = true
-        blueScoringArea.userInteractionEnabled = true
-    }
-    
-    private func showRound(shouldAutohide autohide: Bool = false) {
+    private func showRound() {
         matchInfoViewTopConstraint.constant = 0
         UIView.animateWithDuration(
             Constants.DefaultMatchInfoViewAnimationDuration,
             animations: {
                 self.view.layoutIfNeeded()
             },
-            completion: { completed in
-                if autohide {
-                    self.hideRound(delay: 2.0)
-                }
-            }
+            completion: nil
         )
     }
     
-    private func hideRound(delay delay: Double = 0.0) {
+    private func hideRound() {
         matchInfoViewTopConstraint.constant = Constants.MatchInfoViewHiddenTopConstraint
         UIView.animateWithDuration(
             Constants.DefaultMatchInfoViewAnimationDuration,
-            delay: delay,
-            options: UIViewAnimationOptions.CurveLinear,
             animations: {
                 self.view.layoutIfNeeded()
 
@@ -181,8 +162,8 @@ public final class MatchViewController: UIViewController {
         tapGestureRecognizer.numberOfTapsRequired = 1
         targetView.addGestureRecognizer(tapGestureRecognizer)
         
-        tapGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(playerColor, scoringEvent: .Head)
+        tapGestureRecognizer.rx_event.subscribeNext { [weak self] _ in
+            self?.viewModel.playerScored(playerColor, scoringEvent: .Head)
         } >>> disposeBag
         
         return tapGestureRecognizer
@@ -193,35 +174,35 @@ public final class MatchViewController: UIViewController {
         swipeGestureRecognizer.direction = .Down
         targetView.addGestureRecognizer(swipeGestureRecognizer)
         
-        swipeGestureRecognizer.rx_event.subscribeNext { _ in
-            self.viewModel.playerScored(playerColor, scoringEvent: .Body)
+        swipeGestureRecognizer.rx_event.subscribeNext { [weak self] _ in
+            self?.viewModel.playerScored(playerColor, scoringEvent: .Body)
         } >>> disposeBag
     }
     
     private func setupPenaltyButtons() {
         
-        redKyongGoButton.rx_tap.subscribeNext { _ in
-            self.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .KyongGo)
+        redKyongGoButton.rx_tap.subscribeNext { [weak self] in
+            self?.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .KyongGo)
         } >>> disposeBag
         
-        redGamJeomButton.rx_tap.subscribeNext { _ in
-            self.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .GamJeom)
+        redGamJeomButton.rx_tap.subscribeNext { [weak self] in
+            self?.displayConfirmationAlert(PlayerColor.Red, scoringEvent: .GamJeom)
         } >>> disposeBag
         
-        blueKyongGoButton.rx_tap.subscribeNext { _ in
-            self.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .KyongGo)
+        blueKyongGoButton.rx_tap.subscribeNext { [weak self] in
+            self?.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .KyongGo)
         } >>> disposeBag
         
-        blueGamJeomButton.rx_tap.subscribeNext { _ in
-            self.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .GamJeom)
+        blueGamJeomButton.rx_tap.subscribeNext { [weak self] in
+            self?.displayConfirmationAlert(PlayerColor.Blue, scoringEvent: .GamJeom)
         } >>> disposeBag
     }
     
     private func displayConfirmationAlert(color: PlayerColor, scoringEvent: ScoringEvent) {
         let alertController = UIAlertController(title: "Add \(scoringEvent.displayName) to \(color.displayName)?", message: "", preferredStyle: .Alert)
         
-        let addAction = UIAlertAction(title: "Yes", style: .Destructive) { _ in
-            self.viewModel.playerScored(color, scoringEvent: scoringEvent)
+        let addAction = UIAlertAction(title: "Yes", style: .Destructive) { [weak self] _ in
+            self?.viewModel.playerScored(color, scoringEvent: scoringEvent)
         }
         alertController.addAction(addAction)
         

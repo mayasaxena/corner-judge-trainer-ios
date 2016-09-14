@@ -24,15 +24,26 @@ public final class MatchViewModel {
     
     let matchInfoViewHidden = Variable(false)
     
+    let timerLabelTextColor = Variable(UIColor.whiteColor())
     let timerLabelText = Variable("0:00")
-    let isRestTimer = Variable(false)
+    
+    let penaltyButtonsVisible = Variable(true)
+    let disablingViewVisible = Variable(true)
     
     private var timeRemaining = NSTimeInterval()
     private var endTime = NSDate()
     private var timer = NSTimer()
     
+    private var isRestRound = false
+    let roundLabelHidden = Variable(false)
     let roundLabelText = Variable("R1")
-    private var round = 1
+    
+    private var round: Int = 1 {
+        didSet {
+            round = min(round, model.matchType.roundCount)
+            roundLabelText.value = "R\(round)"
+        }
+    }
     
     init() {
         redScoreText = Variable(model.redScore.formattedString)
@@ -74,38 +85,65 @@ public final class MatchViewModel {
         } else {
             timer.invalidate()
             timerLabelText.value = "0:00"
-            endRound(isRestTimer.value)
+            endRound()
         }
     }
     
-    private func endRound(isRestRound: Bool) {
+    private func endRound() {
         var roundTime: NSTimeInterval
-        if isRestRound {
-            isRestTimer.value = false
+        
+        if isRestRound { // set to normal round
             roundTime = model.matchType.roundDuration
-        } else {
-            round += 1
-            if round <= model.matchType.roundCount {
-                isRestTimer.value = true
-                roundTime = model.restTimeInterval
-            } else {
+            setupNormalRound()
+        } else { // set to rest round
+            if round == model.matchType.roundCount {
                 endMatch()
                 return
+            } else {
+                roundTime = model.restTimeInterval
+                setupRestRound()
             }
         }
         resetTimer(roundTime)
         startTimer()
     }
     
+    private func setupNormalRound() {
+        timerLabelTextColor.value = UIColor.whiteColor()
+        isRestRound = false
+        disablingViewVisible.value = false
+        roundLabelHidden.value = true
+        round += 1
+
+    }
+    
+    private func setupRestRound() {
+        timerLabelTextColor.value = UIColor.yellowColor()
+        isRestRound = true
+        disablingViewVisible.value = true
+        roundLabelHidden.value = false
+        roundLabelText.value = "REST"
+    }
+
     private func endMatch() {
+        disablingViewVisible.value = true
         // TODO: Display alert/modal with match stats and option to start new
     }
     
     public func handleMatchInfoViewTapped() {
         if timer.valid {
             pauseTimer()
+            penaltyButtonsVisible.value = true
+            roundLabelHidden.value = false
+            disablingViewVisible.value = true
+            
         } else {
             startTimer()
+            penaltyButtonsVisible.value = false
+            if !isRestRound {
+                roundLabelHidden.value = true
+                disablingViewVisible.value = false
+            }
         }
     }
     
