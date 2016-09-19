@@ -33,6 +33,7 @@ public final class MatchViewModel {
     private var timeRemaining = NSTimeInterval()
     private var endTime = NSDate()
     private var timer = NSTimer()
+    private var matchEnded = false
     
     private var isRestRound = false
     let roundLabelHidden = Variable(false)
@@ -123,10 +124,12 @@ public final class MatchViewModel {
         print(model.winningPlayer?.name)
         pauseTimer()
         disablingViewVisible.value = true
+        matchEnded = true
         // TODO: Display alert/modal with match stats and option to start new
     }
     
     public func handleMatchInfoViewTapped() {
+        guard !matchEnded else { return }
         if timer.valid {
             pauseTimer()
             penaltyButtonsVisible.value = true
