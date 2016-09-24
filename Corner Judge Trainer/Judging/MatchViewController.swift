@@ -68,7 +68,7 @@ public final class MatchViewController: UIViewController {
     private func setupRedScoring() {
         viewModel.redScoreText.asObservable().map { $0 }.observeOn(MainScheduler.instance).bindTo(redScoreLabel.rx.text) >>> disposeBag
 
-//        redScoreLabel.rx.text <-* viewModel.redScoreText >>> disposeBag
+        redScoreLabel.rx.text <- viewModel.redScoreText >>> disposeBag
 
         setupTapGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         setupSwipeGestureRecognizer(targetView: redScoringArea, playerColor: .red)
@@ -81,7 +81,7 @@ public final class MatchViewController: UIViewController {
     }
     
     private func setupBlueScoring() {
-//        blueScoreLabel.rx.text <- viewModel.blueScoreText >>> disposeBag
+        blueScoreLabel.rx.text <- viewModel.blueScoreText >>> disposeBag
 
         setupTapGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
         setupSwipeGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
@@ -123,8 +123,8 @@ public final class MatchViewController: UIViewController {
             self?.setRoundHidden(hidden: roundLabelHidden)
         }) >>> disposeBag
         
-//        timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
-//        roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
+        timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
+        roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
         matchInfoView.rx.hidden <- viewModel.matchInfoViewHidden >>> disposeBag
     }
     
@@ -213,7 +213,7 @@ public final class MatchViewController: UIViewController {
     }
     
     private func setupPlayerNameLabels() {
-//        redPlayerNameLabel.rx.text <- viewModel.redPlayerName >>> disposeBag
-//        bluePlayerNameLabel.rx.text <- viewModel.bluePlayerName >>> disposeBag
+        redPlayerNameLabel.rx.text <- viewModel.redPlayerName >>> disposeBag
+        bluePlayerNameLabel.rx.text <- viewModel.bluePlayerName >>> disposeBag
     }
 }

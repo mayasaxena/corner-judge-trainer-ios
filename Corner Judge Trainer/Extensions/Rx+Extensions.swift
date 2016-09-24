@@ -17,23 +17,28 @@ precedencegroup BindPrecedence {
 
 infix operator <-> : BindPrecedence
 infix operator <- : BindPrecedence
-infix operator <-+ : BindPrecedence
-infix operator <-* : BindPrecedence
 
 infix operator >>> : DisposePrecedence
 
 public func <- <T>(property: AnyObserver<T>, variable: Observable<T>) -> Disposable {
     return variable
+        .observeOn(MainScheduler.instance)
+        .bindTo(property)
+}
+
+public func <- <T>(property: AnyObserver<T?>, variable: Variable<T>) -> Disposable {
+    return variable
+        .asObservable()
         .map { $0 }
         .observeOn(MainScheduler.instance)
         .bindTo(property)
 }
 
-public func <-* <T>(property: AnyObserver<T>, variable: Variable<T>) -> Disposable {
+public func <- <T>(property: AnyObserver<T>, variable: Variable<T>) -> Disposable {
     return property <- variable.asObservable()
 }
 
-public func <-+ <T>(variable: Variable<T>, property: ControlProperty<T>) -> Disposable {
+public func <- <T>(variable: Variable<T>, property: ControlProperty<T>) -> Disposable {
     return property.subscribe(onNext: { variable.value = $0 })
 }
 

@@ -66,7 +66,7 @@
 		A5A78A041D70E1030088D983 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = Views/RoundedButton.swift; sourceTree = "<group>"; };
 		A5A78A071D7238520088D983 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioButton.swift; path = Views/RadioButton.swift; sourceTree = "<group>"; };
 		A5A78A091D726AFF0088D983 /* NewMatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewModel.swift; path = "New Match/ViewModels/NewMatchViewModel.swift"; sourceTree = "<group>"; };
-		A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerJudgeTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA9D4A1D4BCE0200B51652 /* Corner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Corner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D4D1D4BCE0200B51652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AA9D521D4BCE0200B51652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5AA9D541D4BCE0200B51652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		A5AA9D4B1D4BCE0200B51652 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */,
+				A5AA9D4A1D4BCE0200B51652 /* Corner.app */,
 				A5AA9D5E1D4BCE0300B51652 /* CornerJudgeTrainer.xctest */,
 				A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */,
 			);
@@ -285,7 +285,7 @@
 			);
 			name = CornerJudgeTrainer;
 			productName = "Corner Judge Trainer";
-			productReference = A5AA9D4A1D4BCE0200B51652 /* CornerJudgeTrainer.app */;
+			productReference = A5AA9D4A1D4BCE0200B51652 /* Corner.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A5AA9D5D1D4BCE0300B51652 /* CornerJudgeTrainerTests */ = {
@@ -336,6 +336,7 @@
 				TargetAttributes = {
 					A5AA9D491D4BCE0200B51652 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2U76RBCGXR;
 						LastSwiftMigration = 0800;
 					};
 					A5AA9D5D1D4BCE0300B51652 = {
@@ -631,11 +632,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2U76RBCGXR;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
-				PRODUCT_NAME = CornerJudgeTrainer;
+				PRODUCT_NAME = Corner;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -646,11 +648,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2U76RBCGXR;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
-				PRODUCT_NAME = CornerJudgeTrainer;
+				PRODUCT_NAME = Corner;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

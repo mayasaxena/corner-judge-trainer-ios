@@ -16,7 +16,7 @@ public final class MatchViewModel {
     private let disposeBag = DisposeBag()
     
     // Display match
-    let redScoreText: Variable<String>
+    let redScoreText: Variable<String?>
     let blueScoreText: Variable<String>
     
     let redPlayerName: Variable<String>
