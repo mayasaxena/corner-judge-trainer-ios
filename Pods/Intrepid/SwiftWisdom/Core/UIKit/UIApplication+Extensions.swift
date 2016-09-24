@@ -10,11 +10,10 @@ import UIKit
 
 extension UIApplication {
     public func ip_openSettingsApp() {
-        guard
-            let url = NSURL(string: UIApplicationOpenSettingsURLString)
-            where canOpenURL(url)
-            else { fatalError("Unable to go to settings") }
-        
+        guard let url = URL(string: UIApplicationOpenSettingsURLString), canOpenURL(url) else {
+            // TODO: review - should this be a fatal error?
+            fatalError("Unable to go to settings")
+        }
         openURL(url)
     }
 }

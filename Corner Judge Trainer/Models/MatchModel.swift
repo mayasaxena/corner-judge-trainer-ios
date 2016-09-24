@@ -9,45 +9,45 @@
 import Foundation
 
 public enum MatchType: Int {
-    case A_Team
-    case B_Team
-    case C_Team
-    case Custom
-    case None
+    case aTeam
+    case bTeam
+    case cTeam
+    case custom
+    case none
     
     var displayName: String {
         switch self {
-        case .A_Team:
-            return "A Team".uppercaseString
-        case .B_Team:
-            return "B Team".uppercaseString
-        case .C_Team:
-            return "C Team".uppercaseString
-        case .Custom:
-            return "Custom".uppercaseString
-        case .None:
-            return "None".uppercaseString
+        case .aTeam:
+            return "A Team".uppercased()
+        case .bTeam:
+            return "B Team".uppercased()
+        case .cTeam:
+            return "C Team".uppercased()
+        case .custom:
+            return "Custom".uppercased()
+        case .none:
+            return "None".uppercased()
         }
     }
     
-    var roundDuration: NSTimeInterval {
+    var roundDuration: TimeInterval {
         switch self {
-        case .A_Team:
-            return NSTimeInterval(2 * 60.0)
-        case .B_Team:
-            return NSTimeInterval(1.5 * 60.0)
-        case .C_Team:
-            return NSTimeInterval(1 * 60.0)
+        case .aTeam:
+            return TimeInterval(2 * 60.0)
+        case .bTeam:
+            return TimeInterval(1.5 * 60.0)
+        case .cTeam:
+            return TimeInterval(1 * 60.0)
         default:
-            return NSTimeInterval(10.0)
+            return TimeInterval(10.0)
         }
     }
     
     var roundCount: Int {
         switch self {
-        case .A_Team, .B_Team, .C_Team:
+        case .aTeam, .bTeam, .cTeam:
             return 2
-        case .None:
+        case .none:
             return 0
         default:
             return 3
@@ -56,7 +56,7 @@ public enum MatchType: Int {
     
     var pointGapThresholdRound: Int {
         switch self {
-        case .A_Team, .B_Team, .C_Team, .None:
+        case .aTeam, .bTeam, .cTeam, .none:
             return 0
         default:
             return 0
@@ -65,7 +65,7 @@ public enum MatchType: Int {
     
     static let caseCount = MatchType.countCases()
     
-    private static func countCases() -> Int {
+    fileprivate static func countCases() -> Int {
         // starting at zero, verify whether the enum can be instantiated from the Int and increment until it cannot
         var count = 0
         while let _ = MatchType(rawValue: count) { count += 1 }
@@ -73,7 +73,7 @@ public enum MatchType: Int {
     }
 }
 
-public class MatchModel {
+open class MatchModel {
     struct Constants {
         static let MatchIDLength = 6
         static let MaxScore = 99.0
@@ -81,8 +81,8 @@ public class MatchModel {
         static let PointGapValue = 12.0
     }
     
-    var restTimeInterval: NSTimeInterval {
-        return NSTimeInterval(Constants.RestTime)
+    var restTimeInterval: TimeInterval {
+        return TimeInterval(Constants.RestTime)
     }
 
     let redPlayer: Player
@@ -91,7 +91,7 @@ public class MatchModel {
     var winningPlayer: Player?
 
     var matchID: String
-    var date: NSDate
+    var date: Date
     
     var matchType: MatchType
     
@@ -118,11 +118,11 @@ public class MatchModel {
     static let sharedModel = MatchModel()
     
     convenience init() {
-        self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue), type: .None)
+        self.init(redPlayer: Player(color: .red), bluePlayer: Player(color: .blue), type: .none)
     }
     
     convenience init(type: MatchType) {
-        self.init(redPlayer: Player(color: .Red), bluePlayer: Player(color: .Blue), type: type)
+        self.init(redPlayer: Player(color: .red), bluePlayer: Player(color: .blue), type: type)
     }
 
     init(redPlayer: Player, bluePlayer: Player, type: MatchType) {
@@ -130,42 +130,42 @@ public class MatchModel {
         self.bluePlayer = bluePlayer
         
         self.matchID = String.random(Constants.MatchIDLength)
-        self.date = NSDate()
+        self.date = Date()
         self.redScore = 0
         self.blueScore = 0
         
         matchType = type
     }
     
-    public func addPlayerNames(redPlayerName: String?, bluePlayerName: String?) {
+    open func addPlayerNames(_ redPlayerName: String?, bluePlayerName: String?) {
         redPlayer.name = redPlayerName ?? redPlayer.name
         bluePlayer.name = bluePlayerName ?? bluePlayer.name
     }
     
-    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+    open func playerScored(_ playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         var playerScore = 0.0
         var otherPlayerScore = 0.0
         
         switch scoringEvent {
             
-        case .Head:
+        case .head:
             playerScore = 3
             
-        case .Body:
+        case .body:
             playerScore = 1
             
-        case .Technical:
+        case .technical:
             playerScore = 1
             
         // TODO: Fix so # of kyonggos increase instead
-        case .KyongGo:
+        case .kyongGo:
             otherPlayerScore = 0.5
             
-        case .GamJeom:
+        case .gamJeom:
             otherPlayerScore = 1
         }
         
-        if playerColor == .Blue {
+        if playerColor == .blue {
             blueScore += playerScore
             redScore += otherPlayerScore
         } else {
@@ -176,7 +176,7 @@ public class MatchModel {
         checkPointGap()
     }
     
-    private func checkPointGap() {
+    fileprivate func checkPointGap() {
         if round > matchType.pointGapThresholdRound {
             if redScore - blueScore >= Constants.PointGapValue {
                 winningPlayer = redPlayer
@@ -189,14 +189,14 @@ public class MatchModel {
 
 extension String {
     
-    static func random(length: Int = 20) -> String {
+    static func random(_ length: Int = 20) -> String {
         
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
         
         for _ in 0..<length {
             let randomValue = arc4random_uniform(UInt32(base.characters.count))
-            randomString += "\(base[base.startIndex.advancedBy(Int(randomValue))])"
+            randomString += "\(base[base.characters.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
         
         return randomString

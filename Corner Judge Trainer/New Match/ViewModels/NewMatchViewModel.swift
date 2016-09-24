@@ -26,10 +26,10 @@ public final class NewMatchViewModel {
     }
     
     public func setRadioButtonSelected(atIndex index: Int) {
-        for (i, radioButtonSelected) in radioButtonsSelected.enumerate() {
+        for (i, radioButtonSelected) in radioButtonsSelected.enumerated() {
             if i == index {
                 radioButtonSelected.value = true
-                model.matchType = MatchType(rawValue: index) ?? .None
+                model.matchType = MatchType(rawValue: index) ?? .none
             } else {
                 radioButtonSelected.value = false
             }

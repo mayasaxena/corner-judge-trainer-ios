@@ -9,14 +9,14 @@
 import Foundation
 
 public enum PlayerColor {
-    case Blue
-    case Red
+    case blue
+    case red
     
     var displayName: String {
         switch self {
-        case .Blue:
+        case .blue:
             return "Blue"
-        case .Red:
+        case .red:
             return "Red"
         }
     }
@@ -46,6 +46,6 @@ extension Player {
     }
     
     var displayName: String {
-        return name.containsString(Player.defaultName) ? "" : name
+        return name.contains(Player.defaultName) ? "" : name
     }
 }

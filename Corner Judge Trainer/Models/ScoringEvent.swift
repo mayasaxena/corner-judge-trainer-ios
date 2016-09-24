@@ -9,23 +9,23 @@
 import Foundation
 
 public enum ScoringEvent {
-    case Head
-    case Body
-    case Technical
-    case KyongGo
-    case GamJeom
+    case head
+    case body
+    case technical
+    case kyongGo
+    case gamJeom
     
     var displayName: String {
         switch self {
-        case .Head:
+        case .head:
             return "Head"
-        case .Body:
+        case .body:
             return "Body"
-        case .Technical:
+        case .technical:
             return "Technical"
-        case .KyongGo:
+        case .kyongGo:
             return "Kyong-Go"
-        case .GamJeom:
+        case .gamJeom:
             return "Gam-Jeom"
         }
     }

@@ -24,15 +24,15 @@ public final class MatchViewModel {
     
     let matchInfoViewHidden = Variable(false)
     
-    let timerLabelTextColor = Variable(UIColor.whiteColor())
+    let timerLabelTextColor = Variable(UIColor.white)
     let timerLabelText = Variable("0:00")
     
     let penaltyButtonsVisible = Variable(true)
     let disablingViewVisible = Variable(true)
     
-    private var timeRemaining = NSTimeInterval()
-    private var endTime = NSDate()
-    private var timer = NSTimer()
+    private var timeRemaining = TimeInterval()
+    private var endTime = Date()
+    private var timer = Timer()
     private var matchEnded = false
     
     private var isRestRound = false
@@ -50,27 +50,27 @@ public final class MatchViewModel {
         
         resetTimer(model.matchType.roundDuration)
         
-        matchInfoViewHidden.value = model.matchType == .None
+        matchInfoViewHidden.value = model.matchType == .none
     }
     
     private func setupNameUpdates() {
-        redPlayerName.asObservable().subscribeNext {
+        redPlayerName.asObservable().subscribe(onNext: {
             self.model.redPlayer.name = $0
-        } >>> disposeBag
+        }) >>> disposeBag
         
-        bluePlayerName.asObservable().subscribeNext {
+        bluePlayerName.asObservable().subscribe(onNext: {
             self.model.bluePlayer.name = $0
-        } >>> disposeBag
+        }) >>> disposeBag
     }
     
-    private func resetTimer(time: NSTimeInterval) {
+    private func resetTimer(_ time: TimeInterval) {
         timeRemaining = time
         timerLabelText.value = timeRemaining.formattedTimeString
     }
     
     private func startTimer() {
-        endTime = NSDate().dateByAddingTimeInterval(timeRemaining)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        endTime = Date().addingTimeInterval(timeRemaining)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     dynamic func updateTime() {
@@ -85,7 +85,7 @@ public final class MatchViewModel {
     }
     
     private func endRound() {
-        var roundTime: NSTimeInterval
+        var roundTime: TimeInterval
         
         if isRestRound { // set to normal round
             roundTime = model.matchType.roundDuration
@@ -104,7 +104,7 @@ public final class MatchViewModel {
     }
     
     private func setupNormalRound() {
-        timerLabelTextColor.value = UIColor.whiteColor()
+        timerLabelTextColor.value = UIColor.white
         isRestRound = false
         disablingViewVisible.value = false
         roundLabelHidden.value = true
@@ -113,7 +113,7 @@ public final class MatchViewModel {
     }
     
     private func setupRestRound() {
-        timerLabelTextColor.value = UIColor.yellowColor()
+        timerLabelTextColor.value = UIColor.yellow
         isRestRound = true
         disablingViewVisible.value = true
         roundLabelHidden.value = false
@@ -130,7 +130,7 @@ public final class MatchViewModel {
     
     public func handleMatchInfoViewTapped() {
         guard !matchEnded else { return }
-        if timer.valid {
+        if timer.isValid {
             pauseTimer()
             penaltyButtonsVisible.value = true
             roundLabelHidden.value = false
@@ -147,12 +147,12 @@ public final class MatchViewModel {
     }
     
     public func pauseTimer() {
-        if timer.valid {
+        if timer.isValid {
             timer.invalidate()
         }
     }
     
-    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+    public func playerScored(_ playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         model.playerScored(playerColor, scoringEvent: scoringEvent)
         // Update view model with model's new values
         redScoreText.value = model.redScore.formattedString
@@ -169,8 +169,8 @@ extension Double {
     }
 }
 
-extension NSTimeInterval {
+extension TimeInterval {
     var formattedTimeString: String {
-        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self % 60)))
+        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self.truncatingRemainder(dividingBy: 60))))
     }
 }
