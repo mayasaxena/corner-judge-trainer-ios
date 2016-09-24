@@ -10,12 +10,10 @@ import Foundation
 import RxSwift
 import Intrepid
 
-
 public final class MatchViewModel {
     private let model = MatchModel.sharedModel
     private let disposeBag = DisposeBag()
     
-    // Display match
     let redScoreText: Variable<String?>
     let blueScoreText: Variable<String>
     
@@ -29,16 +27,22 @@ public final class MatchViewModel {
     
     let penaltyButtonsVisible = Variable(true)
     let disablingViewVisible = Variable(true)
-    
+
     private var timeRemaining = TimeInterval()
     private var endTime = Date()
     private var timer = Timer()
-    private var matchEnded = false
+
+    let matchHasEnded = Variable(false)
+    private var matchEnded = false {
+        didSet {
+            matchHasEnded.value = matchEnded
+        }
+    }
     
-    private var isRestRound = false
     let roundLabelHidden = Variable(false)
     let roundLabelText = Variable("R1")
-    
+    private var isRestRound = false
+
     init() {
         redScoreText = Variable(model.redScore.formattedString)
         blueScoreText = Variable(model.blueScore.formattedString)
@@ -151,12 +155,31 @@ public final class MatchViewModel {
             timer.invalidate()
         }
     }
-    
-    public func playerScored(_ playerColor: PlayerColor, scoringEvent: ScoringEvent) {
-        model.playerScored(playerColor, scoringEvent: scoringEvent)
-        // Update view model with model's new values
+
+    // MARK: - View Handlers
+
+    public func handleScoringAreaTapped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .head)
+    }
+
+    public func handleScoringAreaSwiped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .body)
+    }
+
+    public func handleTechnicalButtonTapped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .technical)
+    }
+
+    public func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent) {
+        playerScored(playerColor: color, scoringEvent: penalty)
+    }
+
+    private func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+        model.updateScore(playerColor: playerColor, scoringEvent: scoringEvent)
+
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString
+
         if model.winningPlayer != nil {
             endMatch()
         }

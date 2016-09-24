@@ -66,15 +66,13 @@ public final class MatchViewController: UIViewController {
     }
     
     private func setupRedScoring() {
-        viewModel.redScoreText.asObservable().map { $0 }.observeOn(MainScheduler.instance).bindTo(redScoreLabel.rx.text) >>> disposeBag
-
         redScoreLabel.rx.text <- viewModel.redScoreText >>> disposeBag
 
         setupTapGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         setupSwipeGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         
         redTechnicalButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.viewModel.playerScored(.red, scoringEvent: .technical)
+            self?.viewModel.handleTechnicalButtonTapped(color: .red)
         }) >>> disposeBag
         
         redScoringArea.isUserInteractionEnabled = false
@@ -87,7 +85,7 @@ public final class MatchViewController: UIViewController {
         setupSwipeGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
         
         blueTechnicalButton.rx.tap.subscribe { [weak self] in
-            self?.viewModel.playerScored(.blue, scoringEvent: .technical)
+            self?.viewModel.handleTechnicalButtonTapped(color: .blue)
         } >>> disposeBag
         
         blueScoringArea.isUserInteractionEnabled = false
@@ -165,7 +163,7 @@ public final class MatchViewController: UIViewController {
         targetView.addGestureRecognizer(tapGestureRecognizer)
         
         tapGestureRecognizer.rx.event.subscribe(onNext: { [weak self] _ in
-            self?.viewModel.playerScored(playerColor, scoringEvent: .head)
+            self?.viewModel.handleScoringAreaTapped(color: playerColor)
         }) >>> disposeBag
     }
     
@@ -175,7 +173,7 @@ public final class MatchViewController: UIViewController {
         targetView.addGestureRecognizer(swipeGestureRecognizer)
         
         swipeGestureRecognizer.rx.event.subscribe(onNext: { [weak self] _ in
-            self?.viewModel.playerScored(playerColor, scoringEvent: .body)
+            self?.viewModel.handleScoringAreaSwiped(color: playerColor)
         }) >>> disposeBag
     }
     
@@ -202,7 +200,7 @@ public final class MatchViewController: UIViewController {
         let alertController = UIAlertController(title: "Add \(scoringEvent.displayName) to \(color.displayName)?", message: "", preferredStyle: .alert)
         
         let addAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
-            self?.viewModel.playerScored(color, scoringEvent: scoringEvent)
+            self?.viewModel.handlePenaltyConfirmed(color: color, penalty: scoringEvent)
         }
         alertController.addAction(addAction)
         

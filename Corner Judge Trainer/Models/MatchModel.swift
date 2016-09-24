@@ -73,7 +73,7 @@ public enum MatchType: Int {
     }
 }
 
-open class MatchModel {
+public class MatchModel {
     struct Constants {
         static let MatchIDLength = 6
         static let MaxScore = 99.0
@@ -137,12 +137,12 @@ open class MatchModel {
         matchType = type
     }
     
-    open func addPlayerNames(_ redPlayerName: String?, bluePlayerName: String?) {
+    public func addPlayerNames(redPlayerName: String?, bluePlayerName: String?) {
         redPlayer.name = redPlayerName ?? redPlayer.name
         bluePlayer.name = bluePlayerName ?? bluePlayer.name
     }
     
-    open func playerScored(_ playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+    public func updateScore(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         var playerScore = 0.0
         var otherPlayerScore = 0.0
         
@@ -176,7 +176,7 @@ open class MatchModel {
         checkPointGap()
     }
     
-    fileprivate func checkPointGap() {
+    private func checkPointGap() {
         if round > matchType.pointGapThresholdRound {
             if redScore - blueScore >= Constants.PointGapValue {
                 winningPlayer = redPlayer
