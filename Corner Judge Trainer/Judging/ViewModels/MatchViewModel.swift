@@ -9,17 +9,20 @@
 import Foundation
 import RxSwift
 import Intrepid
+import Starscream
 
-public final class MatchViewModel {
-    private let model = MatchModel.sharedModel
+public final class MatchViewModel: WebSocketDelegate {
+    private let model = Match.current
     private let disposeBag = DisposeBag()
+
+    private var webSocket: WebSocket
     
     let redScoreText: Variable<String?>
     let blueScoreText: Variable<String>
     
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
-    
+
     let matchInfoViewHidden = Variable(false)
     
     let timerLabelTextColor = Variable(UIColor.white)
@@ -49,11 +52,15 @@ public final class MatchViewModel {
         
         redPlayerName = Variable(model.redPlayer.displayName)
         bluePlayerName = Variable(model.bluePlayer.displayName)
-        
+
+        webSocket = WebSocket(url: URL(string: "ws://localhost:8080/match/10/")!)
+        webSocket.delegate = self
+        webSocket.connect()
+
         setupNameUpdates()
-        
+
         resetTimer(model.matchType.roundDuration)
-        
+
         matchInfoViewHidden.value = model.matchType == .none
     }
     
@@ -177,12 +184,32 @@ public final class MatchViewModel {
     private func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
         model.updateScore(playerColor: playerColor, scoringEvent: scoringEvent)
 
+
+
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString
 
         if model.winningPlayer != nil {
             endMatch()
         }
+    }
+
+    // MARK: - WebSocketDelegate
+
+    public func websocketDidConnect(socket: WebSocket) {
+        print("connected")
+        socket.write(string: "{\"judge\":\"iOS\"}")
+    }
+
+    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    }
+
+    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print(text)
+    }
+
+    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print(data)
     }
 }
 

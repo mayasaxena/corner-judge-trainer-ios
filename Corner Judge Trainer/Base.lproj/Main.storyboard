@@ -1,114 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="DroidSans-Bold.ttf">
+        <array key="DroidSans-Bold.ttf">
             <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-            <string>DroidSans-Bold</string>
-        </mutableArray>
-        <mutableArray key="DroidSans.ttf">
+        </array>
+        <array key="DroidSans.ttf">
             <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-            <string>DroidSans</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--New Match View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewMatchViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewMatchViewController" customModule="Corner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SELECT MATCH TYPE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-i6-hfY">
-                                <rect key="frame" x="228" y="70" width="144.5" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT MATCH TYPE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-i6-hfY">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="DUr-mL-qny"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="24"/>
-                                <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgE-Hw-7hI">
-                                <rect key="frame" x="197" y="166" width="61.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgE-Hw-7hI">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZU-BE-sdS" customClass="RadioButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="356" y="161" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZU-BE-sdS" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="B TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJr-Nl-JzG">
-                                <rect key="frame" x="197" y="227" width="61.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJr-Nl-JzG">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n68-ac-WAW" customClass="RadioButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="356" y="221" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n68-ac-WAW" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="C TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42g-in-hQg">
-                                <rect key="frame" x="197" y="288" width="61" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42g-in-hQg">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-by-4uf" customClass="RadioButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="356" y="282" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-by-4uf" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CUSTOM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9h-KS-DQR">
-                                <rect key="frame" x="187" y="349" width="71" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CUSTOM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9h-KS-DQR">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-RK-T6s" customClass="RadioButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="356" y="343.5" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-RK-T6s" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgl-8g-dlI" customClass="RadioButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="356" y="404.5" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgl-8g-dlI" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="200" y="510" width="200" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="B8V-88-S3y"/>
                                     <constraint firstAttribute="height" constant="50" id="hn9-qV-6D3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <state key="normal" title="JUDGE NEW MATCH">
-                                    <color key="titleColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
@@ -119,14 +94,13 @@
                                     <action selector="newMatchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SHW-GN-J0B"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NONE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-TA-1iL">
-                                <rect key="frame" x="208.5" y="410" width="49.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NONE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-TA-1iL">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="c9h-KS-DQR" firstAttribute="top" secondItem="42g-in-hQg" secondAttribute="bottom" constant="40" id="0wF-LC-CIT"/>
                             <constraint firstAttribute="trailing" secondItem="eZU-BE-sdS" secondAttribute="trailing" priority="250" constant="100" id="2CC-z6-vhk"/>
@@ -156,7 +130,6 @@
                             <constraint firstItem="Xwx-TA-1iL" firstAttribute="centerY" secondItem="bgl-8g-dlI" secondAttribute="centerY" id="xGZ-XM-T2J"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="judgeNewMatchButton" destination="h7N-Nv-dje" id="3Cp-MF-3oK"/>
                         <outletCollection property="radioButtons" destination="eZU-BE-sdS" collectionClass="NSMutableArray" id="d9y-EE-zlk"/>
@@ -175,40 +148,36 @@
         <!--Match View Controller-->
         <scene sceneID="fxL-5W-GuU">
             <objects>
-                <viewController id="Lfg-by-b7c" customClass="MatchViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lfg-by-b7c" customClass="MatchViewController" customModule="Corner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4MD-fI-5LT"/>
                         <viewControllerLayoutGuide type="bottom" id="o5w-cp-Z0d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OLq-6z-fmI">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-V7-YZ2">
-                                <rect key="frame" x="0.0" y="0.0" width="368" height="414"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-S9-L8W">
-                                        <rect key="frame" x="130" y="116" width="107" height="183"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-jl-ID8">
-                                        <rect key="frame" x="303" y="349" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tph-jl-ID8" secondAttribute="height" multiplier="1:1" id="IoG-ql-8PR"/>
                                             <constraint firstAttribute="height" constant="60" id="ioG-GP-1y8"/>
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-WB-bsH">
-                                        <rect key="frame" x="163" y="368" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.729411780834198" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.729411780834198" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="X86-S9-L8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YGN-V7-YZ2" secondAttribute="leading" constant="5" id="RZP-OE-UZ1"/>
@@ -221,30 +190,26 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-RH-4Vy">
-                                <rect key="frame" x="368" y="0.0" width="368" height="414"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
-                                        <rect key="frame" x="130" y="116" width="107" height="183"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-NF-7wk">
-                                        <rect key="frame" x="5" y="349" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xl6-NF-7wk" secondAttribute="height" multiplier="1:1" id="FMl-YK-f4z"/>
                                             <constraint firstAttribute="height" constant="60" id="udA-aM-OnV"/>
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-ZG-aYe">
-                                        <rect key="frame" x="163" y="368" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21176470816135406" green="0.42352941632270813" blue="0.67450982332229614" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.21176470816135406" green="0.42352941632270813" blue="0.67450982332229614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vxq-NB-Hih" secondAttribute="trailing" constant="5" id="3fT-EM-7sq"/>
                                     <constraint firstItem="Vxq-NB-Hih" firstAttribute="centerY" secondItem="41l-RH-4Vy" secondAttribute="centerY" id="O0K-NO-Dhm"/>
@@ -256,36 +221,31 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCO-hR-2eE">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-iE-g9R">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the timer to start and pause the match" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzO-Hs-cqU">
-                                        <rect key="frame" x="303" y="179" width="130" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="RdF-gR-mxJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkv-Qd-3OT">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9i-It-Jht" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                                <rect key="frame" x="108" y="78.5" width="150" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9i-It-Jht" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="6uL-uA-XGm"/>
                                                     <constraint firstAttribute="height" constant="50" id="hTR-K3-HKb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
                                                 <state key="normal" title="KYONG-GO">
-                                                    <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
@@ -293,8 +253,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-Ly-lBc" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                                <rect key="frame" x="108" y="296" width="150" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-Ly-lBc" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="B0A-zm-Or1"/>
                                                     <constraint firstAttribute="height" constant="50" id="IXe-Ln-hFx"/>
@@ -307,8 +266,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C75-Xj-Zh9" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                                <rect key="frame" x="476" y="78.5" width="150" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C75-Xj-Zh9" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="AVq-7X-Ja5"/>
                                                     <constraint firstAttribute="height" constant="50" id="G31-Xe-QpV"/>
@@ -321,8 +279,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-rp-79h" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                                <rect key="frame" x="476.5" y="296" width="150" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-rp-79h" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Tgs-Py-zWl"/>
                                                     <constraint firstAttribute="width" constant="150" id="bVP-o0-UD4"/>
@@ -336,7 +293,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="C75-Xj-Zh9" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="0.5" id="0Zr-1A-vTJ"/>
                                             <constraint firstItem="uZs-Ly-lBc" firstAttribute="centerY" secondItem="dkv-Qd-3OT" secondAttribute="centerY" multiplier="1.55" id="FoM-VB-N2x"/>
@@ -345,7 +302,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
@@ -363,22 +320,19 @@
                                 </constraints>
                             </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
-                                <rect key="frame" x="293" y="0.0" width="150" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-i2-glL">
-                                        <rect key="frame" x="26" y="46" width="97" height="58.5"/>
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
-                                        <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="R1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq2-A4-bw8">
-                                        <rect key="frame" x="57" y="10" width="35.5" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq2-A4-bw8">
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="30"/>
-                                        <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="lcY-i2-glL" secondAttribute="bottom" constant="5" id="Ghs-Hv-cGI"/>
                                     <constraint firstAttribute="width" constant="150" id="XWx-IA-wPh"/>
@@ -389,7 +343,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Whs-d3-MXs" firstAttribute="centerX" secondItem="OLq-6z-fmI" secondAttribute="centerX" id="6ax-oe-z9A"/>
                             <constraint firstAttribute="bottom" secondItem="XCO-hR-2eE" secondAttribute="bottom" id="Bt6-kH-bHS"/>
@@ -413,8 +367,6 @@
                             <constraint firstItem="o5w-cp-Z0d" firstAttribute="top" secondItem="YGN-V7-YZ2" secondAttribute="bottom" id="yxW-iP-Pzr"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="blueGamJeomButton" destination="jmt-rp-79h" id="g2b-rx-tj9"/>
                         <outlet property="blueKyongGoButton" destination="C75-Xj-Zh9" id="lAq-hT-5Kd"/>
@@ -443,55 +395,49 @@
         <!--Add Players View Controller-->
         <scene sceneID="BcD-s3-r4i">
             <objects>
-                <viewController id="RyK-Oi-oMN" customClass="AddPlayersViewController" customModule="CornerJudgeTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RyK-Oi-oMN" customClass="AddPlayersViewController" customModule="Corner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="672-NI-Zuc"/>
                         <viewControllerLayoutGuide type="bottom" id="TXB-Oo-Zqn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6wf-H0-6jc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconRed" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-Md-zVS">
-                                <rect key="frame" x="255" y="144" width="91" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dBz-Md-zVS" secondAttribute="height" multiplier="91:131" id="7XO-WF-T9s"/>
                                     <constraint firstAttribute="height" constant="131" id="T4B-qo-75x"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Red player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-PS-5EJ">
-                                <rect key="frame" x="219" y="195" width="162" height="30"/>
-                                <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="VS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daw-vJ-FxM">
-                                <rect key="frame" x="291" y="290" width="19" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="VS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daw-vJ-FxM">
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
-                                <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Fql-Gx-ut0">
-                                <rect key="frame" x="255" y="325" width="91" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="131" id="18f-Uw-hIt"/>
                                     <constraint firstAttribute="width" secondItem="Fql-Gx-ut0" secondAttribute="height" multiplier="91:131" id="gA6-kq-ybx"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Blue player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-qZ-H5I">
-                                <rect key="frame" x="218" y="375" width="164" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsI-Gk-shb" customClass="RoundedButton" customModule="CornerJudgeTrainer" customModuleProvider="target">
-                                <rect key="frame" x="200" y="520" width="200" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsI-Gk-shb" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Ya-UB-Eoe"/>
                                     <constraint firstAttribute="width" constant="200" id="jJb-eh-kfD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <state key="normal" title="GO!">
-                                    <color key="titleColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
@@ -500,7 +446,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dBz-Md-zVS" firstAttribute="centerX" secondItem="b3b-PS-5EJ" secondAttribute="centerX" id="4mY-x8-FcR"/>
                             <constraint firstItem="Fql-Gx-ut0" firstAttribute="width" secondItem="Fql-Gx-ut0" secondAttribute="height" multiplier="91:131" id="7su-tO-fpn"/>

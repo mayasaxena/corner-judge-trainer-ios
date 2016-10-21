@@ -15,7 +15,7 @@ public final class NewMatchViewModel {
     // Create match
     var radioButtonsSelected: [Variable<Bool>] = []
     
-    let model = MatchModel.sharedModel
+    let model = Match.current
     
     init() {
         for _ in 0 ..< MatchType.caseCount {

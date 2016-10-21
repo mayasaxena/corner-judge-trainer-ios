@@ -1,40 +1,39 @@
 PODS:
-  - Intrepid (0.5.2):
-    - Intrepid/Core (= 0.5.2)
-  - Intrepid/Core (0.5.2):
+  - Intrepid (0.6.1):
+    - Intrepid/Core (= 0.6.1)
+  - Intrepid/Core (0.6.1):
     - IP-UIKit-Wisdom (= 0.0.9)
   - IP-UIKit-Wisdom (0.0.9)
   - IQKeyboardManager (3.3.6)
   - RxCocoa (3.0.0-beta.1):
     - RxSwift (~> 3.0.0-beta.1)
   - RxSwift (3.0.0-beta.1)
+  - Starscream (2.0.0)
 
 DEPENDENCIES:
-  - Intrepid (from `git@github.com:IntrepidPursuits/swift-wisdom.git`, branch `ying/swift-3`)
+  - Intrepid (~> 0.6)
   - IQKeyboardManager (from `git@github.com:IntrepidPursuits/IQKeyboardManager.git`)
   - RxCocoa (~> 3.0.0-beta.1)
   - RxSwift (~> 3.0.0-beta.1)
+  - Starscream (~> 2.0.0)
 
 EXTERNAL SOURCES:
-  Intrepid:
-    :branch: ying/swift-3
-    :git: git@github.com:IntrepidPursuits/swift-wisdom.git
   IQKeyboardManager:
     :git: git@github.com:IntrepidPursuits/IQKeyboardManager.git
 
 CHECKOUT OPTIONS:
-  Intrepid:
-    :commit: 6b46b2ec7e570fb472ef1b81ef1526e294c26cdc
-    :git: git@github.com:IntrepidPursuits/swift-wisdom.git
   IQKeyboardManager:
     :commit: 4f4cec40ac4eb3f03ad130fc06815edc41eb8419
     :git: git@github.com:IntrepidPursuits/IQKeyboardManager.git
 
 SPEC CHECKSUMS:
-  Intrepid: a72e2da8e411ddb04d74e348b3ffbfb6e6197a37
+  Intrepid: a9d08743b129354f3406a4bc040f16c0344f637a
   IP-UIKit-Wisdom: cd9838571e97427a0c61c05d856eaaca9afd7c1a
   IQKeyboardManager: 7d0926d5391b99b842ccc6367b849dd1975c8bf9
   RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
   RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  Starscream: 947c865596f0d6bb3f0203fee23228ed2d471468
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 93159539559012edae26449ec716c0c142f55271
+
+COCOAPODS: 1.0.1

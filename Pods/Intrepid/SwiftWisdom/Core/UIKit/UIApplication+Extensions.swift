@@ -8,11 +8,14 @@
 
 import UIKit
 
+enum OpenSettingsError: Error {
+    case cannotOpenURL
+}
+
 extension UIApplication {
-    public func ip_openSettingsApp() {
+    public func ip_openSettingsApp() throws {
         guard let url = URL(string: UIApplicationOpenSettingsURLString), canOpenURL(url) else {
-            // TODO: review - should this be a fatal error?
-            fatalError("Unable to go to settings")
+            throw OpenSettingsError.cannotOpenURL
         }
         openURL(url)
     }

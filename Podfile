@@ -5,10 +5,11 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'CornerJudgeTrainer' do
-    pod 'Intrepid', :git => 'git@github.com:IntrepidPursuits/swift-wisdom.git', :branch => 'ying/swift-3'
+    pod 'Intrepid', '~> 0.6'
     pod 'RxSwift', '~> 3.0.0-beta.1'
     pod 'RxCocoa', '~> 3.0.0-beta.1'
     pod 'IQKeyboardManager', :git => 'git@github.com:IntrepidPursuits/IQKeyboardManager.git'
+    pod 'Starscream', '~> 2.0.0'
     
 end
 

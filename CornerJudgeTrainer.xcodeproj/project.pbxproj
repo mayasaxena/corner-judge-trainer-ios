@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92C6C48F128CF8352DF59130 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */; };
+		5E7C31C93C88B13011AF9477 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */; };
 		A534B7C21D4BDF6500DBCCBE /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C11D4BDF6500DBCCBE /* MatchViewController.swift */; };
 		A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */; };
 		A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */; };
 		A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */; };
-		A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */; };
+		A534B7CC1D4BE44100DBCCBE /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* Match.swift */; };
 		A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */; };
 		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
 		A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* ScoringEvent.swift */; };
@@ -49,13 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		33A4682668849D348E2EC202 /* Pods-CornerJudgeTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.release.xcconfig"; sourceTree = "<group>"; };
-		5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A534B7C11D4BDF6500DBCCBE /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Judging/MatchViewController.swift; sourceTree = "<group>"; };
 		A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "New Match/NewMatchViewController.swift"; sourceTree = "<group>"; };
 		A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extensions.swift"; path = "Extensions/NSDate+Extensions.swift"; sourceTree = "<group>"; };
-		A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchModel.swift; path = Models/MatchModel.swift; sourceTree = "<group>"; };
+		A534B7CB1D4BE44100DBCCBE /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rx+Extensions.swift"; path = "Extensions/Rx+Extensions.swift"; sourceTree = "<group>"; };
 		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
 		A5A789EF1D6E79390088D983 /* ScoringEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/ScoringEvent.swift; sourceTree = "<group>"; };
@@ -78,7 +77,8 @@
 		A5AA9D691D4BCE0300B51652 /* CornerJudgeTrainer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornerJudgeTrainer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AA9D6D1D4BCE0300B51652 /* Corner_Judge_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner_Judge_TrainerUITests.swift; sourceTree = "<group>"; };
 		A5AA9D6F1D4BCE0300B51652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7FAEE6B120811F83EB02C6B /* Pods-CornerJudgeTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.debug.xcconfig"; sourceTree = "<group>"; };
+		AC35276D214616801430A862 /* Pods-CornerJudgeTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.debug.xcconfig"; sourceTree = "<group>"; };
+		B131864CCC90BBDFB4D6461C /* Pods-CornerJudgeTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornerJudgeTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92C6C48F128CF8352DF59130 /* Pods_CornerJudgeTrainer.framework in Frameworks */,
+				5E7C31C93C88B13011AF9477 /* Pods_CornerJudgeTrainer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,21 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		53420667A680E8A21B0DE9EC /* Frameworks */ = {
+		2C6C152E0A681FB89AFD461E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5F5D78435F1508722E4A1494 /* Pods_CornerJudgeTrainer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		76E37F080F14EF3907E3DA23 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E7FAEE6B120811F83EB02C6B /* Pods-CornerJudgeTrainer.debug.xcconfig */,
-				33A4682668849D348E2EC202 /* Pods-CornerJudgeTrainer.release.xcconfig */,
+				AC35276D214616801430A862 /* Pods-CornerJudgeTrainer.debug.xcconfig */,
+				B131864CCC90BBDFB4D6461C /* Pods-CornerJudgeTrainer.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4AD85C7FB9CB95FA62717D21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A534B7C31D4BDF7500DBCCBE /* ViewModels */ = {
@@ -146,7 +146,7 @@
 		A534B7CD1D4BE44600DBCCBE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A534B7CB1D4BE44100DBCCBE /* MatchModel.swift */,
+				A534B7CB1D4BE44100DBCCBE /* Match.swift */,
 				A5A789EF1D6E79390088D983 /* ScoringEvent.swift */,
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
 			);
@@ -194,8 +194,8 @@
 				A5AA9D611D4BCE0300B51652 /* Corner Judge TrainerTests */,
 				A5AA9D6C1D4BCE0300B51652 /* Corner Judge TrainerUITests */,
 				A5AA9D4B1D4BCE0200B51652 /* Products */,
-				76E37F080F14EF3907E3DA23 /* Pods */,
-				53420667A680E8A21B0DE9EC /* Frameworks */,
+				2C6C152E0A681FB89AFD461E /* Pods */,
+				4AD85C7FB9CB95FA62717D21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,7 +277,6 @@
 				A5AA9D481D4BCE0200B51652 /* Resources */,
 				A59E028D10DA766A6DF9BE25 /* [CP] Embed Pods Frameworks */,
 				A57EE62EEC842DA1A15F4F67 /* [CP] Copy Pods Resources */,
-				19370E0A9CE6DD0601453B9E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,21 +400,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19370E0A9CE6DD0601453B9E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9B7D68598C0B7A4DAA810F5B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -469,7 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */,
-				A534B7CC1D4BE44100DBCCBE /* MatchModel.swift in Sources */,
+				A534B7CC1D4BE44100DBCCBE /* Match.swift in Sources */,
 				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
 				A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */,
 				A5A78A081D7238520088D983 /* RadioButton.swift in Sources */,
@@ -628,7 +612,7 @@
 		};
 		A5AA9D731D4BCE0300B51652 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7FAEE6B120811F83EB02C6B /* Pods-CornerJudgeTrainer.debug.xcconfig */;
+			baseConfigurationReference = AC35276D214616801430A862 /* Pods-CornerJudgeTrainer.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -644,7 +628,7 @@
 		};
 		A5AA9D741D4BCE0300B51652 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33A4682668849D348E2EC202 /* Pods-CornerJudgeTrainer.release.xcconfig */;
+			baseConfigurationReference = B131864CCC90BBDFB4D6461C /* Pods-CornerJudgeTrainer.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
