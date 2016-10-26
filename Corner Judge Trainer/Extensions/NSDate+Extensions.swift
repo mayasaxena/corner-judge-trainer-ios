@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
     
-    convenience init(dateString: String) {
-        let dateStringFormatter = NSDateFormatter()
+    init(dateString: String) {
+        let dateStringFormatter = DateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let date = dateStringFormatter.dateFromString(dateString)!
-        self.init(timeInterval: 0, sinceDate: date)
+        dateStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let date = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval: 0, since: date)
     }
 }

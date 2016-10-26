@@ -28,10 +28,10 @@ public final class NewMatchViewController: UIViewController {
         super.viewDidLoad()
         var i = 0
         for radioButton in radioButtons {
-            radioButton.rx_selected <- viewModel.radioButtonsSelected[i] >>> disposeBag
-            
-            radioButton.rx_tap.subscribeNext { button in
-                guard let index = self.radioButtons.indexOf(radioButton) else { return }
+            radioButton.rx.selected <- viewModel.radioButtonsSelected[i] >>> disposeBag
+
+            radioButton.rx.tap.subscribe { button in
+                guard let index = self.radioButtons.index(of: radioButton) else { return }
                 self.viewModel.setRadioButtonSelected(atIndex: index)
             } >>> disposeBag
             
@@ -39,23 +39,23 @@ public final class NewMatchViewController: UIViewController {
         }
     }
     
-    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
-    @IBAction func newMatchTapped(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Add Players?", message: "", preferredStyle: .Alert)
+    @IBAction func newMatchTapped(_ sender: AnyObject) {
+        let alertController = UIAlertController(title: "Add Players?", message: "", preferredStyle: .alert)
         
-        let addAction = UIAlertAction(title: "Add", style: .Destructive) { _ in
-            self.performSegueWithIdentifier(Constants.AddPlayersSegueIdentifier, sender: self)
+        let addAction = UIAlertAction(title: "Add", style: .destructive) { _ in
+            self.performSegue(withIdentifier: Constants.AddPlayersSegueIdentifier, sender: self)
         }
         alertController.addAction(addAction)
         
-        let cancelAction = UIAlertAction(title: "No, add later", style: .Cancel) { _ in
-            self.performSegueWithIdentifier(Constants.MatchSegueIdentifier, sender: self)
+        let cancelAction = UIAlertAction(title: "No, add later", style: .cancel) { _ in
+            self.performSegue(withIdentifier: Constants.MatchSegueIdentifier, sender: self)
         }
         alertController.addAction(cancelAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }

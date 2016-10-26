@@ -14,15 +14,15 @@ public typealias Block = () -> ()
 @IBDesignable final class RoundedButton: UIButton {
     
     enum ColorStyle: Int {
-        case Transparent = 0,
-        White,
-        Red,
-        Blue
+        case transparent = 0,
+        white,
+        red,
+        blue
     }
     
     @IBInspectable var colorStyleRaw: Int = 0 {
         didSet {
-            colorStyle = ColorStyle(rawValue: colorStyleRaw) ?? .White
+            colorStyle = ColorStyle(rawValue: colorStyleRaw) ?? .white
         }
     }
     
@@ -33,17 +33,17 @@ public typealias Block = () -> ()
         }
     }
     
-    var colorStyle: ColorStyle = .White {
+    var colorStyle: ColorStyle = .white {
         didSet {
             updateStyle()
         }
     }
     
     init(style: ColorStyle, title: String, action: Block) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         colorStyle = style
         setup()
-        setTitle(title, forState: .Normal)
+        setTitle(title, for: UIControlState())
     }
     
     override init(frame: CGRect) {
@@ -56,11 +56,11 @@ public typealias Block = () -> ()
         setup()
     }
     
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return CAGradientLayer.self
     }
     
-    private func setup() {
+    fileprivate func setup() {
         layer.cornerRadius = radius
         titleLabel?.adjustsFontSizeToFitWidth = true
         updateStyle()
@@ -68,13 +68,13 @@ public typealias Block = () -> ()
     
     func updateStyle() {
         switch colorStyle {
-        case .White:
+        case .white:
             setupWhiteBackground()
-        case .Transparent:
+        case .transparent:
             setupTransparentBackground()
-        case .Red:
+        case .red:
             setupRedBackground()
-        case .Blue:
+        case .blue:
             setupBlueBackground()
         }
     }
@@ -82,26 +82,26 @@ public typealias Block = () -> ()
     private func setupWhiteBackground() {
         backgroundColor = UIColor.flatWhiteColor()
         tintColor = UIColor.flatBlackColor()
-        setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
+        setTitleColor(UIColor.flatWhiteColor(), for: UIControlState())
     }
     
     private func setupTransparentBackground() {
         backgroundColor = nil
         tintColor = UIColor.flatWhiteColor()
-        setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
-        layer.borderColor = UIColor.flatWhiteColor().CGColor
+        setTitleColor(UIColor.flatWhiteColor(), for: UIControlState())
+        layer.borderColor = UIColor.flatWhiteColor().cgColor
         layer.borderWidth = 1.0
     }
     
     private func setupRedBackground() {
         backgroundColor = UIColor.flatRedColor()
         tintColor = UIColor.flatWhiteColor()
-        setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        setTitleColor(UIColor.white, for: UIControlState())
     }
     
     private func setupBlueBackground() {
         backgroundColor = UIColor.flatBlueColor()
         tintColor = UIColor.flatWhiteColor()
-        setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        setTitleColor(UIColor.white, for: UIControlState())
     }
 }

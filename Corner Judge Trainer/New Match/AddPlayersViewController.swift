@@ -34,32 +34,31 @@ public final class AddPlayersViewController: UIViewController {
             viewModel = MatchViewModel()
         }
         
-        redPlayerTextField.rx_text <-> viewModel.redPlayerName >>> disposeBag
-        bluePlayerTextField.rx_text <-> viewModel.bluePlayerName >>> disposeBag
+        redPlayerTextField.rx.textInput.text <-> viewModel.redPlayerName >>> disposeBag
+        bluePlayerTextField.rx.textInput.text <-> viewModel.bluePlayerName >>> disposeBag
         
-        startNewMatchButton.rx_tap.subscribeNext { _ in
+        startNewMatchButton.rx.tap.subscribe(onNext: { _ in
             self.transitionToMatchViewController()
-        } >>> disposeBag
+        }) >>> disposeBag
         
         let tapGestureRecognizer = UITapGestureRecognizer()
         view.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.rx_event.subscribeNext { _ in
+        tapGestureRecognizer.rx.event.subscribe(onNext: { _ in
             self.view.endEditing(true)
-        } >>> disposeBag
+        }) >>> disposeBag
     }
     
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.MatchSegueIdentifier {
-            (segue.destinationViewController as? MatchViewController)?.viewModel = viewModel
+            (segue.destination as? MatchViewController)?.viewModel = viewModel
         }
     }
     
     func transitionToMatchViewController() {
-        UIDevice.currentDevice().performSelector(Selector("setOrientation:"),
-                                                 withObject: UIInterfaceOrientation.LandscapeLeft.rawValue)
+        UIDevice.current.perform(#selector(setter: UIPrintInfo.orientation),
+                                                 with: UIInterfaceOrientation.landscapeLeft.rawValue)
         After(1.5) {
-            self.performSegueWithIdentifier(Constants.MatchSegueIdentifier, sender: self)
+            self.performSegue(withIdentifier: Constants.MatchSegueIdentifier, sender: self)
         }
-        
     }
 }

@@ -9,68 +9,79 @@
 import Foundation
 import RxSwift
 import Intrepid
+import Starscream
 
-
-public final class MatchViewModel {
-    private let model = MatchModel.sharedModel
+public final class MatchViewModel: WebSocketDelegate {
+    private let model = Match.current
     private let disposeBag = DisposeBag()
+
+    private var webSocket: WebSocket
     
-    // Display match
-    let redScoreText: Variable<String>
+    let redScoreText: Variable<String?>
     let blueScoreText: Variable<String>
     
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
-    
+
     let matchInfoViewHidden = Variable(false)
     
-    let timerLabelTextColor = Variable(UIColor.whiteColor())
+    let timerLabelTextColor = Variable(UIColor.white)
     let timerLabelText = Variable("0:00")
     
     let penaltyButtonsVisible = Variable(true)
     let disablingViewVisible = Variable(true)
+
+    private var timeRemaining = TimeInterval()
+    private var endTime = Date()
+    private var timer = Timer()
+
+    let matchHasEnded = Variable(false)
+    private var matchEnded = false {
+        didSet {
+            matchHasEnded.value = matchEnded
+        }
+    }
     
-    private var timeRemaining = NSTimeInterval()
-    private var endTime = NSDate()
-    private var timer = NSTimer()
-    private var matchEnded = false
-    
-    private var isRestRound = false
     let roundLabelHidden = Variable(false)
     let roundLabelText = Variable("R1")
-    
+    private var isRestRound = false
+
     init() {
         redScoreText = Variable(model.redScore.formattedString)
         blueScoreText = Variable(model.blueScore.formattedString)
         
         redPlayerName = Variable(model.redPlayer.displayName)
         bluePlayerName = Variable(model.bluePlayer.displayName)
-        
+
+        webSocket = WebSocket(url: URL(string: "ws://localhost:8080/match/10/")!)
+        webSocket.delegate = self
+        webSocket.connect()
+
         setupNameUpdates()
-        
+
         resetTimer(model.matchType.roundDuration)
-        
-        matchInfoViewHidden.value = model.matchType == .None
+
+        matchInfoViewHidden.value = model.matchType == .none
     }
     
     private func setupNameUpdates() {
-        redPlayerName.asObservable().subscribeNext {
+        redPlayerName.asObservable().subscribe(onNext: {
             self.model.redPlayer.name = $0
-        } >>> disposeBag
+        }) >>> disposeBag
         
-        bluePlayerName.asObservable().subscribeNext {
+        bluePlayerName.asObservable().subscribe(onNext: {
             self.model.bluePlayer.name = $0
-        } >>> disposeBag
+        }) >>> disposeBag
     }
     
-    private func resetTimer(time: NSTimeInterval) {
+    private func resetTimer(_ time: TimeInterval) {
         timeRemaining = time
         timerLabelText.value = timeRemaining.formattedTimeString
     }
     
     private func startTimer() {
-        endTime = NSDate().dateByAddingTimeInterval(timeRemaining)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        endTime = Date().addingTimeInterval(timeRemaining)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     dynamic func updateTime() {
@@ -85,7 +96,7 @@ public final class MatchViewModel {
     }
     
     private func endRound() {
-        var roundTime: NSTimeInterval
+        var roundTime: TimeInterval
         
         if isRestRound { // set to normal round
             roundTime = model.matchType.roundDuration
@@ -104,7 +115,7 @@ public final class MatchViewModel {
     }
     
     private func setupNormalRound() {
-        timerLabelTextColor.value = UIColor.whiteColor()
+        timerLabelTextColor.value = UIColor.white
         isRestRound = false
         disablingViewVisible.value = false
         roundLabelHidden.value = true
@@ -113,7 +124,7 @@ public final class MatchViewModel {
     }
     
     private func setupRestRound() {
-        timerLabelTextColor.value = UIColor.yellowColor()
+        timerLabelTextColor.value = UIColor.yellow
         isRestRound = true
         disablingViewVisible.value = true
         roundLabelHidden.value = false
@@ -130,7 +141,7 @@ public final class MatchViewModel {
     
     public func handleMatchInfoViewTapped() {
         guard !matchEnded else { return }
-        if timer.valid {
+        if timer.isValid {
             pauseTimer()
             penaltyButtonsVisible.value = true
             roundLabelHidden.value = false
@@ -147,19 +158,58 @@ public final class MatchViewModel {
     }
     
     public func pauseTimer() {
-        if timer.valid {
+        if timer.isValid {
             timer.invalidate()
         }
     }
-    
-    public func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
-        model.playerScored(playerColor, scoringEvent: scoringEvent)
-        // Update view model with model's new values
+
+    // MARK: - View Handlers
+
+    public func handleScoringAreaTapped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .head)
+    }
+
+    public func handleScoringAreaSwiped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .body)
+    }
+
+    public func handleTechnicalButtonTapped(color: PlayerColor) {
+        playerScored(playerColor: color, scoringEvent: .technical)
+    }
+
+    public func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent) {
+        playerScored(playerColor: color, scoringEvent: penalty)
+    }
+
+    private func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
+        model.updateScore(playerColor: playerColor, scoringEvent: scoringEvent)
+
+
+
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString
+
         if model.winningPlayer != nil {
             endMatch()
         }
+    }
+
+    // MARK: - WebSocketDelegate
+
+    public func websocketDidConnect(socket: WebSocket) {
+        print("connected")
+        socket.write(string: "{\"judge\":\"iOS\"}")
+    }
+
+    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    }
+
+    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print(text)
+    }
+
+    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print(data)
     }
 }
 
@@ -169,8 +219,8 @@ extension Double {
     }
 }
 
-extension NSTimeInterval {
+extension TimeInterval {
     var formattedTimeString: String {
-        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self % 60)))
+        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self.truncatingRemainder(dividingBy: 60))))
     }
 }
