@@ -75,7 +75,7 @@ public enum MatchType: Int {
 
 public class Match {
     struct Constants {
-        static let MatchIDLength = 6
+        static let MatchIDLength = 3
         static let MaxScore = 99.0
         static let RestTime = 30.0
         static let PointGapValue = 12.0
@@ -191,7 +191,7 @@ extension String {
     
     static func random(_ length: Int = 20) -> String {
         
-        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let base = "0123456789"
         var randomString: String = ""
         
         for _ in 0..<length {

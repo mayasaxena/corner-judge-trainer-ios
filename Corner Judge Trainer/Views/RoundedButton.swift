@@ -80,28 +80,28 @@ public typealias Block = () -> ()
     }
     
     private func setupWhiteBackground() {
-        backgroundColor = UIColor.flatWhiteColor()
-        tintColor = UIColor.flatBlackColor()
-        setTitleColor(UIColor.flatWhiteColor(), for: UIControlState())
+        backgroundColor = UIColor.flatWhite
+        tintColor = UIColor.flatBlack
+        setTitleColor(UIColor.flatWhite, for: UIControlState())
     }
     
     private func setupTransparentBackground() {
         backgroundColor = nil
-        tintColor = UIColor.flatWhiteColor()
-        setTitleColor(UIColor.flatWhiteColor(), for: UIControlState())
-        layer.borderColor = UIColor.flatWhiteColor().cgColor
+        tintColor = UIColor.flatWhite
+        setTitleColor(UIColor.flatWhite, for: UIControlState())
+        layer.borderColor = UIColor.flatWhite.cgColor
         layer.borderWidth = 1.0
     }
     
     private func setupRedBackground() {
-        backgroundColor = UIColor.flatRedColor()
-        tintColor = UIColor.flatWhiteColor()
+        backgroundColor = UIColor.flatRed
+        tintColor = UIColor.flatWhite
         setTitleColor(UIColor.white, for: UIControlState())
     }
     
     private func setupBlueBackground() {
-        backgroundColor = UIColor.flatBlueColor()
-        tintColor = UIColor.flatWhiteColor()
-        setTitleColor(UIColor.white, for: UIControlState())
+        backgroundColor = UIColor.flatBlue
+        tintColor = UIColor.flatWhite
+        setTitleColor(UIColor.flatWhite, for: UIControlState())
     }
 }

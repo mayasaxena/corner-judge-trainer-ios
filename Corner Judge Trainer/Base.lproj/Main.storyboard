@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zkm-UU-olm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -16,6 +19,164 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Join Match View Controller-->
+        <scene sceneID="G9i-33-GTB">
+            <objects>
+                <viewController id="Zkm-UU-olm" customClass="JoinMatchViewController" customModule="Corner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uF4-Zw-KGa"/>
+                        <viewControllerLayoutGuide type="bottom" id="crH-6T-2RE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="67N-yW-EMo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-qj-mBf">
+                                <rect key="frame" x="0.0" y="133" width="375" height="534"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.24313725490196078" green="0.24313725490196078" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="JoinMatchTableViewCell" id="gSn-hz-ZJe" customClass="JoinMatchTableViewCell" customModule="Corner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSn-hz-ZJe" id="lSJ-S7-DsF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallRed" translatesAutoresizingMaskIntoConstraints="NO" id="4dT-Ns-rQU">
+                                                    <rect key="frame" x="29" y="29" width="60" height="60"/>
+                                                </imageView>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallBlue" translatesAutoresizingMaskIntoConstraints="NO" id="ge5-Mz-l1m">
+                                                    <rect key="frame" x="286" y="29" width="60" height="60"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDPLAYER L." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RU-31-VKa">
+                                                    <rect key="frame" x="8" y="94" width="102" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="Ake-Oq-BC0"/>
+                                                        <constraint firstAttribute="width" constant="102" id="Scx-jj-nC4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
+                                                    <color key="textColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="BLUE PLAYER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZR-j4-p2i">
+                                                    <rect key="frame" x="265" y="94" width="102" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="102" id="cOI-RU-e4J"/>
+                                                        <constraint firstAttribute="height" constant="14" id="nY5-b4-QTZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
+                                                    <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-st-7pq" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                                    <rect key="frame" x="127.5" y="34" width="120" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="8hp-uV-woZ"/>
+                                                        <constraint firstAttribute="width" constant="120" id="ujS-cO-kYg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
+                                                    <state key="normal" title="JOIN"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH ###" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zw-Oa-aHc">
+                                                    <rect key="frame" x="163.5" y="97.5" width="49" height="10.5"/>
+                                                    <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="9"/>
+                                                    <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="4dT-Ns-rQU" firstAttribute="top" secondItem="lSJ-S7-DsF" secondAttribute="top" constant="29" id="1FK-28-TMU"/>
+                                                <constraint firstItem="1ZR-j4-p2i" firstAttribute="centerX" secondItem="ge5-Mz-l1m" secondAttribute="centerX" id="GXC-vz-Fo6"/>
+                                                <constraint firstItem="5Zw-Oa-aHc" firstAttribute="bottom" secondItem="9RU-31-VKa" secondAttribute="bottom" id="IFI-d3-aGo"/>
+                                                <constraint firstItem="9RU-31-VKa" firstAttribute="top" secondItem="4dT-Ns-rQU" secondAttribute="bottom" constant="5" id="JUv-qP-cJC"/>
+                                                <constraint firstItem="1ZR-j4-p2i" firstAttribute="top" secondItem="ge5-Mz-l1m" secondAttribute="bottom" constant="5" id="LDS-ye-ZVl"/>
+                                                <constraint firstAttribute="trailing" secondItem="ge5-Mz-l1m" secondAttribute="trailing" constant="29" id="Mu2-2m-8lv"/>
+                                                <constraint firstItem="eaK-st-7pq" firstAttribute="centerX" secondItem="lSJ-S7-DsF" secondAttribute="centerX" id="a3H-47-ZAT"/>
+                                                <constraint firstItem="9RU-31-VKa" firstAttribute="leading" secondItem="lSJ-S7-DsF" secondAttribute="leading" constant="8" id="atS-t5-rfO"/>
+                                                <constraint firstItem="9RU-31-VKa" firstAttribute="centerX" secondItem="4dT-Ns-rQU" secondAttribute="centerX" id="bcv-7Y-IBV"/>
+                                                <constraint firstItem="4dT-Ns-rQU" firstAttribute="centerY" secondItem="eaK-st-7pq" secondAttribute="centerY" id="iWN-dU-P1t"/>
+                                                <constraint firstAttribute="trailing" secondItem="1ZR-j4-p2i" secondAttribute="trailing" constant="8" id="lFL-ju-3mw"/>
+                                                <constraint firstItem="ge5-Mz-l1m" firstAttribute="top" secondItem="lSJ-S7-DsF" secondAttribute="top" constant="29" id="uhb-2t-Ifd"/>
+                                                <constraint firstItem="4dT-Ns-rQU" firstAttribute="leading" secondItem="lSJ-S7-DsF" secondAttribute="leading" constant="29" id="y2F-Eg-3Xd"/>
+                                                <constraint firstItem="5Zw-Oa-aHc" firstAttribute="centerX" secondItem="eaK-st-7pq" secondAttribute="centerX" id="ySk-vJ-ghP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="bluePlayerNameLabel" destination="1ZR-j4-p2i" id="3oD-qf-VSh"/>
+                                            <outlet property="matchNumberLabel" destination="5Zw-Oa-aHc" id="53v-bq-htA"/>
+                                            <outlet property="redPlayerNameLabel" destination="9RU-31-VKa" id="htQ-Mz-YP1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Zkm-UU-olm" id="kTB-RR-yYV"/>
+                                    <outlet property="delegate" destination="Zkm-UU-olm" id="5ID-WW-V4b"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN A MATCH" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d72-6I-IuB">
+                                <rect key="frame" x="106" y="70" width="163.5" height="28"/>
+                                <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="24"/>
+                                <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a99-eK-6dh">
+                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oY-ha-Vvx" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                        <rect key="frame" x="47" y="35" width="281" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="R75-4Y-mI2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
+                                        <state key="normal" title="CREATE NEW MATCH"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showNewMatch" id="1ub-w6-YmI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8oY-ha-Vvx" firstAttribute="width" secondItem="a99-eK-6dh" secondAttribute="width" multiplier="0.75" id="8nl-MX-G37"/>
+                                    <constraint firstItem="8oY-ha-Vvx" firstAttribute="centerX" secondItem="a99-eK-6dh" secondAttribute="centerX" id="POW-fN-cPY"/>
+                                    <constraint firstItem="8oY-ha-Vvx" firstAttribute="centerY" secondItem="a99-eK-6dh" secondAttribute="centerY" id="Q6t-sg-Uur"/>
+                                    <constraint firstAttribute="height" constant="120" id="s8I-ml-FVm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15291979908943176" green="0.15295344591140747" blue="0.15291768312454224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="d72-6I-IuB" firstAttribute="centerX" secondItem="67N-yW-EMo" secondAttribute="centerX" id="EyQ-Rf-j0A"/>
+                            <constraint firstAttribute="trailing" secondItem="a99-eK-6dh" secondAttribute="trailing" id="HVq-JQ-kZ6"/>
+                            <constraint firstItem="UVf-qj-mBf" firstAttribute="leading" secondItem="67N-yW-EMo" secondAttribute="leading" id="QaL-4K-GkC"/>
+                            <constraint firstItem="d72-6I-IuB" firstAttribute="top" secondItem="uF4-Zw-KGa" secondAttribute="bottom" constant="50" id="RQ2-Nl-5Kk"/>
+                            <constraint firstItem="crH-6T-2RE" firstAttribute="top" secondItem="UVf-qj-mBf" secondAttribute="bottom" id="fIO-mp-veA"/>
+                            <constraint firstItem="crH-6T-2RE" firstAttribute="top" secondItem="a99-eK-6dh" secondAttribute="bottom" id="hAT-Nx-Wg2"/>
+                            <constraint firstItem="UVf-qj-mBf" firstAttribute="top" secondItem="d72-6I-IuB" secondAttribute="bottom" constant="35" id="t3e-QO-cbV"/>
+                            <constraint firstItem="a99-eK-6dh" firstAttribute="leading" secondItem="67N-yW-EMo" secondAttribute="leading" id="vPS-aZ-zCp"/>
+                            <constraint firstAttribute="trailing" secondItem="UVf-qj-mBf" secondAttribute="trailing" id="xRM-jr-epD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="UVf-qj-mBf" id="YP4-fH-pjI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omv-Rp-mn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="888"/>
+        </scene>
         <!--New Match View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -25,10 +186,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT MATCH TYPE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-i6-hfY">
+                                <rect key="frame" x="115" y="70" width="145" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="DUr-mL-qny"/>
                                 </constraints>
@@ -37,46 +199,56 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgE-Hw-7hI">
+                                <rect key="frame" x="84.5" y="166.5" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZU-BE-sdS" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="244" y="161" width="32" height="32"/>
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJr-Nl-JzG">
+                                <rect key="frame" x="84.5" y="227.5" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n68-ac-WAW" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="244" y="222" width="32" height="32"/>
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C TEAM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42g-in-hQg">
+                                <rect key="frame" x="85" y="288.5" width="61" height="21"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-by-4uf" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="244" y="283" width="32" height="32"/>
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CUSTOM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9h-KS-DQR">
+                                <rect key="frame" x="75" y="349.5" width="71" height="21"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-RK-T6s" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="244" y="344" width="32" height="32"/>
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgl-8g-dlI" customClass="RadioButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="244" y="405" width="32" height="32"/>
                                 <state key="normal" image="radioButton"/>
                                 <state key="selected" image="radioButtonSelected"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Nv-dje" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="577" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="B8V-88-S3y"/>
                                     <constraint firstAttribute="height" constant="50" id="hn9-qV-6D3"/>
@@ -95,6 +267,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NONE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-TA-1iL">
+                                <rect key="frame" x="96.5" y="410.5" width="49.5" height="21"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -154,17 +327,20 @@
                         <viewControllerLayoutGuide type="bottom" id="o5w-cp-Z0d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OLq-6z-fmI">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-V7-YZ2">
+                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-S9-L8W">
+                                        <rect key="frame" x="40.5" y="242.5" width="107" height="182.5"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-jl-ID8">
+                                        <rect key="frame" x="122.5" y="602" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tph-jl-ID8" secondAttribute="height" multiplier="1:1" id="IoG-ql-8PR"/>
@@ -172,6 +348,7 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-WB-bsH">
+                                        <rect key="frame" x="73.5" y="622" width="41" height="20"/>
                                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -190,13 +367,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-RH-4Vy">
+                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-NB-Hih">
+                                        <rect key="frame" x="40.5" y="242.5" width="107" height="182.5"/>
                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-NF-7wk">
+                                        <rect key="frame" x="5" y="602" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.15294118225574493" green="0.15294118225574493" blue="0.15294118225574493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xl6-NF-7wk" secondAttribute="height" multiplier="1:1" id="FMl-YK-f4z"/>
@@ -204,6 +384,7 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-ZG-aYe">
+                                        <rect key="frame" x="73.5" y="622" width="41" height="20"/>
                                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -221,14 +402,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCO-hR-2eE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-iE-g9R">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the timer to start and pause the match" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzO-Hs-cqU">
+                                        <rect key="frame" x="122.5" y="305.5" width="130" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="RdF-gR-mxJ"/>
                                         </constraints>
@@ -237,8 +421,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkv-Qd-3OT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9i-It-Jht" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                                <rect key="frame" x="19" y="142" width="150" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="6uL-uA-XGm"/>
                                                     <constraint firstAttribute="height" constant="50" id="hTR-K3-HKb"/>
@@ -254,6 +440,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-Ly-lBc" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                                <rect key="frame" x="19" y="492" width="150" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="B0A-zm-Or1"/>
                                                     <constraint firstAttribute="height" constant="50" id="IXe-Ln-hFx"/>
@@ -267,6 +454,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C75-Xj-Zh9" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                                <rect key="frame" x="206.5" y="142" width="150" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="AVq-7X-Ja5"/>
                                                     <constraint firstAttribute="height" constant="50" id="G31-Xe-QpV"/>
@@ -280,6 +468,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-rp-79h" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                                <rect key="frame" x="206.5" y="492" width="150" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Tgs-Py-zWl"/>
                                                     <constraint firstAttribute="width" constant="150" id="bVP-o0-UD4"/>
@@ -320,13 +509,16 @@
                                 </constraints>
                             </view>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-d3-MXs">
+                                <rect key="frame" x="112.5" y="0.0" width="150" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-i2-glL">
+                                        <rect key="frame" x="27" y="46.5" width="97" height="58.5"/>
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
                                         <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq2-A4-bw8">
+                                        <rect key="frame" x="57.5" y="10" width="35.5" height="35"/>
                                         <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="30"/>
                                         <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -401,36 +593,42 @@
                         <viewControllerLayoutGuide type="bottom" id="TXB-Oo-Zqn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6wf-H0-6jc">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconRed" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-Md-zVS">
+                                <rect key="frame" x="142" y="168" width="91" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dBz-Md-zVS" secondAttribute="height" multiplier="91:131" id="7XO-WF-T9s"/>
                                     <constraint firstAttribute="height" constant="131" id="T4B-qo-75x"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Red player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-PS-5EJ">
+                                <rect key="frame" x="107" y="218.5" width="161.5" height="30"/>
                                 <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="VS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daw-vJ-FxM">
+                                <rect key="frame" x="178.5" y="323.5" width="18.5" height="20"/>
                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                 <color key="textColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hoguIconBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Fql-Gx-ut0">
+                                <rect key="frame" x="142" y="368" width="91" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="131" id="18f-Uw-hIt"/>
                                     <constraint firstAttribute="width" secondItem="Fql-Gx-ut0" secondAttribute="height" multiplier="91:131" id="gA6-kq-ybx"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Blue player name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-qZ-H5I">
+                                <rect key="frame" x="105.5" y="418.5" width="164.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsI-Gk-shb" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="587" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Ya-UB-Eoe"/>
                                     <constraint firstAttribute="width" constant="200" id="jJb-eh-kfD"/>
@@ -508,6 +706,8 @@
     <resources>
         <image name="hoguIconBlue" width="189" height="273"/>
         <image name="hoguIconRed" width="189" height="273"/>
+        <image name="hoguIconSmallBlue" width="60" height="60"/>
+        <image name="hoguIconSmallRed" width="60" height="60"/>
         <image name="radioButton" width="32" height="32"/>
         <image name="radioButtonSelected" width="32" height="32"/>
     </resources>

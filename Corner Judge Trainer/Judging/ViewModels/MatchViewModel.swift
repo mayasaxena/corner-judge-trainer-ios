@@ -132,7 +132,7 @@ public final class MatchViewModel: WebSocketDelegate {
     }
 
     private func endMatch() {
-        print(model.winningPlayer?.name)
+        print(model.winningPlayer?.name ?? "No winning player")
         pauseTimer()
         disablingViewVisible.value = true
         matchEnded = true
