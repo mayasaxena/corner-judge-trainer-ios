@@ -99,6 +99,7 @@ public final class MatchViewController: UIViewController {
             self?.viewModel.handleMatchInfoViewTapped()
         }) >>> disposeBag
 
+        // TODO: Bind
         viewModel.timerLabelTextColor.asObservable().subscribe(onNext: { [weak self] in
             self?.timerLabel.textColor = $0
         }) >>> disposeBag
