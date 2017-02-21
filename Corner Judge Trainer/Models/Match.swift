@@ -2,151 +2,91 @@
 //  Match.swift
 //  CornerJudgeTrainer
 //
-//  Created by Maya Saxena on 7/29/16.
-//  Copyright © 2016 Maya Saxena. All rights reserved.
+//  Created by Maya Saxena on 2/21/17.
+//  Copyright © 2017 Maya Saxena. All rights reserved.
 //
 
 import Foundation
+import Genome
 
 public final class Match {
 
     private struct Constants {
         static let matchIDLength = 3
         static let maxScore = 99.0
-        static let restTime = 30.0
-        static let pointGapValue = 12.0
-        static let penaltyMax = 5.0
     }
 
-    let id = Int.random(3)
-    var matchType: MatchType
+    public let id: Int
+    public let date = Date()
 
-    var isWon: Bool {
-        return winningPlayer != nil
-    }
-
-    var restTimeInterval: TimeInterval {
-        return TimeInterval(Constants.restTime)
-    }
-
-    var round: Int = 1 {
+    public var redScore: Double = 0 {
         didSet {
-            round = min(round, matchType.roundCount)
+            redScore = min(redScore, Constants.maxScore)
         }
     }
 
-    fileprivate let date = Date()
+    public var redPenalties: Double = 0 {
+        didSet {
+            redPenalties = min(redPenalties, ruleSet.maxPenalties)
+        }
+    }
+
+    public var blueScore: Double = 0 {
+        didSet {
+            blueScore = min(blueScore, Constants.maxScore)
+        }
+    }
+
+    public var bluePenalties: Double = 0 {
+        didSet {
+            bluePenalties = min(bluePenalties, ruleSet.maxPenalties)
+        }
+    }
+
+    public var winningPlayer: Player?
+
+    fileprivate(set) var type: MatchType
+    fileprivate(set) var ruleSet = RuleSet.ectc
 
     fileprivate(set) var redPlayer: Player
     fileprivate(set) var bluePlayer: Player
 
-    fileprivate(set) var winningPlayer: Player?
+    public init(
+        id: Int = Int.random(3),
+        redPlayer: Player = Player(color: .red),
+        bluePlayer: Player = Player(color: .blue),
+        type: MatchType = .none
+    ) {
 
-    fileprivate(set) var redScore: Double = 0 {
-        didSet {
-            redScore = min(Constants.maxScore, redScore)
-        }
-    }
-
-    fileprivate(set) var redPenalties: Double = 0 {
-        didSet {
-            redPenalties = min(redPenalties, 5.0)
-        }
-    }
-
-    fileprivate(set) var blueScore: Double = 0 {
-        didSet {
-            blueScore = min(Constants.maxScore, blueScore)
-        }
-    }
-
-    fileprivate(set) var bluePenalties: Double = 0 {
-        didSet {
-            bluePenalties = min(bluePenalties, 5.0)
-        }
-    }
-
-    convenience init() {
-        self.init(redPlayer: Player(color: .red), bluePlayer: Player(color: .blue), type: .none)
-    }
-
-    convenience init(type: MatchType) {
-        self.init(redPlayer: Player(color: .red), bluePlayer: Player(color: .blue), type: type)
-    }
-
-    init(redPlayer: Player, bluePlayer: Player, type: MatchType) {
+        self.id = id
         self.redPlayer = redPlayer
         self.bluePlayer = bluePlayer
-
-        matchType = type
+        self.type = type
     }
 
-    func add(redPlayerName: String?, bluePlayerName: String?) {
+    public func add(redPlayerName: String?, bluePlayerName: String?) {
         redPlayer.name = redPlayerName ?? redPlayer.name
         bluePlayer.name = bluePlayerName ?? bluePlayer.name
     }
 
-    func updateScore(scoringEvent: ScoringEvent) {
-        guard winningPlayer == nil else { return }
-
-        var playerScore = 0.0
-        var playerPenalties = 0.0
-
-        switch scoringEvent.category {
-
-        case .head:
-            playerScore = 3
-
-        case .body:
-            playerScore = 1
-
-        case .technical:
-            playerScore = 1
-
-        case .kyongGo:
-            playerPenalties = 0.5
-
-        case .gamJeom:
-            playerPenalties = 1
-        }
-
-        if scoringEvent.color == .blue {
-            blueScore += playerScore
-            bluePenalties += playerPenalties
-            redScore += playerPenalties
+    public func determineWinner() {
+        if redScore == blueScore {
+            winningPlayer = nil
         } else {
-            redScore += playerScore
-            redPenalties += playerPenalties
-            blueScore += playerPenalties
+            winningPlayer = redScore > blueScore ? redPlayer : bluePlayer
         }
-
-        checkPenalties()
-        checkPointGap()
-    }
-
-    private func checkPointGap() {
-        if round > matchType.pointGapThresholdRound {
-            if redScore - blueScore >= Constants.pointGapValue {
-                winningPlayer = redPlayer
-            } else if blueScore - redScore >= Constants.pointGapValue {
-                winningPlayer = bluePlayer
-            }
-        }
-    }
-
-    private func checkPenalties() {
-        if redPenalties >= Constants.penaltyMax {
-            winningPlayer = bluePlayer
-        } else if bluePenalties >= Constants.penaltyMax {
-            winningPlayer = redPlayer
-        }
-    }
-
-    func endMatch() {
-        // TODO: Deal with ties
-        winningPlayer = redScore > blueScore ? redPlayer : bluePlayer
     }
 }
+
+extension String {
+    var parsedDate: Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d/yyy h:mm a"
+        formatter.timeZone = TimeZone.current
+        return formatter.date(from: self)
+    }
+}
+
 
 // MARK: - MatchType
 
@@ -171,52 +111,31 @@ public enum MatchType: Int {
             return "None".uppercased()
         }
     }
+}
 
-    var roundDuration: TimeInterval {
+public enum RuleSet: Int {
+    case ectc, wtf
+
+    var maxPenalties: Double {
         switch self {
-        case .aTeam:
-            return TimeInterval(2 * 60.0)
-        case .bTeam:
-            return TimeInterval(1.5 * 60.0)
-        case .cTeam:
-            return TimeInterval(1 * 60.0)
-        default:
-            return TimeInterval(10.0)
+        case .ectc:
+            return 5.0
+        case .wtf:
+            return 10.0
         }
     }
 
-    var roundCount: Int {
+    var pointGapValue: Double {
         switch self {
-        case .aTeam, .bTeam, .cTeam:
-            return 2
-        case .none:
-            return 2
-        default:
-            return 3
+        case .ectc:
+            return 12.0
+        case .wtf:
+            return 20.0
         }
-    }
-
-    var pointGapThresholdRound: Int {
-        switch self {
-        case .aTeam, .bTeam, .cTeam, .none:
-            return 0
-        default:
-            return 0
-        }
-    }
-
-    static let caseCount = MatchType.countCases()
-
-    fileprivate static func countCases() -> Int {
-        // starting at zero, verify whether the enum can be instantiated from the Int and increment until it cannot
-        var count = 0
-        while let _ = MatchType(rawValue: count) { count += 1 }
-        return count
     }
 }
 
 extension Int {
-
     static func random(_ length: Int = 3) -> Int {
         let min = 10^^(length - 1)
         let max = (10^^length) - 1
@@ -225,17 +144,9 @@ extension Int {
     }
 }
 
-extension Date {
-    var timeStampString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "M/d/yyy h:mm a"
-        formatter.timeZone = TimeZone.current
-        return formatter.string(from: self)
-    }
-}
-
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ^^ : PowerPrecedence
+
 func ^^ (radix: Int, power: Int) -> Int {
     return Int(pow(Double(radix), Double(power)))
 }

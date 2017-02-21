@@ -12,16 +12,19 @@
 		A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */; };
 		A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */; };
 		A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */; };
-		A534B7CC1D4BE44100DBCCBE /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* Match.swift */; };
 		A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */; };
 		A55C385D1E49414F007BA949 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C385C1E49414F007BA949 /* APIClient.swift */; };
 		A55C38601E4941EB007BA949 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C385F1E4941EB007BA949 /* Request.swift */; };
+		A56C1F0B1E6649610093934B /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C1F081E6649610093934B /* MatchManager.swift */; };
+		A56C1F0C1E6649610093934B /* RemoteMatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C1F091E6649610093934B /* RemoteMatchManager.swift */; };
+		A56C1F0D1E6649610093934B /* LocalMatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C1F0A1E6649610093934B /* LocalMatchManager.swift */; };
 		A570D7031E5BBEDC00393563 /* NewMatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7021E5BBEDC00393563 /* NewMatchViewController.xib */; };
 		A570D7051E5BC01C00393563 /* AddPlayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */; };
 		A570D7071E5BC69E00393563 /* MatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7061E5BC69E00393563 /* MatchViewController.xib */; };
 		A570D7091E5BCB7300393563 /* JoinMatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */; };
 		A570D70B1E5BCC8B00393563 /* CellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */; };
 		A570D70D1E5BCEB800393563 /* JoinMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */; };
+		A570D70F1E5BD24A00393563 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70E1E5BD24A00393563 /* Match.swift */; };
 		A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */; };
 		A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */; };
 		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
@@ -65,16 +68,19 @@
 		A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "New Match/NewMatchViewController.swift"; sourceTree = "<group>"; };
 		A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extensions.swift"; path = "Extensions/NSDate+Extensions.swift"; sourceTree = "<group>"; };
-		A534B7CB1D4BE44100DBCCBE /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rx+Extensions.swift"; path = "Extensions/Rx+Extensions.swift"; sourceTree = "<group>"; };
 		A55C385C1E49414F007BA949 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Networking/APIClient.swift; sourceTree = "<group>"; };
 		A55C385F1E4941EB007BA949 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Networking/Request.swift; sourceTree = "<group>"; };
+		A56C1F081E6649610093934B /* MatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchManager.swift; path = Managers/MatchManager.swift; sourceTree = "<group>"; };
+		A56C1F091E6649610093934B /* RemoteMatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteMatchManager.swift; path = Managers/RemoteMatchManager.swift; sourceTree = "<group>"; };
+		A56C1F0A1E6649610093934B /* LocalMatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalMatchManager.swift; path = Managers/LocalMatchManager.swift; sourceTree = "<group>"; };
 		A570D7021E5BBEDC00393563 /* NewMatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewMatchViewController.xib; path = "New Match/NewMatchViewController.xib"; sourceTree = "<group>"; };
 		A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPlayersViewController.xib; path = "New Match/AddPlayersViewController.xib"; sourceTree = "<group>"; };
 		A570D7061E5BC69E00393563 /* MatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MatchViewController.xib; path = Judging/MatchViewController.xib; sourceTree = "<group>"; };
 		A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinMatchViewController.xib; path = "Join Match/JoinMatchViewController.xib"; sourceTree = "<group>"; };
 		A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRepresentable.swift; sourceTree = "<group>"; };
 		A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinMatchTableViewCell.xib; path = "Join Match/JoinMatchTableViewCell.xib"; sourceTree = "<group>"; };
+		A570D70E1E5BD24A00393563 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewController.swift; path = "Join Match/JoinMatchViewController.swift"; sourceTree = "<group>"; };
 		A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewModel.swift; path = "Join Match/JoinMatchViewModel.swift"; sourceTree = "<group>"; };
 		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
@@ -169,7 +175,7 @@
 		A534B7CD1D4BE44600DBCCBE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A534B7CB1D4BE44100DBCCBE /* Match.swift */,
+				A570D70E1E5BD24A00393563 /* Match.swift */,
 				A5A789EF1D6E79390088D983 /* Event.swift */,
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
 			);
@@ -183,6 +189,16 @@
 				A55C385F1E4941EB007BA949 /* Request.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		A56C1F0E1E6649640093934B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A56C1F081E6649610093934B /* MatchManager.swift */,
+				A56C1F0A1E6649610093934B /* LocalMatchManager.swift */,
+				A56C1F091E6649610093934B /* RemoteMatchManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		A58DDE901DE2889200853604 /* Join Match */ = {
@@ -268,6 +284,7 @@
 				A534B7CA1D4BE35F00DBCCBE /* Extensions */,
 				A534B7CD1D4BE44600DBCCBE /* Models */,
 				A5A78A061D70E1070088D983 /* Views */,
+				A56C1F0E1E6649640093934B /* Managers */,
 				A58DDE901DE2889200853604 /* Join Match */,
 				A5E549391D4BCF35002368D2 /* New Match */,
 				A5E5493A1D4BCF3F002368D2 /* Match */,
@@ -522,9 +539,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */,
-				A534B7CC1D4BE44100DBCCBE /* Match.swift in Sources */,
 				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
 				A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */,
+				A56C1F0B1E6649610093934B /* MatchManager.swift in Sources */,
 				A5A78A081D7238520088D983 /* RadioButton.swift in Sources */,
 				A5A789F01D6E79390088D983 /* Event.swift in Sources */,
 				A55C385D1E49414F007BA949 /* APIClient.swift in Sources */,
@@ -533,6 +550,8 @@
 				A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */,
 				A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */,
 				A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */,
+				A56C1F0C1E6649610093934B /* RemoteMatchManager.swift in Sources */,
+				A56C1F0D1E6649610093934B /* LocalMatchManager.swift in Sources */,
 				A5A789EE1D6E791F0088D983 /* Player.swift in Sources */,
 				A5DFDBA71DE29CD5006BED7E /* JoinMatchTableViewCell.swift in Sources */,
 				A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */,
@@ -540,6 +559,7 @@
 				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
 				A55C38601E4941EB007BA949 /* Request.swift in Sources */,
 				A5A78A0A1D726AFF0088D983 /* NewMatchViewModel.swift in Sources */,
+				A570D70F1E5BD24A00393563 /* Match.swift in Sources */,
 				A570D70B1E5BCC8B00393563 /* CellRepresentable.swift in Sources */,
 				A534B7C21D4BDF6500DBCCBE /* MatchViewController.swift in Sources */,
 			);

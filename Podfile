@@ -11,7 +11,8 @@ target 'CornerJudgeTrainer' do
     pod 'RxCocoa'
     pod 'IQKeyboardManager', :git => 'git@github.com:IntrepidPursuits/IQKeyboardManager.git'
     pod 'Starscream', '~> 2.0.0'
-    
+    pod 'Genome', '~> 3.0'
+
 end
 
 post_install do |installer|

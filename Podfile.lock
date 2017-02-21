@@ -1,4 +1,14 @@
 PODS:
+  - Genome (3.0.2):
+    - Genome/Default (= 3.0.2)
+  - Genome/Core (3.0.2):
+    - Genome/Packages
+  - Genome/Default (3.0.2):
+    - Genome/Core
+    - Genome/Foundation
+  - Genome/Foundation (3.0.2):
+    - Genome/Core
+  - Genome/Packages (3.0.2)
   - Intrepid (0.6.6):
     - Intrepid/Core (= 0.6.6)
   - Intrepid/Core (0.6.6):
@@ -14,6 +24,7 @@ PODS:
   - Starscream (2.0.2)
 
 DEPENDENCIES:
+  - Genome (~> 3.0)
   - Intrepid
   - Intrepid/Rx
   - IQKeyboardManager (from `git@github.com:IntrepidPursuits/IQKeyboardManager.git`)
@@ -31,6 +42,7 @@ CHECKOUT OPTIONS:
     :git: git@github.com:IntrepidPursuits/IQKeyboardManager.git
 
 SPEC CHECKSUMS:
+  Genome: 44584c1e971899a5a4b20ee87faee452a5f1ac1a
   Intrepid: b5e7cba2e2ab29a03f4195bb13f2d7f9a516c2e0
   IP-UIKit-Wisdom: cd9838571e97427a0c61c05d856eaaca9afd7c1a
   IQKeyboardManager: 7d0926d5391b99b842ccc6367b849dd1975c8bf9
@@ -38,6 +50,6 @@ SPEC CHECKSUMS:
   RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
   Starscream: 6c135a34e0a6e60cedaa0b30db67a4c05cf7cd38
 
-PODFILE CHECKSUM: e94a7e3273fea223d8473a3723b38e8e7f31bf54
+PODFILE CHECKSUM: 900d017f14c09ca128cfd34693208cc37dae00c3
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
