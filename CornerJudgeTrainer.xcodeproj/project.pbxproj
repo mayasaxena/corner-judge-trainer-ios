@@ -14,10 +14,12 @@
 		A534B7C91D4BE35C00DBCCBE /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */; };
 		A534B7CC1D4BE44100DBCCBE /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7CB1D4BE44100DBCCBE /* Match.swift */; };
 		A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */; };
+		A55C385D1E49414F007BA949 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C385C1E49414F007BA949 /* APIClient.swift */; };
+		A55C38601E4941EB007BA949 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C385F1E4941EB007BA949 /* Request.swift */; };
 		A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */; };
 		A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */; };
 		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
-		A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* ScoringEvent.swift */; };
+		A5A789F01D6E79390088D983 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* Event.swift */; };
 		A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */; };
 		A5A789FD1D70CDAD0088D983 /* DroidSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5A789FB1D70CDAD0088D983 /* DroidSans-Bold.ttf */; };
 		A5A789FE1D70CDAD0088D983 /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5A789FC1D70CDAD0088D983 /* DroidSans.ttf */; };
@@ -60,10 +62,12 @@
 		A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extensions.swift"; path = "Extensions/NSDate+Extensions.swift"; sourceTree = "<group>"; };
 		A534B7CB1D4BE44100DBCCBE /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rx+Extensions.swift"; path = "Extensions/Rx+Extensions.swift"; sourceTree = "<group>"; };
+		A55C385C1E49414F007BA949 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Networking/APIClient.swift; sourceTree = "<group>"; };
+		A55C385F1E4941EB007BA949 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Networking/Request.swift; sourceTree = "<group>"; };
 		A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewController.swift; path = "Join Match/JoinMatchViewController.swift"; sourceTree = "<group>"; };
 		A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewModel.swift; path = "Join Match/JoinMatchViewModel.swift"; sourceTree = "<group>"; };
 		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
-		A5A789EF1D6E79390088D983 /* ScoringEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/ScoringEvent.swift; sourceTree = "<group>"; };
+		A5A789EF1D6E79390088D983 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Models/Event.swift; sourceTree = "<group>"; };
 		A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPlayersViewController.swift; path = "New Match/AddPlayersViewController.swift"; sourceTree = "<group>"; };
 		A5A789FB1D70CDAD0088D983 /* DroidSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DroidSans-Bold.ttf"; path = "Resources/Fonts/DroidSans-Bold.ttf"; sourceTree = "<group>"; };
 		A5A789FC1D70CDAD0088D983 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DroidSans.ttf; path = Resources/Fonts/DroidSans.ttf; sourceTree = "<group>"; };
@@ -144,9 +148,9 @@
 		A534B7CA1D4BE35F00DBCCBE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */,
 				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
 				A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */,
+				A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -155,10 +159,19 @@
 			isa = PBXGroup;
 			children = (
 				A534B7CB1D4BE44100DBCCBE /* Match.swift */,
-				A5A789EF1D6E79390088D983 /* ScoringEvent.swift */,
+				A5A789EF1D6E79390088D983 /* Event.swift */,
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		A55C385E1E494154007BA949 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A55C385C1E49414F007BA949 /* APIClient.swift */,
+				A55C385F1E4941EB007BA949 /* Request.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		A58DDE901DE2889200853604 /* Join Match */ = {
@@ -247,6 +260,7 @@
 				A5E549391D4BCF35002368D2 /* New Match */,
 				A5E5493A1D4BCF3F002368D2 /* Match */,
 				A5A789F51D70CD640088D983 /* Resources */,
+				A55C385E1E494154007BA949 /* Networking */,
 				A5AA9D511D4BCE0200B51652 /* Main.storyboard */,
 				A5AA9D541D4BCE0200B51652 /* Assets.xcassets */,
 				A5AA9D561D4BCE0200B51652 /* LaunchScreen.storyboard */,
@@ -448,7 +462,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A57EE62EEC842DA1A15F4F67 /* [CP] Copy Pods Resources */ = {
@@ -493,7 +507,8 @@
 				A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */,
 				A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */,
 				A5A78A081D7238520088D983 /* RadioButton.swift in Sources */,
-				A5A789F01D6E79390088D983 /* ScoringEvent.swift in Sources */,
+				A5A789F01D6E79390088D983 /* Event.swift in Sources */,
+				A55C385D1E49414F007BA949 /* APIClient.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
 				A5A78A031D70D13E0088D983 /* UIColor+Theme.swift in Sources */,
 				A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */,
@@ -504,6 +519,7 @@
 				A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */,
 				A5DFDBAA1DE29D90006BED7E /* JoinMatchTableViewCellViewModel.swift in Sources */,
 				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
+				A55C38601E4941EB007BA949 /* Request.swift in Sources */,
 				A5A78A0A1D726AFF0088D983 /* NewMatchViewModel.swift in Sources */,
 				A534B7C21D4BDF6500DBCCBE /* MatchViewController.swift in Sources */,
 			);

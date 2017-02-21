@@ -124,7 +124,7 @@ public final class MatchViewController: UIViewController {
         
         timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
         roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
-        matchInfoView.rx.hidden <- viewModel.matchInfoViewHidden >>> disposeBag
+        matchInfoView.rx.isHidden <- viewModel.matchInfoViewHidden >>> disposeBag
     }
     
     private func setRoundHidden(hidden: Bool) {
@@ -181,27 +181,27 @@ public final class MatchViewController: UIViewController {
     private func setupPenaltyButtons() {
         
         redKyongGoButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .red, scoringEvent: .kyongGo)
+            self?.displayConfirmationAlert(playerColor: .red, category: .kyongGo)
         }) >>> disposeBag
-        
+
         redGamJeomButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .red, scoringEvent: .gamJeom)
+            self?.displayConfirmationAlert(playerColor: .red, category: .gamJeom)
         }) >>> disposeBag
         
         blueKyongGoButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .blue, scoringEvent: .kyongGo)
+            self?.displayConfirmationAlert(playerColor: .blue, category: .kyongGo)
         }) >>> disposeBag
         
         blueGamJeomButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .blue, scoringEvent: .gamJeom)
+            self?.displayConfirmationAlert(playerColor: .blue, category: .gamJeom)
         }) >>> disposeBag
     }
     
-    private func displayConfirmationAlert(playerColor color: PlayerColor, scoringEvent: ScoringEvent) {
-        let alertController = UIAlertController(title: "Add \(scoringEvent.displayName) to \(color.displayName)?", message: "", preferredStyle: .alert)
+    private func displayConfirmationAlert(playerColor color: PlayerColor, category: ScoringEvent.Category) {
+        let alertController = UIAlertController(title: "Give \(category.displayName) to \(color.displayName)?", message: "", preferredStyle: .alert)
         
         let addAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
-            self?.viewModel.handlePenaltyConfirmed(color: color, penalty: scoringEvent)
+            self?.viewModel.handlePenaltyConfirmed(color: color, penalty: category)
         }
         alertController.addAction(addAction)
         

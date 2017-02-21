@@ -8,17 +8,11 @@
 
 import Foundation
 
-public enum PlayerColor {
-    case blue
-    case red
-    
+public enum PlayerColor: String {
+    case blue, red
+
     var displayName: String {
-        switch self {
-        case .blue:
-            return "Blue"
-        case .red:
-            return "Red"
-        }
+        return rawValue.capitalized
     }
 }
 

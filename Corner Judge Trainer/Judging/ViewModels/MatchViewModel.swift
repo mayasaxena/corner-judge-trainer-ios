@@ -11,14 +11,19 @@ import RxSwift
 import Intrepid
 import Starscream
 
-public final class MatchViewModel: WebSocketDelegate {
-    private let model = Match.current
+protocol MatchHolding {
+    var model: Match { get }
+}
+
+public final class MatchViewModel: MatchHolding, WebSocketDelegate {
+    internal let model = Match()
+
     private let disposeBag = DisposeBag()
 
     private var webSocket: WebSocket
     
     let redScoreText: Variable<String?>
-    let blueScoreText: Variable<String>
+    let blueScoreText: Variable<String?>
     
     let redPlayerName: Variable<String>
     let bluePlayerName: Variable<String>
@@ -26,7 +31,7 @@ public final class MatchViewModel: WebSocketDelegate {
     let matchInfoViewHidden = Variable(false)
     
     let timerLabelTextColor = Variable(UIColor.white)
-    let timerLabelText = Variable("0:00")
+    let timerLabelText: Variable<String?> = Variable("0:00")
     
     let penaltyButtonsVisible = Variable(true)
     let disablingViewVisible = Variable(true)
@@ -43,7 +48,7 @@ public final class MatchViewModel: WebSocketDelegate {
     }
     
     let roundLabelHidden = Variable(false)
-    let roundLabelText = Variable("R1")
+    let roundLabelText: Variable<String?> = Variable("R1")
     private var isRestRound = false
 
     init() {
@@ -65,13 +70,13 @@ public final class MatchViewModel: WebSocketDelegate {
     }
     
     private func setupNameUpdates() {
-        redPlayerName.asObservable().subscribe(onNext: {
+        redPlayerName.asObservable().subscribeNext {
             self.model.redPlayer.name = $0
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        bluePlayerName.asObservable().subscribe(onNext: {
+        bluePlayerName.asObservable().subscribeNext {
             self.model.bluePlayer.name = $0
-        }) >>> disposeBag
+        } >>> disposeBag
     }
     
     private func resetTimer(_ time: TimeInterval) {
@@ -132,6 +137,7 @@ public final class MatchViewModel: WebSocketDelegate {
     }
 
     private func endMatch() {
+        model.endMatch()
         print(model.winningPlayer?.name ?? "No winning player")
         pauseTimer()
         disablingViewVisible.value = true
@@ -166,25 +172,23 @@ public final class MatchViewModel: WebSocketDelegate {
     // MARK: - View Handlers
 
     public func handleScoringAreaTapped(color: PlayerColor) {
-        playerScored(playerColor: color, scoringEvent: .head)
+        playerScored(scoringEvent: ScoringEvent(color: color, category: .head, judgeID: "judge-iOS"))
     }
 
     public func handleScoringAreaSwiped(color: PlayerColor) {
-        playerScored(playerColor: color, scoringEvent: .body)
+        playerScored(scoringEvent: ScoringEvent(color: color, category: .body, judgeID: "judge-iOS"))
     }
 
     public func handleTechnicalButtonTapped(color: PlayerColor) {
-        playerScored(playerColor: color, scoringEvent: .technical)
+        playerScored(scoringEvent: ScoringEvent(color: color, category: .technical, judgeID: "judge-iOS"))
     }
 
-    public func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent) {
-        playerScored(playerColor: color, scoringEvent: penalty)
+    public func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent.Category) {
+        playerScored(scoringEvent: ScoringEvent(color: color, category: penalty, judgeID: "judge-iOS"))
     }
 
-    private func playerScored(playerColor: PlayerColor, scoringEvent: ScoringEvent) {
-        model.updateScore(playerColor: playerColor, scoringEvent: scoringEvent)
-
-
+    private func playerScored(scoringEvent: ScoringEvent) {
+        model.updateScore(scoringEvent: scoringEvent)
 
         redScoreText.value = model.redScore.formattedString
         blueScoreText.value = model.blueScore.formattedString

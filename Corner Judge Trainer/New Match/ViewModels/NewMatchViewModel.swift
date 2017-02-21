@@ -10,19 +10,20 @@ import RxSwift
 import Intrepid
 
 public final class NewMatchViewModel {
-    private let disposeBag = DisposeBag()
-    
-    // Create match
+    let model: Match
+
     var radioButtonsSelected: [Variable<Bool>] = []
-    
-    let model = Match.current
-    
-    init() {
+
+    private let disposeBag = DisposeBag()
+
+    init(model: Match = Match()) {
+        self.model = model
+
         for _ in 0 ..< MatchType.caseCount {
             radioButtonsSelected.append(Variable(false))
         }
         
-        setRadioButtonSelected(atIndex: model.matchType.rawValue)
+        setRadioButtonSelected(atIndex: MatchType.none.rawValue)
     }
     
     public func setRadioButtonSelected(atIndex index: Int) {

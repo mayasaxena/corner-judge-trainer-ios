@@ -1,20 +1,24 @@
 PODS:
-  - Intrepid (0.6.1):
-    - Intrepid/Core (= 0.6.1)
-  - Intrepid/Core (0.6.1):
+  - Intrepid (0.6.6):
+    - Intrepid/Core (= 0.6.6)
+  - Intrepid/Core (0.6.6):
     - IP-UIKit-Wisdom (= 0.0.9)
+  - Intrepid/Rx (0.6.6):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
   - IP-UIKit-Wisdom (0.0.9)
   - IQKeyboardManager (3.3.6)
-  - RxCocoa (3.0.0-beta.1):
-    - RxSwift (~> 3.0.0-beta.1)
-  - RxSwift (3.0.0-beta.1)
-  - Starscream (2.0.0)
+  - RxCocoa (3.1.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.1.0)
+  - Starscream (2.0.2)
 
 DEPENDENCIES:
-  - Intrepid (~> 0.6)
+  - Intrepid
+  - Intrepid/Rx
   - IQKeyboardManager (from `git@github.com:IntrepidPursuits/IQKeyboardManager.git`)
-  - RxCocoa (~> 3.0.0-beta.1)
-  - RxSwift (~> 3.0.0-beta.1)
+  - RxCocoa
+  - RxSwift
   - Starscream (~> 2.0.0)
 
 EXTERNAL SOURCES:
@@ -27,13 +31,13 @@ CHECKOUT OPTIONS:
     :git: git@github.com:IntrepidPursuits/IQKeyboardManager.git
 
 SPEC CHECKSUMS:
-  Intrepid: a9d08743b129354f3406a4bc040f16c0344f637a
+  Intrepid: b5e7cba2e2ab29a03f4195bb13f2d7f9a516c2e0
   IP-UIKit-Wisdom: cd9838571e97427a0c61c05d856eaaca9afd7c1a
   IQKeyboardManager: 7d0926d5391b99b842ccc6367b849dd1975c8bf9
-  RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
-  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
-  Starscream: 947c865596f0d6bb3f0203fee23228ed2d471468
+  RxCocoa: 50d7564866da9299161e86a263ce12a0873904d8
+  RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
+  Starscream: 6c135a34e0a6e60cedaa0b30db67a4c05cf7cd38
 
-PODFILE CHECKSUM: 93159539559012edae26449ec716c0c142f55271
+PODFILE CHECKSUM: e94a7e3273fea223d8473a3723b38e8e7f31bf54
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

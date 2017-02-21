@@ -15,11 +15,13 @@ class JoinMatchViewController: UIViewController, UITableViewDataSource, UITableV
         static let JoinMatchTableViewCellIdentifier = "JoinMatchTableViewCell"
     }
 
+    let apiClient = CornerAPIClient()
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        apiClient.getMatches()
     }
 
     // MARK: - UITableViewDataSource
