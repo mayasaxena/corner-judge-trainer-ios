@@ -11,12 +11,8 @@ import RxSwift
 import Intrepid
 import Starscream
 
-protocol MatchHolding {
-    var model: Match { get }
-}
-
-public final class MatchViewModel: MatchHolding, WebSocketDelegate {
-    internal let model = Match()
+public final class MatchViewModel: WebSocketDelegate {
+    private let model: Match
 
     private let disposeBag = DisposeBag()
 
@@ -51,7 +47,9 @@ public final class MatchViewModel: MatchHolding, WebSocketDelegate {
     let roundLabelText: Variable<String?> = Variable("R1")
     private var isRestRound = false
 
-    init() {
+    init(matchType: MatchType) {
+        self.model = Match(type: matchType)
+
         redScoreText = Variable(model.redScore.formattedString)
         blueScoreText = Variable(model.blueScore.formattedString)
         

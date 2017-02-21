@@ -13,7 +13,7 @@ import RxSwift
 public final class AddPlayersViewController: UIViewController {
     
     struct Constants {
-        static let MatchSegueIdentifier = "showMatchFromAddPlayers"
+        static let transitionDelay: TimeInterval = 1.5
     }
     
     @IBOutlet weak var redPlayerTextField: UITextField!
@@ -21,18 +21,22 @@ public final class AddPlayersViewController: UIViewController {
     
     @IBOutlet weak var startNewMatchButton: UIButton!
     
+    let viewModel: MatchViewModel
     let disposeBag = DisposeBag()
-    
+
     private var shouldBeLandscape = false
+
+    init(matchType: MatchType) {
+        viewModel = MatchViewModel(matchType: matchType)
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    var viewModel: MatchViewModel!
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("Use init(model:) instead")
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
-        if viewModel == nil {
-            viewModel = MatchViewModel()
-        }
         
         redPlayerTextField.rx.textInput.text <-> viewModel.redPlayerName >>> disposeBag
         bluePlayerTextField.rx.textInput.text <-> viewModel.bluePlayerName >>> disposeBag
@@ -48,17 +52,15 @@ public final class AddPlayersViewController: UIViewController {
         }) >>> disposeBag
     }
     
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.MatchSegueIdentifier {
-            (segue.destination as? MatchViewController)?.viewModel = viewModel
-        }
-    }
-    
     func transitionToMatchViewController() {
-        UIDevice.current.perform(#selector(setter: UIPrintInfo.orientation),
-                                                 with: UIInterfaceOrientation.landscapeLeft.rawValue)
-        After(1.5) {
-            self.performSegue(withIdentifier: Constants.MatchSegueIdentifier, sender: self)
+        UIDevice.current.perform(
+            #selector(setter: UIPrintInfo.orientation),
+            with: UIInterfaceOrientation.landscapeLeft.rawValue
+        )
+
+        After(Constants.transitionDelay) {
+            let matchViewController = MatchViewController(viewModel: self.viewModel)
+            self.navigationController?.pushViewController(matchViewController, animated: true)
         }
     }
 }

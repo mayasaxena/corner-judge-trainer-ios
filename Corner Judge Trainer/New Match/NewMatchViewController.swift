@@ -12,11 +12,6 @@ import Intrepid
 
 public final class NewMatchViewController: UIViewController {
     
-    struct Constants {
-        static let matchSegueIdentifier = "showMatch"
-        static let addPlayersSegueIdentifier = "showAddPlayers"
-    }
-    
     @IBOutlet var radioButtons: [RadioButton]!
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
     
@@ -40,23 +35,28 @@ public final class NewMatchViewController: UIViewController {
         return UIInterfaceOrientationMask.portrait
     }
 
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
     @IBAction func newMatchTapped(_ sender: AnyObject) {
 
         let alertController = UIAlertController(title: "Add Players?", message: "", preferredStyle: .alert)
         
-        let addAction = UIAlertAction(title: "Add", style: .destructive) { _ in
-            self.performSegue(withIdentifier: Constants.addPlayersSegueIdentifier, sender: self)
-        }
-        alertController.addAction(addAction)
-        
-        let cancelAction = UIAlertAction(title: "No, add later", style: .cancel) { _ in
-            self.performSegue(withIdentifier: Constants.matchSegueIdentifier, sender: self)
-        }
-        alertController.addAction(cancelAction)
-        
+        alertController.addAction(UIAlertAction(
+            title: "Add",
+            style: .destructive,
+            handler: { _ in
+                let addPlayersViewController = AddPlayersViewController(matchType: self.viewModel.matchType)
+                self.navigationController?.pushViewController(addPlayersViewController, animated: true)
+            })
+        )
+
+        alertController.addAction(UIAlertAction(
+            title: "No, add later",
+            style: .cancel,
+            handler: { _ in
+                let matchViewController = MatchViewController(matchType: self.viewModel.matchType)
+                self.navigationController?.pushViewController(matchViewController, animated: true)
+            })
+        )
+
         present(alertController, animated: true, completion: nil)
     }
 }

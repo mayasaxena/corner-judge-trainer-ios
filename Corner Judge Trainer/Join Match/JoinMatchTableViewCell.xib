@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSans.ttf">
+            <string>DroidSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="JoinMatchTableViewCell" id="gr3-mo-LHv" customClass="JoinMatchTableViewCell" customModule="Corner" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gr3-mo-LHv" id="0ub-Nt-6U2">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallRed" translatesAutoresizingMaskIntoConstraints="NO" id="6Pk-ON-Cfc">
+                        <rect key="frame" x="29" y="29" width="60" height="60"/>
+                    </imageView>
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallBlue" translatesAutoresizingMaskIntoConstraints="NO" id="sXR-ud-BH8">
+                        <rect key="frame" x="286" y="29" width="60" height="60"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDPLAYER L." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dU-aC-54n">
+                        <rect key="frame" x="8" y="94" width="102" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="102" id="Ab0-SS-n73"/>
+                            <constraint firstAttribute="height" constant="14" id="bMm-ay-SAt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
+                        <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="BLUE PLAYER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-aA-sqI">
+                        <rect key="frame" x="265" y="94" width="102" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="FLU-ZM-9A9"/>
+                            <constraint firstAttribute="width" constant="102" id="d3D-7g-LQM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
+                        <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-lE-UXO" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                        <rect key="frame" x="128" y="34" width="120" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="mBd-0e-Mhr"/>
+                            <constraint firstAttribute="width" constant="120" id="ucX-tF-Slr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="18"/>
+                        <state key="normal" title="JOIN"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH ###" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fu-mc-NG9">
+                        <rect key="frame" x="164" y="97" width="49" height="11"/>
+                        <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="9"/>
+                        <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="8" id="3EH-5V-iof"/>
+                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="centerY" secondItem="fwc-lE-UXO" secondAttribute="centerY" id="8gf-45-RLn"/>
+                    <constraint firstItem="sXR-ud-BH8" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="29" id="C3f-Uv-mgq"/>
+                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="centerX" secondItem="fwc-lE-UXO" secondAttribute="centerX" id="Jz3-dc-rNY"/>
+                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="bottom" secondItem="8dU-aC-54n" secondAttribute="bottom" id="KDw-ef-U7T"/>
+                    <constraint firstItem="Aer-aA-sqI" firstAttribute="top" secondItem="sXR-ud-BH8" secondAttribute="bottom" constant="5" id="OYe-4a-w0d"/>
+                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="29" id="Otn-QW-47w"/>
+                    <constraint firstItem="Aer-aA-sqI" firstAttribute="centerX" secondItem="sXR-ud-BH8" secondAttribute="centerX" id="QAu-ml-D8N"/>
+                    <constraint firstItem="fwc-lE-UXO" firstAttribute="centerX" secondItem="0ub-Nt-6U2" secondAttribute="centerX" id="XRd-8Q-Dl2"/>
+                    <constraint firstAttribute="trailing" secondItem="sXR-ud-BH8" secondAttribute="trailing" constant="29" id="YMJ-SM-6au"/>
+                    <constraint firstAttribute="trailing" secondItem="Aer-aA-sqI" secondAttribute="trailing" constant="8" id="aPq-gi-yRd"/>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="top" secondItem="6Pk-ON-Cfc" secondAttribute="bottom" constant="5" id="bVh-KP-FEe"/>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="centerX" secondItem="6Pk-ON-Cfc" secondAttribute="centerX" id="hZa-Nk-V8E"/>
+                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="29" id="pD4-fw-Mwa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="bluePlayerNameLabel" destination="Aer-aA-sqI" id="QmZ-so-c2H"/>
+                <outlet property="matchNumberLabel" destination="2Fu-mc-NG9" id="CrB-dR-6qL"/>
+                <outlet property="redPlayerNameLabel" destination="8dU-aC-54n" id="0dj-sq-JF8"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="hoguIconSmallBlue" width="60" height="60"/>
+        <image name="hoguIconSmallRed" width="60" height="60"/>
+    </resources>
+</document>

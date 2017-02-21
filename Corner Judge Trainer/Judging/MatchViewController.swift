@@ -41,20 +41,29 @@ public final class MatchViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
     
+    let viewModel: MatchViewModel
     let disposeBag = DisposeBag()
-    var viewModel: MatchViewModel!
-    
+
+    init(viewModel: MatchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    convenience init(matchType: MatchType) {
+        self.init(viewModel: MatchViewModel(matchType: matchType))
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("Use init(viewModel:) instead")
+    }
+
     override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.landscape
     }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
-        if viewModel == nil {
-            viewModel = MatchViewModel()
-        }
-        
+
         setupRedScoring()
         setupBlueScoring()
         setupPlayerNameLabels()

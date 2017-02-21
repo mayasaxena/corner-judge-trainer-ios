@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSans-Bold.ttf">
+            <string>DroidSans-Bold</string>
+        </array>
+        <array key="DroidSans.ttf">
+            <string>DroidSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchViewController" customModule="Corner" customModuleProvider="target">
+            <connections>
+                <outlet property="blueGamJeomButton" destination="EW5-Cu-Vzb" id="BiY-sa-AgR"/>
+                <outlet property="blueKyongGoButton" destination="8eS-5h-aF3" id="p5h-gD-FIB"/>
+                <outlet property="bluePlayerNameLabel" destination="46i-7m-xfA" id="Ibl-7f-2iw"/>
+                <outlet property="blueScoreLabel" destination="fuu-Cw-dJY" id="4Gt-RE-kc0"/>
+                <outlet property="blueScoringArea" destination="YoV-cH-gT9" id="NkV-Bo-Ezd"/>
+                <outlet property="blueTechnicalButton" destination="CgT-Kv-Eqa" id="gUx-gL-qRZ"/>
+                <outlet property="disablingView" destination="SMI-45-m7u" id="LCR-Yx-v8y"/>
+                <outlet property="matchInfoView" destination="hzP-nJ-sjw" id="dLZ-3P-NHa"/>
+                <outlet property="matchInfoViewTopConstraint" destination="aDV-2h-RCk" id="SmS-mw-wYc"/>
+                <outlet property="penaltiesView" destination="2Ic-A9-oXD" id="bT4-Ug-Ck2"/>
+                <outlet property="redGamJeomButton" destination="n7G-cL-8aB" id="ilI-jz-MZt"/>
+                <outlet property="redKyongGoButton" destination="P6H-y7-VkA" id="9KG-Gy-j1S"/>
+                <outlet property="redPlayerNameLabel" destination="BC8-g6-TJo" id="edQ-nu-KL9"/>
+                <outlet property="redScoreLabel" destination="yNb-eB-az4" id="AbQ-FU-U2a"/>
+                <outlet property="redScoringArea" destination="pa2-B3-Uw7" id="spa-EM-Cgm"/>
+                <outlet property="redTechnicalButton" destination="EOw-3v-utM" id="oVt-hZ-jIj"/>
+                <outlet property="roundLabel" destination="YeH-K2-l3O" id="vE8-ZB-lEF"/>
+                <outlet property="timerLabel" destination="lmw-uS-gqb" id="GQx-Na-SJ7"/>
+                <outlet property="view" destination="Osr-Uc-XhP" id="QgU-ha-fSh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Osr-Uc-XhP">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-B3-Uw7">
+                    <rect key="frame" x="0.0" y="0.0" width="333.5" height="375"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNb-eB-az4">
+                            <rect key="frame" x="114" y="96" width="107" height="183"/>
+                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOw-3v-utM">
+                            <rect key="frame" x="268.5" y="310" width="60" height="60"/>
+                            <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="VKN-dQ-Hdo"/>
+                                <constraint firstAttribute="width" secondItem="EOw-3v-utM" secondAttribute="height" multiplier="1:1" id="sM1-pp-F0k"/>
+                            </constraints>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC8-g6-TJo">
+                            <rect key="frame" x="146.5" y="330" width="41" height="20"/>
+                            <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.72941178080000002" green="0.2588235438" blue="0.2588235438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yNb-eB-az4" secondAttribute="trailing" constant="5" id="2Ld-kX-gG7"/>
+                        <constraint firstItem="BC8-g6-TJo" firstAttribute="centerX" secondItem="pa2-B3-Uw7" secondAttribute="centerX" id="7Ol-Fk-8hC"/>
+                        <constraint firstItem="yNb-eB-az4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pa2-B3-Uw7" secondAttribute="leading" constant="5" id="HJE-sz-FeF"/>
+                        <constraint firstItem="yNb-eB-az4" firstAttribute="centerY" secondItem="pa2-B3-Uw7" secondAttribute="centerY" id="LiI-NA-2rF"/>
+                        <constraint firstAttribute="bottom" secondItem="EOw-3v-utM" secondAttribute="bottom" constant="5" id="PGe-Jl-bMs"/>
+                        <constraint firstItem="yNb-eB-az4" firstAttribute="centerX" secondItem="pa2-B3-Uw7" secondAttribute="centerX" id="TZi-Ml-8Jh"/>
+                        <constraint firstItem="BC8-g6-TJo" firstAttribute="centerY" secondItem="EOw-3v-utM" secondAttribute="centerY" id="Wb2-oc-BlC"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoV-cH-gT9">
+                    <rect key="frame" x="333.5" y="0.0" width="333.5" height="375"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuu-Cw-dJY">
+                            <rect key="frame" x="113.5" y="96" width="107" height="183"/>
+                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgT-Kv-Eqa">
+                            <rect key="frame" x="5" y="310" width="60" height="60"/>
+                            <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="EFT-o6-3E5"/>
+                                <constraint firstAttribute="width" secondItem="CgT-Kv-Eqa" secondAttribute="height" multiplier="1:1" id="uym-k0-fwl"/>
+                            </constraints>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46i-7m-xfA">
+                            <rect key="frame" x="147" y="330" width="41" height="20"/>
+                            <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.21176470820000001" green="0.42352941630000002" blue="0.67450982329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="46i-7m-xfA" firstAttribute="centerY" secondItem="CgT-Kv-Eqa" secondAttribute="centerY" id="9WK-4o-89T"/>
+                        <constraint firstItem="fuu-Cw-dJY" firstAttribute="centerY" secondItem="YoV-cH-gT9" secondAttribute="centerY" id="b4N-4r-bQ1"/>
+                        <constraint firstAttribute="bottom" secondItem="CgT-Kv-Eqa" secondAttribute="bottom" constant="5" id="bGX-Kk-kFb"/>
+                        <constraint firstItem="fuu-Cw-dJY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YoV-cH-gT9" secondAttribute="leading" constant="5" id="k4Q-BG-czL"/>
+                        <constraint firstItem="46i-7m-xfA" firstAttribute="centerX" secondItem="YoV-cH-gT9" secondAttribute="centerX" id="pNl-Tf-hgo"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fuu-Cw-dJY" secondAttribute="trailing" constant="5" id="qL9-a3-sCn"/>
+                        <constraint firstItem="fuu-Cw-dJY" firstAttribute="centerX" secondItem="YoV-cH-gT9" secondAttribute="centerX" id="zH2-xt-TSk"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMI-45-m7u">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSM-Md-QNu">
+                            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                            </accessibility>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the timer to start and pause the match" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJs-B2-zdD">
+                            <rect key="frame" x="269" y="160" width="130" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="C67-aw-wEy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ic-A9-oXD">
+                            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-y7-VkA" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                    <rect key="frame" x="92" y="69" width="150" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="gMW-Xf-4WY"/>
+                                        <constraint firstAttribute="width" constant="150" id="gQE-PD-vQS"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                    <state key="normal" title="KYONG-GO">
+                                        <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-cL-8aB" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                    <rect key="frame" x="92" y="265.5" width="150" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="NC9-mx-L0g"/>
+                                        <constraint firstAttribute="height" constant="50" id="d3b-DV-N89"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                    <state key="normal" title="GAM-JEOM"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-5h-aF3" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                    <rect key="frame" x="426" y="69" width="150" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="3cP-Fk-zSI"/>
+                                        <constraint firstAttribute="width" constant="150" id="STw-st-z57"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                    <state key="normal" title="KYONG-GO"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW5-Cu-Vzb" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                                    <rect key="frame" x="426" y="265.5" width="150" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="0Po-hD-9xz"/>
+                                        <constraint firstAttribute="height" constant="50" id="QdF-Qp-Sgq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                                    <state key="normal" title="GAM-JEOM"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="0.5" id="7HY-js-Khm"/>
+                                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="0.5" id="D74-nY-Rax"/>
+                                <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="1.55" id="Unr-rg-9pG"/>
+                                <constraint firstItem="n7G-cL-8aB" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="1.55" id="mTn-P3-317"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstItem="qSM-Md-QNu" firstAttribute="top" secondItem="SMI-45-m7u" secondAttribute="top" id="0UQ-xm-xFg"/>
+                        <constraint firstItem="2Ic-A9-oXD" firstAttribute="top" secondItem="SMI-45-m7u" secondAttribute="top" id="8rN-Cg-4ej"/>
+                        <constraint firstAttribute="bottom" secondItem="qSM-Md-QNu" secondAttribute="bottom" id="9Ud-qD-fMo"/>
+                        <constraint firstAttribute="trailing" secondItem="qSM-Md-QNu" secondAttribute="trailing" id="PX2-b0-QG4"/>
+                        <constraint firstAttribute="bottom" secondItem="2Ic-A9-oXD" secondAttribute="bottom" id="REY-45-UCd"/>
+                        <constraint firstItem="2Ic-A9-oXD" firstAttribute="leading" secondItem="SMI-45-m7u" secondAttribute="leading" id="Z7E-MU-2O0"/>
+                        <constraint firstItem="KJs-B2-zdD" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" id="aKE-NB-IyT"/>
+                        <constraint firstAttribute="trailing" secondItem="2Ic-A9-oXD" secondAttribute="trailing" id="mPl-Rx-z6i"/>
+                        <constraint firstItem="KJs-B2-zdD" firstAttribute="centerX" secondItem="SMI-45-m7u" secondAttribute="centerX" id="qZz-hN-eki"/>
+                        <constraint firstItem="qSM-Md-QNu" firstAttribute="leading" secondItem="SMI-45-m7u" secondAttribute="leading" id="raN-h0-df0"/>
+                    </constraints>
+                </view>
+                <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-nJ-sjw">
+                    <rect key="frame" x="258.5" y="0.0" width="150" height="110"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmw-uS-gqb">
+                            <rect key="frame" x="26.5" y="46" width="97" height="59"/>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
+                            <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeH-K2-l3O">
+                            <rect key="frame" x="57.5" y="10" width="35.5" height="35"/>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="30"/>
+                            <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="lmw-uS-gqb" firstAttribute="centerX" secondItem="hzP-nJ-sjw" secondAttribute="centerX" id="AjP-s6-lLX"/>
+                        <constraint firstAttribute="height" constant="110" id="Cf0-QF-E5r"/>
+                        <constraint firstItem="YeH-K2-l3O" firstAttribute="top" secondItem="hzP-nJ-sjw" secondAttribute="top" constant="10" id="PKQ-zT-WUg"/>
+                        <constraint firstItem="YeH-K2-l3O" firstAttribute="centerX" secondItem="hzP-nJ-sjw" secondAttribute="centerX" id="hNk-W1-hfy"/>
+                        <constraint firstAttribute="width" constant="150" id="rtx-j4-4fX"/>
+                        <constraint firstAttribute="bottom" secondItem="lmw-uS-gqb" secondAttribute="bottom" constant="5" id="vWC-R5-ceH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="1YL-kq-ccq"/>
+                <constraint firstItem="SMI-45-m7u" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="3jN-x0-4pD"/>
+                <constraint firstAttribute="bottom" secondItem="SMI-45-m7u" secondAttribute="bottom" id="54W-eD-5Jd"/>
+                <constraint firstAttribute="centerX" secondItem="CgT-Kv-Eqa" secondAttribute="leading" constant="-5" id="9iF-UF-ZGk"/>
+                <constraint firstItem="YoV-cH-gT9" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="Ale-3V-gAf"/>
+                <constraint firstAttribute="bottom" secondItem="pa2-B3-Uw7" secondAttribute="bottom" id="CAS-BO-umu"/>
+                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerX" secondItem="fuu-Cw-dJY" secondAttribute="centerX" id="Eo2-ge-jME"/>
+                <constraint firstItem="SMI-45-m7u" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="Gwf-69-Nhg"/>
+                <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerX" secondItem="fuu-Cw-dJY" secondAttribute="centerX" id="HFM-HB-Mea"/>
+                <constraint firstItem="YoV-cH-gT9" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="M3W-ch-aSh"/>
+                <constraint firstItem="EOw-3v-utM" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" constant="-5" id="Mqi-V3-f4S"/>
+                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerX" secondItem="yNb-eB-az4" secondAttribute="centerX" id="SAe-gL-wmc"/>
+                <constraint firstAttribute="trailing" secondItem="SMI-45-m7u" secondAttribute="trailing" id="UfJ-GX-Fsc"/>
+                <constraint firstItem="YoV-cH-gT9" firstAttribute="bottom" secondItem="Osr-Uc-XhP" secondAttribute="bottom" id="XDe-do-PxI"/>
+                <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="YQ4-k2-iup"/>
+                <constraint firstItem="hzP-nJ-sjw" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="aDV-2h-RCk"/>
+                <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="gKw-WL-e3C"/>
+                <constraint firstItem="n7G-cL-8aB" firstAttribute="centerX" secondItem="yNb-eB-az4" secondAttribute="centerX" id="gMz-pH-p6z"/>
+                <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="ijn-ED-fdu"/>
+                <constraint firstItem="pa2-B3-Uw7" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="kOp-Pj-U3P"/>
+                <constraint firstAttribute="trailing" secondItem="YoV-cH-gT9" secondAttribute="trailing" id="rps-Tq-FaQ"/>
+                <constraint firstItem="hzP-nJ-sjw" firstAttribute="centerX" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="sAe-SR-Auw"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

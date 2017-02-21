@@ -9,31 +9,27 @@
 import UIKit
 import Intrepid
 
-class JoinMatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    private struct Constants {
-        static let JoinMatchTableViewCellIdentifier = "JoinMatchTableViewCell"
-    }
+public final class JoinMatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let apiClient = CornerAPIClient()
 
     @IBOutlet weak var tableView: UITableView!
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         apiClient.getMatches()
+        JoinMatchTableViewCell.registerNib(tableView)
     }
 
     // MARK: - UITableViewDataSource
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.ip_dequeueCell(indexPath, identifier: Constants.JoinMatchTableViewCellIdentifier) as JoinMatchTableViewCell
-
-        cell.configureWithName(name: "HI")
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.ip_dequeueCell(indexPath, identifier: JoinMatchTableViewCell.cellIdentifier) as JoinMatchTableViewCell
+        cell.configure(redPlayerName: "One", bluePlayerName: "Two")
 
         return cell
     }

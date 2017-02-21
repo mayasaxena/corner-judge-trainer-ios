@@ -10,13 +10,14 @@ import UIKit
 import RxSwift
 import Intrepid
 
-class JoinMatchTableViewCell: UITableViewCell {
+public final class JoinMatchTableViewCell: UITableViewCell {
     @IBOutlet weak var redPlayerNameLabel: UILabel!
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
     @IBOutlet weak var matchNumberLabel: UILabel!
 
-    func configureWithName(name: String) {
-        redPlayerNameLabel.text = name
+    func configure(redPlayerName: String, bluePlayerName: String) {
+        redPlayerNameLabel.text = redPlayerName.capitalized
+        bluePlayerNameLabel.text = bluePlayerName.capitalized
     }
 
 }
