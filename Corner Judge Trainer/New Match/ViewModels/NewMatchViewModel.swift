@@ -12,12 +12,18 @@ import Intrepid
 public final class NewMatchViewModel {
     public var matchType = MatchType.none
 
+    let redPlayerName = Variable<String?>(nil)
+    let bluePlayerName = Variable<String?>(nil)
+
     var radioButtonsSelected: [Variable<Bool>] = []
 
     private let disposeBag = DisposeBag()
 
-    init() {
+    var newMatch: Match {
+        return Match(redPlayerName: redPlayerName.value, bluePlayerName: bluePlayerName.value, type: matchType)
+    }
 
+    init() {
         for _ in 0 ..< MatchType.caseCount {
             radioButtonsSelected.append(Variable(false))
         }

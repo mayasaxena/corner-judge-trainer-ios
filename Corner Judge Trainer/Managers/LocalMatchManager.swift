@@ -103,7 +103,7 @@ public final class LocalMatchManager: MatchManager {
             startTimer()
         }
 
-        delegate?.timerStatusChanged(paused: !timer.isValid)
+        delegate?.matchStatusChanged(scoringDisabled: !match.isWon && (!timer.isValid || isRestRound))
     }
 
     // MARK: - Timer methods
@@ -163,13 +163,14 @@ public final class LocalMatchManager: MatchManager {
 
         resetTimer(roundTime)
         startTimer()
-        delegate?.timerStatusChanged(paused: isRestRound)
+        delegate?.matchStatusChanged(scoringDisabled: isRestRound)
+        delegate?.roundChanged(round: isRestRound ? nil : round)
     }
 
     private func endMatch() {
         print(match.winningPlayer?.name ?? "No winning player")
         stopTimer()
-        delegate?.timerStatusChanged(paused: true)
+        delegate?.matchStatusChanged(scoringDisabled: true)
         matchEnded = true
         // TODO: Display alert/modal with match stats and option to start new
     }

@@ -21,13 +21,13 @@ public final class AddPlayersViewController: UIViewController {
     
     @IBOutlet weak var startNewMatchButton: UIButton!
     
-    let viewModel: MatchViewModel
+    let viewModel: NewMatchViewModel
     let disposeBag = DisposeBag()
 
     private var shouldBeLandscape = false
 
-    init(matchType: MatchType) {
-        viewModel = MatchViewModel(matchType: matchType)
+    init(viewModel: NewMatchViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -59,7 +59,7 @@ public final class AddPlayersViewController: UIViewController {
         )
 
         After(Constants.transitionDelay) {
-            let matchViewController = MatchViewController(viewModel: self.viewModel)
+            let matchViewController = MatchViewController(match: self.viewModel.newMatch)
             self.navigationController?.pushViewController(matchViewController, animated: true)
         }
     }

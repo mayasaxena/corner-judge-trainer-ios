@@ -13,17 +13,11 @@ import Intrepid
 public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let matchManager: MatchManager
 
-    private var match: Match {
-        return matchManager.match
-    }
-
-    private let disposeBag = DisposeBag()
+    let redPlayerName: String
+    let bluePlayerName: String
     
     let redScoreText = Variable<String?>("0")
     let blueScoreText = Variable<String?>("0")
-    
-    let redPlayerName = Variable("")
-    let bluePlayerName = Variable("")
 
     let matchInfoViewHidden = Variable(false)
     
@@ -36,29 +30,16 @@ public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let roundLabelHidden = Variable(false)
     let roundLabelText: Variable<String?> = Variable("R1")
 
-    init(matchType: MatchType) {
-        matchManager = LocalMatchManager(matchType: matchType)
-        matchManager.delegate = self
+    private let disposeBag = DisposeBag()
 
-        redScoreText.value = match.redScore.formattedString
-        blueScoreText.value = match.blueScore.formattedString
+    init(match: Match) {
+        matchManager = LocalMatchManager(match: match)
         
-        redPlayerName.value = match.redPlayer.displayName
-        bluePlayerName.value = match.bluePlayer.displayName
+        redPlayerName = match.redPlayer.displayName
+        bluePlayerName = match.bluePlayer.displayName
 
-        setupNameUpdates()
-
+        matchManager.delegate = self
         matchInfoViewHidden.value = match.type == .none
-    }
-    
-    private func setupNameUpdates() {
-//        redPlayerName.asObservable().subscribeNext {
-//            self.model.redPlayer.name = $0
-//        } >>> disposeBag
-//        
-//        bluePlayerName.asObservable().subscribeNext {
-//            self.model.bluePlayer.name = $0
-//        } >>> disposeBag
     }
     
     public func handleMatchInfoViewTapped() {
@@ -101,24 +82,23 @@ public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         timerLabelText.value = timeString
     }
 
-    func timerStatusChanged(paused: Bool) {
-        disablingViewVisible.value = paused
-        penaltyButtonsVisible.value = paused
-        roundLabelHidden.value = !paused
+    func matchStatusChanged(scoringDisabled: Bool) {
+        disablingViewVisible.value = scoringDisabled
+        penaltyButtonsVisible.value = scoringDisabled
+        roundLabelHidden.value = !scoringDisabled
     }
 
-    func roundChanged(isRestRound: Bool, round: Int?) {
-        if isRestRound {
-            timerLabelTextColor.value = UIColor.yellow
-            disablingViewVisible.value = true
-            roundLabelHidden.value = false
-            roundLabelText.value = "REST"
-        } else {
-            guard let round = round else { return }
+    func roundChanged(round: Int?) {
+        if let round = round {
             timerLabelTextColor.value = UIColor.white
             disablingViewVisible.value = false
             roundLabelHidden.value = true
             roundLabelText.value = "R\(round)"
+        } else {
+            timerLabelTextColor.value = UIColor.yellow
+            disablingViewVisible.value = true
+            roundLabelHidden.value = false
+            roundLabelText.value = "REST"
         }
     }
 }

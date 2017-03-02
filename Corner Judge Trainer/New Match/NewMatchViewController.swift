@@ -43,7 +43,7 @@ public final class NewMatchViewController: UIViewController {
             title: "Add",
             style: .destructive,
             handler: { _ in
-                let addPlayersViewController = AddPlayersViewController(matchType: self.viewModel.matchType)
+                let addPlayersViewController = AddPlayersViewController(viewModel: self.viewModel)
                 self.navigationController?.pushViewController(addPlayersViewController, animated: true)
             })
         )
@@ -52,7 +52,7 @@ public final class NewMatchViewController: UIViewController {
             title: "No, add later",
             style: .cancel,
             handler: { _ in
-                let matchViewController = MatchViewController(matchType: self.viewModel.matchType)
+                let matchViewController = MatchViewController(match: self.viewModel.newMatch)
                 self.navigationController?.pushViewController(matchViewController, animated: true)
             })
         )

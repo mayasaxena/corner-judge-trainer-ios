@@ -51,22 +51,16 @@ public final class Match {
     fileprivate(set) var redPlayer: Player
     fileprivate(set) var bluePlayer: Player
 
-    public init(
+    init(
         id: Int = Int.random(3),
-        redPlayer: Player = Player(color: .red),
-        bluePlayer: Player = Player(color: .blue),
+        redPlayerName: String? = nil,
+        bluePlayerName: String? = nil,
         type: MatchType = .none
     ) {
-
         self.id = id
-        self.redPlayer = redPlayer
-        self.bluePlayer = bluePlayer
+        self.redPlayer = Player(color: .red, name: redPlayerName)
+        self.bluePlayer = Player(color: .blue, name: bluePlayerName)
         self.type = type
-    }
-
-    public func add(redPlayerName: String?, bluePlayerName: String?) {
-        redPlayer.name = redPlayerName ?? redPlayer.name
-        bluePlayer.name = bluePlayerName ?? bluePlayer.name
     }
 
     public func determineWinner() {
@@ -86,7 +80,6 @@ extension String {
         return formatter.date(from: self)
     }
 }
-
 
 // MARK: - MatchType
 

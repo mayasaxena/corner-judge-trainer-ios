@@ -18,9 +18,8 @@ internal protocol MatchManagerDelegate: class {
     )
 
     func timerUpdated(timeString: String)
-    func timerStatusChanged(paused: Bool)
-
-    func roundChanged(isRestRound: Bool, round: Int?)
+    func matchStatusChanged(scoringDisabled: Bool)
+    func roundChanged(round: Int?)
 }
 
 internal protocol MatchManager: class {

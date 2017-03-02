@@ -44,13 +44,9 @@ public final class MatchViewController: UIViewController {
     let viewModel: MatchViewModel
     let disposeBag = DisposeBag()
 
-    init(viewModel: MatchViewModel) {
-        self.viewModel = viewModel
+    init(match: Match) {
+        viewModel = MatchViewModel(match: match)
         super.init(nibName: nil, bundle: nil)
-    }
-
-    convenience init(matchType: MatchType) {
-        self.init(viewModel: MatchViewModel(matchType: matchType))
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -221,7 +217,7 @@ public final class MatchViewController: UIViewController {
     }
     
     private func setupPlayerNameLabels() {
-        redPlayerNameLabel.rx.text <- viewModel.redPlayerName >>> disposeBag
-        bluePlayerNameLabel.rx.text <- viewModel.bluePlayerName >>> disposeBag
+        redPlayerNameLabel.text = viewModel.redPlayerName
+        bluePlayerNameLabel.text = viewModel.bluePlayerName
     }
 }
