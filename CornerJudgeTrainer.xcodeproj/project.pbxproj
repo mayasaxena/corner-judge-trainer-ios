@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E7C31C93C88B13011AF9477 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */; };
+		A51648FC1E67A50C00CE2CD4 /* Match+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */; };
 		A534B7C21D4BDF6500DBCCBE /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C11D4BDF6500DBCCBE /* MatchViewController.swift */; };
 		A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */; };
 		A534B7C71D4BDF8400DBCCBE /* NewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Match+Extensions.swift"; path = "Extensions/Match+Extensions.swift"; sourceTree = "<group>"; };
 		A534B7C11D4BDF6500DBCCBE /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Judging/MatchViewController.swift; sourceTree = "<group>"; };
 		A534B7C41D4BDF7500DBCCBE /* MatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewMatchViewController.swift; path = "New Match/NewMatchViewController.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */,
+				A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */,
 				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
 				A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */,
 				A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */,
@@ -543,6 +546,7 @@
 				A53C13B01D96E8BC00F3A519 /* Rx+Extensions.swift in Sources */,
 				A56C1F0B1E6649610093934B /* MatchManager.swift in Sources */,
 				A5A78A081D7238520088D983 /* RadioButton.swift in Sources */,
+				A51648FC1E67A50C00CE2CD4 /* Match+Extensions.swift in Sources */,
 				A5A789F01D6E79390088D983 /* Event.swift in Sources */,
 				A55C385D1E49414F007BA949 /* APIClient.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,

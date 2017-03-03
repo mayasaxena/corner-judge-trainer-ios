@@ -130,10 +130,7 @@ public enum RuleSet: Int {
 
 extension Int {
     static func random(_ length: Int = 3) -> Int {
-        let min = 10^^(length - 1)
-        let max = (10^^length) - 1
-        let top = max - min + 1
-        return Int(arc4random_uniform(UInt32(top))) + min
+        return random(min: 10^^(length - 1), max: (10^^length) - 1)
     }
 }
 
