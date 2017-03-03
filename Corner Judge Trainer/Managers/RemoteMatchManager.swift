@@ -41,12 +41,12 @@ extension Match: MappableObject {
 
     public convenience init(map: Map) throws {
         let matchID: Int = try map.extract(NodeKey.matchID)
-        let matchType = try map.extract(NodeKey.matchType) { MatchType(rawValue: $0) ?? MatchType.none }
+//        let matchType = try map.extract(NodeKey.matchType) { MatchType(rawValue: $0) ?? MatchType.none }
 
         let redPlayer: String = try map.extract(NodeKey.redName)
         let bluePlayer: String = try map.extract(NodeKey.blueName)
 
-        self.init(id: matchID, redPlayerName: redPlayer, bluePlayerName: bluePlayer, type: matchType)
+        self.init(id: matchID, redPlayerName: redPlayer, bluePlayerName: bluePlayer, type: MatchType.none)
 
         redScore = try map.extract(NodeKey.redScore)
 

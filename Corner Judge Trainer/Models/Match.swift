@@ -128,6 +128,15 @@ public enum RuleSet: Int {
     }
 }
 
+extension Match: CustomStringConvertible {
+    public var description: String {
+        return
+            "\nMatch \(id) (\(type.displayName)) at \(date.timeStampString)\n" +
+            "Red Player: \(redPlayer.name)\t Score: \(redScore), Penalties: \(redPenalties)\n" +
+            "Blue Player: \(bluePlayer.name)\t Score: \(blueScore), Penalties: \(bluePenalties)"
+    }
+}
+
 extension Int {
     static func random(_ length: Int = 3) -> Int {
         return random(min: 10^^(length - 1), max: (10^^length) - 1)

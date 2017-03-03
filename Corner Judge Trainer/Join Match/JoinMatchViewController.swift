@@ -17,7 +17,14 @@ public final class JoinMatchViewController: UIViewController, UITableViewDataSou
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.getMatches()
+        apiClient.getMatches() { result in
+            switch result {
+            case .success(let matches):
+                print(matches as Any)
+            case .failure(let error):
+                print(error)
+            }
+        }
         JoinMatchTableViewCell.registerNib(tableView)
     }
 
