@@ -19,8 +19,9 @@ public final class NewMatchViewModel {
 
     private let disposeBag = DisposeBag()
 
-    var newMatch: Match {
-        return Match(redPlayerName: redPlayerName.value, bluePlayerName: bluePlayerName.value, type: matchType)
+    var matchViewModel: MatchViewModel {
+        let match = Match(redPlayerName: redPlayerName.value, bluePlayerName: bluePlayerName.value, type: matchType)
+        return MatchViewModel(match: match)
     }
 
     init() {

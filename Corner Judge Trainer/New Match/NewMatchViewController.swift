@@ -55,7 +55,7 @@ public final class NewMatchViewController: UIViewController {
             title: "No, add later",
             style: .cancel,
             handler: { _ in
-                let matchViewController = MatchViewController(match: self.viewModel.newMatch)
+                let matchViewController = MatchViewController(matchViewModel: self.viewModel.matchViewModel)
                 self.navigationController?.pushViewController(matchViewController, animated: true)
             })
         )

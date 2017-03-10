@@ -11,6 +11,9 @@ import Intrepid
 import Genome
 
 public final class CornerAPIClient: APIClient {
+
+    static let shared = CornerAPIClient()
+
     func getMatches(completion: @escaping (Result<[Match]>) -> Void) {
         let getRequest = Request.getMatches.urlRequest
 

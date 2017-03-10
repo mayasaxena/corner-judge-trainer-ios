@@ -8,39 +8,32 @@
 
 import UIKit
 import Intrepid
+import RxSwift
+import RxCocoa
 
-public final class JoinMatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+public final class JoinMatchViewController: UIViewController, UITableViewDelegate {
 
-    let apiClient = CornerAPIClient()
+    let viewModel = JoinMatchViewModel()
+
+    let disposeBag = DisposeBag()
 
     @IBOutlet weak var tableView: UITableView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        apiClient.getMatches() { result in
-            switch result {
-            case .success(let matches):
-                print(matches as Any)
-            case .failure(let error):
-                print(error)
-            }
-        }
         JoinMatchTableViewCell.registerNib(tableView)
+
+        viewModel.cellViewModels.bindTo(tableView.rx.items(
+            cellIdentifier: JoinMatchTableViewCell.cellIdentifier,
+            cellType: JoinMatchTableViewCell.self
+        )) { row, cellViewModel, cell in
+            cell.configure(with: cellViewModel)
+        } >>> disposeBag
+
+        tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            guard let welf = self else { return }
+            let matchViewController = MatchViewController(matchViewModel: welf.viewModel.matchViewModel(for: indexPath.row))
+            welf.navigationController?.pushViewController(matchViewController, animated: true)
+        }) >>> disposeBag
     }
-
-    // MARK: - UITableViewDataSource
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.ip_dequeueCell(indexPath, identifier: JoinMatchTableViewCell.cellIdentifier) as JoinMatchTableViewCell
-        cell.configure(redPlayerName: "One", bluePlayerName: "Two")
-
-        return cell
-    }
-
-    // MARK: - UITableViewDelegate
-
 }

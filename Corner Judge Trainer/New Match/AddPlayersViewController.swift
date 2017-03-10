@@ -56,7 +56,7 @@ public final class AddPlayersViewController: UIViewController {
         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
 
         After(Constants.transitionDelay) {
-            let matchViewController = MatchViewController(match: self.viewModel.newMatch)
+            let matchViewController = MatchViewController(matchViewModel: self.viewModel.matchViewModel)
             self.navigationController?.pushViewController(matchViewController, animated: true)
         }
     }

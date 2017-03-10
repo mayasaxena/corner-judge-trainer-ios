@@ -9,13 +9,19 @@
 import Foundation
 import RxSwift
 
-class JoinMatchTableViewCellViewModel {
+public final class JoinMatchTableViewCellViewModel {
 
-    let redPlayerName: Variable<String>
-    let bluePlayerName: Variable<String>
+    public let redPlayerLabelText: String
+    public let bluePlayerLabelText: String
+    public let matchNumberLabelText: String
+    // TODO: Match type once the designs are ready
 
-    init() {
-        redPlayerName = Variable("Red")
-        bluePlayerName = Variable("Blue")
+    private let match: Match
+
+    init(match: Match) {
+        self.match = match
+        redPlayerLabelText = match.redPlayer.name.uppercased()
+        bluePlayerLabelText = match.bluePlayer.name.uppercased()
+        matchNumberLabelText = "MATCH \(match.id)"
     }
 }

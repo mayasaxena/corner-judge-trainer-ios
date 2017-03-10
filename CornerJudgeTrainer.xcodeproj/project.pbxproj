@@ -210,21 +210,48 @@
 		A58DDE901DE2889200853604 /* Join Match */ = {
 			isa = PBXGroup;
 			children = (
-				A5DFDBA81DE29CF4006BED7E /* Views */,
-				A58DDE951DE2891B00853604 /* ViewModels */,
-				A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */,
-				A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */,
+				A59EF7DF1E733B9200A1E20E /* JoinMatchTableViewCell */,
+				A59EF7E01E733C0900A1E20E /* JoinMatch */,
 			);
 			name = "Join Match";
 			sourceTree = "<group>";
 		};
-		A58DDE951DE2891B00853604 /* ViewModels */ = {
+		A59EF7DF1E733B9200A1E20E /* JoinMatchTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFDBA91DE29D90006BED7E /* JoinMatchTableViewCellViewModel.swift */,
+				A5DFDBA61DE29CD5006BED7E /* JoinMatchTableViewCell.swift */,
+				A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */,
+			);
+			name = JoinMatchTableViewCell;
+			sourceTree = "<group>";
+		};
+		A59EF7E01E733C0900A1E20E /* JoinMatch */ = {
 			isa = PBXGroup;
 			children = (
 				A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */,
-				A5DFDBA91DE29D90006BED7E /* JoinMatchTableViewCellViewModel.swift */,
+				A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */,
+				A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */,
 			);
-			name = ViewModels;
+			name = JoinMatch;
+			sourceTree = "<group>";
+		};
+		A59EF7E11E733C1600A1E20E /* AddPlayers */ = {
+			isa = PBXGroup;
+			children = (
+				A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */,
+				A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */,
+			);
+			name = AddPlayers;
+			sourceTree = "<group>";
+		};
+		A59EF7E21E733C1E00A1E20E /* NewMatch */ = {
+			isa = PBXGroup;
+			children = (
+				A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */,
+				A570D7021E5BBEDC00393563 /* NewMatchViewController.xib */,
+			);
+			name = NewMatch;
 			sourceTree = "<group>";
 		};
 		A5A789F51D70CD640088D983 /* Resources */ = {
@@ -321,23 +348,12 @@
 			path = "Corner Judge TrainerUITests";
 			sourceTree = "<group>";
 		};
-		A5DFDBA81DE29CF4006BED7E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A5DFDBA61DE29CD5006BED7E /* JoinMatchTableViewCell.swift */,
-				A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		A5E549391D4BCF35002368D2 /* New Match */ = {
 			isa = PBXGroup;
 			children = (
 				A5A78A0B1D726B020088D983 /* ViewModels */,
-				A534B7C61D4BDF8400DBCCBE /* NewMatchViewController.swift */,
-				A570D7021E5BBEDC00393563 /* NewMatchViewController.xib */,
-				A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */,
-				A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */,
+				A59EF7E21E733C1E00A1E20E /* NewMatch */,
+				A59EF7E11E733C1600A1E20E /* AddPlayers */,
 			);
 			name = "New Match";
 			sourceTree = "<group>";

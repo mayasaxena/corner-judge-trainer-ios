@@ -52,8 +52,8 @@ public final class MatchViewController: UIViewController {
         return true
     }
 
-    init(match: Match) {
-        viewModel = MatchViewModel(match: match)
+    init(matchViewModel: MatchViewModel) {
+        viewModel = matchViewModel
         super.init(nibName: nil, bundle: nil)
     }
 

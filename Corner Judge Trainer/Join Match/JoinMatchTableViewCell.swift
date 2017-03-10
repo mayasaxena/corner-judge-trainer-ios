@@ -15,9 +15,9 @@ public final class JoinMatchTableViewCell: UITableViewCell {
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
     @IBOutlet weak var matchNumberLabel: UILabel!
 
-    func configure(redPlayerName: String, bluePlayerName: String) {
-        redPlayerNameLabel.text = redPlayerName.capitalized
-        bluePlayerNameLabel.text = bluePlayerName.capitalized
+    func configure(with viewModel: JoinMatchTableViewCellViewModel) {
+        redPlayerNameLabel.text = viewModel.redPlayerLabelText
+        bluePlayerNameLabel.text = viewModel.bluePlayerLabelText
+        matchNumberLabel.text = viewModel.matchNumberLabelText
     }
-
 }
