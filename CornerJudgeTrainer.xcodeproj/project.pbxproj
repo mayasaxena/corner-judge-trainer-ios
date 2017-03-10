@@ -28,6 +28,7 @@
 		A570D70F1E5BD24A00393563 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70E1E5BD24A00393563 /* Match.swift */; };
 		A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */; };
 		A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */; };
+		A59EF7DE1E7323FB00A1E20E /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59EF7DD1E7323FB00A1E20E /* UINavigationController+Extensions.swift */; };
 		A5A789EE1D6E791F0088D983 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
 		A5A789F01D6E79390088D983 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789EF1D6E79390088D983 /* Event.swift */; };
 		A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */; };
@@ -85,6 +86,7 @@
 		A570D70E1E5BD24A00393563 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewController.swift; path = "Join Match/JoinMatchViewController.swift"; sourceTree = "<group>"; };
 		A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewModel.swift; path = "Join Match/JoinMatchViewModel.swift"; sourceTree = "<group>"; };
+		A59EF7DD1E7323FB00A1E20E /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Extensions.swift"; path = "Extensions/UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		A5A789ED1D6E791F0088D983 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
 		A5A789EF1D6E79390088D983 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Models/Event.swift; sourceTree = "<group>"; };
 		A5A789F31D70B1080088D983 /* AddPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPlayersViewController.swift; path = "New Match/AddPlayersViewController.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
 				A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */,
 				A5A78A021D70D13E0088D983 /* UIColor+Theme.swift */,
+				A59EF7DD1E7323FB00A1E20E /* UINavigationController+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */,
 				A5A789F41D70B1080088D983 /* AddPlayersViewController.swift in Sources */,
 				A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */,
+				A59EF7DE1E7323FB00A1E20E /* UINavigationController+Extensions.swift in Sources */,
 				A56C1F0C1E6649610093934B /* RemoteMatchManager.swift in Sources */,
 				A56C1F0D1E6649610093934B /* LocalMatchManager.swift in Sources */,
 				A5A789EE1D6E791F0088D983 /* Player.swift in Sources */,

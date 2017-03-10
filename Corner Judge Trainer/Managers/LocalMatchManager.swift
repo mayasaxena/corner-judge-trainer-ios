@@ -92,7 +92,7 @@ public final class LocalMatchManager: MatchManager {
     }
 
     public func joinMatch() {
-        // No effect in local match
+        delegate?.timerUpdated(timeString: timeRemaining.formattedTimeString)
     }
 
     public func playPause() {

@@ -32,7 +32,7 @@ public final class AddPlayersViewController: UIViewController {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("Use init(model:) instead")
+        fatalError("Use init(viewModel:) instead")
     }
     
     override public func viewDidLoad() {
@@ -41,7 +41,7 @@ public final class AddPlayersViewController: UIViewController {
         redPlayerTextField.rx.textInput.text <-> viewModel.redPlayerName >>> disposeBag
         bluePlayerTextField.rx.textInput.text <-> viewModel.bluePlayerName >>> disposeBag
         
-        startNewMatchButton.rx.tap.subscribe(onNext: { _ in
+        startNewMatchButton.rx.tap.single().subscribe(onNext: { _ in
             self.transitionToMatchViewController()
         }) >>> disposeBag
         
@@ -53,10 +53,7 @@ public final class AddPlayersViewController: UIViewController {
     }
     
     func transitionToMatchViewController() {
-        UIDevice.current.perform(
-            #selector(setter: UIPrintInfo.orientation),
-            with: UIInterfaceOrientation.landscapeLeft.rawValue
-        )
+        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
 
         After(Constants.transitionDelay) {
             let matchViewController = MatchViewController(match: self.viewModel.newMatch)

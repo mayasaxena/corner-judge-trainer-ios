@@ -16,8 +16,15 @@ public final class NewMatchViewController: UIViewController {
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
     
     let viewModel = NewMatchViewModel()
-    
     let disposeBag = DisposeBag()
+
+    override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+
+    public override var shouldAutorotate: Bool {
+        return false
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +38,6 @@ public final class NewMatchViewController: UIViewController {
         }
     }
     
-    override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
-
     @IBAction func newMatchTapped(_ sender: AnyObject) {
 
         let alertController = UIAlertController(title: "Add Players?", message: "", preferredStyle: .alert)

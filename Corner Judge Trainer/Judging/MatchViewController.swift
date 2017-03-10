@@ -14,8 +14,8 @@ import RxCocoa
 public final class MatchViewController: UIViewController {
     
     struct Constants {
-        static let MatchInfoViewHiddenTopConstraint: CGFloat = -40.0
-        static let DefaultMatchInfoViewAnimationDuration = 0.5
+        static let matchInfoViewHiddenTopConstraint: CGFloat = -40.0
+        static let defaultMatchInfoViewAnimationDuration = 0.5
     }
     
     @IBOutlet weak var redScoringArea: UIView!
@@ -44,6 +44,14 @@ public final class MatchViewController: UIViewController {
     let viewModel: MatchViewModel
     let disposeBag = DisposeBag()
 
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
+    }
+
+    public override var shouldAutorotate: Bool {
+        return true
+    }
+
     init(match: Match) {
         viewModel = MatchViewModel(match: match)
         super.init(nibName: nil, bundle: nil)
@@ -53,19 +61,17 @@ public final class MatchViewController: UIViewController {
         fatalError("Use init(viewModel:) instead")
     }
 
-    override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscape
-    }
-    
     override public func viewDidLoad() {
         super.viewDidLoad()
+
+        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
 
         setupRedScoring()
         setupBlueScoring()
         setupPlayerNameLabels()
         setupMatchInfoView()
         setupPenaltyButtons()
-        
+
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
     }
@@ -109,10 +115,6 @@ public final class MatchViewController: UIViewController {
             self?.timerLabel.textColor = $0
         }) >>> disposeBag
         
-        viewModel.roundLabelHidden.asObservable().subscribe(onNext: { [weak self] hidden in
-            self?.setRoundHidden(hidden: hidden)
-        }) >>> disposeBag
-        
         viewModel.penaltyButtonsVisible.asObservable().subscribe(onNext: { [weak self] buttonsVisible in
             self?.penaltiesView.isHidden = !buttonsVisible
         }) >>> disposeBag
@@ -126,7 +128,7 @@ public final class MatchViewController: UIViewController {
         viewModel.roundLabelHidden.asObservable().subscribe(onNext: { [weak self] roundLabelHidden in
             self?.setRoundHidden(hidden: roundLabelHidden)
         }) >>> disposeBag
-        
+
         timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
         roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
         matchInfoView.rx.isHidden <- viewModel.matchInfoViewHidden >>> disposeBag
@@ -141,9 +143,11 @@ public final class MatchViewController: UIViewController {
     }
     
     private func showRound() {
+        guard matchInfoViewTopConstraint.constant != 0 else { return }
+
         matchInfoViewTopConstraint.constant = 0
         UIView.animate(
-            withDuration: Constants.DefaultMatchInfoViewAnimationDuration,
+            withDuration: Constants.defaultMatchInfoViewAnimationDuration,
             animations: {
                 self.view.layoutIfNeeded()
             },
@@ -152,9 +156,11 @@ public final class MatchViewController: UIViewController {
     }
     
     private func hideRound() {
-        matchInfoViewTopConstraint.constant = Constants.MatchInfoViewHiddenTopConstraint
+        guard matchInfoViewTopConstraint.constant != Constants.matchInfoViewHiddenTopConstraint else { return }
+
+        matchInfoViewTopConstraint.constant = Constants.matchInfoViewHiddenTopConstraint
         UIView.animate(
-            withDuration: Constants.DefaultMatchInfoViewAnimationDuration,
+            withDuration: Constants.defaultMatchInfoViewAnimationDuration,
             animations: {
                 self.view.layoutIfNeeded()
 

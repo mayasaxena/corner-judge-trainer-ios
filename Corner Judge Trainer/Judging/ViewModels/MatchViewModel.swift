@@ -28,7 +28,7 @@ public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let disablingViewVisible = Variable(true)
 
     let roundLabelHidden = Variable(false)
-    let roundLabelText: Variable<String?> = Variable("R1")
+    let roundLabelText = Variable("R1")
 
     private let disposeBag = DisposeBag()
 
@@ -40,6 +40,8 @@ public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
 
         matchManager.delegate = self
         matchInfoViewHidden.value = match.type == .none
+
+        matchManager.joinMatch()
     }
     
     public func handleMatchInfoViewTapped() {
