@@ -13,14 +13,24 @@ import RxCocoa
 
 public final class JoinMatchViewController: UIViewController, UITableViewDelegate {
 
-    let viewModel = JoinMatchViewModel()
-
-    let disposeBag = DisposeBag()
-
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var createNewMatchButton: RoundedButton!
+
+    let viewModel = JoinMatchViewModel()
+    let disposeBag = DisposeBag()
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+
+        setupTableView()
+
+        createNewMatchButton.rx.tap.single().subscribeNext { [weak self] in
+            let newMatchViewController = NewMatchViewController()
+            self?.navigationController?.pushViewController(newMatchViewController, animated: true)
+        } >>> disposeBag
+    }
+
+    private func setupTableView() {
         JoinMatchTableViewCell.registerNib(tableView)
 
         viewModel.cellViewModels.bindTo(tableView.rx.items(
@@ -28,7 +38,7 @@ public final class JoinMatchViewController: UIViewController, UITableViewDelegat
             cellType: JoinMatchTableViewCell.self
         )) { row, cellViewModel, cell in
             cell.configure(with: cellViewModel)
-        } >>> disposeBag
+            } >>> disposeBag
 
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             guard let welf = self else { return }

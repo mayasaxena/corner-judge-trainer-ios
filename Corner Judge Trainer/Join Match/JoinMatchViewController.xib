@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinMatchViewController" customModule="Corner" customModuleProvider="target">
             <connections>
+                <outlet property="createNewMatchButton" destination="XDK-cl-yNQ" id="PpU-8W-0TD"/>
                 <outlet property="tableView" destination="yZe-36-dYb" id="wLS-qm-Vj1"/>
                 <outlet property="view" destination="b3i-Uu-cgh" id="b0c-dV-vSy"/>
             </connections>
@@ -45,7 +46,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1w-ng-hBx">
                     <rect key="frame" x="0.0" y="547" width="375" height="120"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDK-cl-yNQ" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDK-cl-yNQ" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                             <rect key="frame" x="47" y="35" width="281" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="t6S-Yn-aRl"/>
@@ -54,7 +55,7 @@
                             <state key="normal" title="CREATE NEW MATCH"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                    <integer key="value" value="3"/>
+                                    <integer key="value" value="0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>

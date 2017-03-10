@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias Block = () -> ()
+public typealias Block = (Void) -> Void
 
 
 @IBDesignable final class RoundedButton: UIButton {
@@ -32,6 +32,13 @@ public typealias Block = () -> ()
             setNeedsLayout()
         }
     }
+
+    override var isHighlighted: Bool {
+        didSet {
+            guard layer.borderWidth != 0 else { return }
+            layer.borderColor = UIColor.gray.cgColor
+        }
+    }
     
     var colorStyle: ColorStyle = .white {
         didSet {
@@ -43,7 +50,7 @@ public typealias Block = () -> ()
         super.init(frame: CGRect.zero)
         colorStyle = style
         setup()
-        setTitle(title, for: UIControlState())
+        setTitle(title, for: .normal)
     }
     
     override init(frame: CGRect) {
@@ -82,13 +89,14 @@ public typealias Block = () -> ()
     private func setupWhiteBackground() {
         backgroundColor = UIColor.flatWhite
         tintColor = UIColor.flatBlack
-        setTitleColor(UIColor.flatWhite, for: UIControlState())
+        setTitleColor(UIColor.flatWhite, for: .normal)
     }
     
     private func setupTransparentBackground() {
         backgroundColor = nil
         tintColor = UIColor.flatWhite
-        setTitleColor(UIColor.flatWhite, for: UIControlState())
+        setTitleColor(UIColor.flatWhite, for: .normal)
+        setTitleColor(UIColor.gray, for: .highlighted)
         layer.borderColor = UIColor.flatWhite.cgColor
         layer.borderWidth = 1.0
     }
@@ -96,12 +104,12 @@ public typealias Block = () -> ()
     private func setupRedBackground() {
         backgroundColor = UIColor.flatRed
         tintColor = UIColor.flatWhite
-        setTitleColor(UIColor.white, for: UIControlState())
+        setTitleColor(UIColor.white, for: .normal)
     }
     
     private func setupBlueBackground() {
         backgroundColor = UIColor.flatBlue
         tintColor = UIColor.flatWhite
-        setTitleColor(UIColor.flatWhite, for: UIControlState())
+        setTitleColor(UIColor.flatWhite, for: .normal)
     }
 }

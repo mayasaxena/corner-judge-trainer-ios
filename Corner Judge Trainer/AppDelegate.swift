@@ -18,9 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-//        let homeViewController = NewMatchViewController()
-        let homeViewController = JoinMatchViewController()
-        let navigationController = UINavigationController(rootViewController: homeViewController)
+        let joinMatchViewController = JoinMatchViewController()
+        let navigationController = UINavigationController(rootViewController: joinMatchViewController)
         navigationController.isNavigationBarHidden = true
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
