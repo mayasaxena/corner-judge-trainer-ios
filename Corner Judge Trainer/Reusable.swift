@@ -9,20 +9,20 @@
 import UIKit
 import Intrepid
 
-public protocol CellRepresentable { }
+public protocol Reusable { }
 
-extension CellRepresentable where Self : UITableViewCell {
-    public static var cellIdentifier: String {
+extension Reusable where Self : UITableViewCell {
+    public static var identifier: String {
         return String(describing: self)
     }
 
     public static func registerCell(_ tableView: UITableView) {
-        tableView.register(self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(self, forCellReuseIdentifier: identifier)
     }
 
     public static func registerNib(_ tableView: UITableView) {
-        tableView.register(ip_nib, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(ip_nib, forCellReuseIdentifier: identifier)
     }
 }
 
-extension UITableViewCell: CellRepresentable { }
+extension UITableViewCell: Reusable { }

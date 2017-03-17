@@ -23,7 +23,7 @@
 		A570D7051E5BC01C00393563 /* AddPlayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */; };
 		A570D7071E5BC69E00393563 /* MatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7061E5BC69E00393563 /* MatchViewController.xib */; };
 		A570D7091E5BCB7300393563 /* JoinMatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */; };
-		A570D70B1E5BCC8B00393563 /* CellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */; };
+		A570D70B1E5BCC8B00393563 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70A1E5BCC8B00393563 /* Reusable.swift */; };
 		A570D70D1E5BCEB800393563 /* JoinMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */; };
 		A570D70F1E5BD24A00393563 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70E1E5BD24A00393563 /* Match.swift */; };
 		A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */; };
@@ -81,7 +81,7 @@
 		A570D7041E5BC01C00393563 /* AddPlayersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPlayersViewController.xib; path = "New Match/AddPlayersViewController.xib"; sourceTree = "<group>"; };
 		A570D7061E5BC69E00393563 /* MatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MatchViewController.xib; path = Judging/MatchViewController.xib; sourceTree = "<group>"; };
 		A570D7081E5BCB7300393563 /* JoinMatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinMatchViewController.xib; path = "Join Match/JoinMatchViewController.xib"; sourceTree = "<group>"; };
-		A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRepresentable.swift; sourceTree = "<group>"; };
+		A570D70A1E5BCC8B00393563 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinMatchTableViewCell.xib; path = "Join Match/JoinMatchTableViewCell.xib"; sourceTree = "<group>"; };
 		A570D70E1E5BD24A00393563 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewController.swift; path = "Join Match/JoinMatchViewController.swift"; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		A534B7CA1D4BE35F00DBCCBE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A570D70A1E5BCC8B00393563 /* CellRepresentable.swift */,
+				A570D70A1E5BCC8B00393563 /* Reusable.swift */,
 				A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */,
 				A534B7C81D4BE35C00DBCCBE /* NSDate+Extensions.swift */,
 				A53C13AF1D96E8BC00F3A519 /* Rx+Extensions.swift */,
@@ -584,7 +584,7 @@
 				A55C38601E4941EB007BA949 /* Request.swift in Sources */,
 				A5A78A0A1D726AFF0088D983 /* NewMatchViewModel.swift in Sources */,
 				A570D70F1E5BD24A00393563 /* Match.swift in Sources */,
-				A570D70B1E5BCC8B00393563 /* CellRepresentable.swift in Sources */,
+				A570D70B1E5BCC8B00393563 /* Reusable.swift in Sources */,
 				A534B7C21D4BDF6500DBCCBE /* MatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

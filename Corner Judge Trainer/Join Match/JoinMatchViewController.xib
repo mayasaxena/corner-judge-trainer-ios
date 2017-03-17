@@ -29,20 +29,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-36-dYb">
-                    <rect key="frame" x="0.0" y="133" width="375" height="414"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN A MATCH" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-ov-flX">
+                    <rect key="frame" x="106.5" y="45" width="163.5" height="28"/>
+                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="24"/>
+                    <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8yn-Iw-2Ra">
+                    <rect key="frame" x="121.5" y="98" width="132" height="29"/>
+                    <segments>
+                        <segment title="LOCAL" width="61"/>
+                        <segment title="REMOTE" width="70"/>
+                    </segments>
+                    <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-36-dYb">
+                    <rect key="frame" x="0.0" y="136" width="375" height="411"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="OUx-kO-jTE"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN A MATCH" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-ov-flX">
-                    <rect key="frame" x="106.5" y="70" width="163.5" height="28"/>
-                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="24"/>
-                    <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1w-ng-hBx">
                     <rect key="frame" x="0.0" y="547" width="375" height="120"/>
                     <subviews>
@@ -74,13 +82,17 @@
                 <constraint firstItem="LV4-ov-flX" firstAttribute="centerX" secondItem="b3i-Uu-cgh" secondAttribute="centerX" id="4b3-Xq-rLK"/>
                 <constraint firstItem="Q1w-ng-hBx" firstAttribute="top" secondItem="yZe-36-dYb" secondAttribute="bottom" id="98k-uV-egg"/>
                 <constraint firstAttribute="trailing" secondItem="Q1w-ng-hBx" secondAttribute="trailing" id="B7H-fZ-n2e"/>
+                <constraint firstItem="8yn-Iw-2Ra" firstAttribute="centerX" secondItem="b3i-Uu-cgh" secondAttribute="centerX" id="DsP-jn-EM4"/>
                 <constraint firstAttribute="trailing" secondItem="yZe-36-dYb" secondAttribute="trailing" id="FEn-gL-p0F"/>
-                <constraint firstItem="yZe-36-dYb" firstAttribute="top" secondItem="LV4-ov-flX" secondAttribute="bottom" constant="35" id="GJu-j8-tgG"/>
                 <constraint firstItem="yZe-36-dYb" firstAttribute="leading" secondItem="b3i-Uu-cgh" secondAttribute="leading" id="KOa-u9-PFy"/>
                 <constraint firstAttribute="bottom" secondItem="Q1w-ng-hBx" secondAttribute="bottom" id="NcG-Q3-3x5"/>
-                <constraint firstItem="LV4-ov-flX" firstAttribute="top" secondItem="b3i-Uu-cgh" secondAttribute="top" constant="70" id="ZGQ-f0-qTj"/>
+                <constraint firstItem="LV4-ov-flX" firstAttribute="top" secondItem="b3i-Uu-cgh" secondAttribute="top" constant="45" id="ZGQ-f0-qTj"/>
                 <constraint firstItem="Q1w-ng-hBx" firstAttribute="leading" secondItem="b3i-Uu-cgh" secondAttribute="leading" id="jNK-59-Twg"/>
+                <constraint firstItem="8yn-Iw-2Ra" firstAttribute="top" secondItem="LV4-ov-flX" secondAttribute="bottom" constant="25" id="vhG-fG-Byt"/>
+                <constraint firstItem="yZe-36-dYb" firstAttribute="top" secondItem="8yn-Iw-2Ra" secondAttribute="bottom" constant="10" id="x6t-Sr-R43"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>
     </objects>
 </document>

@@ -34,11 +34,11 @@ public final class JoinMatchViewController: UIViewController, UITableViewDelegat
         JoinMatchTableViewCell.registerNib(tableView)
 
         viewModel.cellViewModels.bindTo(tableView.rx.items(
-            cellIdentifier: JoinMatchTableViewCell.cellIdentifier,
+            cellIdentifier: JoinMatchTableViewCell.identifier,
             cellType: JoinMatchTableViewCell.self
         )) { row, cellViewModel, cell in
             cell.configure(with: cellViewModel)
-            } >>> disposeBag
+        } >>> disposeBag
 
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             guard let welf = self else { return }

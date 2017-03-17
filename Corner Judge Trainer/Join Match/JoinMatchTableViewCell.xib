@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,33 +24,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallRed" translatesAutoresizingMaskIntoConstraints="NO" id="6Pk-ON-Cfc">
-                        <rect key="frame" x="29" y="29" width="60" height="60"/>
+                        <rect key="frame" x="30" y="18" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6Pk-ON-Cfc" secondAttribute="height" multiplier="1:1" id="GBj-YK-UVK"/>
+                        </constraints>
                     </imageView>
                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hoguIconSmallBlue" translatesAutoresizingMaskIntoConstraints="NO" id="sXR-ud-BH8">
-                        <rect key="frame" x="286" y="29" width="60" height="60"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDPLAYER L." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dU-aC-54n">
-                        <rect key="frame" x="8" y="94" width="102" height="14"/>
+                        <rect key="frame" x="285" y="18" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="102" id="Ab0-SS-n73"/>
-                            <constraint firstAttribute="height" constant="14" id="bMm-ay-SAt"/>
+                            <constraint firstAttribute="width" secondItem="sXR-ud-BH8" secondAttribute="height" multiplier="1:1" id="s5h-17-hv3"/>
                         </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" text="RED PLAYER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dU-aC-54n">
+                        <rect key="frame" x="10" y="83" width="101" height="31.5"/>
                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
                         <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="BLUE PLAYER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-aA-sqI">
-                        <rect key="frame" x="265" y="94" width="102" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="FLU-ZM-9A9"/>
-                            <constraint firstAttribute="width" constant="102" id="d3D-7g-LQM"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="250" text="BLUE PLAYER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-aA-sqI">
+                        <rect key="frame" x="265.5" y="83" width="99.5" height="31.5"/>
                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="12"/>
                         <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-lE-UXO" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                        <rect key="frame" x="128" y="34" width="120" height="50"/>
+                        <rect key="frame" x="127.5" y="26" width="120" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="mBd-0e-Mhr"/>
                             <constraint firstAttribute="width" constant="120" id="ucX-tF-Slr"/>
@@ -63,7 +62,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH ###" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fu-mc-NG9">
-                        <rect key="frame" x="164" y="97" width="49" height="11"/>
+                        <rect key="frame" x="163.5" y="94" width="49" height="10.5"/>
                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="9"/>
                         <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -71,22 +70,30 @@
                 </subviews>
                 <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="8dU-aC-54n" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="8" id="3EH-5V-iof"/>
-                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="centerY" secondItem="fwc-lE-UXO" secondAttribute="centerY" id="8gf-45-RLn"/>
-                    <constraint firstItem="sXR-ud-BH8" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="29" id="C3f-Uv-mgq"/>
-                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="centerX" secondItem="fwc-lE-UXO" secondAttribute="centerX" id="Jz3-dc-rNY"/>
-                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="bottom" secondItem="8dU-aC-54n" secondAttribute="bottom" id="KDw-ef-U7T"/>
-                    <constraint firstItem="Aer-aA-sqI" firstAttribute="top" secondItem="sXR-ud-BH8" secondAttribute="bottom" constant="5" id="OYe-4a-w0d"/>
-                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="29" id="Otn-QW-47w"/>
-                    <constraint firstItem="Aer-aA-sqI" firstAttribute="centerX" secondItem="sXR-ud-BH8" secondAttribute="centerX" id="QAu-ml-D8N"/>
-                    <constraint firstItem="fwc-lE-UXO" firstAttribute="centerX" secondItem="0ub-Nt-6U2" secondAttribute="centerX" id="XRd-8Q-Dl2"/>
-                    <constraint firstAttribute="trailing" secondItem="sXR-ud-BH8" secondAttribute="trailing" constant="29" id="YMJ-SM-6au"/>
-                    <constraint firstAttribute="trailing" secondItem="Aer-aA-sqI" secondAttribute="trailing" constant="8" id="aPq-gi-yRd"/>
-                    <constraint firstItem="8dU-aC-54n" firstAttribute="top" secondItem="6Pk-ON-Cfc" secondAttribute="bottom" constant="5" id="bVh-KP-FEe"/>
-                    <constraint firstItem="8dU-aC-54n" firstAttribute="centerX" secondItem="6Pk-ON-Cfc" secondAttribute="centerX" id="hZa-Nk-V8E"/>
-                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="29" id="pD4-fw-Mwa"/>
+                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="30" id="7ib-XO-qQW"/>
+                    <constraint firstItem="Aer-aA-sqI" firstAttribute="centerX" secondItem="sXR-ud-BH8" secondAttribute="centerX" id="8DL-n2-08H"/>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="leading" secondItem="0ub-Nt-6U2" secondAttribute="leading" constant="10" id="DHZ-lA-Rgl"/>
+                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="top" secondItem="fwc-lE-UXO" secondAttribute="bottom" constant="18" id="N68-cY-V1d"/>
+                    <constraint firstItem="Aer-aA-sqI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fwc-lE-UXO" secondAttribute="trailing" constant="10" id="O7n-k8-9M4"/>
+                    <constraint firstAttribute="trailing" secondItem="sXR-ud-BH8" secondAttribute="trailing" constant="30" id="Pf6-G1-1A8"/>
+                    <constraint firstItem="fwc-lE-UXO" firstAttribute="centerX" secondItem="0ub-Nt-6U2" secondAttribute="centerX" id="Rhg-ok-qG8"/>
+                    <constraint firstItem="fwc-lE-UXO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8dU-aC-54n" secondAttribute="trailing" constant="10" id="Tq8-Va-GsL"/>
+                    <constraint firstItem="6Pk-ON-Cfc" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="18" id="U33-3K-PTO"/>
+                    <constraint firstItem="fwc-lE-UXO" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="26" id="UBM-Z0-r0S"/>
+                    <constraint firstAttribute="trailing" secondItem="Aer-aA-sqI" secondAttribute="trailing" constant="10" id="WwI-wb-sJz"/>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="top" secondItem="6Pk-ON-Cfc" secondAttribute="bottom" constant="5" id="cbi-YW-MHA"/>
+                    <constraint firstItem="8dU-aC-54n" firstAttribute="centerX" secondItem="6Pk-ON-Cfc" secondAttribute="centerX" id="g3d-2P-ZdE"/>
+                    <constraint firstAttribute="bottom" secondItem="8dU-aC-54n" secondAttribute="bottom" constant="5" id="gZU-cR-087"/>
+                    <constraint firstItem="Aer-aA-sqI" firstAttribute="top" secondItem="sXR-ud-BH8" secondAttribute="bottom" constant="5" id="koH-hN-c2c"/>
+                    <constraint firstItem="2Fu-mc-NG9" firstAttribute="centerX" secondItem="fwc-lE-UXO" secondAttribute="centerX" id="q4K-dy-xxh"/>
+                    <constraint firstItem="sXR-ud-BH8" firstAttribute="top" secondItem="0ub-Nt-6U2" secondAttribute="top" constant="18" id="sHa-Nq-WU1"/>
+                    <constraint firstAttribute="bottom" secondItem="sXR-ud-BH8" secondAttribute="bottom" constant="41" id="tej-YO-zhf"/>
+                    <constraint firstAttribute="bottom" secondItem="Aer-aA-sqI" secondAttribute="bottom" constant="5" id="wsw-ZG-99b"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6Pk-ON-Cfc" secondAttribute="bottom" constant="42" id="v65-So-Hvx"/>
+            </constraints>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="bluePlayerNameLabel" destination="Aer-aA-sqI" id="QmZ-so-c2H"/>

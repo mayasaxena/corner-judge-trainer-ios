@@ -16,12 +16,10 @@ public final class JoinMatchTableViewCellViewModel {
     public let matchNumberLabelText: String
     // TODO: Match type once the designs are ready
 
-    private let match: Match
-
     init(match: Match) {
-        self.match = match
         redPlayerLabelText = match.redPlayer.name.uppercased()
         bluePlayerLabelText = match.bluePlayer.name.uppercased()
         matchNumberLabelText = "MATCH \(match.id)"
     }
+
 }
