@@ -21,6 +21,8 @@ PODS:
   - RxCocoa (3.1.0):
     - RxSwift (~> 3.1)
   - RxSwift (3.1.0)
+  - RxSwiftExt (2.1.0):
+    - RxSwift (~> 3.0)
   - Starscream (2.0.2)
 
 DEPENDENCIES:
@@ -30,6 +32,7 @@ DEPENDENCIES:
   - IQKeyboardManager (from `git@github.com:IntrepidPursuits/IQKeyboardManager.git`)
   - RxCocoa
   - RxSwift
+  - RxSwiftExt
   - Starscream (~> 2.0.0)
 
 EXTERNAL SOURCES:
@@ -48,8 +51,9 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 7d0926d5391b99b842ccc6367b849dd1975c8bf9
   RxCocoa: 50d7564866da9299161e86a263ce12a0873904d8
   RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
+  RxSwiftExt: 492a6575cf6afabb8feeed3204bd0f9e2c695e67
   Starscream: 6c135a34e0a6e60cedaa0b30db67a4c05cf7cd38
 
-PODFILE CHECKSUM: 900d017f14c09ca128cfd34693208cc37dae00c3
+PODFILE CHECKSUM: 98109b406995db29bbf59480ee05bb195d622cc2
 
 COCOAPODS: 1.2.0

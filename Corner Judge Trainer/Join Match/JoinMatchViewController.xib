@@ -20,6 +20,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinMatchViewController" customModule="Corner" customModuleProvider="target">
             <connections>
                 <outlet property="createNewMatchButton" destination="XDK-cl-yNQ" id="PpU-8W-0TD"/>
+                <outlet property="originControl" destination="8yn-Iw-2Ra" id="QOh-zY-G3k"/>
                 <outlet property="tableView" destination="yZe-36-dYb" id="wLS-qm-Vj1"/>
                 <outlet property="view" destination="b3i-Uu-cgh" id="b0c-dV-vSy"/>
             </connections>
@@ -30,13 +31,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOIN A MATCH" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-ov-flX">
-                    <rect key="frame" x="106.5" y="45" width="163.5" height="28"/>
+                    <rect key="frame" x="105" y="45" width="166" height="28"/>
                     <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="24"/>
                     <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8yn-Iw-2Ra">
-                    <rect key="frame" x="121.5" y="98" width="132" height="29"/>
+                    <rect key="frame" x="122" y="98" width="132" height="29"/>
                     <segments>
                         <segment title="LOCAL" width="61"/>
                         <segment title="REMOTE" width="70"/>

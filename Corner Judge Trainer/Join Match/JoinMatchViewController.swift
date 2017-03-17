@@ -13,6 +13,7 @@ import RxCocoa
 
 public final class JoinMatchViewController: UIViewController, UITableViewDelegate {
 
+    @IBOutlet weak var originControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var createNewMatchButton: RoundedButton!
 
@@ -28,6 +29,8 @@ public final class JoinMatchViewController: UIViewController, UITableViewDelegat
             let newMatchViewController = NewMatchViewController()
             self?.navigationController?.pushViewController(newMatchViewController, animated: true)
         } >>> disposeBag
+
+        originControl.rx.selectedSegmentIndex <-> viewModel.selectedIndex >>> disposeBag
     }
 
     private func setupTableView() {
