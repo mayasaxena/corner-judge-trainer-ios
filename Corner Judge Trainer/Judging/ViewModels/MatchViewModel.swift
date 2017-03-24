@@ -10,59 +10,98 @@ import Foundation
 import RxSwift
 import Intrepid
 
-public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
+final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let matchManager: MatchManager
 
     let redPlayerName: String
     let bluePlayerName: String
-    
-    let redScoreText = Variable<String?>("0")
-    let blueScoreText = Variable<String?>("0")
 
-    let matchInfoViewHidden = Variable(false)
-    
-    let timerLabelTextColor = Variable(UIColor.white)
-    let timerLabelText: Variable<String?> = Variable("0:00")
-    
-    let penaltyButtonsVisible = Variable(true)
-    let disablingViewVisible = Variable(true)
+    private let redScoreTextVar = Variable<String?>("0")
+    var redScoreText: Observable<String?> {
+        return redScoreTextVar.asObservable()
+    }
 
-    let roundLabelHidden = Variable(false)
-    let roundLabelText = Variable("R1")
+    private let blueScoreTextVar = Variable<String?>("0")
+    var blueScoreText: Observable<String?> {
+        return blueScoreTextVar.asObservable()
+    }
+
+    private let matchInfoViewHiddenVar = Variable(false)
+    var matchInfoViewHidden: Observable<Bool> {
+        return matchInfoViewHiddenVar.asObservable()
+    }
+
+    var timerLabelTextColor: Observable<UIColor> {
+        return scoringDisabled.asObservable().map { $0 ? UIColor.yellow : UIColor.flatWhite}
+    }
+
+    private let timerLabelTextVar = Variable<String?>("0:00")
+    var timerLabelText: Observable<String?> {
+        return timerLabelTextVar.asObservable()
+    }
+
+    var penaltyButtonsVisible: Observable<Bool> {
+        return scoringDisabled.asObservable()
+    }
+
+    var disablingViewVisible: Observable<Bool> {
+        return scoringDisabled.asObservable()
+    }
+
+    var roundLabelHidden: Observable<Bool> {
+        return scoringDisabled.asObservable().not()
+    }
+
+    var navigationBarHidden: Observable<Bool> {
+        return scoringDisabled.asObservable().map { !$0 && self.matchManager.match.type != .none }
+    }
+
+    private let scoringDisabled = Variable(true)
+    private let round = Variable<Int?>(1)
+
+    var roundLabelText: Observable<String?> {
+        return round.asObservable().map { round in
+            if let round = round {
+                return "R\(round)"
+            } else {
+                return "REST"
+            }
+        }
+    }
 
     private let disposeBag = DisposeBag()
 
-    init(match: Match) {
-        matchManager = LocalMatchManager(match: match)
-        
+    init(match: Match, isRemote: Bool = false) {
         redPlayerName = match.redPlayer.displayName
         bluePlayerName = match.bluePlayer.displayName
 
+        matchManager = isRemote ? RemoteMatchManager(match: match) : LocalMatchManager(match: match)
         matchManager.delegate = self
-        matchInfoViewHidden.value = match.type == .none
+        matchInfoViewHiddenVar.value = match.type == .none
+        scoringDisabled.value = match.type != .none
 
         matchManager.joinMatch()
     }
     
-    public func handleMatchInfoViewTapped() {
+    func handleMatchInfoViewTapped() {
         matchManager.playPause()
     }
     
     // MARK: - View Handlers
 
-    public func handleScoringAreaTapped(color: PlayerColor) {
+    func handleScoringAreaTapped(color: PlayerColor) {
         matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .head, judgeID: "judge-iOS"))
     }
 
-    public func handleScoringAreaSwiped(color: PlayerColor) {
+    func handleScoringAreaSwiped(color: PlayerColor) {
         matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .body, judgeID: "judge-iOS"))
     }
 
-    public func handleTechnicalButtonTapped(color: PlayerColor) {
+    func handleTechnicalButtonTapped(color: PlayerColor) {
         matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .technical, judgeID: "judge-iOS"))
     }
 
-    public func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent.Category) {
+    func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent.Category) {
         matchManager.handle(scoringEvent: ScoringEvent(color: color, category: penalty, judgeID: "judge-iOS"))
     }
 
@@ -74,34 +113,22 @@ public final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         blueScore: Double,
         bluePenalties: Double
     ) {
-        redScoreText.value = redScore.formattedString
-        blueScoreText.value = blueScore.formattedString
+        redScoreTextVar.value = redScore.formattedString
+        blueScoreTextVar.value = blueScore.formattedString
 
         // TODO: Penalties
     }
 
     func timerUpdated(timeString: String) {
-        timerLabelText.value = timeString
+        timerLabelTextVar.value = timeString
     }
 
     func matchStatusChanged(scoringDisabled: Bool) {
-        disablingViewVisible.value = scoringDisabled
-        penaltyButtonsVisible.value = scoringDisabled
-        roundLabelHidden.value = !scoringDisabled
+        self.scoringDisabled.value = scoringDisabled
     }
 
     func roundChanged(round: Int?) {
-        if let round = round {
-            timerLabelTextColor.value = UIColor.white
-            disablingViewVisible.value = false
-            roundLabelHidden.value = true
-            roundLabelText.value = "R\(round)"
-        } else {
-            timerLabelTextColor.value = UIColor.yellow
-            disablingViewVisible.value = true
-            roundLabelHidden.value = false
-            roundLabelText.value = "REST"
-        }
+        self.round.value = round
     }
 }
 

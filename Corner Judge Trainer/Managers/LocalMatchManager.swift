@@ -8,13 +8,13 @@
 
 import Foundation
 
-public final class LocalMatchManager: MatchManager {
+final class LocalMatchManager: MatchManager {
 
     private struct Constants {
         static let restTime: TimeInterval = 30.0
     }
 
-    public let match: Match
+    let match: Match
 
     private var round: Int = 1 {
         didSet {
@@ -40,7 +40,7 @@ public final class LocalMatchManager: MatchManager {
         resetTimer(match.type.roundDuration)
     }
 
-    public func handle(scoringEvent: ScoringEvent) {
+    func handle(scoringEvent: ScoringEvent) {
         guard match.winningPlayer == nil else { return }
 
         var playerScore = 0.0
@@ -74,6 +74,16 @@ public final class LocalMatchManager: MatchManager {
             match.blueScore += playerPenalties
         }
 
+
+        delegate?.scoreUpdated(
+            redScore: match.redScore,
+            redPenalties: match.redPenalties,
+            blueScore: match.blueScore,
+            bluePenalties: match.bluePenalties
+        )
+
+        guard match.type != .none else { return }
+
         match.checkPenalties()
         if round > match.type.pointGapThresholdRound {
             match.checkPointGap()
@@ -82,20 +92,13 @@ public final class LocalMatchManager: MatchManager {
         if match.isWon {
             endMatch()
         }
-
-        delegate?.scoreUpdated(
-            redScore: match.redScore,
-            redPenalties: match.redPenalties,
-            blueScore: match.blueScore,
-            bluePenalties: match.bluePenalties
-        )
     }
 
-    public func joinMatch() {
+    func joinMatch() {
         delegate?.timerUpdated(timeString: timeRemaining.formattedTimeString)
     }
 
-    public func playPause() {
+    func playPause() {
         guard !matchEnded else { return }
         if timer.isValid {
             stopTimer()
@@ -124,7 +127,7 @@ public final class LocalMatchManager: MatchManager {
         )
     }
 
-    public func stopTimer() {
+    func stopTimer() {
         if timer.isValid {
             timer.invalidate()
         }

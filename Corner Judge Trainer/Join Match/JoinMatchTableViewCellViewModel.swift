@@ -9,11 +9,11 @@
 import Foundation
 import RxSwift
 
-public final class JoinMatchTableViewCellViewModel {
+final class JoinMatchTableViewCellViewModel {
 
-    public let redPlayerLabelText: String
-    public let bluePlayerLabelText: String
-    public let matchNumberLabelText: String
+    let redPlayerLabelText: String
+    let bluePlayerLabelText: String
+    let matchNumberLabelText: String
     // TODO: Match type once the designs are ready
 
     init(match: Match) {

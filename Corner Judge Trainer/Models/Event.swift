@@ -50,8 +50,8 @@ fileprivate struct JSONKey {
 
 // MARK: - ScoringEvent
 
-public struct ScoringEvent: Event {
-    public enum Category: String {
+struct ScoringEvent: Event {
+    enum Category: String {
         case body
         case head
         case technical
@@ -111,17 +111,17 @@ public struct ScoringEvent: Event {
 
 extension ScoringEvent {
 
-    public var description: String {
+    var description: String {
         return "[\(color.displayName) \(category.displayName)]"
     }
 
-    public var isPenalty: Bool {
+    var isPenalty: Bool {
         return category == .gamJeom || category == .kyongGo
     }
 }
 
 extension ScoringEvent: Equatable {
-    public static func ==(lhs: ScoringEvent, rhs: ScoringEvent) -> Bool {
+    static func ==(lhs: ScoringEvent, rhs: ScoringEvent) -> Bool {
         return  lhs.category == rhs.category &&
             lhs.color == rhs.color
     }

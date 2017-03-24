@@ -10,7 +10,7 @@ import UIKit
 import Intrepid
 import RxSwift
 
-public final class AddPlayersViewController: UIViewController {
+final class AddPlayersViewController: UIViewController {
     
     struct Constants {
         static let transitionDelay: TimeInterval = 1.5
@@ -31,15 +31,15 @@ public final class AddPlayersViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Use init(viewModel:) instead")
     }
     
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        redPlayerTextField.rx.textInput.text <-> viewModel.redPlayerName >>> disposeBag
-        bluePlayerTextField.rx.textInput.text <-> viewModel.bluePlayerName >>> disposeBag
+        redPlayerTextField.rx.text.orEmpty <-> viewModel.redPlayerName >>> disposeBag
+        bluePlayerTextField.rx.text.orEmpty <-> viewModel.bluePlayerName >>> disposeBag
         
         startNewMatchButton.rx.tap.single().subscribe(onNext: { _ in
             self.transitionToMatchViewController()

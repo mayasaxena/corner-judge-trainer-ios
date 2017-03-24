@@ -10,7 +10,7 @@ import Foundation
 import Intrepid
 import Genome
 
-public final class CornerAPIClient: APIClient {
+final class CornerAPIClient: APIClient {
 
     static let shared = CornerAPIClient()
 
@@ -38,7 +38,7 @@ public final class CornerAPIClient: APIClient {
     }
 }
 
-public class APIClient {
+class APIClient {
 
     static let unauthorizedStatusCode = 401
 

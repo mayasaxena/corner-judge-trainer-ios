@@ -9,18 +9,18 @@
 import UIKit
 import Intrepid
 
-public protocol Reusable { }
+protocol Reusable { }
 
 extension Reusable where Self : UITableViewCell {
-    public static var identifier: String {
+    static var identifier: String {
         return String(describing: self)
     }
 
-    public static func registerCell(_ tableView: UITableView) {
+    static func registerCell(_ tableView: UITableView) {
         tableView.register(self, forCellReuseIdentifier: identifier)
     }
 
-    public static func registerNib(_ tableView: UITableView) {
+    static func registerNib(_ tableView: UITableView) {
         tableView.register(ip_nib, forCellReuseIdentifier: identifier)
     }
 }

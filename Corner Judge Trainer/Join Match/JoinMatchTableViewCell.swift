@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Intrepid
 
-public final class JoinMatchTableViewCell: UITableViewCell {
+final class JoinMatchTableViewCell: UITableViewCell {
     @IBOutlet weak var redPlayerNameLabel: UILabel!
     @IBOutlet weak var bluePlayerNameLabel: UILabel!
     @IBOutlet weak var matchNumberLabel: UILabel!

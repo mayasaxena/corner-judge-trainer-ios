@@ -9,41 +9,41 @@
 import Foundation
 import Genome
 
-public final class Match {
+final class Match {
 
     private struct Constants {
         static let matchIDLength = 3
         static let maxScore = 99.0
     }
 
-    public let id: Int
-    public let date = Date()
+    let id: Int
+    let date = Date()
 
-    public var redScore: Double = 0 {
+    var redScore: Double = 0 {
         didSet {
             redScore = min(redScore, Constants.maxScore)
         }
     }
 
-    public var redPenalties: Double = 0 {
+    var redPenalties: Double = 0 {
         didSet {
             redPenalties = min(redPenalties, ruleSet.maxPenalties)
         }
     }
 
-    public var blueScore: Double = 0 {
+    var blueScore: Double = 0 {
         didSet {
             blueScore = min(blueScore, Constants.maxScore)
         }
     }
 
-    public var bluePenalties: Double = 0 {
+    var bluePenalties: Double = 0 {
         didSet {
             bluePenalties = min(bluePenalties, ruleSet.maxPenalties)
         }
     }
 
-    public var winningPlayer: Player?
+    var winningPlayer: Player?
 
     fileprivate(set) var type: MatchType
     fileprivate(set) var ruleSet = RuleSet.ectc
@@ -63,7 +63,7 @@ public final class Match {
         self.type = type
     }
 
-    public func determineWinner() {
+    func determineWinner() {
         if redScore == blueScore {
             winningPlayer = nil
         } else {
@@ -83,7 +83,7 @@ extension String {
 
 // MARK: - MatchType
 
-public enum MatchType: Int {
+enum MatchType: Int {
     case aTeam
     case bTeam
     case cTeam
@@ -106,7 +106,7 @@ public enum MatchType: Int {
     }
 }
 
-public enum RuleSet: Int {
+enum RuleSet: Int {
     case ectc, wtf
 
     var maxPenalties: Double {
@@ -129,7 +129,7 @@ public enum RuleSet: Int {
 }
 
 extension Match: CustomStringConvertible {
-    public var description: String {
+    var description: String {
         return
             "\nMatch \(id) (\(type.displayName)) at \(date.timeStampString)\n" +
             "Red Player: \(redPlayer.name)\t Score: \(redScore), Penalties: \(redPenalties)\n" +

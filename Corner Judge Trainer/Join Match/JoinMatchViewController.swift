@@ -11,7 +11,7 @@ import Intrepid
 import RxSwift
 import RxCocoa
 
-public final class JoinMatchViewController: UIViewController, UITableViewDelegate {
+final class JoinMatchViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var originControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -20,12 +20,12 @@ public final class JoinMatchViewController: UIViewController, UITableViewDelegat
     let viewModel = JoinMatchViewModel()
     let disposeBag = DisposeBag()
 
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
 
-        createNewMatchButton.rx.tap.single().subscribeNext { [weak self] in
+        createNewMatchButton.rx.tap.subscribeNext { [weak self] in
             let newMatchViewController = NewMatchViewController()
             self?.navigationController?.pushViewController(newMatchViewController, animated: true)
         } >>> disposeBag
@@ -43,10 +43,10 @@ public final class JoinMatchViewController: UIViewController, UITableViewDelegat
             cell.configure(with: cellViewModel)
         } >>> disposeBag
 
-        tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+        tableView.rx.itemSelected.subscribeNext { [weak self] indexPath in
             guard let welf = self else { return }
             let matchViewController = MatchViewController(matchViewModel: welf.viewModel.matchViewModel(for: indexPath.row))
             welf.navigationController?.pushViewController(matchViewController, animated: true)
-        }) >>> disposeBag
+        } >>> disposeBag
     }
 }

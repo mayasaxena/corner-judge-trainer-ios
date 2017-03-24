@@ -11,7 +11,7 @@ import Intrepid
 import RxSwift
 import RxCocoa
 
-public final class MatchViewController: UIViewController {
+final class MatchViewController: UIViewController {
     
     struct Constants {
         static let matchInfoViewHiddenTopConstraint: CGFloat = -40.0
@@ -44,11 +44,11 @@ public final class MatchViewController: UIViewController {
     let viewModel: MatchViewModel
     let disposeBag = DisposeBag()
 
-    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
 
-    public override var shouldAutorotate: Bool {
+    override var shouldAutorotate: Bool {
         return true
     }
 
@@ -57,14 +57,17 @@ public final class MatchViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Use init(viewModel:) instead")
     }
 
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.rx.isHidden <- viewModel.navigationBarHidden >>> disposeBag
+        }
 
         setupRedScoring()
         setupBlueScoring()
@@ -75,6 +78,11 @@ public final class MatchViewController: UIViewController {
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+    }
     
     private func setupRedScoring() {
         redScoreLabel.rx.text <- viewModel.redScoreText >>> disposeBag
@@ -82,9 +90,9 @@ public final class MatchViewController: UIViewController {
         setupTapGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         setupSwipeGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         
-        redTechnicalButton.rx.tap.subscribe(onNext: { [weak self] in
+        redTechnicalButton.rx.tap.subscribeNext { [weak self] in
             self?.viewModel.handleTechnicalButtonTapped(color: .red)
-        }) >>> disposeBag
+        } >>> disposeBag
         
         redScoringArea.isUserInteractionEnabled = false
     }
@@ -106,28 +114,28 @@ public final class MatchViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer()
         matchInfoView.addGestureRecognizer(tapGestureRecognizer)
         
-        tapGestureRecognizer.rx.event.subscribe(onNext: { [weak self] _ in
+        tapGestureRecognizer.rx.event.subscribeNext { [weak self] _ in
             self?.viewModel.handleMatchInfoViewTapped()
-        }) >>> disposeBag
+        } >>> disposeBag
 
         // TODO: Bind
-        viewModel.timerLabelTextColor.asObservable().subscribe(onNext: { [weak self] in
+        viewModel.timerLabelTextColor.asObservable().subscribeNext { [weak self] in
             self?.timerLabel.textColor = $0
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        viewModel.penaltyButtonsVisible.asObservable().subscribe(onNext: { [weak self] buttonsVisible in
+        viewModel.penaltyButtonsVisible.asObservable().subscribeNext { [weak self] buttonsVisible in
             self?.penaltiesView.isHidden = !buttonsVisible
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        viewModel.disablingViewVisible.asObservable().subscribe(onNext: { [weak self] disablingViewVisible in
+        viewModel.disablingViewVisible.asObservable().subscribeNext { [weak self] disablingViewVisible in
             self?.disablingView.isHidden = !disablingViewVisible
             self?.redScoringArea.isUserInteractionEnabled = !disablingViewVisible
             self?.blueScoringArea.isUserInteractionEnabled = !disablingViewVisible
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        viewModel.roundLabelHidden.asObservable().subscribe(onNext: { [weak self] roundLabelHidden in
+        viewModel.roundLabelHidden.asObservable().subscribeNext { [weak self] roundLabelHidden in
             self?.setRoundHidden(hidden: roundLabelHidden)
-        }) >>> disposeBag
+        } >>> disposeBag
 
         timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
         roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
@@ -174,9 +182,9 @@ public final class MatchViewController: UIViewController {
         tapGestureRecognizer.numberOfTapsRequired = 1
         targetView.addGestureRecognizer(tapGestureRecognizer)
         
-        tapGestureRecognizer.rx.event.subscribe(onNext: { [weak self] _ in
+        tapGestureRecognizer.rx.event.subscribeNext { [weak self] _ in
             self?.viewModel.handleScoringAreaTapped(color: playerColor)
-        }) >>> disposeBag
+        } >>> disposeBag
     }
     
     private func setupSwipeGestureRecognizer(targetView: UIView, playerColor: PlayerColor) {
@@ -184,28 +192,28 @@ public final class MatchViewController: UIViewController {
         swipeGestureRecognizer.direction = .down
         targetView.addGestureRecognizer(swipeGestureRecognizer)
         
-        swipeGestureRecognizer.rx.event.subscribe(onNext: { [weak self] _ in
+        swipeGestureRecognizer.rx.event.subscribeNext { [weak self] _ in
             self?.viewModel.handleScoringAreaSwiped(color: playerColor)
-        }) >>> disposeBag
+        } >>> disposeBag
     }
     
     private func setupPenaltyButtons() {
         
-        redKyongGoButton.rx.tap.subscribe(onNext: { [weak self] in
+        redKyongGoButton.rx.tap.subscribeNext { [weak self] in
             self?.displayConfirmationAlert(playerColor: .red, category: .kyongGo)
-        }) >>> disposeBag
+        } >>> disposeBag
 
-        redGamJeomButton.rx.tap.subscribe(onNext: { [weak self] in
+        redGamJeomButton.rx.tap.subscribeNext { [weak self] in
             self?.displayConfirmationAlert(playerColor: .red, category: .gamJeom)
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        blueKyongGoButton.rx.tap.subscribe(onNext: { [weak self] in
+        blueKyongGoButton.rx.tap.subscribeNext { [weak self] in
             self?.displayConfirmationAlert(playerColor: .blue, category: .kyongGo)
-        }) >>> disposeBag
+        } >>> disposeBag
         
-        blueGamJeomButton.rx.tap.subscribe(onNext: { [weak self] in
+        blueGamJeomButton.rx.tap.subscribeNext { [weak self] in
             self?.displayConfirmationAlert(playerColor: .blue, category: .gamJeom)
-        }) >>> disposeBag
+        } >>> disposeBag
     }
     
     private func displayConfirmationAlert(playerColor color: PlayerColor, category: ScoringEvent.Category) {

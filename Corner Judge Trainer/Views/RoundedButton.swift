@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias Block = (Void) -> Void
+typealias Block = (Void) -> Void
 
 
 @IBDesignable final class RoundedButton: UIButton {

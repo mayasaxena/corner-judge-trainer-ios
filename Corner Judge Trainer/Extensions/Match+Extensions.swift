@@ -13,7 +13,7 @@ extension Int {
      Generates a random number between (and inclusive of)
      the given minimum and maxiumum.
      */
-    public static func random(min: Int, max: Int) -> Int {
+    static func random(min: Int, max: Int) -> Int {
         let top = max - min + 1
         return Int(arc4random_uniform(UInt32(top))) + min
     }

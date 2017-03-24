@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Intrepid
 
-public final class NewMatchViewController: UIViewController {
+final class NewMatchViewController: UIViewController {
     
     @IBOutlet var radioButtons: [RadioButton]!
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
@@ -18,16 +18,17 @@ public final class NewMatchViewController: UIViewController {
     let viewModel = NewMatchViewModel()
     let disposeBag = DisposeBag()
 
-    override public var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
 
-    public override var shouldAutorotate: Bool {
+    override var shouldAutorotate: Bool {
         return false
     }
     
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+
         for (index, radioButton) in radioButtons.enumerated() {
             radioButton.rx.isSelected <- viewModel.radioButtonsSelected[index] >>> disposeBag
 

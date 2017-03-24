@@ -18,9 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
+
         let joinMatchViewController = JoinMatchViewController()
         let navigationController = UINavigationController(rootViewController: joinMatchViewController)
-        navigationController.isNavigationBarHidden = true
+        
+        navigationController.navigationBar.barTintColor = UIColor.flatWhite
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.backgroundColor = UIColor.clear
+        navigationController.navigationBar.shadowImage = UIImage()
+
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PlayerColor: String {
+enum PlayerColor: String {
     case blue, red
 
     var displayName: String {
@@ -16,7 +16,7 @@ public enum PlayerColor: String {
     }
 }
 
-public struct Player {
+struct Player {
     fileprivate struct Constants {
         static let defaultNamePrefix = "Anonymous"
     }

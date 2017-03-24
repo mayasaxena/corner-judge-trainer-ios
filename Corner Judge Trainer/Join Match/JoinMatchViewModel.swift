@@ -24,7 +24,7 @@ enum MatchOrigin: Int {
     }
 }
 
-public final class JoinMatchViewModel {
+final class JoinMatchViewModel {
 
     private struct Constants {
         static let matchRefreshInterval = 0.5
@@ -32,7 +32,7 @@ public final class JoinMatchViewModel {
         static let remoteMatchPollingInterval = Int(Constants.pollingInterval / Constants.matchRefreshInterval)
     }
 
-    public var cellViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
+    var cellViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
         return switchBetween(
             observable1: remoteMatchViewModels,
             observable2: localMatchViewModels,
@@ -40,7 +40,7 @@ public final class JoinMatchViewModel {
         )
     }
 
-    public let selectedIndex = Variable(0)
+    let selectedIndex = Variable(0)
 
     private var originIsRemote: Observable<Bool> {
         return selectedIndex.asObservable()
@@ -71,6 +71,7 @@ public final class JoinMatchViewModel {
         let matches = currentMatchOrigin == .local ? localMatches : remoteMatches
 
         guard index < matches.count else { fatalError("Match index out of bounds") }
+//        return MatchViewModel(match: matches[index], isRemote: currentMatchOrigin.isRemote)
         return MatchViewModel(match: matches[index])
     }
 
