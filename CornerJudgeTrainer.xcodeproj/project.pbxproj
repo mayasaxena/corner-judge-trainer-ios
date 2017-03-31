@@ -26,6 +26,7 @@
 		A570D70B1E5BCC8B00393563 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70A1E5BCC8B00393563 /* Reusable.swift */; };
 		A570D70D1E5BCEB800393563 /* JoinMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */; };
 		A570D70F1E5BD24A00393563 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570D70E1E5BD24A00393563 /* Match.swift */; };
+		A571983C1E8EE6EF00F19197 /* PenaltiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571983B1E8EE6EF00F19197 /* PenaltiesView.swift */; };
 		A58DDE921DE288CF00853604 /* JoinMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */; };
 		A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */; };
 		A59EF7DE1E7323FB00A1E20E /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59EF7DD1E7323FB00A1E20E /* UINavigationController+Extensions.swift */; };
@@ -84,6 +85,7 @@
 		A570D70A1E5BCC8B00393563 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		A570D70C1E5BCEB800393563 /* JoinMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinMatchTableViewCell.xib; path = "Join Match/JoinMatchTableViewCell.xib"; sourceTree = "<group>"; };
 		A570D70E1E5BD24A00393563 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
+		A571983B1E8EE6EF00F19197 /* PenaltiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PenaltiesView.swift; path = Views/PenaltiesView.swift; sourceTree = "<group>"; };
 		A58DDE911DE288CF00853604 /* JoinMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewController.swift; path = "Join Match/JoinMatchViewController.swift"; sourceTree = "<group>"; };
 		A58DDE931DE2891800853604 /* JoinMatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinMatchViewModel.swift; path = "Join Match/JoinMatchViewModel.swift"; sourceTree = "<group>"; };
 		A59EF7DD1E7323FB00A1E20E /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Extensions.swift"; path = "Extensions/UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -207,6 +209,14 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		A571983F1E8EE70400F19197 /* Penalties View */ = {
+			isa = PBXGroup;
+			children = (
+				A571983B1E8EE6EF00F19197 /* PenaltiesView.swift */,
+			);
+			name = "Penalties View";
+			sourceTree = "<group>";
+		};
 		A58DDE901DE2889200853604 /* Join Match */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +286,7 @@
 			children = (
 				A5A78A041D70E1030088D983 /* RoundedButton.swift */,
 				A5A78A071D7238520088D983 /* RadioButton.swift */,
+				A571983F1E8EE70400F19197 /* Penalties View */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -582,6 +593,7 @@
 				A5DFDBAA1DE29D90006BED7E /* JoinMatchTableViewCellViewModel.swift in Sources */,
 				A534B7C51D4BDF7500DBCCBE /* MatchViewModel.swift in Sources */,
 				A55C38601E4941EB007BA949 /* Request.swift in Sources */,
+				A571983C1E8EE6EF00F19197 /* PenaltiesView.swift in Sources */,
 				A5A78A0A1D726AFF0088D983 /* NewMatchViewModel.swift in Sources */,
 				A570D70F1E5BD24A00393563 /* Match.swift in Sources */,
 				A570D70B1E5BCC8B00393563 /* Reusable.swift in Sources */,

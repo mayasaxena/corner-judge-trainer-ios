@@ -18,31 +18,31 @@ final class MatchViewController: UIViewController {
         static let defaultMatchInfoViewAnimationDuration = 0.5
     }
     
-    @IBOutlet weak var redScoringArea: UIView!
-    @IBOutlet weak var redScoreLabel: UILabel!
-    @IBOutlet weak var redTechnicalButton: UIButton!
-    @IBOutlet weak var redPlayerNameLabel: UILabel!
+    @IBOutlet private weak var redScoringArea: UIView!
+    @IBOutlet private weak var redPenaltiesView: PenaltiesView!
+    @IBOutlet private weak var redScoreLabel: UILabel!
+    @IBOutlet private weak var redTechnicalButton: UIButton!
+    @IBOutlet private weak var redPlayerNameLabel: UILabel!
+
+    @IBOutlet private weak var blueScoringArea: UIView!
+    @IBOutlet weak var bluePenaltiesView: PenaltiesView!
+    @IBOutlet private weak var blueScoreLabel: UILabel!
+    @IBOutlet private weak var blueTechnicalButton: UIButton!
+    @IBOutlet private weak var bluePlayerNameLabel: UILabel!
     
-    @IBOutlet weak var blueScoringArea: UIView!
-    @IBOutlet weak var blueScoreLabel: UILabel!
-    @IBOutlet weak var blueTechnicalButton: UIButton!
-    @IBOutlet weak var bluePlayerNameLabel: UILabel!
+    @IBOutlet private weak var disablingView: UIView!
+    @IBOutlet private weak var redKyongGoButton: RoundedButton!
+    @IBOutlet private weak var redGamJeomButton: RoundedButton!
+    @IBOutlet private weak var blueKyongGoButton: RoundedButton!
+    @IBOutlet private weak var blueGamJeomButton: RoundedButton!
     
-    @IBOutlet weak var disablingView: UIView!
+    @IBOutlet private weak var matchInfoView: UIView!
+    @IBOutlet private weak var matchInfoViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var timerLabel: UILabel!
+    @IBOutlet private weak var roundLabel: UILabel!
     
-    @IBOutlet weak var penaltiesView: UIView!
-    @IBOutlet weak var redKyongGoButton: RoundedButton!
-    @IBOutlet weak var redGamJeomButton: RoundedButton!
-    @IBOutlet weak var blueKyongGoButton: RoundedButton!
-    @IBOutlet weak var blueGamJeomButton: RoundedButton!
-    
-    @IBOutlet weak var matchInfoView: UIView!
-    @IBOutlet weak var matchInfoViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var roundLabel: UILabel!
-    
-    let viewModel: MatchViewModel
-    let disposeBag = DisposeBag()
+    private let viewModel: MatchViewModel
+    private let disposeBag = DisposeBag()
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
@@ -58,13 +58,14 @@ final class MatchViewController: UIViewController {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("Use init(viewModel:) instead")
+        fatalError("Use init(matchViewModel:) instead")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.rx.isHidden <- viewModel.navigationBarHidden >>> disposeBag
         }
@@ -77,6 +78,8 @@ final class MatchViewController: UIViewController {
 
         redTechnicalButton.layer.cornerRadius = redTechnicalButton.frameHeight / 2
         blueTechnicalButton.layer.cornerRadius = blueTechnicalButton.frameHeight / 2
+
+        bluePenaltiesView.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,6 +98,10 @@ final class MatchViewController: UIViewController {
         } >>> disposeBag
         
         redScoringArea.isUserInteractionEnabled = false
+
+        viewModel.redPenalties.subscribeNext { [weak self] penalties in
+            self?.redPenaltiesView.penalties = penalties
+        } >>> disposeBag
     }
     
     private func setupBlueScoring() {
@@ -108,41 +115,41 @@ final class MatchViewController: UIViewController {
         } >>> disposeBag
         
         blueScoringArea.isUserInteractionEnabled = false
+
+        viewModel.bluePenalties.subscribeNext { [weak self] penalties in
+            self?.bluePenaltiesView.penalties = penalties
+        } >>> disposeBag
     }
     
     private func setupMatchInfoView() {
+        matchInfoView.isHidden = viewModel.shouldHideMatchInfo
+
+        timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
+        roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
+
+        viewModel.timerLabelTextColor.subscribeNext { [weak self] in
+            self?.timerLabel.textColor = $0
+        } >>> disposeBag
+
+        viewModel.disablingViewHidden.subscribeNext { [weak self] hidden in
+            self?.disablingView.isHidden = hidden
+            self?.redScoringArea.isUserInteractionEnabled = hidden
+            self?.blueScoringArea.isUserInteractionEnabled = hidden
+        } >>> disposeBag
+
+        viewModel.roundLabelHidden.asObservable().subscribeNext { [weak self] roundLabelHidden in
+            self?.setRoundHidden(roundLabelHidden)
+        } >>> disposeBag
+
         let tapGestureRecognizer = UITapGestureRecognizer()
         matchInfoView.addGestureRecognizer(tapGestureRecognizer)
         
         tapGestureRecognizer.rx.event.subscribeNext { [weak self] _ in
             self?.viewModel.handleMatchInfoViewTapped()
         } >>> disposeBag
-
-        // TODO: Bind
-        viewModel.timerLabelTextColor.asObservable().subscribeNext { [weak self] in
-            self?.timerLabel.textColor = $0
-        } >>> disposeBag
-        
-        viewModel.penaltyButtonsVisible.asObservable().subscribeNext { [weak self] buttonsVisible in
-            self?.penaltiesView.isHidden = !buttonsVisible
-        } >>> disposeBag
-        
-        viewModel.disablingViewVisible.asObservable().subscribeNext { [weak self] disablingViewVisible in
-            self?.disablingView.isHidden = !disablingViewVisible
-            self?.redScoringArea.isUserInteractionEnabled = !disablingViewVisible
-            self?.blueScoringArea.isUserInteractionEnabled = !disablingViewVisible
-        } >>> disposeBag
-        
-        viewModel.roundLabelHidden.asObservable().subscribeNext { [weak self] roundLabelHidden in
-            self?.setRoundHidden(hidden: roundLabelHidden)
-        } >>> disposeBag
-
-        timerLabel.rx.text <- viewModel.timerLabelText >>> disposeBag
-        roundLabel.rx.text <- viewModel.roundLabelText >>> disposeBag
-        matchInfoView.rx.isHidden <- viewModel.matchInfoViewHidden >>> disposeBag
     }
     
-    private func setRoundHidden(hidden: Bool) {
+    private func setRoundHidden(_ hidden: Bool) {
         if hidden {
             hideRound()
         } else {
@@ -171,7 +178,6 @@ final class MatchViewController: UIViewController {
             withDuration: Constants.defaultMatchInfoViewAnimationDuration,
             animations: {
                 self.view.layoutIfNeeded()
-
             },
             completion: nil
         )

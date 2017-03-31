@@ -23,6 +23,7 @@
             <connections>
                 <outlet property="blueGamJeomButton" destination="EW5-Cu-Vzb" id="BiY-sa-AgR"/>
                 <outlet property="blueKyongGoButton" destination="8eS-5h-aF3" id="p5h-gD-FIB"/>
+                <outlet property="bluePenaltiesView" destination="BJH-Gi-b4D" id="Zr2-Cp-q0D"/>
                 <outlet property="bluePlayerNameLabel" destination="46i-7m-xfA" id="Ibl-7f-2iw"/>
                 <outlet property="blueScoreLabel" destination="fuu-Cw-dJY" id="4Gt-RE-kc0"/>
                 <outlet property="blueScoringArea" destination="YoV-cH-gT9" id="NkV-Bo-Ezd"/>
@@ -30,9 +31,9 @@
                 <outlet property="disablingView" destination="SMI-45-m7u" id="LCR-Yx-v8y"/>
                 <outlet property="matchInfoView" destination="hzP-nJ-sjw" id="dLZ-3P-NHa"/>
                 <outlet property="matchInfoViewTopConstraint" destination="aDV-2h-RCk" id="SmS-mw-wYc"/>
-                <outlet property="penaltiesView" destination="2Ic-A9-oXD" id="bT4-Ug-Ck2"/>
                 <outlet property="redGamJeomButton" destination="n7G-cL-8aB" id="ilI-jz-MZt"/>
                 <outlet property="redKyongGoButton" destination="P6H-y7-VkA" id="9KG-Gy-j1S"/>
+                <outlet property="redPenaltiesView" destination="ynN-T9-1yQ" id="bpg-9a-jKr"/>
                 <outlet property="redPlayerNameLabel" destination="BC8-g6-TJo" id="edQ-nu-KL9"/>
                 <outlet property="redScoreLabel" destination="yNb-eB-az4" id="AbQ-FU-U2a"/>
                 <outlet property="redScoringArea" destination="pa2-B3-Uw7" id="spa-EM-Cgm"/>
@@ -50,14 +51,27 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-B3-Uw7">
                     <rect key="frame" x="0.0" y="0.0" width="333.5" height="375"/>
                     <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynN-T9-1yQ" customClass="PenaltiesView" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="10" y="350" width="243.5" height="15"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="g1b-1q-NJY"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="8" id="QY6-Kb-AW6">
+                                <size key="itemSize" width="15" height="15"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNb-eB-az4">
-                            <rect key="frame" x="114" y="96" width="107" height="183"/>
+                            <rect key="frame" x="114" y="96.5" width="107" height="182.5"/>
                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOw-3v-utM">
-                            <rect key="frame" x="268.5" y="310" width="60" height="60"/>
+                            <rect key="frame" x="263.5" y="305" width="60" height="60"/>
                             <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="VKN-dQ-Hdo"/>
@@ -65,7 +79,7 @@
                             </constraints>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC8-g6-TJo">
-                            <rect key="frame" x="146.5" y="330" width="41" height="20"/>
+                            <rect key="frame" x="146.5" y="310" width="41" height="20"/>
                             <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -75,25 +89,41 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yNb-eB-az4" secondAttribute="trailing" constant="5" id="2Ld-kX-gG7"/>
+                        <constraint firstAttribute="bottom" secondItem="ynN-T9-1yQ" secondAttribute="bottom" constant="10" id="5MV-7K-IGr"/>
                         <constraint firstItem="BC8-g6-TJo" firstAttribute="centerX" secondItem="pa2-B3-Uw7" secondAttribute="centerX" id="7Ol-Fk-8hC"/>
+                        <constraint firstItem="ynN-T9-1yQ" firstAttribute="top" secondItem="BC8-g6-TJo" secondAttribute="bottom" constant="20" id="FYv-zt-BWS"/>
                         <constraint firstItem="yNb-eB-az4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pa2-B3-Uw7" secondAttribute="leading" constant="5" id="HJE-sz-FeF"/>
                         <constraint firstItem="yNb-eB-az4" firstAttribute="centerY" secondItem="pa2-B3-Uw7" secondAttribute="centerY" id="LiI-NA-2rF"/>
-                        <constraint firstAttribute="bottom" secondItem="EOw-3v-utM" secondAttribute="bottom" constant="5" id="PGe-Jl-bMs"/>
+                        <constraint firstAttribute="bottom" secondItem="EOw-3v-utM" secondAttribute="bottom" constant="10" id="PGe-Jl-bMs"/>
                         <constraint firstItem="yNb-eB-az4" firstAttribute="centerX" secondItem="pa2-B3-Uw7" secondAttribute="centerX" id="TZi-Ml-8Jh"/>
-                        <constraint firstItem="BC8-g6-TJo" firstAttribute="centerY" secondItem="EOw-3v-utM" secondAttribute="centerY" id="Wb2-oc-BlC"/>
+                        <constraint firstItem="ynN-T9-1yQ" firstAttribute="leading" secondItem="pa2-B3-Uw7" secondAttribute="leading" constant="10" id="f9E-hG-Ve6"/>
+                        <constraint firstItem="EOw-3v-utM" firstAttribute="leading" secondItem="ynN-T9-1yQ" secondAttribute="trailing" constant="10" id="nIJ-YM-eaP"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoV-cH-gT9">
                     <rect key="frame" x="333.5" y="0.0" width="333.5" height="375"/>
                     <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJH-Gi-b4D" customClass="PenaltiesView" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="80" y="350" width="243.5" height="15"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="5nk-WA-tLD"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="8" id="J1P-Gz-Sgh">
+                                <size key="itemSize" width="15" height="15"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuu-Cw-dJY">
-                            <rect key="frame" x="113.5" y="96" width="107" height="183"/>
+                            <rect key="frame" x="113.5" y="96.5" width="107" height="182.5"/>
                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="150"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgT-Kv-Eqa">
-                            <rect key="frame" x="5" y="310" width="60" height="60"/>
+                            <rect key="frame" x="10" y="305" width="60" height="60"/>
                             <color key="backgroundColor" red="0.15294118230000001" green="0.15294118230000001" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="EFT-o6-3E5"/>
@@ -101,7 +131,7 @@
                             </constraints>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46i-7m-xfA">
-                            <rect key="frame" x="147" y="330" width="41" height="20"/>
+                            <rect key="frame" x="147" y="325" width="41" height="20"/>
                             <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -110,11 +140,14 @@
                     <color key="backgroundColor" red="0.21176470820000001" green="0.42352941630000002" blue="0.67450982329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="46i-7m-xfA" firstAttribute="centerY" secondItem="CgT-Kv-Eqa" secondAttribute="centerY" id="9WK-4o-89T"/>
+                        <constraint firstAttribute="trailing" secondItem="BJH-Gi-b4D" secondAttribute="trailing" constant="10" id="Anq-LT-iDb"/>
                         <constraint firstItem="fuu-Cw-dJY" firstAttribute="centerY" secondItem="YoV-cH-gT9" secondAttribute="centerY" id="b4N-4r-bQ1"/>
-                        <constraint firstAttribute="bottom" secondItem="CgT-Kv-Eqa" secondAttribute="bottom" constant="5" id="bGX-Kk-kFb"/>
+                        <constraint firstAttribute="bottom" secondItem="CgT-Kv-Eqa" secondAttribute="bottom" constant="10" id="bGX-Kk-kFb"/>
+                        <constraint firstItem="BJH-Gi-b4D" firstAttribute="leading" secondItem="CgT-Kv-Eqa" secondAttribute="trailing" constant="10" id="bW5-ul-X46"/>
                         <constraint firstItem="fuu-Cw-dJY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YoV-cH-gT9" secondAttribute="leading" constant="5" id="k4Q-BG-czL"/>
                         <constraint firstItem="46i-7m-xfA" firstAttribute="centerX" secondItem="YoV-cH-gT9" secondAttribute="centerX" id="pNl-Tf-hgo"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fuu-Cw-dJY" secondAttribute="trailing" constant="5" id="qL9-a3-sCn"/>
+                        <constraint firstAttribute="bottom" secondItem="BJH-Gi-b4D" secondAttribute="bottom" constant="10" id="wdf-1C-ssK"/>
                         <constraint firstItem="fuu-Cw-dJY" firstAttribute="centerX" secondItem="YoV-cH-gT9" secondAttribute="centerX" id="zH2-xt-TSk"/>
                     </constraints>
                 </view>
@@ -137,76 +170,64 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ic-A9-oXD">
-                            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-y7-VkA" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                                    <rect key="frame" x="92" y="69" width="150" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="gMW-Xf-4WY"/>
-                                        <constraint firstAttribute="width" constant="150" id="gQE-PD-vQS"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                                    <state key="normal" title="KYONG-GO">
-                                        <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                            <integer key="value" value="2"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-cL-8aB" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                                    <rect key="frame" x="92" y="265.5" width="150" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="150" id="NC9-mx-L0g"/>
-                                        <constraint firstAttribute="height" constant="50" id="d3b-DV-N89"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                                    <state key="normal" title="GAM-JEOM"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                            <integer key="value" value="2"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-5h-aF3" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                                    <rect key="frame" x="426" y="69" width="150" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="3cP-Fk-zSI"/>
-                                        <constraint firstAttribute="width" constant="150" id="STw-st-z57"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                                    <state key="normal" title="KYONG-GO"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                            <integer key="value" value="3"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW5-Cu-Vzb" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                                    <rect key="frame" x="426" y="265.5" width="150" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="150" id="0Po-hD-9xz"/>
-                                        <constraint firstAttribute="height" constant="50" id="QdF-Qp-Sgq"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                                    <state key="normal" title="GAM-JEOM"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                            <integer key="value" value="3"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-y7-VkA" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="92" y="69" width="150" height="50"/>
                             <constraints>
-                                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="0.5" id="7HY-js-Khm"/>
-                                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="0.5" id="D74-nY-Rax"/>
-                                <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="1.55" id="Unr-rg-9pG"/>
-                                <constraint firstItem="n7G-cL-8aB" firstAttribute="centerY" secondItem="2Ic-A9-oXD" secondAttribute="centerY" multiplier="1.55" id="mTn-P3-317"/>
+                                <constraint firstAttribute="height" constant="50" id="gMW-Xf-4WY"/>
+                                <constraint firstAttribute="width" constant="150" id="gQE-PD-vQS"/>
                             </constraints>
-                        </view>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                            <state key="normal" title="KYONG-GO">
+                                <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-cL-8aB" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="92" y="256.5" width="150" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="NC9-mx-L0g"/>
+                                <constraint firstAttribute="height" constant="50" id="d3b-DV-N89"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                            <state key="normal" title="GAM-JEOM"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-5h-aF3" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="426" y="69" width="150" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="3cP-Fk-zSI"/>
+                                <constraint firstAttribute="width" constant="150" id="STw-st-z57"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                            <state key="normal" title="KYONG-GO"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW5-Cu-Vzb" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
+                            <rect key="frame" x="426" y="256.5" width="150" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="0Po-hD-9xz"/>
+                                <constraint firstAttribute="height" constant="50" id="QdF-Qp-Sgq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
+                            <state key="normal" title="GAM-JEOM"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <accessibility key="accessibilityConfiguration">
@@ -214,22 +235,22 @@
                     </accessibility>
                     <constraints>
                         <constraint firstItem="qSM-Md-QNu" firstAttribute="top" secondItem="SMI-45-m7u" secondAttribute="top" id="0UQ-xm-xFg"/>
-                        <constraint firstItem="2Ic-A9-oXD" firstAttribute="top" secondItem="SMI-45-m7u" secondAttribute="top" id="8rN-Cg-4ej"/>
                         <constraint firstAttribute="bottom" secondItem="qSM-Md-QNu" secondAttribute="bottom" id="9Ud-qD-fMo"/>
+                        <constraint firstItem="8eS-5h-aF3" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="0.5" id="CWV-sP-ueC"/>
+                        <constraint firstItem="P6H-y7-VkA" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="0.5" id="M5K-lV-vZQ"/>
                         <constraint firstAttribute="trailing" secondItem="qSM-Md-QNu" secondAttribute="trailing" id="PX2-b0-QG4"/>
-                        <constraint firstAttribute="bottom" secondItem="2Ic-A9-oXD" secondAttribute="bottom" id="REY-45-UCd"/>
-                        <constraint firstItem="2Ic-A9-oXD" firstAttribute="leading" secondItem="SMI-45-m7u" secondAttribute="leading" id="Z7E-MU-2O0"/>
                         <constraint firstItem="KJs-B2-zdD" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" id="aKE-NB-IyT"/>
-                        <constraint firstAttribute="trailing" secondItem="2Ic-A9-oXD" secondAttribute="trailing" id="mPl-Rx-z6i"/>
+                        <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="1.5" id="cKS-zx-z4Q"/>
                         <constraint firstItem="KJs-B2-zdD" firstAttribute="centerX" secondItem="SMI-45-m7u" secondAttribute="centerX" id="qZz-hN-eki"/>
                         <constraint firstItem="qSM-Md-QNu" firstAttribute="leading" secondItem="SMI-45-m7u" secondAttribute="leading" id="raN-h0-df0"/>
+                        <constraint firstItem="n7G-cL-8aB" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="1.5" id="xWg-UK-w1J"/>
                     </constraints>
                 </view>
                 <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-nJ-sjw">
                     <rect key="frame" x="258.5" y="0.0" width="150" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmw-uS-gqb">
-                            <rect key="frame" x="26.5" y="46" width="97" height="59"/>
+                            <rect key="frame" x="27" y="46.5" width="97" height="58.5"/>
                             <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="50"/>
                             <color key="textColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -254,29 +275,30 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="n7G-cL-8aB" firstAttribute="centerX" secondItem="BC8-g6-TJo" secondAttribute="centerX" id="06X-a6-2t1"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="1YL-kq-ccq"/>
+                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerX" secondItem="46i-7m-xfA" secondAttribute="centerX" id="2Me-BE-6lD"/>
                 <constraint firstItem="SMI-45-m7u" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="3jN-x0-4pD"/>
                 <constraint firstAttribute="bottom" secondItem="SMI-45-m7u" secondAttribute="bottom" id="54W-eD-5Jd"/>
-                <constraint firstAttribute="centerX" secondItem="CgT-Kv-Eqa" secondAttribute="leading" constant="-5" id="9iF-UF-ZGk"/>
+                <constraint firstAttribute="centerX" secondItem="CgT-Kv-Eqa" secondAttribute="leading" constant="-10" id="9iF-UF-ZGk"/>
                 <constraint firstItem="YoV-cH-gT9" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="Ale-3V-gAf"/>
                 <constraint firstAttribute="bottom" secondItem="pa2-B3-Uw7" secondAttribute="bottom" id="CAS-BO-umu"/>
-                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerX" secondItem="fuu-Cw-dJY" secondAttribute="centerX" id="Eo2-ge-jME"/>
                 <constraint firstItem="SMI-45-m7u" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="Gwf-69-Nhg"/>
-                <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerX" secondItem="fuu-Cw-dJY" secondAttribute="centerX" id="HFM-HB-Mea"/>
                 <constraint firstItem="YoV-cH-gT9" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="M3W-ch-aSh"/>
-                <constraint firstItem="EOw-3v-utM" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" constant="-5" id="Mqi-V3-f4S"/>
-                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerX" secondItem="yNb-eB-az4" secondAttribute="centerX" id="SAe-gL-wmc"/>
+                <constraint firstItem="EOw-3v-utM" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" constant="-10" id="Mqi-V3-f4S"/>
                 <constraint firstAttribute="trailing" secondItem="SMI-45-m7u" secondAttribute="trailing" id="UfJ-GX-Fsc"/>
                 <constraint firstItem="YoV-cH-gT9" firstAttribute="bottom" secondItem="Osr-Uc-XhP" secondAttribute="bottom" id="XDe-do-PxI"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="YQ4-k2-iup"/>
                 <constraint firstItem="hzP-nJ-sjw" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="aDV-2h-RCk"/>
+                <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerX" secondItem="46i-7m-xfA" secondAttribute="centerX" id="blm-gN-egc"/>
+                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerX" secondItem="BC8-g6-TJo" secondAttribute="centerX" id="ckZ-Yo-H5E"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="gKw-WL-e3C"/>
-                <constraint firstItem="n7G-cL-8aB" firstAttribute="centerX" secondItem="yNb-eB-az4" secondAttribute="centerX" id="gMz-pH-p6z"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="ijn-ED-fdu"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="kOp-Pj-U3P"/>
                 <constraint firstAttribute="trailing" secondItem="YoV-cH-gT9" secondAttribute="trailing" id="rps-Tq-FaQ"/>
                 <constraint firstItem="hzP-nJ-sjw" firstAttribute="centerX" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="sAe-SR-Auw"/>
             </constraints>
+            <point key="canvasLocation" x="58" y="97"/>
         </view>
     </objects>
 </document>

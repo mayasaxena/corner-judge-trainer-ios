@@ -16,20 +16,27 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let redPlayerName: String
     let bluePlayerName: String
 
-    private let redScoreTextVar = Variable<String?>("0")
+    private typealias ScoreValues = (redScore: Int, redPenalties: Double, blueScore: Int, bluePenalties: Double)
+
+    private let scoring = Variable(ScoreValues(0, 0, 0, 0))
+
     var redScoreText: Observable<String?> {
-        return redScoreTextVar.asObservable()
+        return scoring.asObservable().map { String($0.redScore) }
     }
 
-    private let blueScoreTextVar = Variable<String?>("0")
+    var redPenalties: Observable<Double> {
+        return scoring.asObservable().map { $0.redPenalties }
+    }
+
     var blueScoreText: Observable<String?> {
-        return blueScoreTextVar.asObservable()
+        return scoring.asObservable().map { String($0.blueScore) }
     }
 
-    private let matchInfoViewHiddenVar = Variable(false)
-    var matchInfoViewHidden: Observable<Bool> {
-        return matchInfoViewHiddenVar.asObservable()
+    var bluePenalties: Observable<Double> {
+        return scoring.asObservable().map { $0.bluePenalties }
     }
+
+    var shouldHideMatchInfo = false
 
     var timerLabelTextColor: Observable<UIColor> {
         return scoringDisabled.asObservable().map { $0 ? UIColor.yellow : UIColor.flatWhite}
@@ -40,12 +47,8 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         return timerLabelTextVar.asObservable()
     }
 
-    var penaltyButtonsVisible: Observable<Bool> {
-        return scoringDisabled.asObservable()
-    }
-
-    var disablingViewVisible: Observable<Bool> {
-        return scoringDisabled.asObservable()
+    var disablingViewHidden: Observable<Bool> {
+        return scoringDisabled.asObservable().not()
     }
 
     var roundLabelHidden: Observable<Bool> {
@@ -77,7 +80,7 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
 
         matchManager = isRemote ? RemoteMatchManager(match: match) : LocalMatchManager(match: match)
         matchManager.delegate = self
-        matchInfoViewHiddenVar.value = match.type == .none
+        shouldHideMatchInfo = match.type == .none
         scoringDisabled.value = match.type != .none
 
         matchManager.joinMatch()
@@ -113,9 +116,7 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         blueScore: Double,
         bluePenalties: Double
     ) {
-        redScoreTextVar.value = redScore.formattedString
-        blueScoreTextVar.value = blueScore.formattedString
-
+        scoring.value = ScoreValues(Int(redScore), redPenalties, Int(blueScore), bluePenalties)
         // TODO: Penalties
     }
 

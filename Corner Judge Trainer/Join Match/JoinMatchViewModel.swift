@@ -51,7 +51,7 @@ final class JoinMatchViewModel {
         return MatchOrigin(rawValue: selectedIndex.value) ?? .local
     }
 
-    private var localMatches = [Match].init(repeating: Match(), count: 4)
+    private var localMatches = [Match].init(repeating: Match(type: .none), count: 4)
     private var localMatchViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
         return Observable<Int>.interval(Constants.matchRefreshInterval, scheduler: MainScheduler.instance).flatMap { interval in
             return self.getLocalMatchViewModels()
