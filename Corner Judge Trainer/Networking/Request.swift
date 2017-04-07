@@ -17,7 +17,8 @@ enum HTTPMethod: String {
 
 enum Request {
 
-    static let baseURLString = "https://corner-judge.herokuapp.com/"
+//    static let baseURLString = "https://corner-judge.herokuapp.com/"
+    static let baseURLString = "http://localhost:8080/"
 
     struct HeaderKey {
         static let accept = "Accept"

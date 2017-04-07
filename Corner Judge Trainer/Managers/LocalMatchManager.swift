@@ -38,6 +38,7 @@ final class LocalMatchManager: MatchManager {
     init(match: Match = Match()) {
         self.match = match
         resetTimer(match.type.roundDuration)
+        delegate?.timerUpdated(timeString: timeRemaining.formattedTimeString)
     }
 
     func handle(scoringEvent: ScoringEvent) {
@@ -94,9 +95,7 @@ final class LocalMatchManager: MatchManager {
         }
     }
 
-    func joinMatch() {
-        delegate?.timerUpdated(timeString: timeRemaining.formattedTimeString)
-    }
+    func joinMatch() {}
 
     func playPause() {
         guard !matchEnded else { return }

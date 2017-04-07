@@ -7,22 +7,24 @@
 //
 
 import Foundation
+import Genome
+
+enum EventError: Swift.Error {
+    case badThing
+}
 
 enum EventType: String {
     case control, scoring
 }
 
 extension EventType {
-    init?(value: String?) throws {
+    init?(value: String?) {
         guard
             let value = value,
             let eventType = EventType(rawValue: value)
             else {
                 return nil
-//                let message = "Event data must contain event type"
-//                log(message)
-//                throw Abort.custom(status: .badRequest, message: message)
-        }
+            }
 
         self = eventType
     }
@@ -69,16 +71,16 @@ struct ScoringEvent: Event {
     let color: PlayerColor
     let category: Category
 
-//    init(node: Node) throws {
-//        guard
-//            let judgeID = node[JSONKey.judgeID]?.string,
-//            let dataObject = node[JSONKey.data]?.nodeObject,
-//            let color = dataObject[JSONKey.color]?.string,
-//            let category = dataObject[JSONKey.category]?.string
-//            else { throw Abort.badRequest }
-//
-//        try self.init(color: color, category: category, judgeID: judgeID)
-//    }
+    init?(node: Node) {
+        guard
+            let judgeID = node[JSONKey.judgeID]?.string,
+            let dataObject = node[JSONKey.data]?.nodeObject,
+            let color = dataObject[JSONKey.color]?.string,
+            let category = dataObject[JSONKey.category]?.string
+            else { return nil }
+
+        self.init(color: color, category: category, judgeID: judgeID)
+    }
 
     init(color: PlayerColor, category: Category, judgeID: String) {
         self.judgeID = judgeID
@@ -86,13 +88,12 @@ struct ScoringEvent: Event {
         self.category = category
     }
 
-    init?(color: String, category: String, judgeID: String) throws {
+    init?(color: String, category: String, judgeID: String) {
         guard
             let playerColor = PlayerColor(rawValue: color),
             let category = ScoringEvent.Category(rawValue: category)
             else {
                 return nil
-//                throw Abort.badRequest
             }
         self.init(color: playerColor, category: category, judgeID: judgeID)
     }
@@ -142,25 +143,24 @@ struct ControlEvent: Event {
 
     let category: Category
 
-//    init(node: Node) throws {
-//        guard
-//            let judgeID = node[JSONKey.judgeID]?.string,
-//            let dataObject = node[JSONKey.data]?.nodeObject,
-//            let categoryRaw = dataObject[JSONKey.category]?.string
-//            else { throw Abort.badRequest }
-//
-//        try self.init(category: categoryRaw, judgeID: judgeID)
-//    }
+    init?(node: Node) {
+        guard
+            let judgeID = node[JSONKey.judgeID]?.string,
+            let dataObject = node[JSONKey.data]?.nodeObject,
+            let categoryRaw = dataObject[JSONKey.category]?.string
+            else { return nil }
+
+        self.init(category: categoryRaw, judgeID: judgeID)
+    }
 
     init(category: Category, judgeID: String) {
         self.category = category
         self.judgeID = judgeID
     }
 
-    init?(category: String, judgeID: String) throws {
+    init?(category: String, judgeID: String) {
         guard let category = ControlEvent.Category(rawValue: category) else {
             return nil
-//            throw Abort.badRequest
         }
         self.init(category: category, judgeID: judgeID)
     }
@@ -174,15 +174,15 @@ struct ControlEvent: Event {
 //    }
 }
 
-//extension Node {
-//    func createEvent() throws -> Event {
-//        let eventType = try EventType(value: self["event"]?.string)
-//
-//        switch eventType {
-//        case .scoring:
-//            return try ScoringEvent(node: node)
-//        case .control:
-//            return try ControlEvent(node: node)
-//        }
-//    }
-//}
+extension Node {
+    func createEvent() -> Event? {
+        guard let eventType = EventType(value: self["event"]?.string) else { return nil }
+
+        switch eventType {
+        case .scoring:
+            return ScoringEvent(node: node)
+        case .control:
+            return ControlEvent(node: node)
+        }
+    }
+}

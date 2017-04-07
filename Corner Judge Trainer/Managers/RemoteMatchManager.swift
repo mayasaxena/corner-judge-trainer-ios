@@ -20,20 +20,41 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     init(match: Match) {
         self.match = match
 
-        webSocket = WebSocket(url: URL(string: "ws://localhost:8080/match/10/")!)
+//        webSocket = WebSocket(url: URL(string: "ws://corner-judge.herokuapp.com/match-ws/\(match.id)/")!)
+        webSocket = WebSocket(url: URL(string: "ws://localhost:8080/match-ws/\(match.id)/")!)
         webSocket.delegate = self
         webSocket.connect()
     }
 
     func handle(scoringEvent: ScoringEvent) {}
-    func joinMatch() {}
+
+    func joinMatch() {
+        webSocket.write(string: "{\"event\":\"control\",\"sent_by\":\"test-app\",\"data\":{\"category\":\"addJudge\"}}")
+    }
+
     func playPause() {}
 
     // MARK: - WebSocketDelegate
 
-    func websocketDidConnect(socket: WebSocket) {}
+    func websocketDidConnect(socket: WebSocket) {
+        joinMatch()
+    }
+
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {}
-    func websocketDidReceiveMessage(socket: WebSocket, text: String) {}
+
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print(text)
+
+        guard
+            let data = text.data(using: .utf8),
+            let node = try? data.makeNode(),
+            let event = node.createEvent()
+            else { return }
+
+        
+
+    }
+
     func websocketDidReceiveData(socket: WebSocket, data: Data) {}
 }
 

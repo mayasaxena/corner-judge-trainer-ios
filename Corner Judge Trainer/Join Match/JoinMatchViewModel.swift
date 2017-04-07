@@ -28,7 +28,7 @@ final class JoinMatchViewModel {
 
     private struct Constants {
         static let matchRefreshInterval = 0.5
-        static let pollingInterval = 15.0
+        static let pollingInterval = 10.0
         static let remoteMatchPollingInterval = Int(Constants.pollingInterval / Constants.matchRefreshInterval)
     }
 
@@ -71,12 +71,15 @@ final class JoinMatchViewModel {
         let matches = currentMatchOrigin == .local ? localMatches : remoteMatches
 
         guard index < matches.count else { fatalError("Match index out of bounds") }
-//        return MatchViewModel(match: matches[index], isRemote: currentMatchOrigin.isRemote)
-        return MatchViewModel(match: matches[index])
+        return MatchViewModel(match: matches[index], isRemote: currentMatchOrigin.isRemote)
+//        return MatchViewModel(match: matches[index])
     }
 
     private func getRemoteMatchViewModels(at interval: Int) -> Observable<[JoinMatchTableViewCellViewModel]> {
-        if interval % Constants.remoteMatchPollingInterval == 0 || remoteMatches.isEmpty {
+
+        let shouldRefreshMatches = interval % Constants.remoteMatchPollingInterval == 0 || remoteMatches.isEmpty
+
+        if shouldRefreshMatches && currentMatchOrigin.isRemote {
             return Observable<[JoinMatchTableViewCellViewModel]>.create { [weak self] observer in
                 CornerAPIClient.shared.getMatches() { result in
                     switch result {

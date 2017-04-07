@@ -82,8 +82,6 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         matchManager.delegate = self
         shouldHideMatchInfo = match.type == .none
         scoringDisabled.value = match.type != .none
-
-        matchManager.joinMatch()
     }
     
     func handleMatchInfoViewTapped() {
