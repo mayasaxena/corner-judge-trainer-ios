@@ -29,5 +29,5 @@ infix operator <- : Binding
 infix operator <-> : Binding
 
 func <- <O: UIBindingObserver<UILabel, String?>>(observer: O, observable: Variable<String>) -> Disposable {
-    return observable.asObservable().bindTo(observer)
+    return observable.asObservable().bind(to: observer)
 }

@@ -36,7 +36,7 @@ final class JoinMatchViewController: UIViewController, UITableViewDelegate {
     private func setupTableView() {
         JoinMatchTableViewCell.registerNib(tableView)
 
-        viewModel.cellViewModels.bindTo(tableView.rx.items(
+        viewModel.cellViewModels.bind(to: tableView.rx.items(
             cellIdentifier: JoinMatchTableViewCell.identifier,
             cellType: JoinMatchTableViewCell.self
         )) { row, cellViewModel, cell in

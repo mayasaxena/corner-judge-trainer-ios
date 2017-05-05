@@ -27,9 +27,7 @@ enum MatchOrigin: Int {
 final class JoinMatchViewModel {
 
     private struct Constants {
-        static let matchRefreshInterval = 0.5
-        static let pollingInterval = 10.0
-        static let remoteMatchPollingInterval = Int(Constants.pollingInterval / Constants.matchRefreshInterval)
+        static let matchRefreshInterval = 5.0
     }
 
     var cellViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
@@ -53,19 +51,29 @@ final class JoinMatchViewModel {
 
     private var localMatches = [Match].init(repeating: Match(type: .none), count: 4)
     private var localMatchViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
-        return Observable<Int>.interval(Constants.matchRefreshInterval, scheduler: MainScheduler.instance).flatMap { interval in
-            return self.getLocalMatchViewModels()
-        }
+        return refreshObservable.map { _ in return self.localMatches.map { JoinMatchTableViewCellViewModel(match: $0) } }
     }
 
     private var remoteMatches = [Match]()
     private var remoteMatchViewModels: Observable<[JoinMatchTableViewCellViewModel]> {
-        return Observable<Int>.interval(Constants.matchRefreshInterval, scheduler: MainScheduler.instance).flatMap { interval in
-            return self.getRemoteMatchViewModels(at: interval)
+        return refreshObservable.map { isRemote in
+            if isRemote {
+                self.getRemoteMatches()
+            }
+            return self.remoteMatches.map { JoinMatchTableViewCellViewModel(match: $0) }
         }
     }
 
+    private var refreshObservable: Observable<Bool> {
+        let interval = Observable<Int>.interval(Constants.matchRefreshInterval, scheduler: MainScheduler.instance).startWith(-1)
+        return Observable.combineLatest(originIsRemote, interval) { return $0.0 }
+    }
+
     private let disposeBag = DisposeBag()
+
+    init() {
+        getRemoteMatches()
+    }
 
     func matchViewModel(for index: Int) -> MatchViewModel {
         let matches = currentMatchOrigin == .local ? localMatches : remoteMatches
@@ -75,31 +83,16 @@ final class JoinMatchViewModel {
 //        return MatchViewModel(match: matches[index])
     }
 
-    private func getRemoteMatchViewModels(at interval: Int) -> Observable<[JoinMatchTableViewCellViewModel]> {
-
-        let shouldRefreshMatches = interval % Constants.remoteMatchPollingInterval == 0 || remoteMatches.isEmpty
-
-        if shouldRefreshMatches && currentMatchOrigin.isRemote {
-            return Observable<[JoinMatchTableViewCellViewModel]>.create { [weak self] observer in
-                CornerAPIClient.shared.getMatches() { result in
-                    switch result {
-                    case .success(let matches):
-                        self?.remoteMatches = matches
-                        observer.onNext(matches.map { JoinMatchTableViewCellViewModel(match: $0) })
-                    case .failure(let error):
-                        observer.onError(error)
-                        print(error)
-                    }
-                }
-                return Disposables.create()
+    private func getRemoteMatches() {
+        CornerAPIClient.shared.getMatches() { result in
+            switch result {
+            case .success(let matches):
+                self.remoteMatches = matches
+            case .failure(let error):
+                self.remoteMatches = []
+                print(error)
             }
-        } else {
-            return Observable.from(remoteMatches.map { JoinMatchTableViewCellViewModel(match: $0) })
         }
-    }
-
-    private func getLocalMatchViewModels() -> Observable<[JoinMatchTableViewCellViewModel]> {
-        return Observable.from(localMatches.map { JoinMatchTableViewCellViewModel(match: $0) })
     }
 
     private func switchBetween<T>(observable1: Observable<T>, observable2: Observable<T>, switchObservable: Observable<Bool>) -> Observable<T> {

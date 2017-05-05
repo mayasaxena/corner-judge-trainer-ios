@@ -32,6 +32,7 @@ final class CornerAPIClient: APIClient {
                     completion(.failure(error))
                 }
             case .failure(let error):
+                completion(.failure(error))
                 print(error)
             }
         }
