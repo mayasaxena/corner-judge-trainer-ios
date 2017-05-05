@@ -1,29 +1,31 @@
 PODS:
-  - Genome (3.0.2):
-    - Genome/Default (= 3.0.2)
-  - Genome/Core (3.0.2):
+  - Genome (3.2.1):
+    - Genome/Default (= 3.2.1)
+  - Genome/Core (3.2.1):
     - Genome/Packages
-  - Genome/Default (3.0.2):
+  - Genome/Default (3.2.1):
     - Genome/Core
     - Genome/Foundation
-  - Genome/Foundation (3.0.2):
+  - Genome/Foundation (3.2.1):
     - Genome/Core
-  - Genome/Packages (3.0.2)
-  - Intrepid (0.6.6):
-    - Intrepid/Core (= 0.6.6)
-  - Intrepid/Core (0.6.6):
-    - IP-UIKit-Wisdom (= 0.0.9)
-  - Intrepid/Rx (0.6.6):
+  - Genome/Packages (3.2.1)
+  - Intrepid (0.7.10):
+    - Intrepid/Core (= 0.7.10)
+  - Intrepid/Core (0.7.10):
+    - IP-UIKit-Wisdom (= 0.0.10)
+  - Intrepid/Rx (0.7.10):
     - RxCocoa (~> 3.0)
     - RxSwift (~> 3.0)
-  - IP-UIKit-Wisdom (0.0.9)
+  - IP-UIKit-Wisdom (0.0.10)
   - IQKeyboardManager (3.3.6)
-  - RxCocoa (3.1.0):
-    - RxSwift (~> 3.1)
-  - RxSwift (3.1.0)
-  - RxSwiftExt (2.1.0):
-    - RxSwift (~> 3.0)
-  - Starscream (2.0.2)
+  - RxCocoa (3.4.1):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.1)
+  - RxSwiftExt (2.4.1):
+    - RxSwiftExt/Core (= 2.4.1)
+  - RxSwiftExt/Core (2.4.1):
+    - RxSwift (~> 3.4)
+  - Starscream (2.0.4)
 
 DEPENDENCIES:
   - Genome (~> 3.0)
@@ -45,14 +47,14 @@ CHECKOUT OPTIONS:
     :git: git@github.com:IntrepidPursuits/IQKeyboardManager.git
 
 SPEC CHECKSUMS:
-  Genome: 44584c1e971899a5a4b20ee87faee452a5f1ac1a
-  Intrepid: b5e7cba2e2ab29a03f4195bb13f2d7f9a516c2e0
-  IP-UIKit-Wisdom: cd9838571e97427a0c61c05d856eaaca9afd7c1a
+  Genome: e4580f825985c836e68c15f4969f9449734c8dad
+  Intrepid: 6387b01be08a8c22fa9df6f00dbce55099c1a2e8
+  IP-UIKit-Wisdom: b395a065344071b33659e5f6b918043a97c48a44
   IQKeyboardManager: 7d0926d5391b99b842ccc6367b849dd1975c8bf9
-  RxCocoa: 50d7564866da9299161e86a263ce12a0873904d8
-  RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
-  RxSwiftExt: 492a6575cf6afabb8feeed3204bd0f9e2c695e67
-  Starscream: 6c135a34e0a6e60cedaa0b30db67a4c05cf7cd38
+  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
+  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  RxSwiftExt: 72278e4a84f35324a82a8dd359859782706576a6
+  Starscream: df5974ee928b157c8eda8af8de7c620276b7dfcc
 
 PODFILE CHECKSUM: 98109b406995db29bbf59480ee05bb195d622cc2
 

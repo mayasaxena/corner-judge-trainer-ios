@@ -8,7 +8,7 @@ If you're using [RxSwift](https://github.com/ReactiveX/RxSwift), you may have en
 Installation
 ===========
 
-RxSwiftExt now requires Swift 3 and RxSwift 3.0.0 or later. If your project is running on Swift 2.x, please use version `1.2` of the library.
+RxSwiftExt requires Swift 3 and RxSwift 3.0 or later. If your project is running on Swift 2.x, please use version `1.2` of the library.
 
 #### CocoaPods
 
@@ -50,7 +50,17 @@ RxSwiftExt is all about adding operators to [RxSwift](https://github.com/Reactiv
 * [repeatWithBehavior](#repeatwithbehavior)
 * [catchErrorJustComplete](#catcherrorjustcomplete)
 * [pausable](#pausable)
-* [materialize/dematerialize](#materializedematerialize)
+* [apply](#apply)
+
+Two additional operators are available for `materialize()'d sequences:
+
+* [errors](#errors-elements)
+* [elements](#errors-elements)
+
+Read below for details about each operator.
+
+Operator details
+===========
 
 #### unwrap
 
@@ -291,40 +301,43 @@ Next(3)
 
 More examples are available in the project's Playground.
 
-#### materialize/dematerialize
+#### apply
 
-Materialize converts an observable into a sequence of Events for both items
-emitted and notifications sent. Dematerialize performs the inverse
-operation. See the documentation for
-[materialize/dematerialize](http://reactivex.io/documentation/operators/materialize-dematerialize.html)
-on ReactiveX.io.
+Apply provides a unified mechanism for applying transformations on Observable
+sequences, without having to extend ObservableType or repeating your
+transformations. For additional rationale for this see
+[discussion on github](https://github.com/RxSwiftCommunity/RxSwiftExt/issues/73)
 
 ```swift
-    let numbers = [1, 2, 3]
-    print("materialize() transformed \(numbers) to sequence of Events: ")
-    let materialized = Observable.from(numbers).materialize()
-    materialized.subscribe{ result in
-        print(result)
-    }
-    print("\n...and dematerialize() transformed it back: ")
-    materialized.dematerialize().subscribe { result in
-        print(result)
-    }
+// An ordinary function that applies some operators to its argument, and returns the resulting Observable
+func requestPolicy(_ request: Observable<Void>) -> Observable<Response> {
+    return request.retry(maxAttempts)
+        .do(onNext: sideEffect)
+        .map { Response.success }
+        .catchError { error in Observable.just(parseRequestError(error: error)) }
+
+// We can apply the function in the apply operator, which preserves the chaining style of invoking Rx operators
+let resilientRequest = request.apply(requestPolicy)
 ```
 
-```
-materialize() transformed [1, 2, 3] to sequence of Events: 
-next(next(1))
-next(next(2))
-next(next(3))
-next(completed)
-completed
+#### errors, elements
 
-...and dematerialize() transformed it back: 
-next(1)
-next(2)
-next(3)
-completed
+These operators only apply to observable serquences that have been materialized with the `materialize()` operator (from RxSwift core). `errors` returns a sequence of filtered error events, ommitting elements. `elements` returns a sequence of filtered element events, ommitting errors.
+
+```swift
+let imageResult = _chooseImageButtonPressed.asObservable()
+    .flatMap { imageReceiver.image.materialize() }
+    .share()
+
+let image = imageResult
+    .elements()
+    .asDriver(onErrorDriveWith: .never())
+
+let errorMessage = imageResult
+    .errors()
+    .map(mapErrorMessages)
+    .unwrap()
+    .asDriver(onErrorDriveWith: .never())
 ```
 
 ## License
