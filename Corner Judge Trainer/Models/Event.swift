@@ -48,6 +48,8 @@ fileprivate struct JSONKey {
     static let data = "data"
     static let category = "category"
     static let color = "color"
+    static let time = "time"
+    static let scoringDisabled = "scoringDisabled"
 }
 
 // MARK: - ScoringEvent
@@ -140,29 +142,43 @@ struct ControlEvent: Event {
 
     let eventType: EventType = .control
     let judgeID: String
+    let data: [String : String]
 
-    let category: Category
+    var category: Category {
+        guard
+            let categoryRaw = data[JSONKey.category],
+            let category = Category(rawValue: categoryRaw)
+            else { fatalError("Control event must contain category data") }
+        return category
+    }
 
     init?(node: Node) {
         guard
             let judgeID = node[JSONKey.judgeID]?.string,
-            let dataObject = node[JSONKey.data]?.nodeObject,
-            let categoryRaw = dataObject[JSONKey.category]?.string
+            let dataObject = node[JSONKey.data]?.nodeObject
             else { return nil }
 
-        self.init(category: categoryRaw, judgeID: judgeID)
+        let data = dataObject.reduce([String : String]()) { dict, entry in
+            var dictionary = dict
+            dictionary[entry.key] = entry.value.string
+            return dictionary
+        }
+
+        self.init(judgeID: judgeID, data: data)
+    }
+
+    init(judgeID: String, data: [String : String]) {
+        self.judgeID = judgeID
+        self.data = data
+
+        if data[JSONKey.category] == nil {
+            fatalError("Control event data must contain category data")
+        }
     }
 
     init(category: Category, judgeID: String) {
-        self.category = category
-        self.judgeID = judgeID
-    }
-
-    init?(category: String, judgeID: String) {
-        guard let category = ControlEvent.Category(rawValue: category) else {
-            return nil
-        }
-        self.init(category: category, judgeID: judgeID)
+        let data = [JSONKey.category : category.rawValue ]
+        self.init(judgeID: judgeID, data: data)
     }
 
 //    func makeNode(context: Context) throws -> Node {
@@ -176,13 +192,35 @@ struct ControlEvent: Event {
 
 extension Node {
     func createEvent() -> Event? {
-        guard let eventType = EventType(value: self["event"]?.string) else { return nil }
+        guard let eventType = EventType(value: self[JSONKey.eventType]?.string) else { return nil }
 
         switch eventType {
         case .scoring:
             return ScoringEvent(node: node)
         case .control:
             return ControlEvent(node: node)
+        }
+    }
+}
+
+extension ControlEvent {
+    var time: String? {
+        return data[JSONKey.time]
+    }
+
+    var scoringDisabled: Bool? {
+        return data[JSONKey.scoringDisabled]?.boolValue
+    }
+}
+
+private extension String {
+    var boolValue: Bool? {
+        if self == "true" {
+            return true
+        } else if self == "false" {
+            return false
+        } else {
+            return nil
         }
     }
 }

@@ -41,6 +41,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     }
 
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {}
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {}
 
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         print(text)
@@ -50,12 +51,34 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
             let node = try? data.makeNode(),
             let event = node.createEvent()
             else { return }
-
-        
+        received(event: event)
 
     }
 
-    func websocketDidReceiveData(socket: WebSocket, data: Data) {}
+    private func received(event: Event) {
+        switch event {
+        case let scoringEvent as ScoringEvent:
+            handle(scoringEvent: scoringEvent)
+        case let controlEvent as ControlEvent:
+            handleControlEvent(controlEvent)
+        default:
+            break
+        }
+    }
+
+    private func handleControlEvent(_ event: ControlEvent) {
+        switch event.category {
+        case .timer:
+            if let time = event.time {
+                delegate?.timerUpdated(timeString: time)
+            }
+            if let scoringDisabled = event.scoringDisabled {
+                delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
+            }
+        default:
+            break
+        }
+    }
 }
 
 extension Match: MappableObject {
@@ -98,4 +121,7 @@ fileprivate struct NodeKey {
     static let round = "round"
     static let blueScoreClass = "blue-score-class"
     static let redScoreClass = "red-score-class"
+    static let time = "time"
+    static let overlayVisible = "overlay-visible"
+    static let status = "status"
 }
