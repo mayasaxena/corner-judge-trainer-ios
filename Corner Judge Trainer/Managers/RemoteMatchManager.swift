@@ -26,7 +26,9 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         webSocket.connect()
     }
 
-    func handle(scoringEvent: ScoringEvent) {}
+    func handle(scoringEvent: ScoringEvent) {
+        print(scoringEvent)
+    }
 
     func joinMatch() {
         webSocket.write(string: "{\"event\":\"control\",\"sent_by\":\"test-app\",\"data\":{\"category\":\"addJudge\"}}")
@@ -60,19 +62,19 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         case let scoringEvent as ScoringEvent:
             handle(scoringEvent: scoringEvent)
         case let controlEvent as ControlEvent:
-            handleControlEvent(controlEvent)
+            handle(controlEvent: controlEvent)
         default:
             break
         }
     }
 
-    private func handleControlEvent(_ event: ControlEvent) {
-        switch event.category {
+    private func handle(controlEvent: ControlEvent) {
+        switch controlEvent.category {
         case .timer:
-            if let time = event.time {
+            if let time = controlEvent.time {
                 delegate?.timerUpdated(timeString: time)
             }
-            if let scoringDisabled = event.scoringDisabled {
+            if let scoringDisabled = controlEvent.scoringDisabled {
                 delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
             }
         default:

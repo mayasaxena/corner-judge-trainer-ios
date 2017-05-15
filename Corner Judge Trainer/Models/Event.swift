@@ -33,6 +33,10 @@ extension EventType {
 protocol Event {
     var eventType: EventType { get }
     var judgeID: String { get }
+    var data: [String : String] { get }
+
+    init?(node: Node)
+    init?(judgeID: String, data: [String: String])
 }
 
 //
@@ -69,35 +73,58 @@ struct ScoringEvent: Event {
 
     let eventType: EventType = .scoring
     let judgeID: String
+    let data: [String : String]
 
-    let color: PlayerColor
-    let category: Category
+    var color: PlayerColor {
+        guard
+            let colorRaw = data[JSONKey.color],
+            let color = PlayerColor(rawValue: colorRaw)
+            else { fatalError("Scoring event must contain player color") }
+        return color
+    }
+
+    var category: Category {
+        guard
+            let categoryRaw = data[JSONKey.category],
+            let category = Category(rawValue: categoryRaw)
+            else { fatalError("Scoring event must contain category data") }
+        return category
+    }
 
     init?(node: Node) {
         guard
             let judgeID = node[JSONKey.judgeID]?.string,
-            let dataObject = node[JSONKey.data]?.nodeObject,
-            let color = dataObject[JSONKey.color]?.string,
-            let category = dataObject[JSONKey.category]?.string
+            let dataObject = node[JSONKey.data]?.nodeObject
             else { return nil }
 
-        self.init(color: color, category: category, judgeID: judgeID)
+        let data = dataObject.reduce([String : String]()) { dict, entry in
+            var dictionary = dict
+            dictionary[entry.key] = entry.value.string
+            return dictionary
+        }
+
+        self.init(judgeID: judgeID, data: data)
     }
 
-    init(color: PlayerColor, category: Category, judgeID: String) {
+    init(judgeID: String, data: [String : String]) {
         self.judgeID = judgeID
-        self.color = color
-        self.category = category
+        self.data = data
+
+        if data[JSONKey.category] == nil {
+            fatalError("Scoring event data must contain category data")
+        }
+
+        if data[JSONKey.color] == nil {
+            fatalError("Scoring event data must contain player color")
+        }
     }
 
-    init?(color: String, category: String, judgeID: String) {
-        guard
-            let playerColor = PlayerColor(rawValue: color),
-            let category = ScoringEvent.Category(rawValue: category)
-            else {
-                return nil
-            }
-        self.init(color: playerColor, category: category, judgeID: judgeID)
+    init(judgeID: String, category: Category, color: PlayerColor) {
+        let data = [
+            JSONKey.category : category.rawValue,
+            JSONKey.color : color.rawValue
+        ]
+        self.init(judgeID: judgeID, data: data)
     }
 
 //    func makeNode(context: Context) throws -> Node {
@@ -176,7 +203,7 @@ struct ControlEvent: Event {
         }
     }
 
-    init(category: Category, judgeID: String) {
+    init(judgeID: String, category: Category) {
         let data = [JSONKey.category : category.rawValue ]
         self.init(judgeID: judgeID, data: data)
     }

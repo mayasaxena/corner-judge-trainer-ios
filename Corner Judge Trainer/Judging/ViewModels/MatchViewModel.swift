@@ -91,19 +91,19 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     // MARK: - View Handlers
 
     func handleScoringAreaTapped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .head, judgeID: "judge-iOS"))
+        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .head, color: color))
     }
 
     func handleScoringAreaSwiped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .body, judgeID: "judge-iOS"))
+        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .body, color: color))
     }
 
     func handleTechnicalButtonTapped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(color: color, category: .technical, judgeID: "judge-iOS"))
+        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .technical, color: color))
     }
 
     func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent.Category) {
-        matchManager.handle(scoringEvent: ScoringEvent(color: color, category: penalty, judgeID: "judge-iOS"))
+        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: penalty, color: color))
     }
 
     // MARK: - MatchManagerDelegate
