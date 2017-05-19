@@ -32,8 +32,8 @@ extension UIColor {
     class var penaltyRed: UIColor {
         return UIColor(red: 150.0 / 255.0, green: 2.0 / 255.0, blue: 0.0, alpha: 1.0)
     }
-    
-    class var darkGrey: UIColor { 
+
+    class var darkGrey: UIColor {
         return UIColor(white: 62.0 / 255.0, alpha: 1.0)
     }
 }

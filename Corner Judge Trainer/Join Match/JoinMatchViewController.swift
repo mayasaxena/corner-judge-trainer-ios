@@ -39,7 +39,7 @@ final class JoinMatchViewController: UIViewController, UITableViewDelegate {
         viewModel.cellViewModels.bind(to: tableView.rx.items(
             cellIdentifier: JoinMatchTableViewCell.identifier,
             cellType: JoinMatchTableViewCell.self
-        )) { row, cellViewModel, cell in
+        )) { _, cellViewModel, cell in
             cell.configure(with: cellViewModel)
         } >>> disposeBag
 

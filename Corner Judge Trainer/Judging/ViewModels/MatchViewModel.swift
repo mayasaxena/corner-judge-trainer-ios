@@ -83,11 +83,11 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         shouldHideMatchInfo = match.type == .none
         scoringDisabled.value = match.type != .none
     }
-    
+
     func handleMatchInfoViewTapped() {
         matchManager.playPause()
     }
-    
+
     // MARK: - View Handlers
 
     func handleScoringAreaTapped(color: PlayerColor) {

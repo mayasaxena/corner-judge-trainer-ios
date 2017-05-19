@@ -29,7 +29,7 @@ final class PenaltiesView: UICollectionView, UICollectionViewDataSource {
         super.init(frame: frame, collectionViewLayout: layout)
         dataSource = self
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         dataSource = self

@@ -151,7 +151,7 @@ extension ScoringEvent {
 }
 
 extension ScoringEvent: Equatable {
-    static func ==(lhs: ScoringEvent, rhs: ScoringEvent) -> Bool {
+    static func == (lhs: ScoringEvent, rhs: ScoringEvent) -> Bool {
         return  lhs.category == rhs.category &&
             lhs.color == rhs.color
     }

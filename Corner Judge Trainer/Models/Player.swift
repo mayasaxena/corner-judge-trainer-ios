@@ -20,7 +20,7 @@ struct Player {
     fileprivate struct Constants {
         static let defaultNamePrefix = "Anonymous"
     }
-    
+
     var name = Constants.defaultNamePrefix
     var color: PlayerColor
 
@@ -34,7 +34,7 @@ extension Player {
     var defaultName: String {
         return Constants.defaultNamePrefix + " " + color.displayName
     }
-    
+
     var displayName: String {
         return name.contains(Constants.defaultNamePrefix) ? "" : name
     }

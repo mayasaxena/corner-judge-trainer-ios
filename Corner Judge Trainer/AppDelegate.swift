@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let joinMatchViewController = JoinMatchViewController()
         let navigationController = UINavigationController(rootViewController: joinMatchViewController)
-        
+
         navigationController.navigationBar.barTintColor = UIColor.flatWhite
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.backgroundColor = UIColor.clear
@@ -33,4 +33,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

@@ -11,38 +11,38 @@ import RxSwift
 import Intrepid
 
 final class NewMatchViewController: UIViewController {
-    
+
     @IBOutlet var radioButtons: [RadioButton]!
     @IBOutlet weak var judgeNewMatchButton: RoundedButton!
-    
+
     let viewModel = NewMatchViewModel()
     let disposeBag = DisposeBag()
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
 
     override var shouldAutorotate: Bool {
         return false
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         for (index, radioButton) in radioButtons.enumerated() {
             radioButton.rx.isSelected <- viewModel.radioButtonsSelected[index] >>> disposeBag
 
-            radioButton.rx.tap.subscribe { button in
+            radioButton.rx.tap.subscribe { _ in
                 guard let index = self.radioButtons.index(of: radioButton) else { return }
                 self.viewModel.setRadioButtonSelected(atIndex: index)
             } >>> disposeBag
         }
     }
-    
+
     @IBAction func newMatchTapped(_ sender: AnyObject) {
 
         let alertController = UIAlertController(title: "Add Players?", message: "", preferredStyle: .alert)
-        
+
         alertController.addAction(UIAlertAction(
             title: "Add",
             style: .destructive,

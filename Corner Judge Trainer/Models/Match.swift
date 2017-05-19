@@ -104,6 +104,12 @@ enum MatchType: Int {
             return "None".uppercased()
         }
     }
+
+    static let allValues: [MatchType] = [.aTeam, .bTeam, .cTeam, .custom, .none]
+
+    static var caseCount: Int {
+        return allValues.count
+    }
 }
 
 enum RuleSet: Int {

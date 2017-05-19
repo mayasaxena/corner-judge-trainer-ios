@@ -32,10 +32,10 @@ final class NewMatchViewModel {
         for _ in 0 ..< MatchType.caseCount {
             buttonsSelected.append(Variable(false))
         }
-        
+
         setRadioButtonSelected(atIndex: matchType.rawValue)
     }
-    
+
     func setRadioButtonSelected(atIndex index: Int) {
         for (i, radioButtonSelected) in buttonsSelected.enumerated() {
             if i == index {

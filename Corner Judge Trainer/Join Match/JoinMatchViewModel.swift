@@ -84,7 +84,7 @@ final class JoinMatchViewModel {
     }
 
     private func getRemoteMatches() {
-        CornerAPIClient.shared.getMatches() { result in
+        CornerAPIClient.shared.getMatches { result in
             switch result {
             case .success(let matches):
                 self.remoteMatches = matches

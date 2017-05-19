@@ -75,7 +75,6 @@ final class LocalMatchManager: MatchManager {
             match.blueScore += playerPenalties
         }
 
-
         delegate?.scoreUpdated(
             redScore: match.redScore,
             redPenalties: match.redPenalties,
@@ -234,15 +233,6 @@ extension MatchType {
             return 0
         }
     }
-
-    static let caseCount = MatchType.countCases()
-
-    fileprivate static func countCases() -> Int {
-        // starting at zero, verify whether the enum can be instantiated from the Int and increment until it cannot
-        var count = 0
-        while let _ = MatchType(rawValue: count) { count += 1 }
-        return count
-    }
 }
 
 extension Date {
@@ -256,6 +246,6 @@ extension Date {
 
 extension TimeInterval {
     var formattedTimeString: String {
-        return String(format: "%d:%02d", Int(self / 60.0),  Int(ceil(self.truncatingRemainder(dividingBy: 60))))
+        return String(format: "%d:%02d", Int(self / 60.0), Int(ceil(self.truncatingRemainder(dividingBy: 60))))
     }
 }

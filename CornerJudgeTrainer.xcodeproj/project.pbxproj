@@ -392,6 +392,7 @@
 				A5AA9D481D4BCE0200B51652 /* Resources */,
 				A59E028D10DA766A6DF9BE25 /* [CP] Embed Pods Frameworks */,
 				A57EE62EEC842DA1A15F4F67 /* [CP] Copy Pods Resources */,
+				A58F6A4E1ECF6D6800DBC76F /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -548,6 +549,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CornerJudgeTrainer/Pods-CornerJudgeTrainer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A58F6A4E1ECF6D6800DBC76F /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		A59E028D10DA766A6DF9BE25 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -769,26 +784,24 @@
 		A5AA9D761D4BCE0300B51652 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
 				PRODUCT_NAME = CornerJudgeTrainer;
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CornerJudgeTrainer.app/CornerJudgeTrainer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner.app/Corner";
 			};
 			name = Debug;
 		};
 		A5AA9D771D4BCE0300B51652 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Corner Judge TrainerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerTests";
 				PRODUCT_NAME = CornerJudgeTrainer;
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CornerJudgeTrainer.app/CornerJudgeTrainer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corner.app/Corner";
 			};
 			name = Release;
 		};
@@ -799,8 +812,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
 				PRODUCT_NAME = CornerJudgeTrainer;
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Corner Judge Trainer";
+				TEST_TARGET_NAME = CornerJudgeTrainer;
 			};
 			name = Debug;
 		};
@@ -811,8 +825,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-TrainerUITests";
 				PRODUCT_NAME = CornerJudgeTrainer;
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Corner Judge Trainer";
+				TEST_TARGET_NAME = CornerJudgeTrainer;
 			};
 			name = Release;
 		};

@@ -17,10 +17,8 @@ extension UINavigationController {
         return visibleViewController?.shouldAutorotate ?? super.shouldAutorotate
     }
 
-    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
-        get {
-            return visibleViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
-        }
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return visibleViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
     }
 }
 
