@@ -42,38 +42,7 @@ final class LocalMatchManager: MatchManager {
     }
 
     func handle(scoringEvent: ScoringEvent) {
-        guard match.winningPlayer == nil else { return }
-
-        var playerScore = 0.0
-        var playerPenalties = 0.0
-
-        switch scoringEvent.category {
-
-        case .head:
-            playerScore = 3
-
-        case .body:
-            playerScore = 1
-
-        case .technical:
-            playerScore = 1
-
-        case .kyongGo:
-            playerPenalties = 0.5
-
-        case .gamJeom:
-            playerPenalties = 1
-        }
-
-        if scoringEvent.color == .blue {
-            match.blueScore += playerScore
-            match.bluePenalties += playerPenalties
-            match.redScore += playerPenalties
-        } else {
-            match.redScore += playerScore
-            match.redPenalties += playerPenalties
-            match.blueScore += playerPenalties
-        }
+        match.handle(scoringEvent: scoringEvent)
 
         delegate?.scoreUpdated(
             redScore: match.redScore,
@@ -174,28 +143,6 @@ final class LocalMatchManager: MatchManager {
         delegate?.matchStatusChanged(scoringDisabled: true)
         matchEnded = true
         // TODO: Display alert/modal with match stats and option to start new
-    }
-}
-
-private extension Match {
-    var isWon: Bool {
-        return winningPlayer != nil
-    }
-
-    func checkPointGap() {
-        if redScore - blueScore >= ruleSet.pointGapValue {
-            winningPlayer = redPlayer
-        } else if blueScore - redScore >= ruleSet.pointGapValue {
-            winningPlayer = bluePlayer
-        }
-    }
-
-    func checkPenalties() {
-        if redPenalties >= ruleSet.maxPenalties {
-            winningPlayer = bluePlayer
-        } else if bluePenalties >= ruleSet.maxPenalties {
-            winningPlayer = redPlayer
-        }
     }
 }
 

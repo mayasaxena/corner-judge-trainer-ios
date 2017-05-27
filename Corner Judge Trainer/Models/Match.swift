@@ -19,31 +19,31 @@ final class Match {
     let id: Int
     let date = Date()
 
-    var redScore: Double = 0 {
+    private(set) var redScore: Double = 0 {
         didSet {
             redScore = min(redScore, Constants.maxScore)
         }
     }
 
-    var redPenalties: Double = 0 {
+    private(set) var redPenalties: Double = 0 {
         didSet {
             redPenalties = min(redPenalties, ruleSet.maxPenalties)
         }
     }
 
-    var blueScore: Double = 0 {
+    private(set) var blueScore: Double = 0 {
         didSet {
             blueScore = min(blueScore, Constants.maxScore)
         }
     }
 
-    var bluePenalties: Double = 0 {
+    private(set) var bluePenalties: Double = 0 {
         didSet {
             bluePenalties = min(bluePenalties, ruleSet.maxPenalties)
         }
     }
 
-    var winningPlayer: Player?
+    private(set) var winningPlayer: Player?
 
     fileprivate(set) var type: MatchType
     fileprivate(set) var ruleSet = RuleSet.ectc
@@ -51,16 +51,86 @@ final class Match {
     fileprivate(set) var redPlayer: Player
     fileprivate(set) var bluePlayer: Player
 
-    init(
-        id: Int = Int.random(3),
-        redPlayerName: String? = nil,
-        bluePlayerName: String? = nil,
-        type: MatchType = .none
-    ) {
+    init(id: Int = Int.random(3),
+         redPlayerName: String? = nil,
+         bluePlayerName: String? = nil,
+         type: MatchType = .none) {
         self.id = id
         self.redPlayer = Player(color: .red, name: redPlayerName)
         self.bluePlayer = Player(color: .blue, name: bluePlayerName)
         self.type = type
+    }
+
+    convenience init(id: Int,
+                     redPlayerName: String?,
+                     bluePlayerName: String?,
+                     type: MatchType,
+                     redScore: Double,
+                     redPenalties: Double,
+                     blueScore: Double,
+                     bluePenalties: Double) {
+
+        self.init(id: id, redPlayerName: redPlayerName, bluePlayerName: bluePlayerName, type: type)
+
+        self.redScore = redScore
+        self.redPenalties = redPenalties
+        self.blueScore = blueScore
+        self.bluePenalties = bluePenalties
+    }
+
+    func handle(scoringEvent: ScoringEvent) {
+        guard winningPlayer == nil else { return }
+
+        var playerScore = 0.0
+        var playerPenalties = 0.0
+
+        switch scoringEvent.category {
+
+        case .head:
+            playerScore = 3
+
+        case .body:
+            playerScore = 1
+
+        case .technical:
+            playerScore = 1
+
+        case .kyongGo:
+            playerPenalties = 0.5
+
+        case .gamJeom:
+            playerPenalties = 1
+        }
+
+        if scoringEvent.color == .blue {
+            blueScore += playerScore
+            bluePenalties += playerPenalties
+            redScore += playerPenalties
+        } else {
+            redScore += playerScore
+            redPenalties += playerPenalties
+            blueScore += playerPenalties
+        }
+    }
+
+    var isWon: Bool {
+        return winningPlayer != nil
+    }
+
+    func checkPointGap() {
+        if redScore - blueScore >= ruleSet.pointGapValue {
+            winningPlayer = redPlayer
+        } else if blueScore - redScore >= ruleSet.pointGapValue {
+            winningPlayer = bluePlayer
+        }
+    }
+
+    func checkPenalties() {
+        if redPenalties >= ruleSet.maxPenalties {
+            winningPlayer = bluePlayer
+        } else if bluePenalties >= ruleSet.maxPenalties {
+            winningPlayer = redPlayer
+        }
     }
 
     func determineWinner() {

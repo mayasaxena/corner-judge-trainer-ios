@@ -30,7 +30,7 @@ extension EventType {
     }
 }
 
-protocol Event {
+protocol Event: NodeRepresentable {
     var eventType: EventType { get }
     var judgeID: String { get }
     var data: [String : String] { get }
@@ -39,12 +39,39 @@ protocol Event {
     init?(judgeID: String, data: [String: String])
 }
 
-//
-//extension Event {
-//    var jsonString: String? {
-//        return try? JSON(makeNode()).makeBytes().string()
-//    }
-//}
+extension Event {
+    init?(node: Node) {
+        guard
+            let judgeID = node[JSONKey.judgeID]?.string,
+            let dataObject = node[JSONKey.data]?.nodeObject
+            else { return nil }
+
+        let data = dataObject.reduce([String : String]()) { dict, entry in
+            var dictionary = dict
+            dictionary[entry.key] = entry.value.string
+            return dictionary
+        }
+
+        self.init(judgeID: judgeID, data: data)
+    }
+
+    var jsonString: String? {
+        guard
+            let node = try? makeNode(),
+            let data = try? JSONSerialization.data(withJSONObject: node.any, options: []),
+            let nsstring = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            else { return nil }
+        return nsstring as String
+    }
+
+    func makeNode(context: Context) throws -> Node {
+        return try Node(node: [
+            JSONKey.eventType : eventType.rawValue,
+            JSONKey.data : data.makeNode(),
+            JSONKey.judgeID : judgeID
+        ])
+    }
+}
 
 fileprivate struct JSONKey {
     static let eventType = "event"
@@ -54,6 +81,7 @@ fileprivate struct JSONKey {
     static let color = "color"
     static let time = "time"
     static let scoringDisabled = "scoringDisabled"
+    static let round = "round"
 }
 
 // MARK: - ScoringEvent
@@ -126,17 +154,6 @@ struct ScoringEvent: Event {
         ]
         self.init(judgeID: judgeID, data: data)
     }
-
-//    func makeNode(context: Context) throws -> Node {
-//        let data = [
-//            JSONKey.color : color.rawValue,
-//            JSONKey.category : category.rawValue
-//        ]
-//        return try Node(node: [
-//            JSONKey.eventType : eventType.rawValue,
-//            JSONKey.data : data.makeNode()
-//            ])
-//    }
 }
 
 extension ScoringEvent {
@@ -152,8 +169,7 @@ extension ScoringEvent {
 
 extension ScoringEvent: Equatable {
     static func == (lhs: ScoringEvent, rhs: ScoringEvent) -> Bool {
-        return  lhs.category == rhs.category &&
-            lhs.color == rhs.color
+        return lhs.category == rhs.category && lhs.color == rhs.color
     }
 }
 
@@ -163,7 +179,7 @@ struct ControlEvent: Event {
     enum Category: String {
         case playPause
         case addJudge
-        case timer
+        case status
         case endMatch
     }
 
@@ -207,14 +223,6 @@ struct ControlEvent: Event {
         let data = [JSONKey.category : category.rawValue ]
         self.init(judgeID: judgeID, data: data)
     }
-
-//    func makeNode(context: Context) throws -> Node {
-//        let data = [ JSONKey.category : category.rawValue ]
-//        return try Node(node: [
-//            JSONKey.eventType : eventType.rawValue,
-//            JSONKey.data : data.makeNode()
-//            ])
-//    }
 }
 
 extension Node {
@@ -237,6 +245,10 @@ extension ControlEvent {
 
     var scoringDisabled: Bool? {
         return data[JSONKey.scoringDisabled]?.boolValue
+    }
+
+    var round: Int? {
+        return data[JSONKey.round]?.int
     }
 }
 

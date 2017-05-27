@@ -18,7 +18,7 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
 
     private typealias ScoreValues = (redScore: Int, redPenalties: Double, blueScore: Int, bluePenalties: Double)
 
-    private let scoring = Variable(ScoreValues(0, 0, 0, 0))
+    private let scoring: Variable<ScoreValues>
 
     var redScoreText: Observable<String?> {
         return scoring.asObservable().map { String($0.redScore) }
@@ -42,9 +42,9 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         return scoringDisabled.asObservable().map { $0 ? UIColor.yellow : UIColor.flatWhite}
     }
 
-    private let timerLabelTextVar = Variable<String?>("0:00")
+    private let timerLabelTextVariable = Variable<String?>("0:00")
     var timerLabelText: Observable<String?> {
-        return timerLabelTextVar.asObservable()
+        return timerLabelTextVariable.asObservable()
     }
 
     var disablingViewHidden: Observable<Bool> {
@@ -79,9 +79,13 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         bluePlayerName = match.bluePlayer.displayName
 
         matchManager = isRemote ? RemoteMatchManager(match: match) : LocalMatchManager(match: match)
-        matchManager.delegate = self
         shouldHideMatchInfo = match.type == .none
         scoringDisabled.value = match.type != .none
+
+        let scoreValues = ScoreValues(redScore: Int(match.redScore), redPenalties: match.redPenalties, blueScore: Int(match.blueScore), bluePenalties: match.bluePenalties)
+        scoring = Variable(scoreValues)
+
+        matchManager.delegate = self
     }
 
     func handleMatchInfoViewTapped() {
@@ -119,7 +123,7 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     }
 
     func timerUpdated(timeString: String) {
-        timerLabelTextVar.value = timeString
+        timerLabelTextVariable.value = timeString
     }
 
     func matchStatusChanged(scoringDisabled: Bool) {
