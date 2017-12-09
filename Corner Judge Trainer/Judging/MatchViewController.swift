@@ -31,9 +31,7 @@ final class MatchViewController: UIViewController {
     @IBOutlet private weak var bluePlayerNameLabel: UILabel!
 
     @IBOutlet private weak var disablingView: UIView!
-    @IBOutlet private weak var redKyongGoButton: RoundedButton!
     @IBOutlet private weak var redGamJeomButton: RoundedButton!
-    @IBOutlet private weak var blueKyongGoButton: RoundedButton!
     @IBOutlet private weak var blueGamJeomButton: RoundedButton!
 
     @IBOutlet private weak var matchInfoView: UIView!
@@ -205,20 +203,12 @@ final class MatchViewController: UIViewController {
 
     private func setupPenaltyButtons() {
 
-        redKyongGoButton.rx.tap.subscribeNext { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .red, category: .kyongGo)
-        } >>> disposeBag
-
         redGamJeomButton.rx.tap.subscribeNext { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .red, category: .gamJeom)
-        } >>> disposeBag
-
-        blueKyongGoButton.rx.tap.subscribeNext { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .blue, category: .kyongGo)
+//            self?.displayConfirmationAlert(playerColor: .red, category: .gamJeom)
         } >>> disposeBag
 
         blueGamJeomButton.rx.tap.subscribeNext { [weak self] in
-            self?.displayConfirmationAlert(playerColor: .blue, category: .gamJeom)
+//            self?.displayConfirmationAlert(playerColor: .blue, category: .gamJeom)
         } >>> disposeBag
     }
 

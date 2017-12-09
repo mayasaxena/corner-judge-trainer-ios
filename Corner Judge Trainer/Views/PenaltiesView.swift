@@ -11,18 +11,10 @@ import Intrepid
 
 final class PenaltiesView: UICollectionView, UICollectionViewDataSource {
 
-    var penalties: Double = 0.0 {
+    var penalties: Int = 0 {
         didSet {
             reloadData()
         }
-    }
-
-    private var kyongGoCount: Int {
-        return Int((penalties.truncatingRemainder(dividingBy: 1)).rounded())
-    }
-
-    private var gamJeomCount: Int {
-        return Int(penalties)
     }
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -48,28 +40,21 @@ final class PenaltiesView: UICollectionView, UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gamJeomCount + kyongGoCount
+        return penalties
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell: PenaltyCollectionViewCell = ip_dequeueCell(indexPath, identifier: PenaltyCollectionViewCell.identifier)
-
-        if indexPath.item < gamJeomCount {
-            cell.configure(with: UIColor.penaltyRed)
-        } else {
-            cell.configure(with: UIColor.penaltyGold)
-        }
-
+        cell.configure()
         return cell
     }
 }
 
 final class PenaltyCollectionViewCell: UICollectionViewCell {
 
-    func configure(with backgroundColor: UIColor) {
-        self.backgroundColor = backgroundColor
+    func configure() {
+        backgroundColor = UIColor.penaltyRed
         layer.cornerRadius = frame.width / 2
     }
-
 }

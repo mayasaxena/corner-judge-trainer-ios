@@ -15,10 +15,13 @@ enum HTTPMethod: String {
     case PUT
 }
 
+private var ISLOCAL = true
+
 enum Request {
 
-//    static let baseURLString = "https://corner-judge.herokuapp.com/"
-    static let baseURLString = "http://localhost:8080/"
+    static let domainBase = ISLOCAL ? "0.0.0.0:8080/" : "corner-judge.herokuapp.com/"
+
+    static let baseURLString = "http://\(domainBase)"
 
     struct HeaderKey {
         static let accept = "Accept"

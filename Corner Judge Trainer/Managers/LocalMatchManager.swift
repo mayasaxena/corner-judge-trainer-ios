@@ -44,12 +44,7 @@ final class LocalMatchManager: MatchManager {
     func handle(scoringEvent: ScoringEvent) {
         match.handle(scoringEvent: scoringEvent)
 
-        delegate?.scoreUpdated(
-            redScore: match.redScore,
-            redPenalties: match.redPenalties,
-            blueScore: match.blueScore,
-            bluePenalties: match.bluePenalties
-        )
+        delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
 
         guard match.type != .none else { return }
 

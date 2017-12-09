@@ -8,21 +8,16 @@
 
 import Foundation
 
-internal protocol MatchManagerDelegate: class {
+protocol MatchManagerDelegate: class {
 
-    func scoreUpdated(
-        redScore: Double,
-        redPenalties: Double,
-        blueScore: Double,
-        bluePenalties: Double
-    )
-
+    func scoreUpdated(redScore: Int, blueScore: Int)
+    func penaltiesUpdated(redPenalties: Int, bluePenalties: Int)
     func timerUpdated(timeString: String)
     func matchStatusChanged(scoringDisabled: Bool)
     func roundChanged(round: Int?)
 }
 
-internal protocol MatchManager: class {
+protocol MatchManager: class {
     var match: Match { get }
     weak var delegate: MatchManagerDelegate? { get set }
 
@@ -31,6 +26,6 @@ internal protocol MatchManager: class {
     func playPause()
 }
 
-internal protocol MatchManaging: MatchManagerDelegate {
+protocol MatchManaging: MatchManagerDelegate {
     var matchManager: MatchManager { get }
 }

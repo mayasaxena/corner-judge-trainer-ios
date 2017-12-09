@@ -16,24 +16,27 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     let redPlayerName: String
     let bluePlayerName: String
 
-    private typealias ScoreValues = (redScore: Int, redPenalties: Double, blueScore: Int, bluePenalties: Double)
+    // TODO: Better names
+    private typealias ScoreValues = (redScore: Int, blueScore: Int)
+    private typealias PenaltyValues = (redPenalties: Int, bluePenalties: Int)
 
-    private let scoring: Variable<ScoreValues>
+    private let scores: Variable<ScoreValues>
+    private let penalties: Variable<PenaltyValues>
 
     var redScoreText: Observable<String?> {
-        return scoring.asObservable().map { String($0.redScore) }
+        return scores.asObservable().map { String($0.redScore) }
     }
 
-    var redPenalties: Observable<Double> {
-        return scoring.asObservable().map { $0.redPenalties }
+    var redPenalties: Observable<Int> {
+        return penalties.asObservable().map { $0.redPenalties }
     }
 
     var blueScoreText: Observable<String?> {
-        return scoring.asObservable().map { String($0.blueScore) }
+        return scores.asObservable().map { String($0.blueScore) }
     }
 
-    var bluePenalties: Observable<Double> {
-        return scoring.asObservable().map { $0.bluePenalties }
+    var bluePenalties: Observable<Int> {
+        return penalties.asObservable().map { $0.bluePenalties }
     }
 
     var shouldHideMatchInfo = false
@@ -82,8 +85,8 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
         shouldHideMatchInfo = match.type == .none
         scoringDisabled.value = match.type != .none
 
-        let scoreValues = ScoreValues(redScore: Int(match.redScore), redPenalties: match.redPenalties, blueScore: Int(match.blueScore), bluePenalties: match.bluePenalties)
-        scoring = Variable(scoreValues)
+        scores = Variable(ScoreValues(redScore: match.redScore, blueScore: match.blueScore))
+        penalties = Variable(PenaltyValues(redPenalties: match.redPenalties, bluePenalties: match.bluePenalties))
 
         matchManager.delegate = self
     }
@@ -112,14 +115,12 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
 
     // MARK: - MatchManagerDelegate
 
-    func scoreUpdated(
-        redScore: Double,
-        redPenalties: Double,
-        blueScore: Double,
-        bluePenalties: Double
-    ) {
-        scoring.value = ScoreValues(Int(redScore), redPenalties, Int(blueScore), bluePenalties)
-        // TODO: Penalties
+    func scoreUpdated(redScore: Int, blueScore: Int) {
+        scores.value = ScoreValues(redScore, blueScore)
+    }
+
+    func penaltiesUpdated(redPenalties: Int, bluePenalties: Int) {
+        penalties.value = PenaltyValues(redPenalties, bluePenalties)
     }
 
     func timerUpdated(timeString: String) {

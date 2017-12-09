@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -17,12 +18,14 @@
         <array key="DroidSans.ttf">
             <string>DroidSans</string>
         </array>
+        <array key="VerdanaBold.ttf">
+            <string>Verdana-Bold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchViewController" customModule="Corner" customModuleProvider="target">
             <connections>
                 <outlet property="blueGamJeomButton" destination="EW5-Cu-Vzb" id="BiY-sa-AgR"/>
-                <outlet property="blueKyongGoButton" destination="8eS-5h-aF3" id="p5h-gD-FIB"/>
                 <outlet property="bluePenaltiesView" destination="BJH-Gi-b4D" id="Zr2-Cp-q0D"/>
                 <outlet property="bluePlayerNameLabel" destination="46i-7m-xfA" id="Ibl-7f-2iw"/>
                 <outlet property="blueScoreLabel" destination="fuu-Cw-dJY" id="4Gt-RE-kc0"/>
@@ -32,7 +35,6 @@
                 <outlet property="matchInfoView" destination="hzP-nJ-sjw" id="dLZ-3P-NHa"/>
                 <outlet property="matchInfoViewTopConstraint" destination="aDV-2h-RCk" id="SmS-mw-wYc"/>
                 <outlet property="redGamJeomButton" destination="n7G-cL-8aB" id="ilI-jz-MZt"/>
-                <outlet property="redKyongGoButton" destination="P6H-y7-VkA" id="9KG-Gy-j1S"/>
                 <outlet property="redPenaltiesView" destination="ynN-T9-1yQ" id="bpg-9a-jKr"/>
                 <outlet property="redPlayerNameLabel" destination="BC8-g6-TJo" id="edQ-nu-KL9"/>
                 <outlet property="redScoreLabel" destination="yNb-eB-az4" id="AbQ-FU-U2a"/>
@@ -170,22 +172,6 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-y7-VkA" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                            <rect key="frame" x="92" y="69" width="150" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="gMW-Xf-4WY"/>
-                                <constraint firstAttribute="width" constant="150" id="gQE-PD-vQS"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                            <state key="normal" title="KYONG-GO">
-                                <color key="titleColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-cL-8aB" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
                             <rect key="frame" x="92" y="256.5" width="150" height="50"/>
                             <constraints>
@@ -197,20 +183,6 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
                                     <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-5h-aF3" customClass="RoundedButton" customModule="Corner" customModuleProvider="target">
-                            <rect key="frame" x="426" y="69" width="150" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="3cP-Fk-zSI"/>
-                                <constraint firstAttribute="width" constant="150" id="STw-st-z57"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="DroidSans-Bold" family="Droid Sans" pointSize="20"/>
-                            <state key="normal" title="KYONG-GO"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="colorStyleRaw">
-                                    <integer key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
@@ -236,8 +208,6 @@
                     <constraints>
                         <constraint firstItem="qSM-Md-QNu" firstAttribute="top" secondItem="SMI-45-m7u" secondAttribute="top" id="0UQ-xm-xFg"/>
                         <constraint firstAttribute="bottom" secondItem="qSM-Md-QNu" secondAttribute="bottom" id="9Ud-qD-fMo"/>
-                        <constraint firstItem="8eS-5h-aF3" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="0.5" id="CWV-sP-ueC"/>
-                        <constraint firstItem="P6H-y7-VkA" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="0.5" id="M5K-lV-vZQ"/>
                         <constraint firstAttribute="trailing" secondItem="qSM-Md-QNu" secondAttribute="trailing" id="PX2-b0-QG4"/>
                         <constraint firstItem="KJs-B2-zdD" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" id="aKE-NB-IyT"/>
                         <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerY" secondItem="SMI-45-m7u" secondAttribute="centerY" multiplier="1.5" id="cKS-zx-z4Q"/>
@@ -277,7 +247,6 @@
             <constraints>
                 <constraint firstItem="n7G-cL-8aB" firstAttribute="centerX" secondItem="BC8-g6-TJo" secondAttribute="centerX" id="06X-a6-2t1"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="1YL-kq-ccq"/>
-                <constraint firstItem="8eS-5h-aF3" firstAttribute="centerX" secondItem="46i-7m-xfA" secondAttribute="centerX" id="2Me-BE-6lD"/>
                 <constraint firstItem="SMI-45-m7u" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="3jN-x0-4pD"/>
                 <constraint firstAttribute="bottom" secondItem="SMI-45-m7u" secondAttribute="bottom" id="54W-eD-5Jd"/>
                 <constraint firstAttribute="centerX" secondItem="CgT-Kv-Eqa" secondAttribute="leading" constant="-10" id="9iF-UF-ZGk"/>
@@ -291,7 +260,6 @@
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="YQ4-k2-iup"/>
                 <constraint firstItem="hzP-nJ-sjw" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="aDV-2h-RCk"/>
                 <constraint firstItem="EW5-Cu-Vzb" firstAttribute="centerX" secondItem="46i-7m-xfA" secondAttribute="centerX" id="blm-gN-egc"/>
-                <constraint firstItem="P6H-y7-VkA" firstAttribute="centerX" secondItem="BC8-g6-TJo" secondAttribute="centerX" id="ckZ-Yo-H5E"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="top" secondItem="Osr-Uc-XhP" secondAttribute="top" id="gKw-WL-e3C"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="leading" secondItem="Osr-Uc-XhP" secondAttribute="leading" id="ijn-ED-fdu"/>
                 <constraint firstItem="pa2-B3-Uw7" firstAttribute="trailing" secondItem="Osr-Uc-XhP" secondAttribute="centerX" id="kOp-Pj-U3P"/>

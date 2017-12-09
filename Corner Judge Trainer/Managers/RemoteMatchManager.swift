@@ -20,8 +20,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     init(match: Match) {
         self.match = match
 
-//        webSocket = WebSocket(url: URL(string: "ws://corner-judge.herokuapp.com/match-ws/\(match.id)/")!)
-        webSocket = WebSocket(url: URL(string: "ws://localhost:8080/match-ws/\(match.id)/")!)
+        webSocket = WebSocket(url: URL(string: "ws://\(Request.domainBase)match-ws/\(match.id)/")!)
         webSocket.delegate = self
         webSocket.connect()
     }
@@ -32,7 +31,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     }
 
     func joinMatch() {
-        webSocket.write(string: "{\"event\":\"control\",\"sent_by\":\"test-app\",\"data\":{\"category\":\"addJudge\"}}")
+        webSocket.write(string: "{\"event\":\"newJudge\",\"sent_by\":\"test-app\",\"data\":{}}")
     }
 
     func playPause() {
@@ -73,15 +72,10 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         }
     }
 
+    // TODO: BAD! Match shouldn't be handling events itself - duplication
     func handleScoringUpdateReceived(scoringEvent: ScoringEvent) {
         match.handle(scoringEvent: scoringEvent)
-
-        delegate?.scoreUpdated(
-            redScore: match.redScore,
-            redPenalties: match.redPenalties,
-            blueScore: match.blueScore,
-            bluePenalties: match.bluePenalties
-        )
+        delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
     }
 
     private func handleReceived(controlEvent: ControlEvent) {
@@ -94,8 +88,62 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
                 delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
             }
             delegate?.roundChanged(round: controlEvent.round)
+        case .giveGamJeom:
+            guard let color = controlEvent.color else { return }
+            match.giveGamJeom(to: color)
+            delegate?.penaltiesUpdated(redPenalties: match.redPenalties, bluePenalties: match.bluePenalties)
+        case .removeGamJeom:
+            guard let color = controlEvent.color else { return }
+            match.removeGamJeom(from: color)
+            delegate?.penaltiesUpdated(redPenalties: match.redPenalties, bluePenalties: match.bluePenalties)
+        case .adjustScore:
+            guard
+                let color = controlEvent.color,
+                let amount = controlEvent.value
+                else { return }
+            match.adjustScore(for: color, byAmount: amount)
+            delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
         default:
             break
+        }
+    }
+}
+
+extension Match {
+    func giveGamJeom(to color: PlayerColor) {
+        switch color {
+        case .blue:
+            bluePenalties += 1
+            redScore += 1
+        case .red:
+            redPenalties += 1
+            blueScore += 1
+        }
+    }
+
+    func removeGamJeom(from color: PlayerColor) {
+        switch color {
+        case .blue:
+            guard bluePenalties > 0 else { return }
+            bluePenalties -= 1
+            redScore -= 1
+        case .red:
+            guard redPenalties > 0 else { return }
+            redPenalties -= 1
+            blueScore -= 1
+        }
+    }
+
+    func adjustScore(for color: PlayerColor, byAmount amount: Int) {
+        switch color {
+        case .blue:
+            if blueScore + amount >= 0 {
+                blueScore += amount
+            }
+        case .red:
+            if redScore + amount >= 0 {
+                redScore += amount
+            }
         }
     }
 }
@@ -110,16 +158,11 @@ extension Match: MappableObject {
         let redPlayer: String = try map.extract(NodeKey.redName)
         let bluePlayer: String = try map.extract(NodeKey.blueName)
 
-        let redScore: Double = try map.extract(NodeKey.redScore)
+        let redScore: Int = try map.extract(NodeKey.redScore)
+        let redPenalties: Int = try map.extract(NodeKey.redGamJeomCount)
 
-        let redKyonggos: Double = try map.extract(NodeKey.redKyongGoCount)
-        let redGamJeoms: Double = try map.extract(NodeKey.redGamJeomCount)
-        let redPenalties = redGamJeoms + (redKyonggos / 2)
-        let blueScore: Double = try map.extract(NodeKey.blueScore)
-
-        let blueKyonggos: Double = try map.extract(NodeKey.blueKyongGoCount)
-        let blueGamJeoms: Double = try map.extract(NodeKey.blueGamJeomCount)
-        let bluePenalties = blueGamJeoms + (blueKyonggos / 2)
+        let blueScore: Int = try map.extract(NodeKey.blueScore)
+        let bluePenalties: Int = try map.extract(NodeKey.blueGamJeomCount)
 
         self.init(
             id: matchID,
@@ -134,18 +177,16 @@ extension Match: MappableObject {
     }
 }
 
-fileprivate struct NodeKey {
+private struct NodeKey {
     static let matchID = "match-id"
     static let matchType = "match-type"
     static let date = "date"
     static let redName = "red-player"
     static let redScore = "red-score"
     static let redGamJeomCount = "red-gamjeom-count"
-    static let redKyongGoCount = "red-kyonggo-count"
     static let blueName = "blue-player"
     static let blueScore = "blue-score"
     static let blueGamJeomCount = "blue-gamjeom-count"
-    static let blueKyongGoCount = "blue-kyonggo-count"
     static let round = "round"
     static let blueScoreClass = "blue-score-class"
     static let redScoreClass = "red-score-class"

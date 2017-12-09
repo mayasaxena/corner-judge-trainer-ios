@@ -11,42 +11,45 @@ import Genome
 
 final class Match {
 
+    public static let pointGapThresholdRound = 2
+    public static let pointGapValue = 20
+    public static let maxPenalties = 10
+
     private struct Constants {
         static let matchIDLength = 3
-        static let maxScore = 99.0
+        static let maxScore = 99
     }
 
     let id: Int
     let date = Date()
 
-    private(set) var redScore: Double = 0 {
+    public var redScore: Int = 0 {
         didSet {
             redScore = min(redScore, Constants.maxScore)
         }
     }
 
-    private(set) var redPenalties: Double = 0 {
+    public var redPenalties: Int = 0 {
         didSet {
-            redPenalties = min(redPenalties, ruleSet.maxPenalties)
+            redPenalties = min(redPenalties, Match.maxPenalties)
         }
     }
 
-    private(set) var blueScore: Double = 0 {
+    public var blueScore: Int = 0 {
         didSet {
             blueScore = min(blueScore, Constants.maxScore)
         }
     }
 
-    private(set) var bluePenalties: Double = 0 {
+    public var bluePenalties: Int = 0 {
         didSet {
-            bluePenalties = min(bluePenalties, ruleSet.maxPenalties)
+            bluePenalties = min(bluePenalties, Match.maxPenalties)
         }
     }
 
     private(set) var winningPlayer: Player?
 
     fileprivate(set) var type: MatchType
-    fileprivate(set) var ruleSet = RuleSet.ectc
 
     fileprivate(set) var redPlayer: Player
     fileprivate(set) var bluePlayer: Player
@@ -65,10 +68,10 @@ final class Match {
                      redPlayerName: String?,
                      bluePlayerName: String?,
                      type: MatchType,
-                     redScore: Double,
-                     redPenalties: Double,
-                     blueScore: Double,
-                     bluePenalties: Double) {
+                     redScore: Int,
+                     redPenalties: Int,
+                     blueScore: Int,
+                     bluePenalties: Int) {
 
         self.init(id: id, redPlayerName: redPlayerName, bluePlayerName: bluePlayerName, type: type)
 
@@ -81,35 +84,10 @@ final class Match {
     func handle(scoringEvent: ScoringEvent) {
         guard winningPlayer == nil else { return }
 
-        var playerScore = 0.0
-        var playerPenalties = 0.0
-
-        switch scoringEvent.category {
-
-        case .head:
-            playerScore = 3
-
-        case .body:
-            playerScore = 1
-
-        case .technical:
-            playerScore = 1
-
-        case .kyongGo:
-            playerPenalties = 0.5
-
-        case .gamJeom:
-            playerPenalties = 1
-        }
-
         if scoringEvent.color == .blue {
-            blueScore += playerScore
-            bluePenalties += playerPenalties
-            redScore += playerPenalties
+            blueScore += scoringEvent.category.pointValue
         } else {
-            redScore += playerScore
-            redPenalties += playerPenalties
-            blueScore += playerPenalties
+            redScore += scoringEvent.category.pointValue
         }
     }
 
@@ -118,17 +96,17 @@ final class Match {
     }
 
     func checkPointGap() {
-        if redScore - blueScore >= ruleSet.pointGapValue {
+        if redScore - blueScore >= Match.pointGapValue {
             winningPlayer = redPlayer
-        } else if blueScore - redScore >= ruleSet.pointGapValue {
+        } else if blueScore - redScore >= Match.pointGapValue {
             winningPlayer = bluePlayer
         }
     }
 
     func checkPenalties() {
-        if redPenalties >= ruleSet.maxPenalties {
+        if redPenalties >= Match.maxPenalties {
             winningPlayer = bluePlayer
-        } else if bluePenalties >= ruleSet.maxPenalties {
+        } else if bluePenalties >= Match.maxPenalties {
             winningPlayer = redPlayer
         }
     }

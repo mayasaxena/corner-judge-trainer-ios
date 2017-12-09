@@ -9,9 +9,11 @@
 import UIKit
 
 extension UIColor {
-    class var flatBlue: UIColor {
-        return UIColor(red: 54.0 / 255.0, green: 108.0 / 255.0, blue: 172.0 / 255.0, alpha: 1.0)
-    }
+//    class var flatBlue: UIColor {
+//        return
+//    }
+
+    static let flatBlue = UIColor(red: 54.0 / 255.0, green: 108.0 / 255.0, blue: 172.0 / 255.0, alpha: 1.0)
 
     class var flatRed: UIColor {
         return UIColor(red: 186.0 / 255.0, green: 65.0 / 255.0, blue: 65.0 / 255.0, alpha: 1.0)
@@ -36,4 +38,6 @@ extension UIColor {
     class var darkGrey: UIColor {
         return UIColor(white: 62.0 / 255.0, alpha: 1.0)
     }
+
+    static let textFieldBackground = UIColor.flatBlue
 }
