@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Genome
 
 struct JSONKey {
     static let eventType = "event"
@@ -22,7 +21,7 @@ struct JSONKey {
 }
 
 enum EventType: String {
-    case control, scoring, newJudge
+    case control, scoring, newParticipant
 }
 
 extension EventType {
@@ -38,73 +37,57 @@ extension EventType {
     }
 }
 
-protocol Event: NodeRepresentable {
+protocol Event {
     var eventType: EventType { get }
-    var judgeID: String { get }
-    var data: [String : String] { get }
-
-    init?(node: Node)
-    init?(judgeID: String, data: [String: String])
+    var participantID: String { get }
 }
 
 extension Event {
-    init?(node: Node) {
-        guard
-            let judgeID = node[JSONKey.judgeID]?.string,
-            let dataObject = node[JSONKey.data]?.nodeObject
-            else { return nil }
-
-        let data = dataObject.reduce([String : String]()) { dict, entry in
-            var dictionary = dict
-            dictionary[entry.key] = entry.value.string
-            return dictionary
-        }
-
-        self.init(judgeID: judgeID, data: data)
-    }
-
     var jsonString: String? {
-        guard
-            let node = try? makeNode(),
-            let data = try? JSONSerialization.data(withJSONObject: node.any, options: []),
-            let nsstring = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            else { return nil }
-        return nsstring as String
-    }
-
-    func makeNode(context: Context) throws -> Node {
-        return try Node(node: [
-            JSONKey.eventType : eventType.rawValue,
-            JSONKey.data : data.makeNode(),
-            JSONKey.judgeID : judgeID
-        ])
+        return ""
     }
 }
 
-struct NewJudgeEvent: Event {
-    init(judgeID: String, data: [String : String]) {
-        self.judgeID = judgeID
+struct NewParticipantEvent: Event {
+
+    enum ParticipantType: String {
+        case judge
+        case `operator`
+        case viewer
     }
 
-    let eventType = EventType.newJudge
-    var judgeID: String
-    let data: [String : String] = [:]
-}
+    let eventType = EventType.newParticipant
+    let participantID: String
+    let participantType: ParticipantType
 
-extension Node {
-    func createEvent() -> Event? {
-        guard let eventType = EventType(value: self[JSONKey.eventType]?.string) else { return nil }
+    init(participantID: String, participantType: ParticipantType) {
+        self.participantID = participantID
+        self.participantType = participantType
+    }
 
-        switch eventType {
-        case .scoring:
-            return ScoringEvent(node: node)
-        case .control:
-            return ControlEvent(node: node)
-        default:
-            return nil
-        }
+    init() {
+        participantID = String.random(length: 5)
+        participantType = .judge
+    }
+
+    func encode(to encoder: Encoder) throws {
     }
 }
+
+//extension Node {
+//    func createEvent() -> Event? {
+//        guard let eventType = EventType(value: self[JSONKey.eventType]?.string) else { return nil }
+//
+//        switch eventType {
+//        case .scoring:
+//            return ScoringEvent(node: node)
+//        case .control:
+//            return ControlEvent(node: node)
+//        default:
+//            return nil
+//        }
+//    }
+//}
 
 extension String {
     var boolValue: Bool? {
@@ -115,5 +98,20 @@ extension String {
         } else {
             return nil
         }
+    }
+
+    static func random(length: Int) -> String {
+        let letters: NSString = "abcdefghijklmnopqrstuvwxyz0123456789"
+        let len = UInt32(letters.length)
+
+        var randomString = ""
+
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+
+        return randomString
     }
 }

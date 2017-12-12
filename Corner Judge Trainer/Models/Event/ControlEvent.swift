@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Genome
 
 struct ControlEvent: Event {
     enum Category: String {
@@ -20,71 +19,34 @@ struct ControlEvent: Event {
     }
 
     let eventType: EventType = .control
-    let judgeID: String
-    let data: [String : String]
+    let participantID: String
 
-    var category: Category {
-        guard
-            let categoryRaw = data[JSONKey.category],
-            let category = Category(rawValue: categoryRaw)
-            else { fatalError("Control event must contain category data") }
-        return category
-    }
+    let category: Category
+    let color: PlayerColor?
+    let value: Int?
 
-    var color: PlayerColor? {
-        guard
-            let colorRaw = data[JSONKey.color],
-            let color = PlayerColor(rawValue: colorRaw)
-            else { return nil }
-        return color
-    }
-
-    var value: Int? {
-        guard let valueString = data[JSONKey.value] else { return nil }
-        return Double(valueString)?.toInt
-    }
-
-    init?(node: Node) {
-        guard
-            let judgeID = node[JSONKey.judgeID]?.string,
-            let dataObject = node[JSONKey.data]?.nodeObject
-            else { return nil }
-
-        let data = dataObject.reduce([String : String]()) { dict, entry in
-            var dictionary = dict
-            dictionary[entry.key] = entry.value.string
-            return dictionary
-        }
-
-        self.init(judgeID: judgeID, data: data)
-    }
-
-    init(judgeID: String, data: [String : String]) {
-        self.judgeID = judgeID
-        self.data = data
-
-        if data[JSONKey.category] == nil {
-            fatalError("Control event data must contain category data")
-        }
-    }
-
-    init(judgeID: String, category: Category) {
-        let data = [JSONKey.category : category.rawValue ]
-        self.init(judgeID: judgeID, data: data)
+    init(operatorID: String, category: Category, color: PlayerColor? = nil, value: Int? = nil) {
+        self.participantID = operatorID
+        self.category = category
+        self.color = color
+        self.value = value
     }
 }
 
 extension ControlEvent {
     var time: String? {
-        return data[JSONKey.time]
+        return nil
+//        return data[JSONKey.time]
     }
 
     var scoringDisabled: Bool? {
-        return data[JSONKey.scoringDisabled]?.boolValue
+        return nil
+//        return data[JSONKey.scoringDisabled]?.boolValue
     }
 
     var round: Int? {
-        return data[JSONKey.round]?.int
+        return nil
+//        return data[JSONKey.round]?.int
     }
 }
 

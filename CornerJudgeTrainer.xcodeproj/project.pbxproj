@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5E7C31C93C88B13011AF9477 /* Pods_CornerJudgeTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */; };
+		A4A478E11FDF5FF3005EFB94 /* StatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */; };
+		A4A478E51FDF6480005EFB94 /* StatusUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E41FDF6480005EFB94 /* StatusUpdateTests.swift */; };
+		A4A478E61FDF65D2005EFB94 /* StatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */; };
+		A4A478E71FDF6634005EFB94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
 		A4BDE3D31FDC182B00297F7A /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3D21FDC182B00297F7A /* ScoringEvent.swift */; };
 		A4BDE3D71FDC18DF00297F7A /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3D61FDC18DF00297F7A /* ControlEvent.swift */; };
 		A51648FC1E67A50C00CE2CD4 /* Match+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */; };
@@ -69,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusUpdate.swift; path = Models/StatusUpdate.swift; sourceTree = "<group>"; };
+		A4A478E41FDF6480005EFB94 /* StatusUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusUpdateTests.swift; sourceTree = "<group>"; };
 		A4BDE3D21FDC182B00297F7A /* ScoringEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/Event/ScoringEvent.swift; sourceTree = "<group>"; };
 		A4BDE3D61FDC18DF00297F7A /* ControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ControlEvent.swift; path = Models/Event/ControlEvent.swift; sourceTree = "<group>"; };
 		A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Match+Extensions.swift"; path = "Extensions/Match+Extensions.swift"; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				A570D70E1E5BD24A00393563 /* Match.swift */,
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
 				A4BDE3D51FDC184200297F7A /* Event */,
+				A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -360,6 +367,7 @@
 			children = (
 				A5AA9D621D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift */,
 				A5AA9D641D4BCE0300B51652 /* Info.plist */,
+				A4A478E41FDF6480005EFB94 /* StatusUpdateTests.swift */,
 			);
 			path = "Corner Judge TrainerTests";
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 				A56C1F0D1E6649610093934B /* LocalMatchManager.swift in Sources */,
 				A4BDE3D31FDC182B00297F7A /* ScoringEvent.swift in Sources */,
 				A5A789EE1D6E791F0088D983 /* Player.swift in Sources */,
+				A4A478E11FDF5FF3005EFB94 /* StatusUpdate.swift in Sources */,
 				A5DFDBA71DE29CD5006BED7E /* JoinMatchTableViewCell.swift in Sources */,
 				A58DDE941DE2891800853604 /* JoinMatchViewModel.swift in Sources */,
 				A5DFDBAA1DE29D90006BED7E /* JoinMatchTableViewCellViewModel.swift in Sources */,
@@ -636,6 +645,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A478E71FDF6634005EFB94 /* Player.swift in Sources */,
+				A4A478E61FDF65D2005EFB94 /* StatusUpdate.swift in Sources */,
+				A4A478E51FDF6480005EFB94 /* StatusUpdateTests.swift in Sources */,
 				A5AA9D631D4BCE0300B51652 /* Corner_Judge_TrainerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

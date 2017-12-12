@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Genome
 import Starscream
 
 final class RemoteMatchManager: MatchManager, WebSocketDelegate {
@@ -35,7 +34,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     }
 
     func playPause() {
-        let playPauseEvent = ControlEvent(judgeID: "test-app", category: .playPause)
+        let playPauseEvent = ControlEvent(operatorID: "test-app", category: .playPause)
         guard let jsonString = playPauseEvent.jsonString else { return }
         webSocket.write(string: jsonString)
     }
@@ -52,12 +51,12 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         print(text)
 
+        let decoder = JSONDecoder()
         guard
-            let data = text.data(using: .utf8),
-            let node = try? data.makeNode(),
-            let event = node.createEvent()
+            let data = text.data(using: .utf8)
+//            let event = node.createEvent()
             else { return }
-        received(event: event)
+//        received(event: event)
 
     }
 
@@ -148,33 +147,32 @@ extension Match {
     }
 }
 
-extension Match: MappableObject {
+extension Match {
 
-    convenience init(map: Map) throws {
-        let matchID: Int = try map.extract(NodeKey.matchID)
-        // Not reporting match type in JSON yet
-        let matchType = try map.extract(NodeKey.matchType) { MatchType(rawValue: $0) ?? MatchType.none }
-
-        let redPlayer: String = try map.extract(NodeKey.redName)
-        let bluePlayer: String = try map.extract(NodeKey.blueName)
-
-        let redScore: Int = try map.extract(NodeKey.redScore)
-        let redPenalties: Int = try map.extract(NodeKey.redGamJeomCount)
-
-        let blueScore: Int = try map.extract(NodeKey.blueScore)
-        let bluePenalties: Int = try map.extract(NodeKey.blueGamJeomCount)
-
-        self.init(
-            id: matchID,
-            redPlayerName: redPlayer,
-            bluePlayerName: bluePlayer,
-            type: matchType,
-            redScore: redScore,
-            redPenalties: redPenalties,
-            blueScore: blueScore,
-            bluePenalties: bluePenalties
-        )
-    }
+//        let matchID: Int = try map.extract(NodeKey.matchID)
+//        // Not reporting match type in JSON yet
+//        let matchType = try map.extract(NodeKey.matchType) { MatchType(rawValue: $0) ?? MatchType.none }
+//
+//        let redPlayer: String = try map.extract(NodeKey.redName)
+//        let bluePlayer: String = try map.extract(NodeKey.blueName)
+//
+//        let redScore: Int = try map.extract(NodeKey.redScore)
+//        let redPenalties: Int = try map.extract(NodeKey.redGamJeomCount)
+//
+//        let blueScore: Int = try map.extract(NodeKey.blueScore)
+//        let bluePenalties: Int = try map.extract(NodeKey.blueGamJeomCount)
+//
+//        self.init(
+//            id: matchID,
+//            redPlayerName: redPlayer,
+//            bluePlayerName: bluePlayer,
+//            type: matchType,
+//            redScore: redScore,
+//            redPenalties: redPenalties,
+//            blueScore: blueScore,
+//            bluePenalties: bluePenalties
+//        )
+//    }
 }
 
 private struct NodeKey {

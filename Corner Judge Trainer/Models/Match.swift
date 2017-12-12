@@ -9,7 +9,7 @@
 import Foundation
 import Genome
 
-final class Match {
+final class Match: Decodable {
 
     public static let pointGapThresholdRound = 2
     public static let pointGapValue = 20
@@ -131,7 +131,7 @@ extension String {
 
 // MARK: - MatchType
 
-enum MatchType: Int {
+enum MatchType: Int, Decodable {
     case aTeam
     case bTeam
     case cTeam

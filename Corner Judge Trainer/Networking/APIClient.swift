@@ -19,14 +19,10 @@ final class CornerAPIClient: APIClient {
 
         sendDataTask(with: getRequest) { result in
             switch result {
-            case .success(let json):
-                guard let matchesNode = json["matches"] else {
-                    completion(.failure(Error.custom(message: "Could not parse match JSON")))
-                    return
-                }
-
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
                 do {
-                    let matches = try [Match](node: matchesNode)
+                    let matches = try jsonDecoder.decode([Match].self, from: data)
                     completion(.success(matches))
                 } catch(let error) {
                     completion(.failure(error))
@@ -52,7 +48,7 @@ class APIClient {
 
     let session = URLSession(configuration: URLSessionConfiguration.default)
 
-    func sendDataTask(with request: URLRequest, completion: ((Result<Node>) -> Void)?) {
+    func sendDataTask(with request: URLRequest, completion: ((Result<Data>) -> Void)?) {
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             guard let completion = completion else { return }
 
@@ -71,17 +67,9 @@ class APIClient {
                 return
             }
 
-            let json: Node
-            do {
-                json = try data.makeNode()
-            } catch(let error) {
-                completion(.failure(error))
-                return
-            }
-
             switch httpResponse.statusCode {
             case 200..<300:
-                completion(.success(json))
+                completion(.success(data))
             default:
                 completion(.failure(Error.httpError))
             }
