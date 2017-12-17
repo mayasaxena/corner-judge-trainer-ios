@@ -30,7 +30,8 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     }
 
     func joinMatch() {
-        webSocket.write(string: "{\"event\":\"newParticipant\",\"sent_by\":\"test-app\",\"data\":{\"participant_type\" : \"judge\"}}")
+     guard let jsonString = NewParticipantEvent().jsonString else { return }
+        webSocket.write(string: jsonString)
     }
 
     func playPause() {
@@ -77,13 +78,5 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
             break
         }
     }
-    
-
-    // TODO: BAD! Match shouldn't be handling events itself - duplication
-    func handleScoringUpdateReceived(scoringEvent: ScoringEvent) {
-        match.handle(scoringEvent: scoringEvent)
-        delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
-    }
-
 
 }

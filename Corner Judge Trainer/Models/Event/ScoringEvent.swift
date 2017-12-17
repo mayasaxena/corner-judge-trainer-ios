@@ -32,7 +32,6 @@ struct ScoringEvent: Event {
 
     let eventType: EventType = .scoring
     let participantID: String
-
     let category: Category
     let color: PlayerColor
 
@@ -40,6 +39,17 @@ struct ScoringEvent: Event {
         self.participantID = judgeID
         self.category = category
         self.color = color
+    }
+}
+
+extension ScoringEvent {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EventCodingKey.self)
+        try container.encode(eventType.rawValue, forKey: .eventType)
+        try container.encode(participantID, forKey: .participantID)
+        var dataContainer = container.nestedContainer(keyedBy: EventCodingKey.self, forKey: .data)
+        try dataContainer.encode(category.rawValue, forKey: .category)
+        try dataContainer.encode(color.rawValue, forKey: .color)
     }
 }
 

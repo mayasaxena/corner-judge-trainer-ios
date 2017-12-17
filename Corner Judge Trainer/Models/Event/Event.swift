@@ -8,18 +8,6 @@
 
 import Foundation
 
-struct JSONKey {
-    static let eventType = "event"
-    static let judgeID = "sent_by"
-    static let data = "data"
-    static let category = "category"
-    static let color = "color"
-    static let time = "time"
-    static let scoringDisabled = "scoringDisabled"
-    static let round = "round"
-    static let value = "value"
-}
-
 enum EventType: String {
     case control, scoring, newParticipant
 }
@@ -37,14 +25,34 @@ extension EventType {
     }
 }
 
-protocol Event {
+enum EventCodingKey: String, CodingKey {
+    case eventType = "event"
+    case participantID = "sent_by"
+    case data
+    case category
+    case color
+    case time
+    case scoringDisabled = "scoring_disabled"
+    case round
+    case value
+    case participantType = "participant_type"
+}
+
+protocol Event: Encodable {
     var eventType: EventType { get }
     var participantID: String { get }
 }
 
 extension Event {
     var jsonString: String? {
-        return ""
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(self)
+            return String(data: data, encoding: .utf8)
+        } catch let error {
+            print(error)
+            return nil
+        }
     }
 }
 
@@ -70,24 +78,18 @@ struct NewParticipantEvent: Event {
         participantType = .judge
     }
 
+    enum TypeCodingKeys: String, CodingKey {
+        case participantType = "participant_type"
+    }
+
     func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EventCodingKey.self)
+        try container.encode(eventType.rawValue, forKey: .eventType)
+        try container.encode(participantID, forKey: .participantID)
+        var dataContainer = container.nestedContainer(keyedBy: TypeCodingKeys.self, forKey: .data)
+        try dataContainer.encode(participantType.rawValue, forKey: .participantType)
     }
 }
-
-//extension Node {
-//    func createEvent() -> Event? {
-//        guard let eventType = EventType(value: self[JSONKey.eventType]?.string) else { return nil }
-//
-//        switch eventType {
-//        case .scoring:
-//            return ScoringEvent(node: node)
-//        case .control:
-//            return ControlEvent(node: node)
-//        default:
-//            return nil
-//        }
-//    }
-//}
 
 extension String {
     var boolValue: Bool? {
