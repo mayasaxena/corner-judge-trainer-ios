@@ -10,11 +10,16 @@ import Foundation
 import Starscream
 
 final class RemoteMatchManager: MatchManager, WebSocketDelegate {
+    private let webSocket: WebSocket
+    private let participantID = String.random(length: 5)
+    private let selectedParticipantType = ParticipantType.judge // TODO: Allow user to choose
 
     let match: Match
-    weak var delegate: MatchManagerDelegate?
+    var participantType: ParticipantType? {
+        return selectedParticipantType
+    }
 
-    private var webSocket: WebSocket
+    weak var delegate: MatchManagerDelegate?
 
     init(match: Match) {
         self.match = match
@@ -24,19 +29,30 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         webSocket.connect()
     }
 
-    func handle(scoringEvent: ScoringEvent) {
+    func joinMatch() {
+        let event = NewParticipantEvent(participantID: participantID, participantType: selectedParticipantType)
+        guard let jsonString = event.jsonString else { return }
+        webSocket.write(string: jsonString)
+    }
+
+    func score(category: ScoringEvent.Category, color: PlayerColor) {
+        guard participantType == .judge else { return }
+        let scoringEvent = ScoringEvent(judgeID: participantID, category: category, color: color)
         guard let jsonString = scoringEvent.jsonString else { return }
         webSocket.write(string: jsonString)
     }
 
-    func joinMatch() {
-     guard let jsonString = NewParticipantEvent().jsonString else { return }
+    func playPause() {
+        guard participantType == .operator else { return }
+        let playPauseEvent = ControlEvent(operatorID: participantID, category: .playPause)
+        guard let jsonString = playPauseEvent.jsonString else { return }
         webSocket.write(string: jsonString)
     }
 
-    func playPause() {
-        let playPauseEvent = ControlEvent(operatorID: "test-app", category: .playPause)
-        guard let jsonString = playPauseEvent.jsonString else { return }
+    func control(category: ControlEvent.Category, color: PlayerColor? = nil, value: Int? = nil) {
+        guard participantType == .operator else { return }
+        let controlEvent = ControlEvent(operatorID: participantID, category: category, color: color, value: value)
+        guard let jsonString = controlEvent.jsonString else { return }
         webSocket.write(string: jsonString)
     }
 
@@ -74,7 +90,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
             delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
         case .round(let round):
             delegate?.roundChanged(round: round)
-        case .won(let winningColor):
+        case .won:
             break
         }
     }

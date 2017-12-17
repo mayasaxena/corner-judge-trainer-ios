@@ -16,7 +16,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.score(red: red, blue: blue)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "score" : [
@@ -44,7 +44,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.penalties(red: red, blue: blue)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "penalties" : [
@@ -72,7 +72,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.timer(displayTime: displayTime, scoringDisabled: scoringDisabled)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "timer" : [
@@ -99,7 +99,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.round(round: round)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "round" : round
@@ -123,7 +123,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.round(round: round)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "round" : round
@@ -147,7 +147,7 @@ class StatusUpdateTests: XCTestCase {
         let mockStatusUpdate = StatusUpdate.won(winningColor: winningColor)
 
         let statusUpdateData: Data = {
-            let statusUpdateDictionary: [String : Any] = [
+            let statusUpdateDictionary: [String: Any] = [
                 "event" : "status",
                 "data" : [
                     "winning_player" : winningColor.rawValue

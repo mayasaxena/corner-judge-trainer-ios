@@ -25,7 +25,7 @@ final class CornerAPIClient: APIClient {
                 do {
                     let matchResponse = try jsonDecoder.decode(MatchesResponse.self, from: data)
                     completion(.success(matchResponse.matches))
-                } catch(let error) {
+                } catch let error {
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -80,8 +80,8 @@ class APIClient {
 }
 
 extension Data {
-    var jsonObject: [String : Any]? {
+    var jsonObject: [String: Any]? {
         let jsonObject = try? JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions())
-        return jsonObject as? [String : Any]
+        return jsonObject as? [String: Any]
     }
 }

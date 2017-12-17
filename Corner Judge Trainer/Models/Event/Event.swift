@@ -56,29 +56,24 @@ extension Event {
     }
 }
 
-struct NewParticipantEvent: Event {
+enum ParticipantType: String {
+    case judge
+    case `operator`
+    case viewer
+}
 
-    enum ParticipantType: String {
-        case judge
-        case `operator`
-        case viewer
-    }
+struct NewParticipantEvent: Event {
 
     let eventType = EventType.newParticipant
     let participantID: String
     let participantType: ParticipantType
 
-    init(participantID: String, participantType: ParticipantType) {
+    init(participantID: String = String.random(length: 5), participantType: ParticipantType = .judge) {
         self.participantID = participantID
         self.participantType = participantType
     }
 
-    init() {
-        participantID = String.random(length: 5)
-        participantType = .judge
-    }
-
-    enum TypeCodingKeys: String, CodingKey {
+    enum TypeCodingKey: String, CodingKey {
         case participantType = "participant_type"
     }
 
@@ -86,7 +81,7 @@ struct NewParticipantEvent: Event {
         var container = encoder.container(keyedBy: EventCodingKey.self)
         try container.encode(eventType.rawValue, forKey: .eventType)
         try container.encode(participantID, forKey: .participantID)
-        var dataContainer = container.nestedContainer(keyedBy: TypeCodingKeys.self, forKey: .data)
+        var dataContainer = container.nestedContainer(keyedBy: TypeCodingKey.self, forKey: .data)
         try dataContainer.encode(participantType.rawValue, forKey: .participantType)
     }
 }

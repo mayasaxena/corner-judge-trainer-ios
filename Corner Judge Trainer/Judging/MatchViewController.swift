@@ -31,6 +31,7 @@ final class MatchViewController: UIViewController {
     @IBOutlet private weak var bluePlayerNameLabel: UILabel!
 
     @IBOutlet private weak var disablingView: UIView!
+    @IBOutlet private weak var pauseInfoTextView: UILabel!
     @IBOutlet private weak var redGamJeomButton: RoundedButton!
     @IBOutlet private weak var blueGamJeomButton: RoundedButton!
 
@@ -88,34 +89,37 @@ final class MatchViewController: UIViewController {
     private func setupRedScoring() {
         redScoreLabel.rx.text <- viewModel.redScoreText >>> disposeBag
 
+        viewModel.redPenalties.subscribeNext { [weak self] penalties in
+            self?.redPenaltiesView.penalties = penalties
+            } >>> disposeBag
+
+        redScoringArea.isUserInteractionEnabled = false
+
+        guard viewModel.shouldAllowScoring else { return }
+
         setupTapGestureRecognizer(targetView: redScoringArea, playerColor: .red)
         setupSwipeGestureRecognizer(targetView: redScoringArea, playerColor: .red)
 
         redTechnicalButton.rx.tap.subscribeNext { [weak self] in
             self?.viewModel.handleTechnicalButtonTapped(color: .red)
         } >>> disposeBag
-
-        redScoringArea.isUserInteractionEnabled = false
-
-        viewModel.redPenalties.subscribeNext { [weak self] penalties in
-            self?.redPenaltiesView.penalties = penalties
-        } >>> disposeBag
     }
 
     private func setupBlueScoring() {
         blueScoreLabel.rx.text <- viewModel.blueScoreText >>> disposeBag
+        blueScoringArea.isUserInteractionEnabled = false
+
+        viewModel.bluePenalties.subscribeNext { [weak self] penalties in
+            self?.bluePenaltiesView.penalties = penalties
+            } >>> disposeBag
+
+        guard viewModel.shouldAllowScoring else { return }
 
         setupTapGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
         setupSwipeGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
 
         blueTechnicalButton.rx.tap.subscribe { [weak self] in
             self?.viewModel.handleTechnicalButtonTapped(color: .blue)
-        } >>> disposeBag
-
-        blueScoringArea.isUserInteractionEnabled = false
-
-        viewModel.bluePenalties.subscribeNext { [weak self] penalties in
-            self?.bluePenaltiesView.penalties = penalties
         } >>> disposeBag
     }
 
@@ -202,18 +206,23 @@ final class MatchViewController: UIViewController {
     }
 
     private func setupPenaltyButtons() {
+        redGamJeomButton.isHidden = !viewModel.shouldShowControls
+        blueGamJeomButton.isHidden = !viewModel.shouldShowControls
+        pauseInfoTextView.isHidden = !viewModel.shouldShowControls
+
+        guard viewModel.shouldShowControls else { return }
 
         redGamJeomButton.rx.tap.subscribeNext { [weak self] in
-//            self?.displayConfirmationAlert(playerColor: .red, category: .gamJeom)
+            self?.displayConfirmationAlert(playerColor: .red, category: .giveGamJeom)
         } >>> disposeBag
 
         blueGamJeomButton.rx.tap.subscribeNext { [weak self] in
-//            self?.displayConfirmationAlert(playerColor: .blue, category: .gamJeom)
+            self?.displayConfirmationAlert(playerColor: .blue, category: .giveGamJeom)
         } >>> disposeBag
     }
 
-    private func displayConfirmationAlert(playerColor color: PlayerColor, category: ScoringEvent.Category) {
-        let alertController = UIAlertController(title: "Give \(category.displayName) to \(color.displayName)?", message: "", preferredStyle: .alert)
+    private func displayConfirmationAlert(playerColor color: PlayerColor, category: ControlEvent.Category) {
+        let alertController = UIAlertController(title: "Give \(category.rawValue) to \(color.displayName)?", message: "", preferredStyle: .alert)
 
         let addAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
             self?.viewModel.handlePenaltyConfirmed(color: color, penalty: category)

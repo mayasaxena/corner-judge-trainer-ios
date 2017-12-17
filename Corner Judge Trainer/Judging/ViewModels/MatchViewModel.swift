@@ -23,6 +23,16 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     private let scores: Variable<ScoreValues>
     private let penalties: Variable<PenaltyValues>
 
+    var shouldHideMatchInfo = false
+
+    var shouldShowControls: Bool {
+        return matchManager.participantType == nil || matchManager.participantType == .operator
+    }
+
+    var shouldAllowScoring: Bool {
+        return matchManager.participantType == nil || matchManager.participantType == .judge
+    }
+
     var redScoreText: Observable<String?> {
         return scores.asObservable().map { String($0.redScore) }
     }
@@ -38,8 +48,6 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     var bluePenalties: Observable<Int> {
         return penalties.asObservable().map { $0.bluePenalties }
     }
-
-    var shouldHideMatchInfo = false
 
     var timerLabelTextColor: Observable<UIColor> {
         return scoringDisabled.asObservable().map { $0 ? UIColor.yellow : UIColor.flatWhite}
@@ -98,19 +106,19 @@ final class MatchViewModel: MatchManaging, MatchManagerDelegate {
     // MARK: - View Handlers
 
     func handleScoringAreaTapped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .head, color: color))
+        matchManager.score(category: .head, color: color)
     }
 
     func handleScoringAreaSwiped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .body, color: color))
+        matchManager.score(category: .body, color: color)
     }
 
     func handleTechnicalButtonTapped(color: PlayerColor) {
-        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: .technical, color: color))
+        matchManager.score(category: .technical, color: color)
     }
 
-    func handlePenaltyConfirmed(color: PlayerColor, penalty: ScoringEvent.Category) {
-        matchManager.handle(scoringEvent: ScoringEvent(judgeID: "judge-iOS", category: penalty, color: color))
+    func handlePenaltyConfirmed(color: PlayerColor, penalty: ControlEvent.Category) {
+        matchManager.control(category: penalty, color: color, value: nil)
     }
 
     // MARK: - MatchManagerDelegate

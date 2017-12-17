@@ -13,7 +13,7 @@ struct MatchesResponse: Decodable {
         case matchCount = "match-count"
         case matches
     }
-    
+
     let matchCount: Int
     let matches: [Match]
 }

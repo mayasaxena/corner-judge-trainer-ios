@@ -15,6 +15,7 @@ final class LocalMatchManager: MatchManager {
     }
 
     let match: Match
+    let participantType: ParticipantType? = nil
 
     private var round: Int = 1 {
         didSet {
@@ -41,7 +42,22 @@ final class LocalMatchManager: MatchManager {
         delegate?.timerUpdated(timeString: timeRemaining.formattedTimeString)
     }
 
-    func handle(scoringEvent: ScoringEvent) {
+    func joinMatch() {}
+
+    func playPause() {
+        guard !matchEnded else { return }
+        if timer.isValid {
+            stopTimer()
+        } else {
+            startTimer()
+        }
+
+        delegate?.matchStatusChanged(scoringDisabled: !match.isWon && (!timer.isValid || isRestRound))
+    }
+
+    func score(category: ScoringEvent.Category, color: PlayerColor) {
+        let scoringEvent = ScoringEvent(judgeID: "", category: category, color: color)
+
         match.handle(scoringEvent: scoringEvent)
 
         delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
@@ -58,17 +74,8 @@ final class LocalMatchManager: MatchManager {
         }
     }
 
-    func joinMatch() {}
-
-    func playPause() {
-        guard !matchEnded else { return }
-        if timer.isValid {
-            stopTimer()
-        } else {
-            startTimer()
-        }
-
-        delegate?.matchStatusChanged(scoringDisabled: !match.isWon && (!timer.isValid || isRestRound))
+    func control(category: ControlEvent.Category, color: PlayerColor? = nil, value: Int? = nil) {
+        print("control")
     }
 
     // MARK: - Timer methods

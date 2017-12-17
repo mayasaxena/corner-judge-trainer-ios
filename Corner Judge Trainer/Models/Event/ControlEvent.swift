@@ -40,18 +40,12 @@ extension ControlEvent {
         try container.encode(participantID, forKey: .participantID)
         var dataContainer = container.nestedContainer(keyedBy: EventCodingKey.self, forKey: .data)
         try dataContainer.encode(category.rawValue, forKey: .category)
+
         if let color = color {
             try dataContainer.encode(color.rawValue, forKey: .color)
         }
         if let value = value {
             try dataContainer.encode(value, forKey: .color)
         }
-    }
-}
-
-
-private extension Double {
-    var toInt: Int? {
-        return Int(self)
     }
 }

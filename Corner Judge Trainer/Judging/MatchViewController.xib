@@ -34,6 +34,7 @@
                 <outlet property="disablingView" destination="SMI-45-m7u" id="LCR-Yx-v8y"/>
                 <outlet property="matchInfoView" destination="hzP-nJ-sjw" id="dLZ-3P-NHa"/>
                 <outlet property="matchInfoViewTopConstraint" destination="aDV-2h-RCk" id="SmS-mw-wYc"/>
+                <outlet property="pauseInfoTextView" destination="KJs-B2-zdD" id="OzY-B7-LnN"/>
                 <outlet property="redGamJeomButton" destination="n7G-cL-8aB" id="ilI-jz-MZt"/>
                 <outlet property="redPenaltiesView" destination="ynN-T9-1yQ" id="bpg-9a-jKr"/>
                 <outlet property="redPlayerNameLabel" destination="BC8-g6-TJo" id="edQ-nu-KL9"/>

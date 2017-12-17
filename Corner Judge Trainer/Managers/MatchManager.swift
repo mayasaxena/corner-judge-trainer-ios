@@ -19,11 +19,13 @@ protocol MatchManagerDelegate: class {
 
 protocol MatchManager: class {
     var match: Match { get }
+    var participantType: ParticipantType? { get } // Nil for local manager, can do everything
     weak var delegate: MatchManagerDelegate? { get set }
 
-    func handle(scoringEvent: ScoringEvent)
     func joinMatch()
     func playPause()
+    func score(category: ScoringEvent.Category, color: PlayerColor)
+    func control(category: ControlEvent.Category, color: PlayerColor?, value: Int?)
 }
 
 protocol MatchManaging: MatchManagerDelegate {
