@@ -42,36 +42,41 @@ enum StatusUpdate: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let dataContainer = try container.nestedContainer(keyedBy: DataCodingKeys.self, forKey: .data)
 
-        if dataContainer.contains(.score) {
+        switch dataContainer.allKeys {
+        case .score:
             let scoreContainer = try dataContainer.nestedContainer(keyedBy: ValueCodingKeys.self, forKey: .score)
             let redScore = try scoreContainer.decode(Int.self, forKey: .red)
             let blueScore = try scoreContainer.decode(Int.self, forKey: .blue)
             self = .score(red: redScore, blue: blueScore)
 
-        } else if dataContainer.contains(.penalties) {
+        case .penalties:
             let penaltiesContainer = try dataContainer.nestedContainer(keyedBy: ValueCodingKeys.self, forKey: .penalties)
             let redPenalties = try penaltiesContainer.decode(Int.self, forKey: .red)
             let bluePenalties = try penaltiesContainer.decode(Int.self, forKey: .blue)
             self = .penalties(red: redPenalties, blue: bluePenalties)
 
-        } else if dataContainer.contains(.timer) {
+        case .timer:
             let timerContainer = try dataContainer.nestedContainer(keyedBy: ValueCodingKeys.self, forKey: .timer)
             let displayTime = try timerContainer.decode(String.self, forKey: .displayTime)
             let scoringDisabled = try timerContainer.decode(Bool.self, forKey: .scoringDisabled)
             self = .timer(displayTime: displayTime, scoringDisabled: scoringDisabled)
 
-        } else if dataContainer.contains(.round) {
+        case .round:
             let round = try dataContainer.decodeIfPresent(Int.self, forKey: .round)
             self = .round(round: round)
 
-        } else if dataContainer.contains(.won) {
+        case .won:
             let winningColor = try dataContainer.decode(PlayerColor.self, forKey: .won)
             self = .won(winningColor: winningColor)
 
-        } else {
+        default:
             throw StatusUpdateDecodingError.invalidStatusUpdate
         }
     }
+}
+
+private func ~= (lhs: StatusUpdate.DataCodingKeys, rhs: [StatusUpdate.DataCodingKeys]) -> Bool {
+    return rhs.contains(lhs)
 }
 
 extension StatusUpdate: Equatable {

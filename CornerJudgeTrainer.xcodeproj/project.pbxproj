@@ -12,6 +12,7 @@
 		A4A478E51FDF6480005EFB94 /* StatusUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E41FDF6480005EFB94 /* StatusUpdateTests.swift */; };
 		A4A478E61FDF65D2005EFB94 /* StatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */; };
 		A4A478E71FDF6634005EFB94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A789ED1D6E791F0088D983 /* Player.swift */; };
+		A4A478E91FE040A0005EFB94 /* MatchesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A478E81FE040A0005EFB94 /* MatchesResponse.swift */; };
 		A4BDE3D31FDC182B00297F7A /* ScoringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3D21FDC182B00297F7A /* ScoringEvent.swift */; };
 		A4BDE3D71FDC18DF00297F7A /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3D61FDC18DF00297F7A /* ControlEvent.swift */; };
 		A51648FC1E67A50C00CE2CD4 /* Match+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */; };
@@ -75,6 +76,7 @@
 		7CA5BA7BF42C1FFC5A5DAEF3 /* Pods_CornerJudgeTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornerJudgeTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusUpdate.swift; path = Models/StatusUpdate.swift; sourceTree = "<group>"; };
 		A4A478E41FDF6480005EFB94 /* StatusUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusUpdateTests.swift; sourceTree = "<group>"; };
+		A4A478E81FE040A0005EFB94 /* MatchesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchesResponse.swift; path = Models/Codable/MatchesResponse.swift; sourceTree = "<group>"; };
 		A4BDE3D21FDC182B00297F7A /* ScoringEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScoringEvent.swift; path = Models/Event/ScoringEvent.swift; sourceTree = "<group>"; };
 		A4BDE3D61FDC18DF00297F7A /* ControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ControlEvent.swift; path = Models/Event/ControlEvent.swift; sourceTree = "<group>"; };
 		A51648FB1E67A50C00CE2CD4 /* Match+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Match+Extensions.swift"; path = "Extensions/Match+Extensions.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A4A478EA1FE040D1005EFB94 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				A4A478E81FE040A0005EFB94 /* MatchesResponse.swift */,
+			);
+			name = Codable;
+			sourceTree = "<group>";
+		};
 		A4BDE3D51FDC184200297F7A /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +215,9 @@
 			children = (
 				A570D70E1E5BD24A00393563 /* Match.swift */,
 				A5A789ED1D6E791F0088D983 /* Player.swift */,
-				A4BDE3D51FDC184200297F7A /* Event */,
 				A4A478E01FDF5FF3005EFB94 /* StatusUpdate.swift */,
+				A4BDE3D51FDC184200297F7A /* Event */,
+				A4A478EA1FE040D1005EFB94 /* Codable */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -616,6 +627,7 @@
 				A51648FC1E67A50C00CE2CD4 /* Match+Extensions.swift in Sources */,
 				A5A789F01D6E79390088D983 /* Event.swift in Sources */,
 				A55C385D1E49414F007BA949 /* APIClient.swift in Sources */,
+				A4A478E91FE040A0005EFB94 /* MatchesResponse.swift in Sources */,
 				A5AA9D4E1D4BCE0200B51652 /* AppDelegate.swift in Sources */,
 				A5A78A031D70D13E0088D983 /* UIColor+Theme.swift in Sources */,
 				A5A78A051D70E1030088D983 /* RoundedButton.swift in Sources */,
@@ -785,7 +797,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2U76RBCGXR;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
 				PRODUCT_NAME = Corner;
@@ -801,7 +813,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2U76RBCGXR;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
 				PRODUCT_NAME = Corner;

@@ -21,50 +21,53 @@ final class Match: Decodable {
     }
 
     let id: Int
-    let date = Date()
+    let date: Date
+    let type: MatchType
 
-    public var redScore: Int = 0 {
+    let redPlayer: Player
+    let bluePlayer: Player
+
+    private(set) var winningPlayer: Player?
+
+    private(set) var redScore: Int = 0 {
         didSet {
             redScore = min(redScore, Constants.maxScore)
         }
     }
 
-    public var redPenalties: Int = 0 {
+    private(set) var redPenalties: Int = 0 {
         didSet {
             redPenalties = min(redPenalties, Match.maxPenalties)
         }
     }
 
-    public var blueScore: Int = 0 {
+    private(set) var blueScore: Int = 0 {
         didSet {
             blueScore = min(blueScore, Constants.maxScore)
         }
     }
 
-    public var bluePenalties: Int = 0 {
+    private(set) var bluePenalties: Int = 0 {
         didSet {
             bluePenalties = min(bluePenalties, Match.maxPenalties)
         }
     }
 
-    private(set) var winningPlayer: Player?
-
-    fileprivate(set) var type: MatchType
-
-    fileprivate(set) var redPlayer: Player
-    fileprivate(set) var bluePlayer: Player
-
     init(id: Int = Int.random(3),
+         date: Date = Date(),
          redPlayerName: String? = nil,
          bluePlayerName: String? = nil,
          type: MatchType = .none) {
+
         self.id = id
+        self.date = date
         self.redPlayer = Player(color: .red, name: redPlayerName)
         self.bluePlayer = Player(color: .blue, name: bluePlayerName)
         self.type = type
     }
 
     convenience init(id: Int,
+                     date: Date,
                      redPlayerName: String?,
                      bluePlayerName: String?,
                      type: MatchType,
@@ -73,7 +76,7 @@ final class Match: Decodable {
                      blueScore: Int,
                      bluePenalties: Int) {
 
-        self.init(id: id, redPlayerName: redPlayerName, bluePlayerName: bluePlayerName, type: type)
+        self.init(id: id, date: date, redPlayerName: redPlayerName, bluePlayerName: bluePlayerName, type: type)
 
         self.redScore = redScore
         self.redPenalties = redPenalties
@@ -118,6 +121,75 @@ final class Match: Decodable {
             winningPlayer = redScore > blueScore ? redPlayer : bluePlayer
         }
     }
+
+    func giveGamJeom(to color: PlayerColor) {
+        switch color {
+        case .blue:
+            bluePenalties += 1
+            redScore += 1
+        case .red:
+            redPenalties += 1
+            blueScore += 1
+        }
+    }
+
+    func removeGamJeom(from color: PlayerColor) {
+        switch color {
+        case .blue:
+            guard bluePenalties > 0 else { return }
+            bluePenalties -= 1
+            redScore -= 1
+        case .red:
+            guard redPenalties > 0 else { return }
+            redPenalties -= 1
+            blueScore -= 1
+        }
+    }
+
+    func adjustScore(for color: PlayerColor, byAmount amount: Int) {
+        switch color {
+        case .blue:
+            if blueScore + amount >= 0 {
+                blueScore += amount
+            }
+        case .red:
+            if redScore + amount >= 0 {
+                redScore += amount
+            }
+        }
+    }
+}
+
+extension Match {
+    private enum CodingKeys: CodingKey {
+        case id
+        case type
+        case date
+        case red
+        case blue
+    }
+
+    convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let id = try container.decode(Int.self, forKey: .id)
+        let type = try container.decode(MatchType.self, forKey: .type)
+        let date = try container.decode(Date.self, forKey: .date)
+
+        let redPlayerResponse = try container.decode(PlayerResponse.self, forKey: .red)
+        let bluePlayerResponse = try container.decode(PlayerResponse.self, forKey: .blue)
+
+        self.init(
+            id: id,
+            date: date,
+            redPlayerName: redPlayerResponse.name,
+            bluePlayerName: bluePlayerResponse.name,
+            type: type,
+            redScore: redPlayerResponse.score,
+            redPenalties: redPlayerResponse.penalties,
+            blueScore: bluePlayerResponse.score,
+            bluePenalties: bluePlayerResponse.penalties
+        )
+    }
 }
 
 extension String {
@@ -157,28 +229,6 @@ enum MatchType: Int, Decodable {
 
     static var caseCount: Int {
         return allValues.count
-    }
-}
-
-enum RuleSet: Int {
-    case ectc, wtf
-
-    var maxPenalties: Double {
-        switch self {
-        case .ectc:
-            return 5.0
-        case .wtf:
-            return 10.0
-        }
-    }
-
-    var pointGapValue: Double {
-        switch self {
-        case .ectc:
-            return 12.0
-        case .wtf:
-            return 20.0
-        }
     }
 }
 

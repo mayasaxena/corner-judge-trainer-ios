@@ -21,9 +21,10 @@ final class CornerAPIClient: APIClient {
             switch result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .secondsSince1970
                 do {
-                    let matches = try jsonDecoder.decode([Match].self, from: data)
-                    completion(.success(matches))
+                    let matchResponse = try jsonDecoder.decode(MatchesResponse.self, from: data)
+                    completion(.success(matchResponse.matches))
                 } catch(let error) {
                     completion(.failure(error))
                 }

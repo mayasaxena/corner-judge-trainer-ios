@@ -30,7 +30,7 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
     }
 
     func joinMatch() {
-        webSocket.write(string: "{\"event\":\"newJudge\",\"sent_by\":\"test-app\",\"data\":{}}")
+        webSocket.write(string: "{\"event\":\"newParticipant\",\"sent_by\":\"test-app\",\"data\":{\"participant_type\" : \"judge\"}}")
     }
 
     func playPause() {
@@ -52,24 +52,32 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         print(text)
 
         let decoder = JSONDecoder()
-        guard
-            let data = text.data(using: .utf8)
-//            let event = node.createEvent()
-            else { return }
-//        received(event: event)
+        guard let data = text.data(using: .utf8) else { return }
 
+        do {
+            let statusUpdate = try decoder.decode(StatusUpdate.self, from: data)
+            received(statusUpdate: statusUpdate)
+        } catch let error {
+            print(error)
+        }
     }
 
-    private func received(event: Event) {
-        switch event {
-        case let scoringEvent as ScoringEvent:
-            handleScoringUpdateReceived(scoringEvent: scoringEvent)
-        case let controlEvent as ControlEvent:
-            handleReceived(controlEvent: controlEvent)
-        default:
+    private func received(statusUpdate: StatusUpdate) {
+        switch statusUpdate {
+        case .score(let red, let blue):
+            delegate?.scoreUpdated(redScore: red, blueScore: blue)
+        case .penalties(let red, let blue):
+            delegate?.penaltiesUpdated(redPenalties: red, bluePenalties: blue)
+        case .timer(let displayTime, let scoringDisabled):
+            delegate?.timerUpdated(timeString: displayTime)
+            delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
+        case .round(let round):
+            delegate?.roundChanged(round: round)
+        case .won(let winningColor):
             break
         }
     }
+    
 
     // TODO: BAD! Match shouldn't be handling events itself - duplication
     func handleScoringUpdateReceived(scoringEvent: ScoringEvent) {
@@ -77,118 +85,5 @@ final class RemoteMatchManager: MatchManager, WebSocketDelegate {
         delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
     }
 
-    private func handleReceived(controlEvent: ControlEvent) {
-        switch controlEvent.category {
-        case .status:
-            if let time = controlEvent.time {
-                delegate?.timerUpdated(timeString: time)
-            }
-            if let scoringDisabled = controlEvent.scoringDisabled {
-                delegate?.matchStatusChanged(scoringDisabled: scoringDisabled)
-            }
-            delegate?.roundChanged(round: controlEvent.round)
-        case .giveGamJeom:
-            guard let color = controlEvent.color else { return }
-            match.giveGamJeom(to: color)
-            delegate?.penaltiesUpdated(redPenalties: match.redPenalties, bluePenalties: match.bluePenalties)
-        case .removeGamJeom:
-            guard let color = controlEvent.color else { return }
-            match.removeGamJeom(from: color)
-            delegate?.penaltiesUpdated(redPenalties: match.redPenalties, bluePenalties: match.bluePenalties)
-        case .adjustScore:
-            guard
-                let color = controlEvent.color,
-                let amount = controlEvent.value
-                else { return }
-            match.adjustScore(for: color, byAmount: amount)
-            delegate?.scoreUpdated(redScore: match.redScore, blueScore: match.blueScore)
-        default:
-            break
-        }
-    }
-}
 
-extension Match {
-    func giveGamJeom(to color: PlayerColor) {
-        switch color {
-        case .blue:
-            bluePenalties += 1
-            redScore += 1
-        case .red:
-            redPenalties += 1
-            blueScore += 1
-        }
-    }
-
-    func removeGamJeom(from color: PlayerColor) {
-        switch color {
-        case .blue:
-            guard bluePenalties > 0 else { return }
-            bluePenalties -= 1
-            redScore -= 1
-        case .red:
-            guard redPenalties > 0 else { return }
-            redPenalties -= 1
-            blueScore -= 1
-        }
-    }
-
-    func adjustScore(for color: PlayerColor, byAmount amount: Int) {
-        switch color {
-        case .blue:
-            if blueScore + amount >= 0 {
-                blueScore += amount
-            }
-        case .red:
-            if redScore + amount >= 0 {
-                redScore += amount
-            }
-        }
-    }
-}
-
-extension Match {
-
-//        let matchID: Int = try map.extract(NodeKey.matchID)
-//        // Not reporting match type in JSON yet
-//        let matchType = try map.extract(NodeKey.matchType) { MatchType(rawValue: $0) ?? MatchType.none }
-//
-//        let redPlayer: String = try map.extract(NodeKey.redName)
-//        let bluePlayer: String = try map.extract(NodeKey.blueName)
-//
-//        let redScore: Int = try map.extract(NodeKey.redScore)
-//        let redPenalties: Int = try map.extract(NodeKey.redGamJeomCount)
-//
-//        let blueScore: Int = try map.extract(NodeKey.blueScore)
-//        let bluePenalties: Int = try map.extract(NodeKey.blueGamJeomCount)
-//
-//        self.init(
-//            id: matchID,
-//            redPlayerName: redPlayer,
-//            bluePlayerName: bluePlayer,
-//            type: matchType,
-//            redScore: redScore,
-//            redPenalties: redPenalties,
-//            blueScore: blueScore,
-//            bluePenalties: bluePenalties
-//        )
-//    }
-}
-
-private struct NodeKey {
-    static let matchID = "match-id"
-    static let matchType = "match-type"
-    static let date = "date"
-    static let redName = "red-player"
-    static let redScore = "red-score"
-    static let redGamJeomCount = "red-gamjeom-count"
-    static let blueName = "blue-player"
-    static let blueScore = "blue-score"
-    static let blueGamJeomCount = "blue-gamjeom-count"
-    static let round = "round"
-    static let blueScoreClass = "blue-score-class"
-    static let redScoreClass = "red-score-class"
-    static let time = "time"
-    static let overlayVisible = "overlay-visible"
-    static let status = "status"
 }
