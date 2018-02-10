@@ -107,18 +107,19 @@ final class MatchViewController: UIViewController {
 
     private func setupBlueScoring() {
         blueScoreLabel.rx.text <- viewModel.blueScoreText >>> disposeBag
-        blueScoringArea.isUserInteractionEnabled = false
 
         viewModel.bluePenalties.subscribeNext { [weak self] penalties in
             self?.bluePenaltiesView.penalties = penalties
             } >>> disposeBag
+
+        blueScoringArea.isUserInteractionEnabled = false
 
         guard viewModel.shouldAllowScoring else { return }
 
         setupTapGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
         setupSwipeGestureRecognizer(targetView: blueScoringArea, playerColor: .blue)
 
-        blueTechnicalButton.rx.tap.subscribe { [weak self] in
+        blueTechnicalButton.rx.tap.subscribeNext { [weak self] in
             self?.viewModel.handleTechnicalButtonTapped(color: .blue)
         } >>> disposeBag
     }

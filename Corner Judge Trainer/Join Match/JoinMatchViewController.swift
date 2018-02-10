@@ -16,6 +16,7 @@ final class JoinMatchViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var originControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var createNewMatchButton: RoundedButton!
+    @IBOutlet weak var createNewMatchViewHeight: NSLayoutConstraint!
 
     let viewModel = JoinMatchViewModel()
     let disposeBag = DisposeBag()
@@ -31,6 +32,9 @@ final class JoinMatchViewController: UIViewController, UITableViewDelegate {
         } >>> disposeBag
 
         originControl.rx.selectedSegmentIndex <-> viewModel.selectedIndex >>> disposeBag
+
+        createNewMatchViewHeight.constant = 0
+        createNewMatchButton.isHidden = true
     }
 
     private func setupTableView() {

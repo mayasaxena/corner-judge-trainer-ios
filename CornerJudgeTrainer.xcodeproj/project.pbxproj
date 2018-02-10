@@ -484,7 +484,7 @@
 				TargetAttributes = {
 					A5AA9D491D4BCE0200B51652 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2U76RBCGXR;
+						DevelopmentTeam = 58JV66W864;
 						LastSwiftMigration = 0800;
 					};
 					A5AA9D5D1D4BCE0300B51652 = {
@@ -795,11 +795,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2U76RBCGXR;
+				DEVELOPMENT_TEAM = 58JV66W864;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.tuftstkd.corner;
 				PRODUCT_NAME = Corner;
 				SWIFT_VERSION = 3.0;
 			};
@@ -811,11 +811,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2U76RBCGXR;
+				DEVELOPMENT_TEAM = 58JV66W864;
 				INFOPLIST_FILE = "Corner Judge Trainer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.taekwondo.Corner-Judge-Trainer";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.tuftstkd.corner;
 				PRODUCT_NAME = Corner;
 				SWIFT_VERSION = 3.0;
 			};
